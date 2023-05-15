@@ -60,7 +60,7 @@ function SignUp() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-lime-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg- px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-lime-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 註冊
               </button>
@@ -71,7 +71,7 @@ function SignUp() {
             已經註冊過帳號了?{' '}
             <a
               href="#"
-              className="font-semibold leading-6 text-lime-600 hover:text-lime-400"
+              className="font-semibold leading-6 text-lime-400 hover:text-lime-400"
             >
               登入現有帳號
             </a>

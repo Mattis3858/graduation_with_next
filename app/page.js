@@ -6,7 +6,7 @@ import SignUp from './SignUp';
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="bg-white">
       <Login />
     </main>
   );
