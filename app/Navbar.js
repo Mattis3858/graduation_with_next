@@ -1,20 +1,8 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from '@heroicons/react/20/solid';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
@@ -54,7 +42,7 @@ export default function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img className="h-8 w-auto" src="images/tea.png" alt="" />
           </a>
@@ -122,14 +110,20 @@ export default function Navbar() {
             品茶預約
           </a>
           <a href="#" className="text-lg font-semibold leading-6 text-gray-900">
-            產品介紹
+            系統介紹
           </a>
-          <a href="#" className="text-lg font-semibold leading-6 text-gray-900">
+          <a
+            href="/about"
+            className="text-lg font-semibold leading-6 text-gray-900"
+          >
             關於我們
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-lg font-semibold leading-6 text-gray-900">
+          <a
+            href="/login"
+            className="text-lg font-semibold leading-6 text-gray-900"
+          >
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -208,7 +202,7 @@ export default function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  href="/login"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in

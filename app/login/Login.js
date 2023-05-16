@@ -86,7 +86,7 @@ function Login() {
           <p className="mt-10 text-center text-sm text-gray-500">
             還沒有註冊?{' '}
             <a
-              href="#"
+              href="/signup"
               className="font-semibold leading-6 text-lime-600 hover:text-lime-400"
             >
               註冊新帳號

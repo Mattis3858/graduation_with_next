@@ -60,7 +60,7 @@ function SignUp() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg- px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-lime-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className=" text-white flex w-full justify-center rounded-md bg- px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm bg-lime-600 hover:bg-lime-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-400"
               >
                 註冊
               </button>
@@ -70,7 +70,7 @@ function SignUp() {
           <p className="mt-10 text-center text-sm text-gray-500">
             已經註冊過帳號了?{' '}
             <a
-              href="#"
+              href="/login"
               className="font-semibold leading-6 text-lime-400 hover:text-lime-400"
             >
               登入現有帳號
