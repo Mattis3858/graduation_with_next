@@ -7,7 +7,7 @@ function Footer() {
         className="grid lg:grid-cols-3 gap-10
   text-center pt-2 text-slate-800 text-sm pb-3"
       >
-        <span>© 2023 Appy. All rights reserved.</span>
+        <span>© 2023. All rights reserved.</span>
         <span>Terms · Privacy Policy</span>
       </div>
     </footer>

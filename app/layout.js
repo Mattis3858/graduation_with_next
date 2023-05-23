@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>茶葉推廣系統</title>
+        <title>木柵茶葉推廣平台</title>
       </head>
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col">

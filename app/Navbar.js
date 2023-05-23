@@ -59,9 +59,12 @@ export default function Navbar() {
         </div>
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
+          <a href="#" className="text-lg font-semibold leading-6 text-gray-900">
+            木柵茶本舖
+          </a>
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
-              Product
+              產品
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
@@ -120,6 +123,12 @@ export default function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="#"
+            className="text-lg font-semibold leading-6 text-gray-900 mr-6"
+          >
+            <img className="h-6 w-auto" src="images/shopping-cart.png" alt="" />
+          </a>
           <a
             href="/login"
             className="text-lg font-semibold leading-6 text-gray-900"
