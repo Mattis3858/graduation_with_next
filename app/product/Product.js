@@ -4,7 +4,7 @@ import TeaProduct from '../components/TeaProduct';
 const Product = () => {
   return (
     <div>
-      <div className="font-bold text-4xl mt-5 mb-5">木柵茶本舖</div>
+      <div className="font-bold text-4xl mt-5 mb-5 ml-10">木柵茶本舖</div>
       <div className="grid justify-around gap-x-12 gap-y-5 grid-cols-3 ml-10 mr-10 mb-10">
         <TeaProduct
           src="images/green-tea.png"
