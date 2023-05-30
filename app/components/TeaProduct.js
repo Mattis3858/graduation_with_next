@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TeaProduct({ src, name = '', description = '', price = 0 }) {
+function TeaProduct({ src = '', name = '', description = '', price = 0 }) {
   return (
     <div className="border-solid border-2 border-lime-600 rounded-2xl mt-5 bg-gray-200 font-sans">
       <div className="w-full">
