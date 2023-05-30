@@ -11,19 +11,19 @@ const products = [
   {
     name: '茶葉產地辨識推廣系統',
     description: 'Get a better understanding of your traffic',
-    href: '/',
+    href: '/teaidentification',
     icon: RiSeedlingLine,
   },
   {
     name: '茶葉知音',
     description: 'Speak directly to your customers',
-    href: '/',
+    href: '/teafriend',
     icon: SiOverleaf,
   },
   {
     name: '找好茶系統',
     description: 'Your customers’ data will be safe and secure',
-    href: '/',
+    href: '/goodtea',
     icon: BiSearchAlt,
   },
 ];
@@ -38,7 +38,7 @@ export default function Navbar() {
   return (
     <header className="bg-gradient-to-t from-gray-100 to-gray-300">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">

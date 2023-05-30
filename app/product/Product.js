@@ -14,7 +14,7 @@ const Product = () => {
   return (
     <div>
       <div className="font-bold text-4xl mt-6 ml-10">木柵茶本舖</div>
-      <div className="grid justify-around gap-x-10 grid-cols-3 ml-10 mr-10">
+      <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
         <TeaProduct
           src={ProductData.張協興炭焙鐵觀音.src} //
           name={ProductData.張協興炭焙鐵觀音.name}
