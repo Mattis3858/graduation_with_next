@@ -16,7 +16,10 @@ export default function RootLayout({ children }) {
       <head>
         <title>木柵茶葉推廣平台</title>
       </head>
-      <body className={inter.className}>
+      <body
+        className={inter.className}
+        style={{ backgroundImage: 'url("images/4245552.jpg")' }}
+      >
         <div className="min-h-screen flex flex-col">
           <Navbar />
           {children}
