@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 export default function Home() {
   return (
@@ -43,9 +44,9 @@ const SystemIntroduction = ({
         <div className=" flex">
           <div className="text-5xl mt-4">{title}</div>
           <span className=" relative">
-            <a href={link} className="mt-4 absolute top-1.5 left-10">
+            <Link href={link} className="mt-4 absolute top-1.5 left-10">
               <BsFillArrowRightCircleFill size={40} />
-            </a>
+            </Link>
           </span>
         </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import TeaProduct from '../components/TeaProduct';
+import TeaProduct from './TeaProduct';
 
 const ProductData = {
   張協興炭焙鐵觀音: {

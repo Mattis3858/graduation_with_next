@@ -7,6 +7,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
 import { BiSearchAlt } from 'react-icons/bi';
+import Link from 'next/link';
 const products = [
   {
     name: '茶葉產地辨識推廣系統',
@@ -36,16 +37,17 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-t from-gray-100 to-gray-300">
+    // <header className="bg-gradient-to-t from-gray-100 to-gray-300">
+    <header className="">
       <nav
         className="mx-auto flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img className="h-8 w-auto" src="images/tea.png" alt="" />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -112,12 +114,18 @@ export default function Navbar() {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-lg font-semibold leading-6 text-gray-900">
+          <Link
+            href="#"
+            className="text-lg font-semibold leading-6 text-gray-900"
+          >
             品茶預約
-          </a>
-          <a href="#" className="text-lg font-semibold leading-6 text-gray-900">
+          </Link>
+          <Link
+            href="#"
+            className="text-lg font-semibold leading-6 text-gray-900"
+          >
             系統介紹
-          </a>
+          </Link>
           <a
             href="/about"
             className="text-lg font-semibold leading-6 text-gray-900"
@@ -149,10 +157,10 @@ export default function Navbar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img className="h-8 w-auto" src="images/tea.png" alt="" />
-            </a>
+            </Link>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
