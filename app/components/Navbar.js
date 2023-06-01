@@ -202,22 +202,28 @@ export default function Navbar() {
                   )}
                 </Disclosure>
                 <a
-                  href="#"
+                  href="/product"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Features
+                  木柵茶本舖
                 </a>
                 <a
-                  href="#"
+                  href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  品茶預約
                 </a>
                 <a
-                  href="#"
+                  href="/recommendationSystems"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  系統介紹
+                </a>
+                <a
+                  href="/about"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  關於我們
                 </a>
               </div>
               <div className="py-6">
