@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 function SignUp() {
@@ -69,12 +70,12 @@ function SignUp() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             已經註冊過帳號了?{' '}
-            <a
+            <Link
               href="/login"
               className="font-semibold leading-6 text-lime-400 hover:text-lime-400"
             >
               登入現有帳號
-            </a>
+            </Link>
           </p>
         </div>
       </div>

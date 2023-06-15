@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 function Login() {
@@ -53,12 +54,12 @@ function Login() {
                   密碼
                 </label>
                 <div className="text-sm">
-                  <a
+                  <Link
                     href="#"
                     className="font-semibold text-lime-600 hover:text-lime-400"
                   >
                     忘記密碼
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="mt-2">
@@ -85,12 +86,12 @@ function Login() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             還沒有註冊?{' '}
-            <a
+            <Link
               href="/signup"
               className="font-semibold leading-6 text-lime-600 hover:text-lime-400"
             >
               註冊新帳號
-            </a>
+            </Link>
           </p>
         </div>
       </div>
