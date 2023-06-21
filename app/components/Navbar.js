@@ -141,7 +141,7 @@ export default function Navbar() {
             href="#"
             className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6"
           >
-            <ShoppingCartIcon class="h-6 w-6 text-gray-500 hover:text-gray-900" />
+            <ShoppingCartIcon className="h-6 w-6 text-gray-500 hover:text-gray-900" />
           </a>
           <a
             href="/login"
