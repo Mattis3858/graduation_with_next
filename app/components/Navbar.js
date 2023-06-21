@@ -1,7 +1,10 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ShoppingCartIcon,
+} from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import { RiSeedlingLine } from 'react-icons/ri';
@@ -63,12 +66,12 @@ export default function Navbar() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <a
             href="/product"
-            className="text-lg font-semibold leading-6 text-gray-900"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             木柵茶本舖
           </a>
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-900">
+            <Popover.Button className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900">
               產品
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400"
@@ -116,19 +119,19 @@ export default function Navbar() {
 
           <Link
             href="#"
-            className="text-lg font-semibold leading-6 text-gray-900"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             品茶預約
           </Link>
           <Link
             href="#"
-            className="text-lg font-semibold leading-6 text-gray-900"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             系統介紹
           </Link>
           <a
             href="/about"
-            className="text-lg font-semibold leading-6 text-gray-900"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             關於我們
           </a>
@@ -136,13 +139,13 @@ export default function Navbar() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="#"
-            className="text-lg font-semibold leading-6 text-gray-900 mr-6"
+            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6"
           >
-            <img className="h-6 w-auto" src="images/shopping-cart.png" alt="" />
+            <ShoppingCartIcon class="h-6 w-6 text-gray-500 hover:text-gray-900" />
           </a>
           <a
             href="/login"
-            className="text-lg font-semibold leading-6 text-gray-900"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             Log in <span aria-hidden="true">&rarr;</span>
           </a>

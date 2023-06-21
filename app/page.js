@@ -17,14 +17,14 @@ export default function Home() {
         marginLeft="m-auto mr-10"
         link="/teafriend"
       />
-      <SystemIntroduction
+      {/* <SystemIntroduction
         title="找好茶推薦系統"
         customer="平時喝茶頻率較高，有喝過木柵鐵觀音，並熟悉滋味希望能依據自身口味找到更相符的鐵觀音"
         description="
         1.主打精準、專業、深度的推薦系統，使用者輸入風味需求後，系統能為其推薦一款「最符合指定風味」的茶產品。2.消費者以勾選的方式輸入產品風味需求(x)，系統會推薦與該風味描述最相關的木柵鐵觀音產品，並提供購買連結。(不需要輸入所有指標，但有會更精準)"
         marginLeft="m-auto ml-10"
         link="/goodtea"
-      />
+      /> */}
     </main>
   );
 }

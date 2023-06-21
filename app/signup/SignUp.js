@@ -72,7 +72,7 @@ function SignUp() {
             已經註冊過帳號了?{' '}
             <Link
               href="/login"
-              className="font-semibold leading-6 text-lime-400 hover:text-lime-400"
+              className="font-semibold leading-6 text-lime-600 hover:text-lime-400"
             >
               登入現有帳號
             </Link>
