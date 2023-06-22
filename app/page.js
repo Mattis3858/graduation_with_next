@@ -1,27 +1,6 @@
 import Link from 'next/link';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
-import { connectToDatabase } from '../mongodb.js';
 
-async function getData() {
-  const client = await connectToDatabase();
-  const db = client.db('school');
-  const collection = db.collection('students');
-
-  // Perform MongoDB operations using the collection object
-  const data = await collection.find().toArray();
-
-  return data;
-}
-
-export async function getServerSideProps() {
-  const data = await getData();
-  console.log(data);
-  return {
-    props: {
-      data,
-    },
-  };
-}
 export default function Home() {
   return (
     <main className="mt-8">
