@@ -19,16 +19,10 @@ const products = [
     icon: RiSeedlingLine,
   },
   {
-    name: '茶葉知音',
+    name: '茶葉夏洛克',
     description: 'Speak directly to your customers',
-    href: '/teafriend',
+    href: '/sherlock',
     icon: SiOverleaf,
-  },
-  {
-    name: '找好茶系統',
-    description: 'Your customers’ data will be safe and secure',
-    href: '/goodtea',
-    icon: BiSearchAlt,
   },
 ];
 

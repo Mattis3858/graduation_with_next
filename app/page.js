@@ -12,11 +12,11 @@ export default function Home() {
         link="/teaidentification"
       />
       <SystemIntroduction
-        title="茶葉知音推薦系統"
+        title="茶葉夏洛克推薦系統"
         customer="品茶初學者、送禮、自用需求、大多沒喝過木柵鐵觀音"
         description="1.主打多用途、初階、簡易、快速的推薦系統，推薦一款「最符合需求」的茶產品。2.消費者勾選輸入需求(x)包含風味、規格、功能、送禮對象等等，此時系統會推薦相關木柵鐵觀音產品，並提供購買連結。(不需要輸入所有指標)"
         marginLeft="m-auto mr-10"
-        link="/teafriend"
+        link="/sherlock"
       />
       {/* <SystemIntroduction
         title="找好茶推薦系統"
