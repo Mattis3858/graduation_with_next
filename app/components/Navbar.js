@@ -13,9 +13,9 @@ import { BiSearchAlt } from 'react-icons/bi';
 import Link from 'next/link';
 const products = [
   {
-    name: '茶葉產地辨識推廣系統',
+    name: '找好茶茶葉推薦',
     description: 'Get a better understanding of your traffic',
-    href: '/teaidentification',
+    href: '/goodtea',
     icon: RiSeedlingLine,
   },
   {

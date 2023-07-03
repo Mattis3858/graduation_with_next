@@ -5,16 +5,16 @@ export default function Home() {
   return (
     <main className="mt-8">
       <SystemIntroduction
-        title="產地辨識茶葉推廣系統"
-        customer="對於木柵鐵觀音、品茶知識有興趣者"
-        description="1.兼具教育娛樂性質的感官品評茶產地辨識，以品茶師的角度進行品茶流程體驗、並嘗試判斷鐵觀音製作地。2.系統依照使用者品評輸入分辨此茶品喝起來像木柵茶或非木柵茶，以及顯示專業品茶師、專業型消費者感官數據統計，讓使用者進行比對，藉此提升消費者感官與品茶能力。3.將品茶流程用更簡易方式引導使用者品茶。"
+        title="找好茶茶葉推薦"
+        customer="kdfmlskdmgk"
+        description="sldkgnlajlsdjadg"
         marginLeft="m-auto ml-10"
-        link="/teaidentification"
+        link="/goodtea"
       />
       <SystemIntroduction
-        title="茶葉夏洛克推薦系統"
-        customer="品茶初學者、送禮、自用需求、大多沒喝過木柵鐵觀音"
-        description="1.主打多用途、初階、簡易、快速的推薦系統，推薦一款「最符合需求」的茶產品。2.消費者勾選輸入需求(x)包含風味、規格、功能、送禮對象等等，此時系統會推薦相關木柵鐵觀音產品，並提供購買連結。(不需要輸入所有指標)"
+        title="茶葉夏洛克辨識系統"
+        customer=";arjg;ajrg"
+        description=";erjng;awrjh;kjng;jskdngl"
         marginLeft="m-auto mr-10"
         link="/sherlock"
       />
