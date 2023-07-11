@@ -15,14 +15,12 @@ import Link from 'next/link';
 const products = [
   {
     name: '找好茶茶葉推薦',
-    description: 'Get a better understanding of your traffic',
     href: '/goodtea',
     icon: RiSeedlingLine,
   },
   {
-    name: '茶葉夏洛克',
-    description: 'Speak directly to your customers',
-    href: '/sherlock',
+    name: '泡好茶',
+    href: '/brewgoodtea',
     icon: SiOverleaf,
   },
 ];
@@ -59,12 +57,12 @@ export default function Navbar() {
         </div>
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a
+          <Link
             href="/product"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             木柵茶本舖
-          </a>
+          </Link>
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900">
               產品

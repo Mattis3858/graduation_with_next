@@ -1,9 +1,9 @@
-import Identification from '../sherlock/Identification';
+import SignUp from './SignUp';
 
 export default function Home() {
   return (
     <main className="">
-      <Identification />
+      <SignUp />
     </main>
   );
 }
