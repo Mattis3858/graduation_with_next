@@ -4,6 +4,7 @@ import {
   Bars3Icon,
   XMarkIcon,
   ShoppingCartIcon,
+  UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
@@ -14,14 +15,12 @@ import Link from 'next/link';
 const products = [
   {
     name: '找好茶茶葉推薦',
-    description: 'Get a better understanding of your traffic',
     href: '/goodtea',
     icon: RiSeedlingLine,
   },
   {
-    name: '茶葉夏洛克',
-    description: 'Speak directly to your customers',
-    href: '/sherlock',
+    name: '泡好茶',
+    href: '/brewgoodtea',
     icon: SiOverleaf,
   },
 ];
@@ -58,12 +57,12 @@ export default function Navbar() {
         </div>
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a
+          <Link
             href="/product"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             木柵茶本舖
-          </a>
+          </Link>
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900">
               產品
@@ -117,6 +116,7 @@ export default function Navbar() {
           >
             品茶預約
           </Link>
+
           <Link
             href="#"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
@@ -131,6 +131,12 @@ export default function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="/personalInformation"
+            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6"
+          >
+            <UserCircleIcon className="h-6 w-6 text-gray-500 hover:text-gray-900" />
+          </a>
           <a
             href="#"
             className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6"
