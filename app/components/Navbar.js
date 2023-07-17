@@ -111,7 +111,7 @@ export default function Navbar() {
           </Popover>
 
           <Link
-            href="#"
+            href="/reservation"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             品茶預約
@@ -123,12 +123,12 @@ export default function Navbar() {
           >
             系統介紹
           </Link>
-          <a
+          {/* <a
             href="/about"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             關於我們
-          </a>
+          </a> */}
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
@@ -138,7 +138,7 @@ export default function Navbar() {
             <UserCircleIcon className="h-6 w-6 text-gray-500 hover:text-gray-900" />
           </a>
           <a
-            href="#"
+            href="/shoppingCart"
             className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6"
           >
             <ShoppingCartIcon className="h-6 w-6 text-gray-500 hover:text-gray-900" />
