@@ -13,7 +13,7 @@ const ProductData = {
 const Product = () => {
   return (
     <div>
-      <div className="font-bold text-4xl mt-6 ml-10">木柵茶本舖</div>
+      <div className="font-bold text-4xl mt-6 text-center">木柵茶本舖</div>
       <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
         <TeaProduct
           src={ProductData.張協興炭焙鐵觀音.src} //

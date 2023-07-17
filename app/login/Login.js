@@ -19,9 +19,7 @@ function Login() {
             src="images/tea.png"
             alt="Your Company"
           />
-          <h3 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            登入
-          </h3>
+          <div className="font-bold text-4xl mt-6 text-center">登入</div>
         </div>
 
         <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -87,7 +85,7 @@ function Login() {
           <p className="mt-10 text-center text-sm text-gray-500">
             還沒有註冊?{' '}
             <Link
-              href="/signup"
+              href="/userSignup"
               className="font-semibold leading-6 text-lime-600 hover:text-lime-400"
             >
               註冊新帳號
