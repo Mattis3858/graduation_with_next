@@ -3,20 +3,18 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 export default function Home() {
   return (
-    <main className="mt-8">
+    <main className="mt-8 flex justify-evenly">
       <SystemIntroduction
         title="找好茶茶葉推薦"
-        customer="kdfmlskdmgk"
         description="sldkgnlajlsdjadg"
-        marginLeft="m-auto ml-10"
+        marginLeft=""
         link="/goodtea"
       />
       <SystemIntroduction
-        title="茶葉夏洛克辨識系統"
-        customer=";arjg;ajrg"
+        title="泡好茶系統"
         description=";erjng;awrjh;kjng;jskdngl"
-        marginLeft="m-auto mr-10"
-        link="/sherlock"
+        marginLeft=""
+        link="/brewgoodtea"
       />
       {/* <SystemIntroduction
         title="找好茶推薦系統"
@@ -39,27 +37,23 @@ const SystemIntroduction = ({
 }) => {
   return (
     <div
-      className={`w-7/12 border-solid border-lime-700 rounded-3xl border-2 mb-8 ${marginLeft}`}
+      className={`w-5/12 border-solid border-lime-700 rounded-3xl border-2 mb-8 ${marginLeft}`}
     >
-      <div className="ml-4">
-        <div className=" flex">
-          <div className="text-5xl mt-4">{title}</div>
-          <span className=" relative">
-            <Link href={link} className="mt-4 absolute top-1.5 left-10">
-              <BsFillArrowRightCircleFill size={40} />
-            </Link>
-          </span>
-        </div>
+      <Link href={link} className="mt-4 top-1.5 left-10">
+        <div className="">
+          <div className="flex border-b-2 border-lime-600">
+            <div className="text-5xl my-4 ml-4 text-center">{title}</div>
+            <div className="mt-4 ml-4">
+              <BsFillArrowRightCircleFill size={50} />
+            </div>
+          </div>
 
-        <div className="mt-4">
-          <div>適合客群：</div>
-          <div>{customer}</div>
+          <div className="ml-4 mt-4 mb-4 text-lg font-medium">
+            <div className="">系統介紹：</div>
+            <div>{description}</div>
+          </div>
         </div>
-        <div className="mt-4 mb-4">
-          <div>系統介紹：</div>
-          <div>{description}</div>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };

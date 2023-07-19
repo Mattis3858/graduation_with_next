@@ -11,7 +11,12 @@ const BrewGoodTea = () => {
     <div className="ml-10">
       <div className="font-bold text-4xl mt-6 text-center">泡好茶</div>
       <h2>Add Image:</h2>
-      <input type="file" onChange={handleChange} />
+      <input
+        id="imgTea"
+        type="file"
+        onChange={handleChange}
+        accept="image/gif, image/jpeg, image/png"
+      />
       <img src={file} />
     </div>
   );
