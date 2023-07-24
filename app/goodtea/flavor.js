@@ -5,11 +5,20 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-import { Box, Slider, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import {
+  Box,
+  Slider,
+  TextField,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material';
 
 export default function Flavor() {
-    
-
   // 假设有一个 flavors 数组包含所有風味的信息
   const flavors = [
     { name: '焙烤', description: '爆米香、麵包、炒栗子' },
@@ -66,45 +75,51 @@ export default function Flavor() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell align="center" sx={{ width: '15%' }}>代表風味</TableCell>
-                  <TableCell align="center" sx={{ width: '35%' }}>描述</TableCell>
-                  <TableCell align="center" sx={{ width: '55%' }}>量化數字</TableCell>
+                  <TableCell align="center" sx={{ width: '15%' }}>
+                    代表風味
+                  </TableCell>
+                  <TableCell align="center" sx={{ width: '35%' }}>
+                    描述
+                  </TableCell>
+                  <TableCell align="center" sx={{ width: '55%' }}>
+                    量化數字
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {flavors.map((flavor, index) => (
-                    <TableRow key={flavor.name}>
+                  <TableRow key={flavor.name}>
                     <TableCell>{flavor.name}</TableCell>
                     <TableCell>{flavor.description}</TableCell>
                     <TableCell>
-                        <Box display="flex" alignItems="center">
+                      <Box display="flex" alignItems="center">
                         <Slider
-                            value={quantitativeValues[index].value}
-                            min={0}
-                            max={4}
-                            step={0.01}
-                            onChange={(event, newValue) =>
+                          value={quantitativeValues[index].value}
+                          min={0}
+                          max={4}
+                          step={0.01}
+                          onChange={(event, newValue) =>
                             handleSliderChange(event, newValue, index)
-                            }
+                          }
                         />
                         <TextField
-                            id={`quantitative-value-${flavor.name}`}
-                            label="量化數字"
-                            type="number"
-                            value={quantitativeValues[index].value}
-                            inputProps={{
+                          id={`quantitative-value-${flavor.name}`}
+                          label="量化數字"
+                          type="number"
+                          value={quantitativeValues[index].value}
+                          inputProps={{
                             min: 0,
                             max: 4,
                             step: 0.01,
-                            }}
-                            onChange={(event) => handleTextChange(event, index)}
-                            sx={{ marginLeft: '20px', width: '100px' }}
+                          }}
+                          onChange={(event) => handleTextChange(event, index)}
+                          sx={{ marginLeft: '20px', width: '100px' }}
                         />
-                        </Box>
+                      </Box>
                     </TableCell>
-                    </TableRow>
+                  </TableRow>
                 ))}
-                </TableBody>
+              </TableBody>
             </Table>
           </TableContainer>
         </Grid>

@@ -123,6 +123,12 @@ export default function Navbar() {
           >
             系統介紹
           </Link>
+          <Link
+            href="/processIntro"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+          >
+            泡茶流程
+          </Link>
           {/* <a
             href="/about"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
