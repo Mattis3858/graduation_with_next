@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
+import Product from './product/Product';
 
 export default function Home() {
   return (
-    <main className="mt-8 flex justify-evenly">
-      <SystemIntroduction
+    <main className=" flex justify-evenly">
+      <Product />
+      {/* <SystemIntroduction
         title="找好茶茶葉推薦"
         description="sldkgnlajlsdjadg"
         marginLeft=""
@@ -15,7 +17,7 @@ export default function Home() {
         description=";erjng;awrjh;kjng;jskdngl"
         marginLeft=""
         link="/brewgoodtea"
-      />
+      /> */}
       {/* <SystemIntroduction
         title="找好茶推薦系統"
         customer="平時喝茶頻率較高，有喝過木柵鐵觀音，並熟悉滋味希望能依據自身口味找到更相符的鐵觀音"
@@ -37,7 +39,7 @@ const SystemIntroduction = ({
 }) => {
   return (
     <div
-      className={`w-5/12 border-solid border-lime-700 rounded-3xl border-2 mb-8 ${marginLeft}`}
+      className={`w-5/12 border-solid border-lime-700 rounded-3xl border-2 ${marginLeft}`}
     >
       <Link href={link} className="mt-4 top-1.5 left-10">
         <div className="">

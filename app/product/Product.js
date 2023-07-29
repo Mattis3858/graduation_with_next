@@ -1,5 +1,6 @@
 import React from 'react';
 import TeaProduct from './TeaProduct';
+import Link from 'next/link';
 
 const ProductData = {
   張協興炭焙鐵觀音: {
@@ -14,6 +15,12 @@ const Product = () => {
   return (
     <div>
       <div className="font-bold text-4xl mt-6 text-center">木柵茶本舖</div>
+      <div className="h-20 mt-6 bg-white flex items-center justify-center">
+        <div className="text-xl fw-700">找好茶推薦系統</div>
+        <Link href="/goodtea">
+          <button className="rounded-lg ml-4 border-2">前往</button>
+        </Link>
+      </div>
       <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
         <TeaProduct
           src={ProductData.張協興炭焙鐵觀音.src} //

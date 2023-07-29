@@ -3,7 +3,7 @@ import React from 'react';
 const Profile = ({ name, birthDate, age, email, gender, phoneNumber }) => {
   return (
     <div className="flex justify-center">
-      <div className="text-center">
+      <div className="">
         <h1 className="font-bold text-4xl mt-6 ml-10">個人檔案</h1>
         <table className="mt-6 ml-10">
           <tbody>
@@ -31,10 +31,10 @@ const Profile = ({ name, birthDate, age, email, gender, phoneNumber }) => {
               <td className="font-medium text-xl">電話：</td>
               <td className="font-medium text-xl">{phoneNumber}</td>
             </tr>
-            {/* 其他用戶資訊... */}
           </tbody>
         </table>
       </div>
+      <div></div>
     </div>
   );
 };

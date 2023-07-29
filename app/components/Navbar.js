@@ -58,7 +58,7 @@ export default function Navbar() {
 
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link
-            href="/product"
+            href="/"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             木柵茶本舖
