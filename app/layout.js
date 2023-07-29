@@ -3,6 +3,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { CartProvider } from 'react-use-cart';
 const inter = Inter({ subsets: ['latin'] });
 
 // export const metadata = {
@@ -21,9 +22,11 @@ export default function RootLayout({ children }) {
         style={{ backgroundImage: 'url("images/4245552.jpg")' }}
       >
         <div className="min-h-screen flex flex-col">
-          <Navbar />
-          {children}
-          <Footer />
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </CartProvider>
         </div>
       </body>
     </html>

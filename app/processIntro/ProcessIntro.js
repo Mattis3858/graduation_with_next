@@ -3,18 +3,12 @@ import React from 'react';
 function ProcessIntro() {
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <div style={{ width: '100%', maxWidth: '600px' }}>
-          <table style={{ width: '100%' }}>
+      <div className="flex flex-col items-center">
+        <div className="w-full max-w-xl">
+          <table className="w-full">
             <tbody>
               <tr>
-                <td style={{ textAlign: 'center', paddingRight: '10px' }}>
+                <td className=" text-center pr-4">
                   <img
                     src="images/mattis.jpg"
                     style={{ width: '80px', height: '100px' }}

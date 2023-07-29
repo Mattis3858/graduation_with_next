@@ -11,6 +11,7 @@ function TeaProduct({
   description = '',
   price = 0,
 }) {
+  console.log(product);
   const { addItem } = useCart();
   return (
     <div className="border-solid border-2 border-lime-600 rounded-2xl bg-gray-200 font-sans">

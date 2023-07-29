@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 const ProductData = [
   {
+    id: 1,
     src: 'images/green-tea.png',
     shop: '張協興',
     name: '炭焙鐵觀音',
@@ -12,6 +13,7 @@ const ProductData = [
     price: 555,
   },
   {
+    id: 2,
     src: 'images/green-tea.png',
     shop: '威叔',
     name: '鐵觀音紅茶',
@@ -20,6 +22,7 @@ const ProductData = [
     price: 279,
   },
   {
+    id: 3,
     src: 'images/green-tea.png',
     shop: '寒舍',
     name: '文山包種茶',
@@ -28,6 +31,7 @@ const ProductData = [
     price: 333,
   },
   {
+    id: 4,
     src: 'images/green-tea.png',
     shop: '威叔',
     name: '文山包種茶',
@@ -36,6 +40,7 @@ const ProductData = [
     price: 590,
   },
   {
+    id: 5,
     src: 'images/green-tea.png',
     shop: '張協興',
     name: '文山包種茶',
@@ -55,8 +60,8 @@ const Product = () => {
         </Link>
       </div>
       <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
-        {ProductData.map((product, index) => (
-          <div key={index}>
+        {ProductData.map((product) => (
+          <div key={product.id}>
             <TeaProduct
               product={product}
               src={product.src} //
@@ -67,42 +72,6 @@ const Product = () => {
             />
           </div>
         ))}
-        {/* <TeaProduct
-          src={ProductData.張協興炭焙鐵觀音.src} //
-          name={ProductData.張協興炭焙鐵觀音.name}
-          description={ProductData.張協興炭焙鐵觀音.description}
-          price={ProductData.張協興炭焙鐵觀音.price}
-        />
-        <TeaProduct
-          src={ProductData.張協興炭焙鐵觀音.src} //
-          name={ProductData.張協興炭焙鐵觀音.name}
-          description={ProductData.張協興炭焙鐵觀音.description}
-          price={ProductData.張協興炭焙鐵觀音.price}
-        />
-        <TeaProduct
-          src={ProductData.張協興炭焙鐵觀音.src} //
-          name={ProductData.張協興炭焙鐵觀音.name}
-          description={ProductData.張協興炭焙鐵觀音.description}
-          price={ProductData.張協興炭焙鐵觀音.price}
-        />
-        <TeaProduct
-          src={ProductData.張協興炭焙鐵觀音.src} //
-          name={ProductData.張協興炭焙鐵觀音.name}
-          description={ProductData.張協興炭焙鐵觀音.description}
-          price={ProductData.張協興炭焙鐵觀音.price}
-        />
-        <TeaProduct
-          src={ProductData.張協興炭焙鐵觀音.src} //
-          name={ProductData.張協興炭焙鐵觀音.name}
-          description={ProductData.張協興炭焙鐵觀音.description}
-          price={ProductData.張協興炭焙鐵觀音.price}
-        />
-        <TeaProduct
-          src={ProductData.張協興炭焙鐵觀音.src} //
-          name={ProductData.張協興炭焙鐵觀音.name}
-          description={ProductData.張協興炭焙鐵觀音.description}
-          price={ProductData.張協興炭焙鐵觀音.price}
-        /> */}
       </div>
     </div>
   );
