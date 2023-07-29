@@ -11,7 +11,6 @@ function TeaProduct({
   description = '',
   price = 0,
 }) {
-  console.log(product);
   const { addItem } = useCart();
   return (
     <div className="border-solid border-2 border-lime-600 rounded-2xl bg-gray-200 font-sans">
@@ -31,7 +30,10 @@ function TeaProduct({
         </button>
         <button
           className="h-10 bg-lime-600 mb-4 rounded-2xl w-28 text-white font-semibold hover:bg-lime-400 text-sm md:text-xl"
-          onClick={() => addItem(product)}
+          onClick={() => {
+            addItem(product);
+            console.log('add item to shopping cart');
+          }}
         >
           購買
         </button>
