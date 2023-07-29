@@ -36,7 +36,7 @@ export default function Navbar() {
     // <header className="bg-gradient-to-t from-gray-100 to-gray-300">
     <header className="">
       <nav
-        className="mx-auto flex items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex items-center justify-between pt-6 pl-6 pr-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
