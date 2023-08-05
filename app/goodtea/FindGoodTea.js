@@ -33,6 +33,13 @@ const theme = createTheme({
 
 const FindGoodTea = () => {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [selectedOption, setSelectedOption] = React.useState('');
+  const [currentStep, setCurrentStep] = React.useState(1);
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setCurrentStep(option === '直接評測風味' ? 2 : 1);
+  };
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
