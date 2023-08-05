@@ -9,12 +9,7 @@ import { Box, Slider, TextField, Table, TableBody, TableCell, TableContainer, Ta
 
 export default function Flavor() {
     
-  const flavIdToInsertText = {
-    1: '香氣:泡好茶湯，取出茶葉，或瀝出茶湯後，靜置三分鐘等待茶湯冷卻，即可開始聞香，並填寫下方表格。',
-    2: '滋味:填寫完香氣分數後，待茶湯靜置至六分鐘，即可開始品嘗滋味了!請填寫以下滋味分數。',
-    3: '結束品茶:品嘗完茶湯後，感受口中香氣與喉內滋味，綜合填寫下方分數。',
-    // 添加其他 flavId 和對應的插入文字
-  };
+
   // 假设有一个 flavors 数组包含所有風味的信息
   const flavors = [
     { flavId:1, name: '烘焙味', description: '爆米香、麵包、炒栗子' },
@@ -84,9 +79,15 @@ export default function Flavor() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell align="center" sx={{ width: '15%' }}>代表風味</TableCell>
-                  <TableCell align="center" sx={{ width: '35%' }}>描述</TableCell>
-                  <TableCell align="center" sx={{ width: '55%' }}>量化數字</TableCell>
+                  <TableCell align="center" sx={{ width: '15%' }}>
+                    代表風味
+                  </TableCell>
+                  <TableCell align="center" sx={{ width: '35%' }}>
+                    描述
+                  </TableCell>
+                  <TableCell align="center" sx={{ width: '55%' }}>
+                    量化數字
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -96,7 +97,7 @@ export default function Flavor() {
                   </TableCell>
                   </TableRow>
                 
-                {flavors.map((flavor, index) => (
+                  {flavors.map((flavor, index) => (
                   <React.Fragment key={flavor.name}>
                     {index > 0 && flavors[index - 1].flavId !== flavor.flavId && (
                       <TableRow key={`inserted-row-${flavor.flavId}-${index}`}>

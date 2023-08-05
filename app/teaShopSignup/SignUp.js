@@ -11,9 +11,7 @@ function SignUp() {
             src="images/tea.png"
             alt="Your Company"
           />
-          <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            註冊新帳號
-          </h2>
+          <div className="font-bold text-4xl mt-6 text-center">茶行註冊</div>
         </div>
 
         <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
