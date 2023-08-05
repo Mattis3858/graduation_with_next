@@ -1,10 +1,37 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import StepContent from '@mui/material/StepContent';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 import { Grid, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { FormGroup, FormControlLabel, Checkbox,  FormLabel } from '@mui/material';
 
+
+const steps = [
+  {
+    label: 'Select campaign settings',
+    description: `For each ad campaign that you create, you can control how much
+              you're willing to spend on clicks and conversions, which networks
+              and geographical locations you want your ads to show on, and more.`,
+  },
+  {
+    label: 'Create an ad group',
+    description:
+      'An ad group contains one or more ads which target a shared set of keywords.',
+  },
+  {
+    label: 'Create an ad',
+    description: `Try out different ad text to see what brings in the most customers,
+              and learn how to enhance your ads using features like ad extensions.
+              If you run into any problems with your ads, find out how to tell if
+              they're running and how to resolve approval issues.`,
+  },
+];
 
 export default function SetPersonalInfomation() {
   return (
@@ -16,6 +43,7 @@ export default function SetPersonalInfomation() {
         請填寫您的基本資料，以幫助您最快速配對您的可能喜愛的風味<br />
         </Typography>
       <Grid container spacing={3}>
+        
         <Grid item xs={12} sm={6}>
             <FormControl fullWidth variant="outlined">
             <InputLabel>性別</InputLabel>
@@ -31,6 +59,7 @@ export default function SetPersonalInfomation() {
             <InputLabel>年齡</InputLabel>
             <Select label="年齡">
             {/* 生成1-100歲的選項 */}
+      
             {Array.from({ length: 100 }, (_, index) => (
                 <MenuItem key={index + 1} value={index + 1}>
                 {index + 1} 歲
@@ -86,7 +115,7 @@ export default function SetPersonalInfomation() {
             </Select>
             </FormControl>
         </Grid>
-        
+         
         {/*
         <Grid item xs={12} md={6}>
           <TextField
