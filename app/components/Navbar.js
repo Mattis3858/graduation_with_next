@@ -63,7 +63,7 @@ export default function Navbar() {
           >
             木柵茶本舖
           </Link>
-          <Popover className="relative">
+          {/* <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900">
               產品
               <ChevronDownIcon
@@ -108,8 +108,19 @@ export default function Navbar() {
                 </div>
               </Popover.Panel>
             </Transition>
-          </Popover>
-
+          </Popover> */}
+          <Link
+            href="/goodtea"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+          >
+            找好茶
+          </Link>
+          <Link
+            href="/brewgoodtea"
+            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+          >
+            泡好茶
+          </Link>
           <Link
             href="/reservation"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
@@ -117,12 +128,12 @@ export default function Navbar() {
             品茶預約
           </Link>
 
-          <Link
+          {/* <Link
             href="#"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             系統介紹
-          </Link>
+          </Link> */}
           <Link
             href="/processIntro"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"

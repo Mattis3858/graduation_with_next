@@ -1,27 +1,13 @@
-'use client';
-import React, { useState } from 'react';
-import PreviousTest from './PreviousTest';
-import PostTest from './PostTest';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-
-const Profile = ({ name, birthDate, email, gender, phoneNumber }) => {
-  const [tea, setTea] = React.useState('');
-
-  const handleTeaChange = (event) => {
-    setTea(event.target.value);
-  };
+const Profile = ({ name, birthDate, age, email, gender, phoneNumber }) => {
   return (
-    <div className="">
+    <div className="w-full">
       <div className="">
         <h1 className="font-bold text-4xl mt-6 text-center">個人檔案</h1>
-        <div className="flex ml-10">
+        <div className="flex w-full">
           <div className="mt-6 w-1/3">
-            <div className="text-2xl font-semibold mb-6 text-center">
+            {/* <div className="text-2xl font-semibold mb-6 text-center">
               基本資料
-            </div>
+            </div> */}
             <table className="mt-6">
               <tbody className="">
                 <tr>
@@ -34,7 +20,7 @@ const Profile = ({ name, birthDate, email, gender, phoneNumber }) => {
                 </tr>
                 <tr>
                   <td className="font-medium text-xl">年齡：</td>
-                  {/* <td className="font-medium text-xl">{age}</td> */}
+                  <td className="font-medium text-xl">{age}</td>
                 </tr>
                 <tr>
                   <td className="font-medium text-xl">性別：</td>
@@ -50,31 +36,6 @@ const Profile = ({ name, birthDate, email, gender, phoneNumber }) => {
                 </tr>
               </tbody>
             </table>
-          </div>
-
-          <div className="mt-6 w-2/3">
-            <div className="flex items-center justify-center align-bottom">
-              <div className="text-2xl font-semibold">過去前後測表格</div>
-              <FormControl sx={{ ml: 2, minWidth: 120 }} size="small">
-                <InputLabel id="demo-select-small-label">選擇茶款</InputLabel>
-                <Select
-                  labelId="demo-select-small-label"
-                  id="demo-select-small"
-                  value={tea}
-                  label="茶款"
-                  onChange={handleTeaChange}
-                >
-                  <MenuItem value={'所有茶款'}>所有茶款</MenuItem>
-                  <MenuItem value={'張協興鐵觀音'}>張協興鐵觀音</MenuItem>
-                  <MenuItem value={'威叔鐵觀音紅茶'}>威叔鐵觀音紅茶</MenuItem>
-                  <MenuItem value={'張協興包種茶'}>張協興包種茶</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-            <div className="mt-6 flex">
-              <PreviousTest />
-              <PostTest />
-            </div>
           </div>
         </div>
       </div>
