@@ -1,8 +1,19 @@
+'use client';
 import Link from 'next/link';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import Product from './product/Product';
+// import { useState, useEffect } from 'react';
 
 export default function Home() {
+  // const [message, setMassage] = useState('Loading');
+  // useEffect(() => {
+  //   fetch('http://localhost:8080/api/home')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setMassage(data.message);
+  //       console.log(message);
+  //     });
+  // }, []);
   return (
     <main className=" flex justify-evenly">
       <Product />

@@ -92,7 +92,7 @@ export default function Home() {
     },
   };
   return (
-    <main className="">
+    <main className=" bg-white">
       <h1 className="font-bold text-4xl mt-6 text-center">後台管理</h1>
       <div className="mt-6">
         <Chart type="bar" data={revenueAndCostData} options={''} />
