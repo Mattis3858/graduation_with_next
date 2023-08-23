@@ -1,4 +1,5 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
+import './navbar.css';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -12,6 +13,7 @@ import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
 import { BiSearchAlt } from 'react-icons/bi';
 import Link from 'next/link';
+
 const products = [
   {
     name: '找好茶茶葉推薦',
@@ -32,6 +34,12 @@ function classNames(...classes) {
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [activePath, setActivePath] = useState('/');
+
+  useEffect(() => {
+    setActivePath(window.location.pathname);
+  }, []);
+
   return (
     // <header className="bg-gradient-to-t from-gray-100 to-gray-300">
     <header className="">
@@ -40,10 +48,10 @@ export default function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          {/* <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img className="h-8 w-auto" src="images/tea.png" alt="" />
-          </Link>
+          </Link> */}
         </div>
         <div className="flex lg:hidden">
           <button
@@ -59,7 +67,7 @@ export default function Navbar() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link
             href="/"
-            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+            className={`text-lg font-semibold leading-6 nav-item ${activePath === "" ? "active" : ""}`}
           >
             木柵茶本舖
           </Link>
@@ -111,19 +119,19 @@ export default function Navbar() {
           </Popover> */}
           <Link
             href="/goodtea"
-            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/goodtea" ? "active" : ""}`}
           >
             找好茶
           </Link>
           <Link
             href="/brewgoodtea"
-            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/brewgoodtea" ? "active" : ""}`}
           >
             泡好茶
           </Link>
           <Link
             href="/reservation"
-            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/reservation" ? "active" : ""}`}
           >
             品茶預約
           </Link>
@@ -136,7 +144,7 @@ export default function Navbar() {
           </Link> */}
           <Link
             href="/processIntro"
-            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/processIntro" ? "active" : ""}`}
           >
             泡茶流程
           </Link>

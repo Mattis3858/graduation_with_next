@@ -1,9 +1,11 @@
 'use client';
 import './globals.css';
+import './layout.css';
 import { Inter } from 'next/font/google';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { CartProvider } from 'react-use-cart';
+
 const inter = Inter({ subsets: ['latin'] });
 
 // export const metadata = {
@@ -19,9 +21,14 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={inter.className}
-        style={{ backgroundImage: 'url("images/4245552.jpg")' }}
+        // style={{
+        //   backgroundImage: 'url("images/bg.jpg")',
+        //   backgroundSize: 'cover',
+        //   backgroundRepeat: 'no-repeat',
+        //   backgroundAttachment: 'fixed', 
+        // }}
       >
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col background-container">
           <CartProvider>
             <Navbar />
             {children}

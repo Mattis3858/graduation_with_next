@@ -1,0 +1,17 @@
+.nav-item {
+    color: #000000;
+    opacity: 0.4;
+}
+
+.nav-item:hover {
+    color: #329d9c;
+    opacity: 1;
+}
+
+.nav-item.active {
+    color: #205072;
+    opacity: 1;
+}
+
+
+
