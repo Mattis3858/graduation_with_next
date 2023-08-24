@@ -1,19 +1,54 @@
 .title {
     color: #329d9c;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     font-size: 48px;
+    font-family: 'YourFontName', serif; 
 }
 
 .tea {
-    background-color: #329d9c;
+    background-color: #DAA391;
     color: white;
     padding: 5px;
-    padding-left: 9px;
-    padding-right: 9px;
+    /* padding-left: 9px;
+    padding-right: 9px; */
     margin-left: 4px;
     margin-right: 4px;
     border-radius: 50px;
+    font-family: 'YourFontName', serif; 
 }
+
+.decoration {
+    width: 60vw;
+    z-index: 0;
+    margin-top: -50px;
+    margin-bottom:6vh;
+}
+
+.leaf {
+    width: 3%;
+}
+
+.main-vision {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-d {
+    font-size: 24px;
+    color: #329d9c;
+    animation: moveUpDown 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0); 
+    }
+    50% {
+      transform: translateY(-5px); 
+    }
+  }
 
 .card {
     padding: 4px;
@@ -79,7 +114,7 @@
 }
 
 .button {
-    background-color: #949494;
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center; 
     align-items: center;

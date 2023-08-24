@@ -2,6 +2,8 @@ import React from 'react';
 import TeaProduct from './TeaProduct';
 import Link from 'next/link';
 import './product.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 const ProductData = [
   {
@@ -53,7 +55,11 @@ const ProductData = [
 const Product = () => {
   return (
     <div className='page-layout'>
-      <div className="font-bold text-4xl mt-6 text-center title">木柵<span className='tea'>茶</span>本舖</div>
+      <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+        <h4 className="text-4xl mt-6 text-center title">木柵<span className='tea'>茶</span>本舖</h4>
+        <img src='/images/5730.png' className='decoration'/>
+        <img src='/images/leaf.png' className='leaf' />
+      </div>
       <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
         <div className='content'>
           <div className="text-xl fw-700 banner-text">找好茶推薦系統</div>
