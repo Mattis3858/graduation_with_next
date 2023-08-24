@@ -1,11 +1,12 @@
 import React from 'react';
 import TeaProduct from './TeaProduct';
 import Link from 'next/link';
+import './product.css';
 
 const ProductData = [
   {
     id: 1,
-    src: 'images/green-tea.png',
+    src: 'images/tea-1.jpg',
     shop: '張協興',
     name: '炭焙鐵觀音',
     description:
@@ -14,7 +15,7 @@ const ProductData = [
   },
   {
     id: 2,
-    src: 'images/green-tea.png',
+    src: 'images/tea-1.jpg',
     shop: '威叔',
     name: '鐵觀音紅茶',
     description:
@@ -23,7 +24,7 @@ const ProductData = [
   },
   {
     id: 3,
-    src: 'images/green-tea.png',
+    src: 'images/tea-1.jpg',
     shop: '寒舍',
     name: '文山包種茶',
     description:
@@ -32,7 +33,7 @@ const ProductData = [
   },
   {
     id: 4,
-    src: 'images/green-tea.png',
+    src: 'images/tea-1.jpg',
     shop: '威叔',
     name: '文山包種茶',
     description:
@@ -41,7 +42,7 @@ const ProductData = [
   },
   {
     id: 5,
-    src: 'images/green-tea.png',
+    src: 'images/tea-1.jpg',
     shop: '張協興',
     name: '文山包種茶',
     description:
@@ -52,14 +53,16 @@ const ProductData = [
 const Product = () => {
   return (
     <div className='page-layout'>
-      <div className="font-bold text-4xl mt-6 text-center">木柵茶本舖</div>
-      {/* <div className="h-20 mt-6 bg-white flex items-center justify-center">
-        <div className="text-xl fw-700">找好茶推薦系統</div>
-        <Link href="/goodtea">
-          <button className="rounded-lg ml-4 border-2">前往</button>
-        </Link>
-      </div> */}
-      <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
+      <div className="font-bold text-4xl mt-6 text-center title">木柵<span className='tea'>茶</span>本舖</div>
+      <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
+        <div className='content'>
+          <div className="text-xl fw-700 banner-text">找好茶推薦系統</div>
+          <Link href="/goodtea">
+            <button className="banner-button">前往</button>
+          </Link>
+        </div>
+      </div>
+      <div className="grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
         {ProductData.map((product) => (
           <div key={product.id}>
             <TeaProduct

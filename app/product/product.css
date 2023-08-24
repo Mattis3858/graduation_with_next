@@ -1,0 +1,161 @@
+.title {
+    color: #329d9c;
+    margin-bottom: 3rem;
+    font-size: 48px;
+}
+
+.tea {
+    background-color: #329d9c;
+    color: white;
+    padding: 5px;
+    padding-left: 9px;
+    padding-right: 9px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 50px;
+}
+
+.card {
+    padding: 4px;
+    border-color: rgba(0,0,0, 0.1);
+    border-radius: 12px;
+    border-width: 1px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    padding-bottom: 12px;
+}
+
+.card-pic {
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 12px;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0,0,0, 0.1);
+    border-radius: 8px; */
+}
+
+.pic {
+    border-radius: 8px;
+}
+
+.price-group {
+    margin: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-tag {
+    padding: 0px 12px 0px 12px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #329d9c;
+    color: #329d9c;
+    font-size: 14px;
+}
+
+.description {
+    color: #ceced1;
+}
+
+.description:hover {
+    color: #329d9c;
+}
+
+.rotateArrow {
+    transform: rotate(-90deg) !important;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button-group {
+    padding: 0px 12px 0px 12px;
+    justify-content: space-between;
+}
+
+.button {
+    background-color: #949494;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    width: 49%;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 12;
+}
+
+.button:hover {
+    background-color:#329d9c;
+}
+
+.banner {
+    position: relative;
+    height: 60vh;
+    background-color: white;
+    border-radius: 12px;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-width: 1px;
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    margin-bottom: 3rem;
+}
+  
+.banner::before {
+    content: '';
+    opacity: 0.8;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    border-radius: 12px;
+    background-image: url('/images/banner.jpg');
+    background-position: center center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.content {
+    display: inline-block;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.banner-text {
+    display: flex;
+    /* color: rgba(50, 157, 156, 0.8); */
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+.banner-button {
+    margin: auto;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    width: 60%;
+    color: #329d9c;
+    border-width: 1px;
+    border-color: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 12;
+    font-weight: bold;
+}
+
+.banner-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+

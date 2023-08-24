@@ -2,7 +2,7 @@ import React from 'react';
 
 function ProcessIntro() {
   return (
-    <>
+    <div className='page-layout'>
     <h1 style={{ fontWeight: 'bold', fontSize: '2rem', textAlign: 'center' }}>
         品茶流程
       </h1>
@@ -214,7 +214,7 @@ function ProcessIntro() {
           </table>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
