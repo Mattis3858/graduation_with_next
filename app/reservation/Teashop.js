@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import '../product/product.css';
 
 import { useState } from 'react';
 
@@ -41,90 +42,92 @@ const Teashop = () => {
 
   return (
     <div>
-      <div className="border-solid border-2 border-lime-600 rounded-2xl bg-gray-200 font-sans">
-        <div className="w-full">
-          <img
-            src={'images/green-tea.png'}
-            alt="Tea"
-            className="block mx-auto w-1/2"
-          />
+      <div className="border-solid border-2 border-lime-600 rounded-2xl bg-gray-200 font-sans card">
+        <div className="card-pic">
+          <img src='images/tea-1.jpg' className='pic'/>
         </div>
-        <hr className="h-0.5 bg-lime-600 border-0" />
-        <div>
-          <div className="mt-2 ml-3 text-2xl font-bold">張協興</div>
-          <div className="mt-2 ml-3">位於文山區的茶行老店</div>
-          <div className="mt-2 ml-3 mb-2 text-2xl font-semibold "></div>
-        </div>
-        <div className="flex justify-evenly ">
-          <Button
-            onClick={handleOpen}
-            className="h-10 bg-lime-600 mb-4 rounded-2xl w-28 text-white font-semibold hover:bg-lime-400 text-sm md:text-xl"
-          >
-            預約品茶
-          </Button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-              </Typography>
-              <Typography
-                id="modal-modal-description"
-                sx={{ mt: 3, mx: 'auto' }}
-              >
-                <form onSubmit={handleSubmit}>
-                  <div className="mt-2">
-                    <label>
-                      姓名:
-                      <input
-                        className="bg-slate-300 rounded-md"
-                        type="text"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="mt-2">
-                    <label>
-                      電子郵件:
-                      <input
-                        className="bg-slate-300 rounded-md"
-                        type="email"
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="mt-2">
-                    <label>
-                      日期:
-                      <input
-                        className="bg-slate-300 rounded-md"
-                        type="date"
-                        value={date}
-                        onChange={(event) => setDate(event.target.value)}
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="mt-2 text-center">
-                    <button
-                      className="rounded-md border-solid bg-lime-600 text-white w-28 hover:bg-lime-400 text-sm md:text-xl"
-                      type="submit"
-                    >
-                      提交預約
-                    </button>
-                  </div>
-                </form>
-              </Typography>
-            </Box>
-          </Modal>
+        <div className='card-content'>
+          <div className=''>
+            <div className="mt-2 text-2xl font-bold">張協興</div>
+            <div className="mt-2 text-xl font-bold">位於文山區的茶行老店</div>
+          </div>
+          {/* <div className="mt-2 ml-3 mb-2 text-2xl font-semibold "></div> */}
+
+          <div className="flex justify-start button-group">
+            <Button
+              onClick={handleOpen}
+              className="mt-3 card-button"
+            >
+              預約品茶
+            </Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style} className='card'>
+                <div className='card-content' >
+                <Typography id="modal-modal-title" variant="h6" component="h2" style={{display:'flex', justifyContent:'center'}}>
+                  請填入個人資訊
+                </Typography>
+                <Typography
+                  id="modal-modal-description"
+                  sx={{ mt: 3, mx: 'auto' }}
+                  style={{display:'flex', justifyContent:'center'}}
+                >
+                  <form onSubmit={handleSubmit}>
+                    <div className="mt-2">
+                      <label>
+                        姓名:
+                        <input
+                          className="bg-slate-300 rounded-md input"
+                          type="text"
+                          value={name}
+                          onChange={(event) => setName(event.target.value)}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
+                        電子郵件:
+                        <input
+                          className="bg-slate-300 rounded-md input"
+                          type="email"
+                          value={email}
+                          onChange={(event) => setEmail(event.target.value)}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
+                        日期:
+                        <input
+                          className="bg-slate-300 rounded-md input"
+                          type="date"
+                          value={date}
+                          onChange={(event) => setDate(event.target.value)}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-8 justify-center button-group">
+                      <button
+                        className="card-button"
+                        style={{padding:'4px'}}
+                        type="submit"
+                      >
+                        提交預約
+                      </button>
+                    </div>
+                  </form>
+                </Typography>
+                </div>
+              </Box>
+            </Modal>
+          </div>
         </div>
       </div>
     </div>

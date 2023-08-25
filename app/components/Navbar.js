@@ -13,6 +13,7 @@ import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
 import { BiSearchAlt } from 'react-icons/bi';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const products = [
   {
@@ -67,7 +68,7 @@ export default function Navbar() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link
             href="/"
-            className={`text-lg font-semibold leading-6 nav-item ${activePath === "" ? "active" : ""}`}
+            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/" ? "active" : ""}`}
           >
             木柵茶本舖
           </Link>
