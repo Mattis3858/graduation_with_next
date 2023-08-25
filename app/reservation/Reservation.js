@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Teashop from './Teashop';
+import '../product/product.css';
 
 const Reservation = () => {
   const [name, setName] = useState('');
@@ -45,7 +46,12 @@ const Reservation = () => {
 
   return (
     <div className='page-layout'>
-      <div className="font-bold text-4xl mt-6 text-center">茶行預約系統</div>
+      <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+        <h4 className="text-4xl mt-6 text-center title"><span className='tea'>茶</span>行預約系統</h4>
+        {/* <img src='/images/5730.png' className='decoration'/> */}
+        <img src='/images/leaf.png' className='leaf' style={{marginTop:'-1rem'}} />
+      </div>
+      {/* <div className="font-bold text-4xl mt-6 text-center">茶行預約系統</div> */}
       <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
         <Teashop />
         <Teashop />

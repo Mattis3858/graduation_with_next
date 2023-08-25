@@ -61,7 +61,7 @@ const Product = () => {
   
   return (
     <div className='page-layout'>
-      <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+      <div className="grid grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
         <h4 className="text-4xl mt-6 text-center title">木柵<span className='tea'>茶</span>本舖</h4>
         <img src='/images/5730.png' className='decoration'/>
         <img src='/images/leaf.png' className='leaf' />

@@ -40,7 +40,7 @@ function TeaProduct({
             <h4 className="text-xl font-semibold ">$ {price}</h4>
           </div>
         </div>
-        <div className="mt-2 ml-3 mb-3" style={{ fontSize: '14px' }}>
+        <div className="mt-2 mb-3" style={{ fontSize: '14px' }}>
           <button onClick={toggleDescription} className="description">
             詳細說明
             <FontAwesomeIcon
@@ -50,13 +50,13 @@ function TeaProduct({
           </button>
           {isDescriptionOpen && <p>{description}</p>}
         </div>
-        
+
         <div className="flex justify-between button-group">
-        <button className="button">
+        <button className="card-button">
           預約品茶
         </button>
         <button
-          className="button"
+          className="card-button"
           onClick={() => {
             addItem(product);
             console.log('add item to shopping cart');

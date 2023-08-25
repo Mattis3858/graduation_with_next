@@ -13,6 +13,7 @@ import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
 import { BiSearchAlt } from 'react-icons/bi';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const products = [
   {
@@ -67,7 +68,9 @@ export default function Navbar() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link
             href="/"
-            className={`text-lg font-semibold leading-6 nav-item ${activePath === "" ? "active" : ""}`}
+            className={`text-lg font-semibold leading-6 nav-item ${
+              activePath === '/' ? 'active' : ''
+            }`}
           >
             木柵茶本舖
           </Link>
@@ -119,19 +122,25 @@ export default function Navbar() {
           </Popover> */}
           <Link
             href="/goodtea"
-            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/goodtea" ? "active" : ""}`}
+            className={`text-lg font-semibold leading-6 nav-item ${
+              activePath === '/goodtea' ? 'active' : ''
+            }`}
           >
             找好茶
           </Link>
           <Link
             href="/brewgoodtea"
-            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/brewgoodtea" ? "active" : ""}`}
+            className={`text-lg font-semibold leading-6 nav-item ${
+              activePath === '/brewgoodtea' ? 'active' : ''
+            }`}
           >
             泡好茶
           </Link>
           <Link
             href="/reservation"
-            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/reservation" ? "active" : ""}`}
+            className={`text-lg font-semibold leading-6 nav-item ${
+              activePath === '/reservation' ? 'active' : ''
+            }`}
           >
             品茶預約
           </Link>
@@ -144,7 +153,9 @@ export default function Navbar() {
           </Link> */}
           <Link
             href="/processIntro"
-            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/processIntro" ? "active" : ""}`}
+            className={`text-lg font-semibold leading-6 nav-item ${
+              activePath === '/processIntro' ? 'active' : ''
+            }`}
           >
             泡茶流程
           </Link>
@@ -169,10 +180,10 @@ export default function Navbar() {
             <ShoppingCartIcon className="h-6 w-6 text-gray-500 hover:text-gray-900" />
           </a>
           <a
-            href="/login"
+            href="/api/auth/signout"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
-            Log in <span aria-hidden="true">&rarr;</span>
+            Sign Out <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>
@@ -256,10 +267,10 @@ export default function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  href="/login"
+                  href="/api/auth/signout"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Log in
+                  Sign Out
                 </a>
               </div>
             </div>
