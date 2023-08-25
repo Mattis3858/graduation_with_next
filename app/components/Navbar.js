@@ -13,6 +13,7 @@ import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
 import { BiSearchAlt } from 'react-icons/bi';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const products = [
   {
@@ -44,14 +45,14 @@ export default function Navbar() {
     // <header className="bg-gradient-to-t from-gray-100 to-gray-300">
     <header className="">
       <nav
-        className="mx-auto flex items-center justify-between pt-6 pl-6 pr-6 lg:px-8"
+        className="mx-auto flex items-center justify-between pt-3 pb-3 pl-6 pr-6 lg:px-8 navbar"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          {/* <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img className="h-8 w-auto" src="images/tea.png" alt="" />
-          </Link> */}
+            <img className="h-10 logo" src="images/logo.png" alt="" />
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -67,7 +68,7 @@ export default function Navbar() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link
             href="/"
-            className={`text-lg font-semibold leading-6 nav-item ${activePath === "" ? "active" : ""}`}
+            className={`text-lg font-semibold leading-6 nav-item ${activePath === "/" ? "active" : ""}`}
           >
             木柵茶本舖
           </Link>

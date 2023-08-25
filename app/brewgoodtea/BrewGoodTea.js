@@ -42,7 +42,7 @@ const BrewGoodTea = () => {
   }
 
   return (
-    <div className="ml-10">
+    <div className="ml-10 page-layout">
       <div className="font-bold text-4xl mt-6 text-center">泡好茶</div>
       <div>
         <h2>Select Tea Type:</h2>

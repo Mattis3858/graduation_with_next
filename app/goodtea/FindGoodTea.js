@@ -74,7 +74,7 @@ const FindGoodTea = () => {
   };
 
   return (
-    <>
+    <div className='page-layout'>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AppBar
@@ -114,7 +114,7 @@ const FindGoodTea = () => {
           </Paper>
         </Container>
       </ThemeProvider>
-    </>
+    </div>
   );
 };
 
