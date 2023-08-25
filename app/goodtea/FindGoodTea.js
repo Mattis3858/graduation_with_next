@@ -17,17 +17,38 @@ import SetPersonalInformation from './setPersonalInformation'; // 填寫個人�
 import Flavor from './flavor'; // 填寫風味
 import TeaColorTest from'./TeaColorTest'; // tea color test + brew tea steps
 import Posttest from './posttest'; // 前測 Step2 點選前次後測資訊
+import './goodTea.css';
 
-const steps = ['選擇是否喝過茶', '', '填寫風味資訊'];
+const steps = ['選擇品評方式', '', '填寫風味資訊'];
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   palette: {
     primary: {
-      main: '#2196f3', // 设置主题的主要颜色
+      main: '#329d9c',
+      light: '#68cbca',
+      dark: '#1f8684', 
     },
     secondary: {
-      main: '#f50057', // 设置主题的次要颜色
+      main: '#d8a48f', 
+      light: '#f1cbbc',
+      dark: '#cd8366',
     },
+    text: {
+      primary: '#2d2d2e',
+      secondary: '#4a4a4d',
+    },
+    background: {
+      
+    }
   },
 });
 
@@ -52,9 +73,9 @@ const FindGoodTea = () => {
   const getStepLabel = (index) => {
     if (index === 1) {
       if (selectedOption === '直接評測風味') {
-        return '參考前次後測結果';
+        return '參考前次填寫結果';
       } else if (selectedOption === '一邊品茶一邊感受風味') {
-        return '學習喝茶流程';
+        return '學習品茶步驟';
       }
     }
     return steps[index];
@@ -77,19 +98,14 @@ const FindGoodTea = () => {
     <div className='page-layout'>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppBar
-          position="absolute"
-          color="default"
-          elevation={0}
-          sx={{
-            position: 'relative',
-            borderBottom: (t) => `1px solid ${t.palette.divider}`,
-          }}
-        ></AppBar>
-        <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
-          <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-            <Typography component="h1" variant="h4" align="center">
-              找好茶風味配對
+        <AppBar className='step_bar' elevation={0} ></AppBar>
+        <Container component="main" maxWidth="md" sx={{ mb: 4 }} >
+          <Paper elevation={3} variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
+            <Typography className='title' variant="h5" >
+            茶香味指南：發掘您最喜愛的茶風味
+            </Typography>
+            <Typography className='title_eng' variant="h6" >
+            Tea Aroma Guide: Discover Your Favorite Tea Flavors
             </Typography>
             <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
               {steps.map((label, index) => (

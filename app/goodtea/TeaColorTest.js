@@ -18,37 +18,40 @@ import { PieChart } from 'react-minimal-pie-chart'; // Import PieChart component
 
 const steps = [
   {
-    label: '準備材料',
+    label: '泡茶準備',
     description: `
-    準備快沖壺、馬克杯
-    準備茶葉 3g : 熱水 100g`,
+    器材準備:\n
+    \t1. 茶具 / 快沖壺 / 馬克杯/ 沖茶袋 / 濾茶球...等\n
+    \t2. 茶葉\n
+    用水比例:市售飲用水或飲水機煮至沸水（100度c）\n
+    `,
   },
   {
-    label: '溫杯',
-    description:
-      '溫杯溫杯溫杯溫杯方法',
+    label: '溫杯燙壺',
+    description:`   
+      1. 杯中加入一半25度常溫水後，再加入一半90-100度熱水\n
+      2. 靜置30秒後，倒掉杯中一半的溫熱水，再加滿step1.同樣溫度熱水\n
+      3. 同樣靜置30秒後，再重複一次step2.倒掉一半水再加滿熱水\n
+      4. 此時杯身已緩緩溫杯完成，即可開始泡茶\n
+      `,
   },
   {
-    label: '沖泡',
-    description: `將水溫維持在95 - 100 度C
-    第一泡沖泡 1 分鐘`,
+    label: '泡茶方式 - 溫潤泡',
+    description: '茶水比例：3g 茶葉(一包夾鏈袋) : 150 ml 沸水(100度c)\n泡茶方式 - 溫潤泡：置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶。\n沖泡時間：\n1. 使用100度C水\n2. 沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)\n 3. 靜置 3 分鐘，即可聞茶香\n4. 待茶湯靜置至 6 分鐘後，冷卻即可享用\n',
   },
   {
-    label: '續沖',
-    description: `可泡約 5-7 次
-    每泡時間增加 10 秒`,
+    label: '續沖方式',
+    description: '每泡茶可泡約 5-7 次，每泡時間增加 10 秒',
   },
 ];
 
 const teaProducts = [
-  '茶品1',
-  '茶品2',
-  '茶品3',
-  '茶品4',
-  '茶品5',
-  '茶品6',
-  '茶品7',
-  '茶品8',
+  '張協興 - 鐵觀音',
+  '張協興 - 包種茶',
+  '威叔 - 鐵觀音',
+  '威叔 - 鐵觀音紅茶',
+  '寒舍 - 包種茶',
+  '寒舍 - 鐵觀音紅茶',
 ];
 
 const TeaColorTest = () => {
@@ -99,14 +102,14 @@ const TeaColorTest = () => {
 
   return (
     <>
-      <Typography variant="h6" gutterBottom>
-        泡茶流程
+      <Typography className='sub_title' gutterBottom>
+        品茶步驟
       </Typography>
-      <Typography variant="body2" gutterBottom>
-        來學泡好茶R
+      <Typography className='para' gutterBottom>
+        跟著以下步驟一同走進茶香，品味茶湯。
       </Typography>
       <FormControl fullWidth sx={{ mb: 2 }}>
-        <InputLabel>Select Tea Product</InputLabel>
+        <InputLabel>請選擇您現在所泡的茶款</InputLabel>
         <Select
           value={selectedTea}
           onChange={handleTeaSelect}
@@ -120,21 +123,21 @@ const TeaColorTest = () => {
           ))}
         </Select>
       </FormControl>
-      <Box sx={{ maxWidth: 400 }}>
+      <Box sx={{ maxWidth: '100%' }}>
         <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
-          <Typography variant="subtitle1">Brew Steps</Typography>
+          <Typography variant="subtitle1">泡茶步驟</Typography>
         </Box>
         <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((step, index) => (
             <Step key={step.label}>
               <StepLabel
                 icon={<PhotoCameraIcon />}
-                optional={index === 2 ? <Typography variant="caption">Last step</Typography> : null}
+                optional={index === 2 ? <Typography variant="caption">最後一步</Typography> : null}
               >
                 {step.label}
               </StepLabel>
               <StepContent>
-                <Typography>{step.description}</Typography>
+                <Typography className='para'>{step.description}</Typography>
                 <Box sx={{ mb: 2 }}>
                   <div>
                     <Button
@@ -192,7 +195,7 @@ const TeaColorTest = () => {
       {/* File Upload */}
       {!uploadSuccess && (
         <Box sx={{ mt: 2 }}>
-          <Typography variant="subtitle1">Tea Color Test</Typography>
+          <Typography className='sub_title'>茶湯濃淡檢驗小遊戲</Typography>
           <Typography variant="body2" gutterBottom>
             上傳照片，可以拍照或選擇照片
           </Typography>
@@ -215,7 +218,7 @@ const TeaColorTest = () => {
               </Button>
             </label>
             <Typography variant="body2">
-              {uploadedFile ? 'File uploaded successfully!' : 'No file uploaded'}
+              {uploadedFile ? '上傳成功 File uploaded successfully!' : '請上傳茶湯照片 No file uploaded'}
             </Typography>
           </Box>
         </Box>

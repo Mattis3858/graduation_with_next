@@ -1,3 +1,9 @@
+@media (max-width: 600px) {
+    .grid-cols-3 {
+      grid-template-columns: 1fr; /* Change to a single column layout */
+    }
+  }
+
 .title {
     color: #329d9c;
     margin-bottom: 4rem;
