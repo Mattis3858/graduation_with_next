@@ -9,6 +9,32 @@
     --secondary_color_dark:#cd8366;
 
 }
+.tea {
+    background-color: #DAA391;
+    color: white;
+    padding: 5px;
+    /* padding-left: 9px;
+    padding-right: 9px; */
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 50px;
+    font-family: 'YourFontName', serif; 
+}
+.leaf {
+    width: 3%;
+}
+.main-vision {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.big_title {
+    color: #329d9c;
+    margin-bottom: 4rem;
+    font-size: 48px;
+    font-family: 'YourFontName', serif; 
+}
 
 .step_bar {
     position: absolute;

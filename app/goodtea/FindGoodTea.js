@@ -96,6 +96,11 @@ const FindGoodTea = () => {
 
   return (
     <div className='page-layout'>
+      <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+        <h4 className="text-4xl mt-6 text-center big_title">找好<span className='tea'>茶</span>系統</h4>
+        {/* <img src='/images/5730.png' className='decoration'/> */}
+        <img src='/images/leaf.png' className='leaf' style={{marginTop:'-1rem'}} />
+      </div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AppBar className='step_bar' elevation={0} ></AppBar>
