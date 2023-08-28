@@ -23,36 +23,40 @@ import {
     useMediaQuery,
   } from '@mui/material';
 
-const attributeLabels = {
-  b_baked: '焙烤香 - 烘焙味',
-  b_smoky: '焙烤香 - 煙燻味',
-  f_dried_fruit: '果香 - 乾果味',
-  f_light: '花香 - 清香',
-  f_heavy: '花香 - 濃香',
-  s_sweet: '甜香 - 糖香味',
-  s_honey: '甜香 - 蜜香味',
-  g_grass: '青草香 - 草香味',
-  n_nutty: '果仁香 - 堅果味',
-  w_woody: '木質香',
-  sour: '酸味',
-  sweet: '甜味',
-  sleek: '圓滑感',
-  thick: '厚重感',
-  glycol: '甘醇度',
-  after_rhyme: '喉後韻',
-  aftertaste: '回香感',
-};
 
-const testResultLabels = {
-  1: '張協興鐵觀音',
-  2: '張協興包種茶',
-  3: '威叔鐵觀音',
-  4: '威叔鐵觀音包種茶',
-  5: '寒舍包種茶',
-  6: '寒舍鐵觀音紅茶',
-};
+
 
 const Posttest = () => {
+
+    const attributeLabels = {
+      b_baked: '焙烤香 - 烘焙味',
+      b_smoky: '焙烤香 - 煙燻味',
+      f_dried_fruit: '果香 - 乾果味',
+      f_light: '花香 - 清香',
+      f_heavy: '花香 - 濃香',
+      s_sweet: '甜香 - 糖香味',
+      s_honey: '甜香 - 蜜香味',
+      g_grass: '青草香 - 草香味',
+      n_nutty: '果仁香 - 堅果味',
+      w_woody: '木質香',
+      sour: '酸味',
+      sweet: '甜味',
+      sleek: '圓滑感',
+      thick: '厚重感',
+      glycol: '甘醇度',
+      after_rhyme: '喉後韻',
+      aftertaste: '回香感',
+    };
+    
+    const testResultLabels = {
+      1: '張協興鐵觀音',
+      2: '張協興包種茶',
+      3: '威叔鐵觀音',
+      4: '威叔鐵觀音包種茶',
+      5: '寒舍包種茶',
+      6: '寒舍鐵觀音紅茶',
+    };
+  
     const [userId, setUserId] = useState(''); 
     const [userData, setUserData] = useState([]);
     const [selectedItem, setSelectedItem] = useState('');
@@ -61,7 +65,7 @@ const Posttest = () => {
     // const get_record_apiUrl = `https://good-tea.vercel.app/goodTea_record/${userId}/`;
 
     useEffect(() => {
-      const loggedInUserId = '1'; 
+      const loggedInUserId = 1;
       setUserId(loggedInUserId);
       fetchData(loggedInUserId);
     }, []);
@@ -69,17 +73,28 @@ const Posttest = () => {
     const fetchData = async (userId) => {
       try {
         const response = await axios.get(`https://good-tea.vercel.app/goodTea_record/${userId}/`);
+        console.log('API Response:', response.data);
         const formattedData = formatData(response.data);
+        console.log('Formatted Data:', formattedData);
         setUserData(formattedData);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
-    }    
+    };  
+    
+    const formatDate = (dateString) => {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // 注意月份要加 1
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
+
 
     const formatData = (apiData) => {
       return apiData.map(entry => ({
         id: entry.find_good_tea_id,
-        time: entry.created_time,
+        time: formatDate(entry.created_time),
         teaName: testResultLabels[entry.test_result],
         results: Object.keys(attributeLabels).map(attribute => ({
           flavor: attributeLabels[attribute],
