@@ -58,7 +58,7 @@ const Posttest = () => {
     const [selectedItem, setSelectedItem] = useState('');
     const [defaultResult, setDefaultResult] = useState(null);
     const [openDialog, setOpenDialog] = useState(false);
-    const get_record_apiUrl = `https://good-tea.vercel.app/goodTea_record/${userId}/`;
+    // const get_record_apiUrl = `https://good-tea.vercel.app/goodTea_record/${userId}/`;
 
     useEffect(() => {
       const loggedInUserId = '1'; 
@@ -68,7 +68,7 @@ const Posttest = () => {
 
     const fetchData = async (userId) => {
       try {
-        const response = await axios.get(get_record_apiUrl);
+        const response = await axios.get(`https://good-tea.vercel.app/goodTea_record/${userId}/`);
         const formattedData = formatData(response.data);
         setUserData(formattedData);
       } catch (error) {
