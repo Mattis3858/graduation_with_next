@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import { Box, Slider, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { useMediaQuery } from '@mui/material';
 
-export default function Flavor() {
+export default function Flavor({ postData }) {
   const flavIdToInsertText = {
     1: '香氣:泡好茶湯，取出茶葉，或瀝出茶湯後，靜置三分鐘等待茶湯冷卻，即可開始聞香，並填寫下方表格。',
     2: '滋味:填寫完香氣分數後，待茶湯靜置至六分鐘，即可開始品嘗滋味了!請填寫以下滋味分數。',

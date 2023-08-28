@@ -26,7 +26,7 @@ import {
 
 
 
-const Posttest = () => {
+const Posttest = ({ onDataSubmit }) => {
 
     const attributeLabels = {
       b_baked: '焙烤香 - 烘焙味',
@@ -81,7 +81,7 @@ const Posttest = () => {
         console.error('Error fetching user data:', error);
       }
     };  
-    
+
     const formatDate = (dateString) => {
       const date = new Date(dateString);
       const year = date.getFullYear();
@@ -121,8 +121,10 @@ const Posttest = () => {
 
     const handleConfirmSetDefaultResult = () => {
       if (userData.find(entry => entry.id === selectedItem)) {
-        setDefaultResult(userData.find(entry => entry.id === selectedItem));
-        setOpenDialog(false);
+          const selectedData = userData.find(entry => entry.id === selectedItem);
+          setDefaultResult(selectedData);
+          onDataSubmit(selectedData); // 將選中的數據通過onDataSubmit傳遞給父組件
+          setOpenDialog(false);
       }
     };
 

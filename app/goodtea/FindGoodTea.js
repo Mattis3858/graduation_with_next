@@ -1,6 +1,6 @@
 "use client"; // This is a client component 
 
-import * as React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -52,9 +52,10 @@ const theme = createTheme({
 });
 
 const FindGoodTea = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [selectedOption, setSelectedOption] = React.useState('');
+  const [activeStep, setActiveStep] = useState(0);
+  const [selectedOption, setSelectedOption] = useState('');
   const [currentStep, setCurrentStep] = React.useState(1);
+  const [posttestData, setPosttestData] = useState(null); 
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -67,6 +68,11 @@ const FindGoodTea = () => {
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+  };
+
+  const handlePosttestData = (data) => {
+    setPosttestData(data); // 設定選中的後測數據
+    setActiveStep(activeStep + 1); // 切換到下一個步驟
   };
 
   const getStepLabel = (index) => {
@@ -85,9 +91,13 @@ const FindGoodTea = () => {
       case 0:
         return <SetStatus onOptionSelect={handleOptionSelect} />;
       case 1:
-        return selectedOption === '直接評測風味' ? <Posttest /> : <TeaColorTest />;
+        return selectedOption === '直接評測風味' ? (
+          <Posttest onDataSubmit={handlePosttestData} />
+        ) : (
+          <TeaColorTest />
+        );
       case 2:
-        return <Flavor />;
+        return <Flavor postData={posttestData} />;
       default:
         return null;
     }
