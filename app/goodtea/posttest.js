@@ -32,13 +32,13 @@ const attributeLabels = {
   s_sweet: '甜香 - 糖香味',
   s_honey: '甜香 - 蜜香味',
   g_grass: '青草香 - 草香味',
-  n_nutty: '果仁香 - 堅果味	',
+  n_nutty: '果仁香 - 堅果味',
   w_woody: '木質香',
   sour: '酸味',
   sweet: '甜味',
   sleek: '圓滑感',
   thick: '厚重感',
-  glycol: '甘醇度	',
+  glycol: '甘醇度',
   after_rhyme: '喉後韻',
   aftertaste: '回香感',
 };
@@ -138,7 +138,7 @@ const Posttest = () => {
               <MenuItem value="">
                 請選擇後測結果
               </MenuItem>
-              {userData.map(entry => (
+              {userData.map((entry, index) => (
                 <MenuItem key={entry.id} value={entry.id}>
                   {`${index + 1} - ${entry.time} - ${entry.teaName}`}
                 </MenuItem>
@@ -162,7 +162,6 @@ const Posttest = () => {
               <TableHead>
                 <TableRow>
                   <TableCell className='col_title'>風味</TableCell>
-                  <TableCell className='col_title'>描述</TableCell>
                   <TableCell className='col_title'>分數</TableCell>
                 </TableRow>
               </TableHead>
