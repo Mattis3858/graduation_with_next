@@ -13,7 +13,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SetStatus from './setStatus'; // choose status
-import SetPersonalInformation from './setPersonalInformation'; // 填寫個人資料 autofilled
 import Flavor from './flavor'; // 填寫風味
 import TeaColorTest from'./TeaColorTest'; // tea color test + brew tea steps
 import Posttest from './posttest'; // 前測 Step2 點選前次後測資訊
@@ -128,7 +127,7 @@ const FindGoodTea = () => {
                   </Button>
                 )}
                 <Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
-                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                  {activeStep === steps.length - 1 ? 'See Result' : 'Next'}
                 </Button>
               </Box>
             </React.Fragment>

@@ -58,7 +58,7 @@ const Posttest = () => {
     const [selectedItem, setSelectedItem] = useState('');
     const [defaultResult, setDefaultResult] = useState(null);
     const [openDialog, setOpenDialog] = useState(false);
-    const get_record_apiUrl = `https://good-tea.vercel.app/goodTea_record/${user_id}/`;
+    const get_record_apiUrl = `https://good-tea.vercel.app/goodTea_record/${userId}/`;
 
     useEffect(() => {
       const loggedInUserId = '1'; 
