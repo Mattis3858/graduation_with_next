@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { 
     Container,
     Typography,
@@ -23,12 +23,191 @@ import {
     useMediaQuery,
   } from '@mui/material';
 
-  const Posttest = () => {
+const attributeLabels = {
+  b_baked: '焙烤香 - 烘焙味',
+  b_smoky: '焙烤香 - 煙燻味',
+  f_dried_fruit: '果香 - 乾果味',
+  f_light: '花香 - 清香',
+  f_heavy: '花香 - 濃香',
+  s_sweet: '甜香 - 糖香味',
+  s_honey: '甜香 - 蜜香味',
+  g_grass: '青草香 - 草香味',
+  n_nutty: '果仁香 - 堅果味	',
+  w_woody: '木質香',
+  sour: '酸味',
+  sweet: '甜味',
+  sleek: '圓滑感',
+  thick: '厚重感',
+  glycol: '甘醇度	',
+  after_rhyme: '喉後韻',
+  aftertaste: '回香感',
+};
+
+const testResultLabels = {
+  1: '張協興鐵觀音',
+  2: '張協興包種茶',
+  3: '威叔鐵觀音',
+  4: '威叔鐵觀音包種茶',
+  5: '寒舍包種茶',
+  6: '寒舍鐵觀音紅茶',
+};
+
+const Posttest = () => {
+    const [userId, setUserId] = useState(''); 
+    const [userData, setUserData] = useState([]);
     const [selectedItem, setSelectedItem] = useState('');
     const [defaultResult, setDefaultResult] = useState(null);
     const [openDialog, setOpenDialog] = useState(false);
+    const get_record_apiUrl = `https://good-tea.vercel.app/goodTea_record/${user_id}/`;
 
-    // 假設後測結果資料
+    useEffect(() => {
+      const loggedInUserId = '1'; 
+      setUserId(loggedInUserId);
+      fetchData(loggedInUserId);
+    }, []);
+
+    const fetchData = async (userId) => {
+      try {
+        const response = await axios.get(get_record_apiUrl);
+        const formattedData = formatData(response.data);
+        setUserData(formattedData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }    
+
+    const formatData = (apiData) => {
+      return apiData.map(entry => ({
+        id: entry.find_good_tea_id,
+        time: entry.created_time,
+        teaName: testResultLabels[entry.test_result],
+        results: Object.keys(attributeLabels).map(attribute => ({
+          flavor: attributeLabels[attribute],
+          score: entry[attribute],
+        })),
+      }));
+    };
+  
+    const handleSelectChange = (event) => {
+      const selectedIndex = event.target.value;
+  
+      if (selectedIndex === '') {
+        setSelectedItem('');
+      } else {
+        setSelectedItem(selectedIndex);
+        setDefaultResult(null);
+      }
+    };
+    const handleSetDefaultResult = () => {
+        if (selectedItem !== '') {
+          setOpenDialog(true);
+        }
+      };
+
+    const handleConfirmSetDefaultResult = () => {
+      if (userData.find(entry => entry.id === selectedItem)) {
+        setDefaultResult(userData.find(entry => entry.id === selectedItem));
+        setOpenDialog(false);
+      }
+    };
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+      };
+
+    
+    const isSmScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+
+  
+    return (
+      <Container>
+        <Typography className='sub_title' gutterBottom>
+          選擇後測結果
+        </Typography>
+        <Typography className='para' gutterBottom>
+          若不需要，可直接按下一步
+        </Typography>
+        <Box mt={2} className={isSmScreen ? 'select_box_center_vertical' : 'select_box_center_horizontal'}>
+          <FormControl>
+            <InputLabel className='input_style'>請選擇後測結果</InputLabel>
+            <Select
+              value={selectedItem}
+              onChange={handleSelectChange}
+              style={{ width: '300px' }}
+            >
+              <MenuItem value="">
+                請選擇後測結果
+              </MenuItem>
+              {userData.map(entry => (
+                <MenuItem key={entry.id} value={entry.id}>
+                  {`${index + 1} - ${entry.time} - ${entry.teaName}`}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          {selectedItem !== '' && (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSetDefaultResult}
+              style={{ marginLeft: '10px' }}
+            >
+              選擇此次後測結果作為預設值
+            </Button>
+          )}
+        </Box>
+        {selectedItem !== '' && userData.find(entry => entry.id === selectedItem) ? (
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell className='col_title'>風味</TableCell>
+                  <TableCell className='col_title'>描述</TableCell>
+                  <TableCell className='col_title'>分數</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {userData.find(entry => entry.id === selectedItem).results.map((item) => (
+                  <TableRow key={item.flavor}>
+                    <TableCell>{item.flavor}</TableCell>
+                    <TableCell>{item.score}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ) : null}
+        <Dialog
+          open={openDialog}
+          onClose={handleCloseDialog}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">確定選擇此結果作為預測值?</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              選擇後測結果將會設定為預測值，確定要這麼做嗎？
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDialog} color="primary">
+              取消
+            </Button>
+            <Button onClick={handleConfirmSetDefaultResult} color="primary" autoFocus>
+              確定
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Container>
+    );
+  };
+  
+  
+export default Posttest;
+
+
+
+   {/* // 假設後測結果資料
     const testData = {
       1: [
         { id: 1, time: '2023-08-05', teaName: '張協興鐵觀音', results: [
@@ -50,129 +229,4 @@ import {
       ],
       // 其他后测结果...
     };
-  
-    const handleSelectChange = (event) => {
-      const selectedIndex = event.target.value;
-  
-      if (selectedIndex === '') {
-        setSelectedItem('');
-      } else {
-        setSelectedItem(selectedIndex);
-        setDefaultResult(null);
-      }
-    };
-    const handleSetDefaultResult = () => {
-        if (selectedItem !== '') {
-          setOpenDialog(true);
-        }
-      };
-    /*const handleConfirmSetDefaultResult = () => {
-        setDefaultResult(testData.find((item) => item.id === selectedItem));
-        setOpenDialog(false);
-      };
-      */
-    const handleConfirmSetDefaultResult = () => {
-        if (testData[selectedItem]) {
-          setDefaultResult(testData[selectedItem][0]);
-          setOpenDialog(false);
-        }
-      };
-    const handleCloseDialog = () => {
-        setOpenDialog(false);
-      };
-
-      // 用來check 斷點
-    const isSmScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
-
-  
-      return (
-        <Container>
-          <Typography className='sub_title' gutterBottom>
-            選擇後測結果
-          </Typography>
-          <Typography className='para' gutterBottom>
-            若不需要，可直接按下一步
-            </Typography>
-          <Box mt={2} className={isSmScreen ? 'select_box_center_vertical' : 'select_box_center_horizontal'}>
-            <FormControl>
-              <InputLabel className='input_style'>請選擇後測結果</InputLabel>
-              <Select
-                value={selectedItem}
-                onChange={handleSelectChange}
-                style={{ width: '300px' }}
-              >
-                <MenuItem value="">
-                  請選擇後測結果
-                </MenuItem>
-                {Object.keys(testData).map((key) => (
-                  <MenuItem key={key} value={key}>
-                    {`${testData[key][0].id} - ${testData[key][0].time} - ${testData[key][0].teaName}`}
-                </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            {selectedItem !== '' && (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSetDefaultResult}
-                style={{ marginLeft: '10px' }}
-              >
-                選擇此次後測結果作為預設值
-              </Button>
-            )}
-          </Box>
-          {selectedItem !== '' && testData[selectedItem] ? (
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell className='col_title'>風味</TableCell>
-                  <TableCell className='col_title'>描述</TableCell>
-                  <TableCell className='col_title'>分數</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {testData[selectedItem][0].results.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell>{item.flavor}</TableCell>
-                    <TableCell>{item.description}</TableCell>
-                    <TableCell>{item.score}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        ) : (
-          // 如果条件不满足的情况
-          <>
-            
-          </>
-          )}
-         <Dialog
-        open={openDialog}
-        onClose={handleCloseDialog}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">確定選擇此結果作為預測值?</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            選擇後測結果將會設定為預設值，確定要這麼做嗎？
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseDialog} color="primary">
-            取消
-          </Button>
-          <Button onClick={handleConfirmSetDefaultResult} color="primary" autoFocus>
-            確定
-          </Button>
-        </DialogActions>
-      </Dialog>
-      </Container>
-    );
-  }
-  
-  
-export default Posttest;
+  */}
