@@ -102,28 +102,28 @@
   .titleh1 {
     font-size: 64px;
     font-style: normal;
-    font-family: Playfair Display;
+    font-family: YourFontName;
     font-weight: 700px;
     font-stretch: normal;
   }
   .titleh2 {
     font-size: 48px;
     font-style: normal;
-    font-family: Playfair Display;
+    font-family: YourFontName;
     font-weight: 700px;
     font-stretch: normal;
   }
   .body24px {
     font-size: 24px;
     font-style: normal;
-    font-family: Nunito;
+    font-family: ChenYuluoyan;
     font-weight: 400px;
     font-stretch: normal;
   }
   .body18px {
     font-size: 18px;
     font-style: normal;
-    font-family: Raleway;
+    font-family: ChenYuluoyan;
     font-weight: 500px;
     font-stretch: normal;
   }
