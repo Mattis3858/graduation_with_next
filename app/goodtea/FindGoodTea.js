@@ -1,6 +1,6 @@
 "use client"; // This is a client component 
 
-import * as React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,28 +13,49 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SetStatus from './setStatus'; // choose status
-import SetPersonalInformation from './setPersonalInformation'; // 填寫個人資料 autofilled
 import Flavor from './flavor'; // 填寫風味
 import TeaColorTest from'./TeaColorTest'; // tea color test + brew tea steps
 import Posttest from './posttest'; // 前測 Step2 點選前次後測資訊
+import './goodTea.css';
 
-const steps = ['選擇是否喝過茶', '', '填寫風味資訊'];
+const steps = ['選擇品評方式', '', '填寫風味資訊'];
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
   palette: {
     primary: {
-      main: '#2196f3', // 设置主题的主要颜色
+      main: '#329d9c',
+      light: '#68cbca',
+      dark: '#1f8684', 
     },
     secondary: {
-      main: '#f50057', // 设置主题的次要颜色
+      main: '#d8a48f', 
+      light: '#f1cbbc',
+      dark: '#cd8366',
     },
+    text: {
+      primary: '#2d2d2e',
+      secondary: '#4a4a4d',
+    },
+    background: {
+      
+    }
   },
 });
 
 const FindGoodTea = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [selectedOption, setSelectedOption] = React.useState('');
+  const [activeStep, setActiveStep] = useState(0);
+  const [selectedOption, setSelectedOption] = useState('');
   const [currentStep, setCurrentStep] = React.useState(1);
+  const [posttestData, setPosttestData] = useState(null); 
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -49,12 +70,17 @@ const FindGoodTea = () => {
     setActiveStep(activeStep - 1);
   };
 
+  const handlePosttestData = (data) => {
+    setPosttestData(data); // 設定選中的後測數據
+    setActiveStep(activeStep + 1); // 切換到下一個步驟
+  };
+
   const getStepLabel = (index) => {
     if (index === 1) {
       if (selectedOption === '直接評測風味') {
-        return '參考前次後測結果';
+        return '參考前次填寫結果';
       } else if (selectedOption === '一邊品茶一邊感受風味') {
-        return '學習喝茶流程';
+        return '學習品茶步驟';
       }
     }
     return steps[index];
@@ -65,9 +91,13 @@ const FindGoodTea = () => {
       case 0:
         return <SetStatus onOptionSelect={handleOptionSelect} />;
       case 1:
-        return selectedOption === '直接評測風味' ? <Posttest /> : <TeaColorTest />;
+        return selectedOption === '直接評測風味' ? (
+          <Posttest onDataSubmit={handlePosttestData} />
+        ) : (
+          <TeaColorTest />
+        );
       case 2:
-        return <Flavor />;
+        return <Flavor postData={posttestData} />;
       default:
         return null;
     }
@@ -75,21 +105,21 @@ const FindGoodTea = () => {
 
   return (
     <div className='page-layout'>
+      <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+        <h4 className="text-4xl mt-6 text-center big_title">找好<span className='tea'>茶</span>系統</h4>
+        {/* <img src='/images/5730.png' className='decoration'/> */}
+        <img src='/images/leaf.png' className='leaf' style={{marginTop:'-1rem'}} />
+      </div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppBar
-          position="absolute"
-          color="default"
-          elevation={0}
-          sx={{
-            position: 'relative',
-            borderBottom: (t) => `1px solid ${t.palette.divider}`,
-          }}
-        ></AppBar>
-        <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
-          <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-            <Typography component="h1" variant="h4" align="center">
-              找好茶風味配對
+        <AppBar className='step_bar' elevation={0} ></AppBar>
+        <Container component="main" maxWidth="md" sx={{ mb: 4 }} >
+          <Paper elevation={3} variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
+            <Typography className='title' variant="h5" >
+            茶香味指南：發掘您最喜愛的茶風味
+            </Typography>
+            <Typography className='title_eng' variant="h6" >
+            Tea Aroma Guide: Discover Your Favorite Tea Flavors
             </Typography>
             <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
               {steps.map((label, index) => (
@@ -107,7 +137,7 @@ const FindGoodTea = () => {
                   </Button>
                 )}
                 <Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
-                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                  {activeStep === steps.length - 1 ? 'See Result' : 'Next'}
                 </Button>
               </Box>
             </React.Fragment>

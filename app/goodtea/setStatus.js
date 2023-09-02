@@ -11,12 +11,14 @@ export default function SetStatus({ onOptionSelect }) {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        想直接用感官評測您喜歡哪種茶款嗎?
+      <Typography className='sub_title' gutterBottom>
+        選擇品評方式
       </Typography>
-      <Typography variant="h6" sx={{ fontSize: '14px' }} gutterBottom>
-        若您為初次使用推薦系統，可點選「直接評測風味」；<br />
-        若您想學習品茶流程，評測您現在正喝的茶風味是否和預想的一樣請點選「一邊品茶一邊感受風味」
+      <Typography className='para' gutterBottom>
+        • 如果您是首次體驗我們的推薦系統，選擇「開始探索風味」，您將迎來一段全新的找茶之旅！
+      </Typography>
+      <Typography className='para' gutterBottom>
+        • 想將品茶提升至更高境界？選擇「一邊品味茶葉，一邊感受風味」，將為您帶來美味的茶葉盛宴！
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
@@ -26,9 +28,10 @@ export default function SetStatus({ onOptionSelect }) {
               size="large"
               sx={{ width: '100%', height: '100px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
               onClick={() => handleButtonClick('直接評測風味')}
+              className= 'status_button'
             >
-              <AppRegistrationRoundedIcon />
-              直接評測風味
+              <AppRegistrationRoundedIcon className="explore_flavor"/>
+              開始探索風味
             </Button>
           </Box>
         </Grid>
@@ -39,9 +42,10 @@ export default function SetStatus({ onOptionSelect }) {
               size="large"
               sx={{ width: '100%', height: '100px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
               onClick={() => handleButtonClick('一邊品茶一邊感受風味')}
+              className= 'status_button'
             >
-              <EmojiFoodBeverageRoundedIcon />
-              一邊品茶一邊感受風味
+              <EmojiFoodBeverageRoundedIcon className='tea_cup'/>
+              一邊品味茶葉一邊感受風味
             </Button>
           </Box>
         </Grid>

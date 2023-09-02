@@ -1,9 +1,13 @@
+"use client"; // This is a client component 
+
 import React from 'react';
 import TeaProduct from './TeaProduct';
 import Link from 'next/link';
 import './product.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
+
 
 const ProductData = [
   {
@@ -52,8 +56,9 @@ const ProductData = [
     price: 555,
   },
 ];
-const Product = () => {
 
+const Product = () => {
+  
   return (
     <div className='page-layout'>
       <div className="grid grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
