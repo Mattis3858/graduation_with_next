@@ -2,60 +2,96 @@ import React from 'react';
 
 function ProcessIntro() {
   return (
-    <div className='page-layout'>
-    <h1 style={{ fontWeight: 'bold', fontSize: '2rem', textAlign: 'center' }}>
+    <div className="page-layout">
+      <h1 style={{ fontWeight: 'bold', fontSize: '2rem', textAlign: 'center' }}>
         品茶流程
       </h1>
-      <div className="tea-preparation" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 style={{ fontWeight: 'bold'}}>泡茶準備：</h2>
+      <div
+        className="tea-preparation"
+        style={{
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <h2 style={{ fontWeight: 'bold' }}>泡茶準備：</h2>
         <ul>
-        <li style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>1.茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</li>
-        <li style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>2.待測茶葉</li>
+          <li
+            style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}
+          >
+            1.茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等
+          </li>
+          <li
+            style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}
+          >
+            2.待測茶葉
+          </li>
         </ul>
 
-        <h2 style={{ fontWeight: 'bold'}}>用水種類：</h2>
-        <p style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>市售飲用水或飲水機煮至沸水(100度c)</p>
-        <h2 style={{ fontWeight: 'bold'}}>茶水比例：</h2>
-        <p style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>3g 茶葉(一包夾鏈袋) : 150 ml 沸水(100度c)</p>
-        <h2 style={{ fontWeight: 'bold'}}>泡茶方式 - 溫潤泡：</h2>
+        <h2 style={{ fontWeight: 'bold' }}>用水種類：</h2>
+        <p style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>
+          市售飲用水或飲水機煮至沸水(100度c)
+        </p>
+        <h2 style={{ fontWeight: 'bold' }}>茶水比例：</h2>
+        <p style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>
+          3g 茶葉(一包夾鏈袋) : 150 ml 沸水(100度c)
+        </p>
+        <h2 style={{ fontWeight: 'bold' }}>泡茶方式 - 溫潤泡：</h2>
         <p style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>
           置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶。
         </p>
 
-        <h2 style={{ fontWeight: 'bold'}}>沖泡時間：</h2>
-  
+        <h2 style={{ fontWeight: 'bold' }}>沖泡時間：</h2>
+
         <ul>
-        <li style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>1.使用100度C的水</li>
-        <li style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>2.沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)</li>
-        <li style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>3.靜置 3 分鐘，即可聞茶香</li>
-        <li style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}>4.待茶湯靜置至六分鐘後，冷卻即可享用</li>
+          <li
+            style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}
+          >
+            1.使用100度C的水
+          </li>
+          <li
+            style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}
+          >
+            2.沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)
+          </li>
+          <li
+            style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}
+          >
+            3.靜置 3 分鐘，即可聞茶香
+          </li>
+          <li
+            style={{ display: 'flex', alignItems: 'center', textAlign: 'left' }}
+          >
+            4.待茶湯靜置至六分鐘後，冷卻即可享用
+          </li>
         </ul>
 
-        <h2 style={{ fontWeight: 'bold'}}>茶具示意圖：</h2>
+        <h2 style={{ fontWeight: 'bold' }}>茶具示意圖：</h2>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGEUFsKGFeqcT60xX5HSGCi33vIPCVXjlSQA&usqp=CAU"
           alt="茶具示意圖"
         />
 
-        <h2 style={{ fontWeight: 'bold'}}>快充壺示意圖：</h2>
+        <h2 style={{ fontWeight: 'bold' }}>快充壺示意圖：</h2>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxpgglozDnoF-O41zO8JLRG2gPTNaWB6L7xA&usqp=CAU"
           alt="快沖壺示意圖"
         />
 
-        <h2 style={{ fontWeight: 'bold'}}>沖茶袋示意圖(搭配馬克杯)：</h2>
+        <h2 style={{ fontWeight: 'bold' }}>沖茶袋示意圖(搭配馬克杯)：</h2>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0tOhlV5ExlwMsHz7I80P5I-3wNdNLr1babQ&usqp=CAU"
           alt="沖茶袋示意圖"
         />
-        <h2 style={{ fontWeight: 'bold'}}>濾茶球示意圖（搭配馬克杯）：</h2>
-      
+        <h2 style={{ fontWeight: 'bold' }}>濾茶球示意圖（搭配馬克杯）：</h2>
+
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVbEoZnATizeM_n4Zy-Of4s1MwNH6IbahsF35YGvvcgk2iKGKhSzYqNwU8zyuTNIl1Plk&usqp=CAU"
           alt="濾茶球示意圖"
         />
       </div>
-    <h1 style={{ fontWeight: 'bold', fontSize: '2rem', textAlign: 'center' }}>
+      <h1 style={{ fontWeight: 'bold', fontSize: '2rem', textAlign: 'center' }}>
         茶產品介紹
       </h1>
       <div className="flex flex-col items-center">
@@ -64,11 +100,11 @@ function ProcessIntro() {
             <tbody>
               <tr>
                 <td className=" text-center pr-4">
-                  <img
+                  {/* <img
                     src="images/mattis.jpg"
                     style={{ width: '80px', height: '100px' }}
                     alt="Image"
-                  />
+                  /> */}
                 </td>
                 <td>
                   <h1 style={{ fontWeight: 'bold', marginBottom: '10px' }}>
@@ -83,7 +119,7 @@ function ProcessIntro() {
             </tbody>
           </table>
 
-          <table style={{ width: '100%' }}>
+          {/* <table style={{ width: '100%' }}>
             <tbody>
               <tr>
                 <td colSpan="2" style={{ textAlign: 'center' }}>
@@ -98,7 +134,7 @@ function ProcessIntro() {
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
         </div>
       </div>
 
@@ -136,7 +172,7 @@ function ProcessIntro() {
             </tbody>
           </table>
 
-          <table style={{ width: '100%' }}>
+          {/* <table style={{ width: '100%' }}>
             <tbody>
               <tr>
                 <td colSpan="2" style={{ textAlign: 'center' }}>
@@ -152,7 +188,7 @@ function ProcessIntro() {
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
         </div>
       </div>
 
@@ -195,7 +231,7 @@ function ProcessIntro() {
             </tbody>
           </table>
 
-          <table style={{ width: '100%' }}>
+          {/* <table style={{ width: '100%' }}>
             <tbody>
               <tr>
                 <td colSpan="2" style={{ textAlign: 'center' }}>
@@ -211,7 +247,7 @@ function ProcessIntro() {
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
         </div>
       </div>
     </div>
