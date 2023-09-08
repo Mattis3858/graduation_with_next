@@ -163,14 +163,12 @@ const Posttest = ({ onDataSubmit }) => {
             </Select>
           </FormControl>
           {selectedItem !== '' && (
-            <Button
-              variant="contained"
-              color="primary"
+            <div
               onClick={handleSetDefaultResult}
-              style={{ marginLeft: '10px' }}
+              className='confirm_button'
             >
               選擇此次後測結果作為預設值
-            </Button>
+            </div>
           )}
         </Box>
         {selectedItem !== '' && userData.find(entry => entry.id === selectedItem) ? (

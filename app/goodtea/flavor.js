@@ -54,18 +54,19 @@ export default function Flavor({ postData }) {
       return newQuantitativeValues;
     });
   };
+
    // 用來check 斷點
    const isSmScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
 
   return (
     <React.Fragment>
-      <Typography className='sub_title' gutterBottom>
+      <div className='sub_title' gutterBottom>
         請填寫風味資訊
-      </Typography>
-      <Typography className='para' gutterBottom>
+      </div>
+      <div className='para' gutterBottom>
         0 - 無  1 - 輕微 2 - 偏輕 3 - 普通 4 - 偏重 5 - 超級重
-      </Typography>
+      </div>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TableContainer component={Paper}>

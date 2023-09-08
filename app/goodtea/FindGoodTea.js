@@ -17,6 +17,8 @@ import Flavor from './flavor'; // 填寫風味
 import TeaColorTest from'./TeaColorTest'; // tea color test + brew tea steps
 import Posttest from './posttest'; // 前測 Step2 點選前次後測資訊
 import './goodTea.css';
+import Thankyou from './thankyou'; 
+import Result from './result';
 
 const steps = ['選擇品評方式', '', '填寫風味資訊'];
 
@@ -59,7 +61,7 @@ const FindGoodTea = () => {
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
-    setCurrentStep(option === '直接評測風味' ? 2 : 1);
+    setCurrentStep(option === 0 ? 2 : 1);
   };
 
   const handleNext = () => {
@@ -77,9 +79,9 @@ const FindGoodTea = () => {
 
   const getStepLabel = (index) => {
     if (index === 1) {
-      if (selectedOption === '直接評測風味') {
-        return '參考前次填寫結果';
-      } else if (selectedOption === '一邊品茶一邊感受風味') {
+      if (selectedOption === 0) { //選擇"開始探索風味" 
+        return '參考前次結果';
+      } else if (selectedOption === 1) { //選擇"一邊品味茶葉一邊探索風味"
         return '學習品茶步驟';
       }
     }
@@ -91,13 +93,19 @@ const FindGoodTea = () => {
       case 0:
         return <SetStatus onOptionSelect={handleOptionSelect} />;
       case 1:
-        return selectedOption === '直接評測風味' ? (
+        return selectedOption === 0 ? (
           <Posttest onDataSubmit={handlePosttestData} />
         ) : (
           <TeaColorTest />
         );
       case 2:
         return <Flavor postData={posttestData} />;
+      case 3:
+        return selectedOption === 0 ? (
+          <Result />
+        ) : (
+          <Thankyou />
+        );
       default:
         return null;
     }
@@ -115,12 +123,12 @@ const FindGoodTea = () => {
         <AppBar className='step_bar' elevation={0} ></AppBar>
         <Container component="main" maxWidth="md" sx={{ mb: 4 }} >
           <Paper elevation={3} variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
-            <Typography className='title' variant="h5" >
+            <div className='title' >
             茶香味指南：發掘您最喜愛的茶風味
-            </Typography>
-            <Typography className='title_eng' variant="h6" >
+            </div>
+            <div className='title_eng' >
             Tea Aroma Guide: Discover Your Favorite Tea Flavors
-            </Typography>
+            </div>
             <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
               {steps.map((label, index) => (
                 <Step key={label}>
@@ -132,13 +140,13 @@ const FindGoodTea = () => {
               {renderStepContent(activeStep)}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                  <div className='back_button' onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
                     Back
-                  </Button>
+                  </div>
                 )}
-                <Button variant="contained" onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
+                <div className='step_button' onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
                   {activeStep === steps.length - 1 ? 'See Result' : 'Next'}
-                </Button>
+                </div>
               </Box>
             </React.Fragment>
           </Paper>
