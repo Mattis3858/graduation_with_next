@@ -15,7 +15,7 @@ export default function Home() {
   };
   return (
     <main className="">
-      <div className="mt-6 w-full text-center items-center justify-center">
+      <div className="w-full text-center items-center justify-center">
         <div className="flex items-center justify-center align-bottom">
           <h1 className="font-bold text-4xl mt-6 text-center">
             過去前後測表格

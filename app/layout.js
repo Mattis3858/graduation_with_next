@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>木柵茶葉推廣平台</title>
+        <title>木柵茶葉推廣</title>
       </head>
       <body
         className={inter.className}
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         //   backgroundImage: 'url("images/bg.jpg")',
         //   backgroundSize: 'cover',
         //   backgroundRepeat: 'no-repeat',
-        //   backgroundAttachment: 'fixed', 
+        //   backgroundAttachment: 'fixed',
         // }}
       >
         <div className="min-h-screen flex flex-col background-container">
