@@ -122,8 +122,9 @@ const Posttest = ({ onDataSubmit }) => {
     const handleConfirmSetDefaultResult = () => {
       if (userData.find(entry => entry.id === selectedItem)) {
           const selectedData = userData.find(entry => entry.id === selectedItem);
+          const postDataArray = Array.isArray(selectedData) ? selectedData : [selectedData]; // 确保 selectedData 是一个数组
           setDefaultResult(selectedData);
-          onDataSubmit(selectedData); // 將選中的數據通過onDataSubmit傳遞給父組件
+          onDataSubmit(postDataArray); // 將選中的數據通過onDataSubmit傳遞給父組件
           setOpenDialog(false);
       }
     };

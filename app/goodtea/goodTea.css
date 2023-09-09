@@ -1,3 +1,23 @@
+/* 小螢幕樣式 */
+@media (max-width: 600px) {
+    .inserted-row-cell {
+      display: table-cell;
+    }
+    .tea-name-description-cell {
+      display: none;
+    }
+  }
+  
+/* 大螢幕樣式 */
+@media (min-width: 601px) {
+.inserted-row-cell {
+    display: none;
+}
+.tea-name-description-cell {
+    display: table-cell;
+}
+}
+
 
 :root {
     --divider-color: #ccc;
