@@ -6,9 +6,12 @@ import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import CircularProgress from '@mui/material/CircularProgress';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { PieChart } from 'react-minimal-pie-chart'; // Import PieChart component
 
