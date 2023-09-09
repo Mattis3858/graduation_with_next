@@ -1,22 +1,3 @@
-/* 小螢幕樣式 */
-@media (max-width: 600px) {
-    .inserted-row-cell {
-      display: table-cell;
-    }
-    .tea-name-description-cell {
-      display: none;
-    }
-  }
-  
-/* 大螢幕樣式 */
-@media (min-width: 601px) {
-.inserted-row-cell {
-    display: none;
-}
-.tea-name-description-cell {
-    display: table-cell;
-}
-}
 
 
 :root {
@@ -119,7 +100,7 @@
 }
 
 .status_button.clicked {
-    background-color: rgba(82, 145, 144, 0.9);
+    background-color: var(--primary_color_dark);
     color: white;
     transform: scale(1);
 }
@@ -134,6 +115,8 @@
   
 .select_box_center_horizontal {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 10px;
   }
 .col_title {
@@ -183,6 +166,41 @@
     align-items: center; 
     
  }
+ .confirm_button_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color); 
+    color: #fff;
+    border-radius: 50%; 
+    width: 40px; 
+    height: 40px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+  }
+  
+  .confirm_button_icon:hover {
+    background-color: var(--primary_color_dark); 
+  }
+
+  .confirm_button_icon:hover::before {
+    content: "選擇此次後測結果作為預設值";
+    position: absolute;
+    background-color: var(--secondary_color_dark); 
+    color: white;
+    padding: 5px; 
+    border-radius: 5px; 
+    top: -30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    opacity: 0; 
+    transition: opacity 0.1s; 
+  }
+  
+  .confirm_button_icon:hover::before {
+    opacity: 1; 
+  }
+
  .confirm_button {
     margin-left: 10px;
     padding: 10px 10px;
@@ -240,4 +258,7 @@
     border: 1px solid var(--primary_color_light);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;  
+ }
+ .circle {
+    font-size: large;
  }

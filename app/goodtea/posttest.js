@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { 
     Container,
-    Typography,
     Box,
     FormControl,
     InputLabel,
@@ -22,9 +21,7 @@ import {
     DialogTitle,
     useMediaQuery,
   } from '@mui/material';
-
-
-
+import { CheckCircleOutline } from '@mui/icons-material';
 
 const Posttest = ({ onDataSubmit }) => {
 
@@ -139,15 +136,15 @@ const Posttest = ({ onDataSubmit }) => {
   
     return (
       <Container>
-        <Typography className='sub_title' gutterBottom>
+        <div className='sub_title' gutterBottom>
           選擇後測結果
-        </Typography>
-        <Typography className='para' gutterBottom>
+        </div>
+        <div className='para' gutterBottom>
           若不需要，可直接按下一步
-        </Typography>
-        <Box mt={2} className={isSmScreen ? 'select_box_center_vertical' : 'select_box_center_horizontal'}>
+        </div>
+        <Box mt={2} className= 'select_box_center_horizontal'>
           <FormControl>
-            <InputLabel className='input_style'>請選擇後測結果</InputLabel>
+            <InputLabel>請選擇後測結果</InputLabel>
             <Select
               value={selectedItem}
               onChange={handleSelectChange}
@@ -164,12 +161,21 @@ const Posttest = ({ onDataSubmit }) => {
             </Select>
           </FormControl>
           {selectedItem !== '' && (
+            isSmScreen ? ( 
             <div
               onClick={handleSetDefaultResult}
-              className='confirm_button'
+              className="confirm_button_icon"
+            >
+              <CheckCircleOutline className='circle' />
+            </div>
+          ) : ( 
+            <div
+              onClick={handleSetDefaultResult}
+              className="confirm_button"
             >
               選擇此次後測結果作為預設值
             </div>
+          )
           )}
         </Box>
         {selectedItem !== '' && userData.find(entry => entry.id === selectedItem) ? (
@@ -221,27 +227,3 @@ const Posttest = ({ onDataSubmit }) => {
 export default Posttest;
 
 
-
-   {/* // 假設後測結果資料
-    const testData = {
-      1: [
-        { id: 1, time: '2023-08-05', teaName: '張協興鐵觀音', results: [
-          { flavor: '花香', description: '花香濃郁', score: 8 },
-          { flavor: '茶香', description: '茶香獨特', score: 7 },
-          { flavor: '甘甜', description: '甘甜香氣', score: 9 },
-          { flavor: '焦糖', description: '焦糖香氣', score: 8 },
-          { flavor: '草本', description: '草本氣息', score: 6 },
-        ]},
-      ],
-      2: [
-        { id: 2, time: '2023-08-06', teaName: '威叔鐵觀音紅茶', results: [
-          { flavor: '果香', description: '果香清新', score: 9 },
-          { flavor: '茶香', description: '茶香淡雅', score: 8 },
-          { flavor: '甘甜', description: '甘甜口感', score: 9 },
-          { flavor: '焦糖', description: '焦糖香氣', score: 7 },
-          { flavor: '花香', description: '花香綿密', score: 8 },
-        ]},
-      ],
-      // 其他后测结果...
-    };
-  */}
