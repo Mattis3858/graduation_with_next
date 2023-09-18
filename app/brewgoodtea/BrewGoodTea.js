@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const BrewGoodTea = () => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
-  const [selectedTea, setSelectedTea] = useState(''); 
+  const [selectedTea, setSelectedTea] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleChange(e) {
@@ -13,16 +13,16 @@ const BrewGoodTea = () => {
       setMessage('Please select an image.');
       return;
     }
-    
+
     setIsLoading(true);
     setFile(selectedFile);
-    
+
     const formData = new FormData();
     formData.append('file', selectedFile);
     formData.append('teaType', selectedTea);
 
     try {
-      const response = await fetch('http://127.0.0.1:8080/api/home', {
+      const response = await fetch('http://140.119.19.30:5566/Visual/predict', {
         method: 'POST',
         body: formData,
       });
@@ -30,7 +30,7 @@ const BrewGoodTea = () => {
       const data = await response.json();
       setMessage(`相似程度: ${data.similarity}`);
     } catch (error) {
-      console.error('Error uploading file:', error);
+      console.log('Error uploading file:', error);
       setMessage('An error occurred. Please try again later.');
     } finally {
       setIsLoading(false);
@@ -60,11 +60,7 @@ const BrewGoodTea = () => {
         onChange={handleChange}
         accept="image/gif, image/jpeg, image/png"
       />
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>{message}</div>
-      )}
+      {isLoading ? <div>Loading...</div> : <div>{message}</div>}
       {file && <img src={URL.createObjectURL(file)} alt="Selected" />}
     </div>
   );

@@ -30,11 +30,9 @@ const Teashop = ({ teaShopName, description }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // 在這裡處理預約邏輯，例如發送預約請求給伺服器等等
-    window.alert('預約已提交');
+    console.log(name);
+    name && date && email && window.alert('預約已提交');
     console.log('預約已提交');
-    console.log('姓名:', name);
-    console.log('電子郵件:', email);
-    console.log('日期:', date);
     // 清除表單資料
     setOpen(false);
     // setName('');
@@ -126,6 +124,7 @@ const Teashop = ({ teaShopName, description }) => {
                         >
                           提交預約
                         </button>
+                        {console.log(name, email, date)}
                       </div>
                     </form>
                   </Typography>
