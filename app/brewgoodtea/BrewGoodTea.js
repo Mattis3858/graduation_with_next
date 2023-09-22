@@ -22,7 +22,7 @@ const BrewGoodTea = () => {
     formData.append('teaType', selectedTea);
 
     try {
-      const response = await fetch('https://140.119.19.30:5566/upload', {
+      const response = await fetch('http://140.119.19.30:5566/upload', {
         method: 'POST',
         body: formData,
       });
