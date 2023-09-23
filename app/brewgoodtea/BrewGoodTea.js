@@ -97,10 +97,10 @@ const BrewGoodTea = () => {
     <>
       {/* <div className="ml-10 page-layout"> */}
       <div className='page-layout'>
-      <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
-        <h4 className="text-4xl mt-6 text-center big_title">茶湯<span className='tea'>濃淡</span>評分</h4>
+        <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+          <h4 className="text-4xl mt-6 text-center title">茶湯<span className='tea'>濃淡</span>評分</h4>
         {/* <img src='/images/5730.png' className='decoration'/> */}
-        <img src='/images/leaf.png' className='leaf' style={{marginTop:'-1rem'}} />
+          <img src='/images/leaf.png' className='leaf' style={{marginTop:'-1rem'}} />
       </div>
         {/* <div className="font-bold text-4xl mt-6 text-center">泡好茶</div> */}
         <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
@@ -881,6 +881,7 @@ const BrewGoodTea = () => {
             font-family: YourFontName, serif;
             font-weight: 700px;
             font-stretch: normal;
+            
           }
           .titleh2 {
             font-size: 48px;
@@ -888,6 +889,8 @@ const BrewGoodTea = () => {
             font-family: YourFontName;
             font-weight: 700px;
             font-stretch: normal;
+            text-align: center;
+            margin: 0 auto; /* This centers the text horizontally */
           }
           .body24px {
             font-size: 24px;

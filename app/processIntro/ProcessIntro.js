@@ -5,7 +5,14 @@ import './style.css';
 
 const ProcessIntro = (props) => {
   return (
+    
     <>
+    <div className='page-layout'>
+      <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+        <h4 className="text-4xl mt-6 text-center title">泡茶準備<span className='tea'>&</span>建議流程</h4>
+        {/* <img src='/images/5730.png' className='decoration'/> */}
+        <img src='/images/leaf.png' className='leaf' style={{marginTop:'-1rem'}} />
+    </div></div>
       <div
         className="portfolio-simple-footer-container"
         style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
@@ -25,6 +32,7 @@ const ProcessIntro = (props) => {
                 justifycontent: 'center',
               }}
             >
+          
               <span className="portfolio-simple-footer-text titleh2">
                 <span>建議泡茶流程</span>
               </span>
@@ -755,6 +763,8 @@ const ProcessIntro = (props) => {
             font-family: YourFontName;
             font-weight: 700px;
             font-stretch: normal;
+            text-align: center;
+            margin: 0 auto; /* This centers the text horizontally */
           }
           .body24px {
             font-size: 24px;
