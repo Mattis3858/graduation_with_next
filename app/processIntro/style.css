@@ -85,7 +85,7 @@
   }
   .Content {
     font-size: 16px;
-    font-family: Inter;
+    font-family: 'YourFontName', serif; 
     font-weight: 400;
     line-height: 1.15;
     text-transform: none;
@@ -93,7 +93,7 @@
   }
   .Heading {
     font-size: 32px;
-    font-family: Inter;
+    font-family: 'YourFontName', serif; 
     font-weight: 700;
     line-height: 1.15;
     text-transform: none;
@@ -102,28 +102,28 @@
   .titleh1 {
     font-size: 64px;
     font-style: normal;
-    font-family: YourFontName;
+    font-family: 'YourFontName', serif; 
     font-weight: 700px;
     font-stretch: normal;
   }
   .titleh2 {
     font-size: 48px;
     font-style: normal;
-    font-family: YourFontName;
+    font-family: 'YourFontName', serif; 
     font-weight: 700px;
     font-stretch: normal;
   }
   .body24px {
     font-size: 24px;
     font-style: normal;
-    font-family: ChenYuluoyan;
+    font-family: 'YourFontName', serif; 
     font-weight: 400px;
     font-stretch: normal;
   }
   .body18px {
     font-size: 18px;
     font-style: normal;
-    font-family: ChenYuluoyan;
+    font-family: 'YourFontName', serif; 
     font-weight: 500px;
     font-stretch: normal;
   }

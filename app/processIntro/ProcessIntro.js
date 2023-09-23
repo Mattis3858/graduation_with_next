@@ -140,7 +140,7 @@ const ProcessIntro = (props) => {
           </div>
           <div className="portfolio-simple-footer-intro"></div>
           <div className="portfolio-simple-footer-content">
-            <span className="portfolio-simple-footer-text43 titleh2 YourFontName">
+            <span className="portfolio-simple-footer-text43 titleh2 YourFontName,serif">
               <span>泡茶準備</span>
             </span>
             <div className="portfolio-simple-footer-subheadline">
