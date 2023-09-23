@@ -43,8 +43,14 @@ const BrewGoodTea = () => {
 
   return (
     <>
-    <div className="ml-10 page-layout">
-      <div className="font-bold text-4xl mt-6 text-center">泡好茶</div>
+    {/* <div className="ml-10 page-layout"> */}
+    <div className='page-layout'>
+      <div className="grid grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
+        <h4 className="text-4xl mt-6 text-center title">茶湯<span className='tea'>濃淡</span>評分</h4>
+        <img src='/images/5730.png' className='decoration'/>
+        <img src='/images/leaf.png' className='leaf' />
+      </div>
+      {/* <div className="font-bold text-4xl mt-6 text-center">泡好茶</div> */}
       <div>
         <h2>Select Tea Type:</h2>
         <select value={selectedTea} onChange={handleTeaChange}>
@@ -241,13 +247,13 @@ const BrewGoodTea = () => {
   <style jsx>
     {`
    @font-face {
-    font-family: 'ChenYuluoyan';
+    font-family: 'YourFontName',serif;
     src: url('/font/ChenYuluoyan-Thin.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
     .custom-font {
-      font-family: 'ChenYuluoyan', sans-serif; /* 使用你定义的字体系列名称 */
+      font-family: 'YourFontName', serif; /* 使用你定义的字体系列名称 */
     }
       .portfolio-simple-footer-container {
         width: 100%;
@@ -256,6 +262,7 @@ const BrewGoodTea = () => {
         min-height: 100vh;
         align-items: center;
         flex-direction: column;
+        font-family: 'YourFontName', serif;
       }
       .portfolio-simple-footer-portfolio-simple-footer {
         width: 100%;
@@ -265,6 +272,7 @@ const BrewGoodTea = () => {
         position: relative;
         align-items: flex-start;
         flex-shrink: 0;
+        font-family: 'YourFontName', serif;
         background-color: var(--dl-color-bg-gray);
       }
       .portfolio-simple-footer-projects {
@@ -277,6 +285,7 @@ const BrewGoodTea = () => {
         align-items: center;
         flex-direction: column;
         justify-content: center;
+        font-family: 'YourFontName', serif;
       }
       .portfolio-simple-footer-frame3351 {
         gap: 4px;
@@ -284,17 +293,20 @@ const BrewGoodTea = () => {
         align-items: center;
         flex-direction: column;
         justify-content: center;
+        font-family: 'YourFontName', serif;
       }
       .portfolio-simple-footer-text {
         color: var(--dl-color-font-highemphasis);
         height: auto;
         text-align: center;
         line-height: 72px;
+        font-family: 'YourFontName', serif;
       }
       .portfolio-simple-footer-rectangle19 {
         width: 100px;
         height: 4px;
         border-radius: 2px;
+        font-family: 'YourFontName', serif;
       }
       .portfolio-simple-footer-project1 {
         width: 992px;
@@ -306,6 +318,7 @@ const BrewGoodTea = () => {
         align-items: flex-start;
         flex-shrink: 0;
         border-radius: 24px;
+        font-family: 'YourFontName', serif;
       }
       .portfolio-simple-footer-projectnfo {
         width: 496px;
@@ -315,6 +328,7 @@ const BrewGoodTea = () => {
         align-items: flex-start;
         flex-shrink: 0;
         background-color: var(--dl-color-bg-white);
+        font-family: 'YourFontName', serif;
       }
       .portfolio-simple-footer-frame3350 {
         gap: 24px;
@@ -334,7 +348,7 @@ const BrewGoodTea = () => {
         align-self: stretch;
         font-style: Bold;
         text-align: left;
-        font-family: Playfair Display;
+        font-family: 'YourFontName', serif; 
         font-weight: 700;
         line-height: 150%;
         font-stretch: normal;
@@ -347,7 +361,7 @@ const BrewGoodTea = () => {
         align-self: stretch;
         font-style: Regular;
         text-align: left;
-        font-family: Nunito;
+        font-family: 'YourFontName', serif; 
         font-weight: 400;
         line-height: 150%;
         font-stretch: normal;
@@ -406,7 +420,7 @@ const BrewGoodTea = () => {
         align-self: stretch;
         font-style: Bold;
         text-align: left;
-        font-family: ChenYuluoyan;
+        font-family: 'YourFontName', serif; 
         font-weight: 700;
         line-height: 150%;
         font-stretch: normal;
