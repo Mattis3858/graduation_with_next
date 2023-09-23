@@ -22,7 +22,7 @@ const BrewGoodTea = () => {
     formData.append('teaType', selectedTea);
 
     try {
-      const response = await fetch('https://140.119.19.30:5566/upload', {
+      const response = await fetch('http://140.119.19.30:5566/upload', {
         method: 'POST',
         body: formData,
       });
@@ -62,200 +62,189 @@ const BrewGoodTea = () => {
             <option value="包種茶">包種茶</option>
           </select>
         </div>
-        <div
-          className="portfolio-simple-footer-container"
-          style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
-        >
-          <Head>
-            <title>exported project</title>
-          </Head>
-          <div className="portfolio-simple-footer-portfolio-simple-footer">
-            <div className="portfolio-simple-footer-projects">
-              <div
-                className="portfolio-simple-footer-frame3351"
-                style={{
-                  gap: '4px',
-                  display: 'flex',
-                  alignitems: 'center',
-                  flexdirection: 'column',
-                  justifycontent: 'center',
-                }}
-              >
-                <span className="portfolio-simple-footer-text titleh2">
-                  <span>建議泡茶流程</span>
-                </span>
-                <img
-                  src="/images/rectangle195351-pie-200h.png"
-                  alt="Rectangle195351"
-                  className="portfolio-simple-footer-rectangle19"
-                />
-              </div>
-              <div className="portfolio-simple-footer-project1">
-                <div className="portfolio-simple-footer-projectnfo">
-                  <div className="portfolio-simple-footer-frame3350">
-                    <span className="portfolio-simple-footer-text02">
-                      <span>用水種類</span>
-                    </span>
-                    <span className="portfolio-simple-footer-text04">
-                      <span>
-                        <span>市售飲用水或飲水機煮至沸水(100度c)</span>
-                        <br></br>
-                        <span></span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="portfolio-simple-footer-frame33511">
-                    <span className="portfolio-simple-footer-text09">
-                      <span></span>
-                      <br></br>
-                      <span></span>
-                    </span>
-                  </div>
-                  <div className="portfolio-simple-footer-frame3352"></div>
-                  <div className="portfolio-simple-footer-frame33521">
-                    <span className="portfolio-simple-footer-text13">
-                      <span>茶水比例</span>
-                    </span>
-                    <span className="portfolio-simple-footer-text15">
-                      <span>
-                        <span>3g 茶葉(一包夾鏈袋) : 150 ml 沸水(100度c)</span>
-                        <br></br>
-                        <span></span>
-                      </span>
-                    </span>
-                  </div>
-                </div>
-                <img
-                  src="/images/pexelsellyfairytale38232071216-8suq-600h.png"
-                  alt="pexelsellyfairytale38232071216"
-                  className="portfolio-simple-footer-pexelsellyfairytale38232071"
-                />
-              </div>
-              <div className="portfolio-simple-footer-project2">
-                <img
-                  src="/images/rectangle72062-53xd-600h.png"
-                  alt="Rectangle72062"
-                  className="portfolio-simple-footer-rectangle7"
-                />
-                <div className="portfolio-simple-footer-projectnfo1">
-                  <div className="portfolio-simple-footer-frame33501">
-                    <span className="portfolio-simple-footer-text20">
-                      <span>泡茶方式-溫潤泡</span>
-                    </span>
-                    <span className="portfolio-simple-footer-text22">
-                      <span>
-                        置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶
-                      </span>
-                    </span>
-                  </div>
-                  <div className="portfolio-simple-footer-frame33512">
-                    <span className="portfolio-simple-footer-text24">
-                      <span></span>
-                      <br></br>
-                      <span></span>
-                    </span>
-                  </div>
-                  <div className="portfolio-simple-footer-frame33522"></div>
-                  <div className="portfolio-simple-footer-frame33523">
-                    <span className="portfolio-simple-footer-text28">
-                      <span>沖泡時間</span>
-                    </span>
-                    <span className="portfolio-simple-footer-text30">
-                      <span>
-                        <span>沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)</span>
-                        <br></br>
-                        <span>靜置 3 分鐘，即可聞茶香</span>
-                        <br></br>
-                        <span>待茶湯靜置至六分鐘後，冷卻即可享用</span>
-                        <br></br>
-                        <span></span>
-                      </span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="portfolio-simple-footer-project3">
-                <div className="portfolio-simple-footer-projectnfo2">
-                  <div className="portfolio-simple-footer-frame33502">
-                    <span className="portfolio-simple-footer-text39">
-                      <span>示範影片</span>
-                    </span>
-                    <span className="portfolio-simple-footer-text41">
-                      <span>
-                        此影片為參考用，您仍然可以選擇最適合您的沖泡方式
-                      </span>
-                    </span>
-                  </div>
-                </div>
-                <img
-                  src="/images/rectangle7161-7p2-600h.png"
-                  alt="Rectangle7161"
-                  className="portfolio-simple-footer-rectangle71"
-                />
-              </div>
-            </div>
-            <div className="portfolio-simple-footer-intro"></div>
-            <div className="portfolio-simple-footer-content">
-              <span className="portfolio-simple-footer-text43 titleh2 YourFontName">
-                <span>泡茶準備</span>
+        <h2>Add Image:</h2>
+        <input
+          id="imgTea"
+          type="file"
+          onChange={handleChange}
+          accept="image/gif, image/jpeg, image/png"
+        />
+        {isLoading ? <div>Loading...</div> : <div>{message}</div>}
+        {file && <img src={URL.createObjectURL(file)} alt="Selected" />}
+      </div>
+      <div
+        className="portfolio-simple-footer-container"
+        style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
+      >
+        <Head>
+          <title>exported project</title>
+        </Head>
+        <div className="portfolio-simple-footer-portfolio-simple-footer">
+          <div className="portfolio-simple-footer-projects">
+            <div
+              className="portfolio-simple-footer-frame3351"
+              style={{
+                gap: '4px',
+                display: 'flex',
+                alignitems: 'center',
+                flexdirection: 'column',
+                justifycontent: 'center',
+              }}
+            >
+              <span className="portfolio-simple-footer-text titleh2">
+                <span>建議泡茶流程</span>
               </span>
-              <div className="portfolio-simple-footer-subheadline">
-                <span className="portfolio-simple-footer-text45">
-                  <span>
+              <img
+                src="/images/rectangle195351-pie-200h.png"
+                alt="Rectangle195351"
+                className="portfolio-simple-footer-rectangle19"
+              />
+            </div>
+            <div className="portfolio-simple-footer-project1">
+              <div className="portfolio-simple-footer-projectnfo">
+                <div className="portfolio-simple-footer-frame3350">
+                  <span className="portfolio-simple-footer-text02">
+                    <span>用水種類</span>
+                  </span>
+                  <span className="portfolio-simple-footer-text04">
                     <span>
-                      1.沖泡器具: 茶具 / 快沖壺 / 馬克杯/ 沖茶袋 / 濾茶球...等
-                    </span>
-                    <br></br>
-                    <span>
-                      2.待測茶葉:
-                      張協興鐵觀音、張協興包種茶、威叔鐵觀音、威叔鐵觀音紅茶、寒舍包種茶、寒舍鐵觀音紅茶
+                      <span>市售飲用水或飲水機煮至沸水(100度c)</span>
+                      <br></br>
+                      <span></span>
                     </span>
                   </span>
-                </span>
+                </div>
+                <div className="portfolio-simple-footer-frame33511">
+                  <span className="portfolio-simple-footer-text09">
+                    <span></span>
+                    <br></br>
+                    <span></span>
+                  </span>
+                </div>
+                <div className="portfolio-simple-footer-frame3352"></div>
+                <div className="portfolio-simple-footer-frame33521">
+                  <span className="portfolio-simple-footer-text13">
+                    <span>茶水比例</span>
+                  </span>
+                  <span className="portfolio-simple-footer-text15">
+                    <span>
+                      <span>3g 茶葉(一包夾鏈袋) : 150 ml 沸水(100度c)</span>
+                      <br></br>
+                      <span></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <img
+                src="/images/pexelsellyfairytale38232071216-8suq-600h.png"
+                alt="pexelsellyfairytale38232071216"
+                className="portfolio-simple-footer-pexelsellyfairytale38232071"
+              />
+            </div>
+            <div className="portfolio-simple-footer-project2">
+              <img
+                src="/images/rectangle72062-53xd-600h.png"
+                alt="Rectangle72062"
+                className="portfolio-simple-footer-rectangle7"
+              />
+              <div className="portfolio-simple-footer-projectnfo1">
+                <div className="portfolio-simple-footer-frame33501">
+                  <span className="portfolio-simple-footer-text20">
+                    <span>泡茶方式-溫潤泡</span>
+                  </span>
+                  <span className="portfolio-simple-footer-text22">
+                    <span>
+                      置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶
+                    </span>
+                  </span>
+                </div>
+                <div className="portfolio-simple-footer-frame33512">
+                  <span className="portfolio-simple-footer-text24">
+                    <span></span>
+                    <br></br>
+                    <span></span>
+                  </span>
+                </div>
+                <div className="portfolio-simple-footer-frame33522"></div>
+                <div className="portfolio-simple-footer-frame33523">
+                  <span className="portfolio-simple-footer-text28">
+                    <span>沖泡時間</span>
+                  </span>
+                  <span className="portfolio-simple-footer-text30">
+                    <span>
+                      <span>沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)</span>
+                      <br></br>
+                      <span>靜置 3 分鐘，即可聞茶香</span>
+                      <br></br>
+                      <span>待茶湯靜置至六分鐘後，冷卻即可享用</span>
+                      <br></br>
+                      <span></span>
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
-            <img
-              src="/images/image12041-i1oe-300h.png"
-              alt="image12041"
-              className="portfolio-simple-footer-image1"
-            />
-            <img
-              src="/images/image22042-4xx-300h.png"
-              alt="image22042"
-              className="portfolio-simple-footer-image2"
-            />
-            <img
-              src="/images/image32042-3h6q-300h.png"
-              alt="image32042"
-              className="portfolio-simple-footer-image3"
-            />
-            <img
-              src="/images/image42042-v9d8-300h.png"
-              alt="image42042"
-              className="portfolio-simple-footer-image4"
-            />
+            <div className="portfolio-simple-footer-project3">
+              <div className="portfolio-simple-footer-projectnfo2">
+                <div className="portfolio-simple-footer-frame33502">
+                  <span className="portfolio-simple-footer-text39">
+                    <span>示範影片</span>
+                  </span>
+                  <span className="portfolio-simple-footer-text41">
+                    <span>
+                      此影片為參考用，您仍然可以選擇最適合您的沖泡方式
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <img
+                src="/images/rectangle7161-7p2-600h.png"
+                alt="Rectangle7161"
+                className="portfolio-simple-footer-rectangle71"
+              />
+            </div>
           </div>
+          <div className="portfolio-simple-footer-intro"></div>
+          <div className="portfolio-simple-footer-content">
+            <span className="portfolio-simple-footer-text43 titleh2 YourFontName">
+              <span>泡茶準備</span>
+            </span>
+            <div className="portfolio-simple-footer-subheadline">
+              <span className="portfolio-simple-footer-text45">
+                <span>
+                  <span>
+                    1.沖泡器具: 茶具 / 快沖壺 / 馬克杯/ 沖茶袋 / 濾茶球...等
+                  </span>
+                  <br></br>
+                  <span>
+                    2.待測茶葉:
+                    張協興鐵觀音、張協興包種茶、威叔鐵觀音、威叔鐵觀音紅茶、寒舍包種茶、寒舍鐵觀音紅茶
+                  </span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <img
+            src="/images/image12041-i1oe-300h.png"
+            alt="image12041"
+            className="portfolio-simple-footer-image1"
+          />
+          <img
+            src="/images/image22042-4xx-300h.png"
+            alt="image22042"
+            className="portfolio-simple-footer-image2"
+          />
+          <img
+            src="/images/image32042-3h6q-300h.png"
+            alt="image32042"
+            className="portfolio-simple-footer-image3"
+          />
+          <img
+            src="/images/image42042-v9d8-300h.png"
+            alt="image42042"
+            className="portfolio-simple-footer-image4"
+          />
         </div>
-        <img
-          src="/images/image12041-i1oe-300h.png"
-          alt="image12041"
-          className="portfolio-simple-footer-image1"
-        />
-        <img
-          src="/images/image22042-4xx-300h.png"
-          alt="image22042"
-          className="portfolio-simple-footer-image2"
-        />
-        <img
-          src="/images/image32042-3h6q-300h.png"
-          alt="image32042"
-          className="portfolio-simple-footer-image3"
-        />
-        <img
-          src="/images/image42042-v9d8-300h.png"
-          alt="image42042"
-          className="portfolio-simple-footer-image4"
-        />
       </div>
       <style jsx>
         {`
@@ -860,4 +849,5 @@ const BrewGoodTea = () => {
     </>
   );
 };
+
 export default BrewGoodTea;
