@@ -105,7 +105,10 @@ const BrewGoodTea = () => {
           <img src="/images/leaf.png" className="leaf" />
         </div>
         {/* <div className="font-bold text-4xl mt-6 text-center">泡好茶</div> */}
-        <div>
+        <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
+        <div className='content'>
+          {/* <div className="text-xl fw-700 banner-text">找好茶推薦系統</div> */}
+          <div>
           <h2>Select Tea Type:</h2>
           <select value={selectedTea} onChange={handleTeaChange}>
             <option value="">請選擇茶的種類</option>
@@ -127,6 +130,9 @@ const BrewGoodTea = () => {
         {isLoading ? <div>Loading...</div> : <div>{message}</div>}
         {file && <img src={URL.createObjectURL(file)} alt="Selected" />}
       </div>
+        </div>
+      </div>
+      
       <div
         className="portfolio-simple-footer-container"
         style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
