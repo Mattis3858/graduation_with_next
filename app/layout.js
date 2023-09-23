@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>木柵茶葉推廣</title>
+        <title>TeaJourney</title>
       </head>
       <body
         className={inter.className}
