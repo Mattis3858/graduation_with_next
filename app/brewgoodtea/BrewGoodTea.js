@@ -1,6 +1,34 @@
 'use client';
 import React, { useState } from 'react';
+import axios from 'axios';
 import Head from 'next/head';
+
+async function getStaticProps(formData) {
+  try {
+    const response = await axios.post(
+      'http://140.119.19.30:5566/upload',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
+        },
+      }
+    );
+    console.log(response.data);
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
+}
 const BrewGoodTea = () => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
@@ -20,21 +48,45 @@ const BrewGoodTea = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
     formData.append('teaType', selectedTea);
-
     try {
-      const response = await fetch('https://140.119.19.30:5566/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-      setMessage(`相似程度: ${data.similarity}`);
+      const response = await axios.post(
+        'http://140.119.19.30:5566/upload',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
+          },
+        }
+      );
+      const data = response.data;
+      console.log(data);
+      return {
+        props: {
+          data,
+        },
+      };
     } catch (error) {
-      console.log('Error uploading file:', error);
-      setMessage('An error occurred. Please try again later.');
-    } finally {
-      setIsLoading(false);
+      console.error('Error fetching data:', error);
+      return {
+        props: {
+          data: null,
+        },
+      };
     }
+    // try {
+    //   const response = await fetch('http://140.119.19.30:5566/upload', {
+    //     method: 'POST',
+    //     body: formData,
+    //   });
+
+    //   const data = await response.json();
+    //   setMessage(`相似程度: ${data.similarity}`);
+    // } catch (error) {
+    //   console.log('Error uploading file:', error);
+    //   setMessage('An error occurred. Please try again later.');
+    // } finally {
+    //   setIsLoading(false);
+    // }
   }
 
   function handleTeaChange(e) {
