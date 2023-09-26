@@ -96,41 +96,46 @@ const BrewGoodTea = () => {
   return (
     <>
       {/* <div className="ml-10 page-layout"> */}
-      <div className='page-layout'>
+      <div className="page-layout">
         <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
-          <h4 className="text-4xl mt-6 text-center title">茶湯<span className='tea'>濃淡</span>評分</h4>
-        {/* <img src='/images/5730.png' className='decoration'/> */}
-          <img src='/images/leaf.png' className='leaf' style={{marginTop:'-1rem'}} />
-      </div>
+          <h4 className="text-4xl mt-6 text-center title">
+            茶湯<span className="tea">濃淡</span>評分
+          </h4>
+          {/* <img src='/images/5730.png' className='decoration'/> */}
+          <img
+            src="/images/leaf.png"
+            style={{ width: '3%', marginTop: '-1rem' }}
+          />
+        </div>
         {/* <div className="font-bold text-4xl mt-6 text-center">泡好茶</div> */}
         <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
-        <div className='content'>
-          {/* <div className="text-xl fw-700 banner-text">找好茶推薦系統</div> */}
-          <div>
-          <h2>Select Tea Type:</h2>
-          <select value={selectedTea} onChange={handleTeaChange}>
-            <option value="">請選擇茶的種類</option>
-            <option value="張協興鐵觀音">張協興鐵觀音</option>
-            <option value="威叔鐵觀音紅茶">威叔鐵觀音紅茶</option>
-            <option value="威叔鐵觀音">威叔鐵觀音</option>
-            <option value="寒舍包種">寒舍包種</option>
-            <option value="寒舍鐵觀音紅茶">寒舍鐵觀音紅茶</option>
-            <option value="張協興包種">張協興包種</option>
-          </select>
+          <div className="content">
+            {/* <div className="text-xl fw-700 banner-text">找好茶推薦系統</div> */}
+            <div>
+              <h2>Select Tea Type:</h2>
+              <select value={selectedTea} onChange={handleTeaChange}>
+                <option value="">請選擇茶的種類</option>
+                <option value="張協興鐵觀音">張協興鐵觀音</option>
+                <option value="威叔鐵觀音紅茶">威叔鐵觀音紅茶</option>
+                <option value="威叔鐵觀音">威叔鐵觀音</option>
+                <option value="寒舍包種">寒舍包種</option>
+                <option value="寒舍鐵觀音紅茶">寒舍鐵觀音紅茶</option>
+                <option value="張協興包種">張協興包種</option>
+              </select>
+            </div>
+            <h2>Add Image:</h2>
+            <input
+              id="imgTea"
+              type="file"
+              onChange={handleChange}
+              accept="image/gif, image/jpeg, image/png"
+            />
+            {isLoading ? <div>Loading...</div> : <div>{message}</div>}
+            {file && <img src={URL.createObjectURL(file)} alt="Selected" />}
+          </div>
         </div>
-        <h2>Add Image:</h2>
-        <input
-          id="imgTea"
-          type="file"
-          onChange={handleChange}
-          accept="image/gif, image/jpeg, image/png"
-        />
-        {isLoading ? <div>Loading...</div> : <div>{message}</div>}
-        {file && <img src={URL.createObjectURL(file)} alt="Selected" />}
       </div>
-        </div>
-      </div>
-      
+
       <div
         className="portfolio-simple-footer-container"
         style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
@@ -881,7 +886,6 @@ const BrewGoodTea = () => {
             font-family: YourFontName, serif;
             font-weight: 700px;
             font-stretch: normal;
-            
           }
           .titleh2 {
             font-size: 48px;

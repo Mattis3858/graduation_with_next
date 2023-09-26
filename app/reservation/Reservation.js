@@ -53,8 +53,7 @@ const Reservation = () => {
         {/* <img src='/images/5730.png' className='decoration'/> */}
         <img
           src="/images/leaf.png"
-          className="leaf"
-          style={{ marginTop: '-1rem' }}
+          style={{ width: '3%', marginTop: '-1rem' }}
         />
       </div>
       {/* <div className="font-bold text-4xl mt-6 text-center">茶行預約系統</div> */}
