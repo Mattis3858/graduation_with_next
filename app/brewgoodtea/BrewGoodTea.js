@@ -50,7 +50,7 @@ const BrewGoodTea = () => {
     formData.append('teaType', selectedTea);
     try {
       const response = await axios.post(
-        'http://140.119.19.30:5566/upload',
+        'https://140.119.19.30:5566/upload',
         formData,
         {
           headers: {
