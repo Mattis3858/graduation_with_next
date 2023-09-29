@@ -7,14 +7,20 @@ const supabase = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkeGx6bWVrcmNrYWZmYnp1cG1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgzNzM1MTEsImV4cCI6MjAwMzk0OTUxMX0.YI14GVJfa6H0eXOUqCKXT8AHLxK4GcAb8UYPTH4QLKQ'
 );
 export default function Home() {
+  const [shop, setShop] = useState([]);
   const [reservationRecord, setReservationRecord] = useState([]);
-
+  async function getShop(id) {
+    const { data } = await supabase.from('shop').select();
+    setShop(data);
+    console.log(data);
+  }
   async function getReservationRecord() {
     const { data } = await supabase.from('reservation_record').select();
     console.log(data);
     setReservationRecord(data);
   }
   useEffect(() => {
+    getShop();
     getReservationRecord();
   }, []);
   const sortedReservationData = reservationRecord
@@ -62,7 +68,12 @@ export default function Home() {
               className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
             >
               <td className="py-2 px-3">{appointment.reserv_date}</td>
-              <td className="py-2 px-3">{appointment.shop_id}</td>
+              <td className="py-2 px-3">
+                {
+                  shop.find((item) => item.shop_id === appointment.shop_id)
+                    .shop_name
+                }
+              </td>
             </tr>
           ))}
         </tbody>

@@ -1,15 +1,28 @@
 'use client';
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
 import PreviousTest from './PreviousTest';
 import PostTest from './PostTest';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+
+const supabase = createClient(
+  'https://zdxlzmekrckaffbzupmh.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkeGx6bWVrcmNrYWZmYnp1cG1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgzNzM1MTEsImV4cCI6MjAwMzk0OTUxMX0.YI14GVJfa6H0eXOUqCKXT8AHLxK4GcAb8UYPTH4QLKQ'
+);
 export default function Home() {
   const [tea, setTea] = React.useState('');
-
+  const [testRecord, setTestRecord] = useState([]);
+  async function getTestRecord() {
+    const { data } = await supabase.from('find_good_tea_record').select();
+    console.log(data);
+    setTestRecord(data);
+  }
+  useEffect(() => {
+    getTestRecord();
+  }, []);
   const handleTeaChange = (event) => {
     setTea(event.target.value);
   };
