@@ -8,8 +8,11 @@ export default function SetStatus({ onOptionSelect }) {
   
   // 傳遞選擇品評方式的參數
   const handleButtonClick = (option) => {
-    onOptionSelect(option); 
+    onOptionSelect({ input_type: option }); // 直接傳送選擇的選項，而不是保存到某個狀態中。
+    setSelectedButton(option);
   };
+
+  
 
   const [selectedButton, setSelectedButton] = React.useState(null);
 

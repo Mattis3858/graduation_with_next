@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import { Box, Slider, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { useMediaQuery } from '@mui/material';
 
-export default function Flavor({ postData }) {
-  
+const Flavor = forwardRef(({ postData: externalPostData, onFlavorDataSubmit }, ref) => {
+
   // 用來 check 小螢幕斷點
   const isSmScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
@@ -38,14 +38,28 @@ export default function Flavor({ postData }) {
   ];
   
   // 對應 postData 結果的 falvorScores 變數
-  const [ flavorScores, setFlavorScores ] = React.useState({});
+  const [flavorScores, setFlavorScores] = useState({}); // to store user changes
+
+  const handleFormSubmit = () => {
+    console.log('Flavor - handleFormSubmit is called'); // 确保这行代码被执行了
+    if (onFlavorDataSubmit) {
+      const flavorDataArray = Object.entries(flavorScores).map(([name, value]) => ({ name, value }));
+      console.log('Flavor - calling onFlavorDataSubmit', flavorDataArray); // 确保这行代码被执行了并且打印出了正确的数据
+      onFlavorDataSubmit(flavorDataArray);
+    }
+  };
   
+  // 您可以將這個方法暴露給 ref，讓父組件能夠呼叫它
+  useImperativeHandle(ref, () => ({
+    handleFormSubmit,
+  }));
+
   // 處理 postData 資料更新狀態
   React.useEffect(() => {
-    console.log('postData',postData);
-    if (Array.isArray(postData)) {
+    console.log('externalPostData', externalPostData);
+    if (Array.isArray(externalPostData)) {
       const updatedFlavorScores = {};
-      postData.forEach((entry) => {
+      externalPostData.forEach((entry) => {
         entry.results.forEach((result) => {
           const { flavor, score } = result;
           updatedFlavorScores[flavor] = score;
@@ -53,23 +67,24 @@ export default function Flavor({ postData }) {
       });
       setFlavorScores(updatedFlavorScores);
     }
-  }, [postData]);
+  }, [externalPostData]);
 
-  // 讓 slider 的值與 text 對應
+ 
+  // 清晰區分Slider和TextField的onChange處理程序
   const handleSliderChange = (event, newValue, flavorName) => {
     setFlavorScores((prevFlavorScores) => ({
       ...prevFlavorScores,
       [flavorName]: newValue,
     }));
   };
-
-  // 讓 text 的值與 slider 對應
-  const handleTextChange = (event, flavorName) => {
+  
+  const handleTextFieldChange = (event, flavorName) => {
     setFlavorScores((prevFlavorScores) => ({
       ...prevFlavorScores,
       [flavorName]: parseFloat(event.target.value),
     }));
   };
+  
 
   return (
     <React.Fragment>
@@ -111,9 +126,7 @@ export default function Flavor({ postData }) {
                             min={0}
                             max={5}
                             step={0.0001}
-                            onChange={(event, newValue) =>
-                              handleSliderChange(event, newValue, flavor.name)
-                            }
+                            onChange={(event, newValue) => handleSliderChange(event, newValue, flavor.name)}
                           />
                         <TextField
                           id={`quantitative-value-${flavor.name}`}
@@ -127,10 +140,7 @@ export default function Flavor({ postData }) {
                             step: 0.0001,
                           }}
                           variant="standard"
-                          onChange={(event) => {
-                            handleSliderChange(event, event.target.value, flavor.name); 
-                            handleTextChange(event, flavor.name); 
-                          }}
+                          onChange={(event) => handleTextFieldChange(event, flavor.name)}
                           sx={{ marginLeft: '20px', width: '100px' }}
                         />
                         </Box>
@@ -180,10 +190,8 @@ export default function Flavor({ postData }) {
                             min={0}
                             max={5}
                             step={0.0001}
-                            onChange={(event, newValue) =>
-                              handleSliderChange(event, newValue, flavor.name)
-                            }
-                          />
+                            onChange={(event, newValue) => handleSliderChange(event, newValue, flavor.name)}
+                            />
                           <TextField
                             id={`quantitative-value-${flavor.name}`}
                             className='quantitative_value_input'
@@ -196,10 +204,7 @@ export default function Flavor({ postData }) {
                               step: 0.0001,
                             }}
                             variant="standard"
-                            onChange={(event) => {
-                              handleSliderChange(event, event.target.value, flavor.name);
-                              handleTextChange(event, flavor.name); 
-                            }}
+                            onChange={(event) => handleTextFieldChange(event, flavor.name)}
                             sx={{ marginLeft: '20px', width: '100px' }}
                           />
                         </Box>
@@ -216,4 +221,6 @@ export default function Flavor({ postData }) {
     </React.Fragment>
   );
   
-}
+});
+
+export default Flavor;

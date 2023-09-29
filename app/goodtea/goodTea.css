@@ -68,6 +68,12 @@
     font-weight: 300;
     margin-bottom: 5px;
 }
+.para_b {
+    padding: 0px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
 .explore_flavor {
     width: 35px;
     height: 35px;
