@@ -5,25 +5,18 @@ import { CheckCircleOutline as CheckCircleOutlineIcon } from '@mui/icons-materia
 
 export default function Thankyou(){
     return(
-        <Grid
-            container
-            spacing={2}
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            style={{ minHeight: '80vh' }}
-        >
+        <>
             <Grid item>
                 <Paper elevation={3} style={{ padding: '20px', textAlign: 'center' }}>
-                    <IconButton color="primary" style={{ fontSize: 80 }}>
-                        <CheckCircleOutlineIcon />
+                    <IconButton color="primary" style={{ fontSize: 200 }}>
+                        <CheckCircleOutlineIcon className='checkcircle'/>
                     </IconButton>
-                    <Typography variant="h5" gutterBottom>
+                    <div className='title'>
                         感謝您的風味填寫
-                    </Typography>
-                    <Typography variant="body1" paragraph>
+                    </div>
+                    <div className='sub_title'>
                         已經幫您紀錄在個人化的茶葉檔案中。
-                    </Typography>
+                    </div>
                     <Typography variant="body1">
                         <Link href="/personalInformation" color="primary">
                             點選查看您的茶葉檔案
@@ -31,6 +24,6 @@ export default function Thankyou(){
                     </Typography>
                 </Paper>
             </Grid>
-        </Grid>
+        </>
     );
 }
