@@ -354,7 +354,7 @@
 .message {
     font-weight: 600;
     font-size: 18px;
-    margin-top: 10px;
+    margin-left: 10px;
     color: var(--secondary_color); 
     border: solid 1px var(--secondary_color);
     padding: 10px 20px;
