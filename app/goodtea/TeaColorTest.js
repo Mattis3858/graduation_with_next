@@ -198,17 +198,21 @@ const TeaColorTest = () => {
           style={{ display: 'none' }}
           onChange={handleChange}
         />
+        <div className="button-and-message">
         <label htmlFor="imgTea">
           <Button variant="contained" component="span">
             Upload Image
           </Button>
         </label>
+        {!isLoading ? (
+          <div className="message">{message.similarity}</div>
+        ) : null}
+      </div>
         <div className="upload-container">
           {isLoading ? <LinearProgress className="progress-bar" /> : null}
           {file &&  (
             <img src={URL.createObjectURL(file)} alt="Selected" className="uploaded-image" />
           ) }
-          {!isLoading ? <div className="message">{message.similarity}</div> : null}
         </div>
     </div>
     </div>
