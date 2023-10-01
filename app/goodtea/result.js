@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper, CircularProgress } from '@mui/material';
 import './goodTea.css';
 
 
@@ -88,7 +88,9 @@ export default function Result({ result }){
                 </Grid>
             </>
             ) : (
-            <p>No result available</p>
+              <>
+             
+              </>
             )}
         </Grid>
         </React.Fragment>
