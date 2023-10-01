@@ -5,6 +5,22 @@ import { Box, Slider, TextField, Table, TableBody, TableCell, TableContainer, Ta
 import { useMediaQuery } from '@mui/material';
 
 const Flavor = forwardRef(({ postData: externalPostData, onFlavorDataSubmit }, ref) => {
+  const marks = [
+    {
+      value: 0,
+      label: '無',
+    },
+    {
+      value: 2.5,
+      label: '稍重',
+    },
+    {
+      value: 5,
+      label: '超重',
+    },
+  ];
+
+      
 
   // 用來 check 小螢幕斷點
   const isSmScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
@@ -127,6 +143,7 @@ const Flavor = forwardRef(({ postData: externalPostData, onFlavorDataSubmit }, r
                             max={5}
                             step={0.0001}
                             onChange={(event, newValue) => handleSliderChange(event, newValue, flavor.name)}
+                            marks={marks}
                           />
                         <TextField
                           id={`quantitative-value-${flavor.name}`}
@@ -191,6 +208,7 @@ const Flavor = forwardRef(({ postData: externalPostData, onFlavorDataSubmit }, r
                             max={5}
                             step={0.0001}
                             onChange={(event, newValue) => handleSliderChange(event, newValue, flavor.name)}
+                            marks={marks}
                             />
                           <TextField
                             id={`quantitative-value-${flavor.name}`}

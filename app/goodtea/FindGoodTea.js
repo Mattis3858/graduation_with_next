@@ -263,13 +263,15 @@ const callSensoryApi = async (data) => {
                     Back
                   </div>
                 )}
-                <div
-                  className="step_button"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                >
-                  {activeStep === steps.length - 1 ? 'See Result' : 'Next'}
-                </div>
+                {activeStep < steps.length && (
+                  <div
+                    className="step_button"
+                    onClick={handleNext}
+                    sx={{ mt: 3, ml: 1 }}
+                  >
+                    {activeStep === steps.length - 1 ? 'See Result' : 'Next'}
+                  </div>
+                )}
               </Box>
             </React.Fragment>
           </Paper>

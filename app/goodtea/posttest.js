@@ -142,7 +142,7 @@ const Posttest = ({ onDataSubmit }) => {
         <div className='para' gutterBottom>
           若不需要，可直接按下一步
         </div>
-        <Box mt={2} className= 'select_box_center_horizontal'>
+        <Box mt={2} className={isSmScreen ? 'select_box_center_vertical' : 'select_box_center_horizontal'}>
           <FormControl>
             <InputLabel>請選擇後測結果</InputLabel>
             <Select
@@ -161,21 +161,12 @@ const Posttest = ({ onDataSubmit }) => {
             </Select>
           </FormControl>
           {selectedItem !== '' && (
-            isSmScreen ? ( 
-            <div
-              onClick={handleSetDefaultResult}
-              className="confirm_button_icon"
-            >
-              <CheckCircleOutline className='circle' />
-            </div>
-          ) : ( 
             <div
               onClick={handleSetDefaultResult}
               className="confirm_button"
             >
               選擇此次後測結果作為預設值
-            </div>
-          )
+            </div>     
           )}
         </Box>
         {selectedItem !== '' && userData.find(entry => entry.id === selectedItem) ? (

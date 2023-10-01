@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Paper, CircularProgress } from '@mui/material';
+import { Grid, Paper,  Link } from '@mui/material';
 import './goodTea.css';
 
 
@@ -68,8 +68,16 @@ export default function Result({ result }){
     return (
         <React.Fragment>
         <div className="loading-spinner-container">
+        <div style={{ display: 'flex', alignItems: 'center' }}>
         <div className='sub_title' gutterBottom>
-          以下是最適合您的茶款:
+          以下是最適合您的茶款：
+        </div>
+        {Object.keys(selectedPrediction).length > 0 ? (
+        <div className='sub_title'>
+            <Link href="/reservation" color="primary">
+                立即預約試喝
+            </Link>
+        </div> ):null}
         </div>
         <Grid container spacing={2}>
             {Object.keys(selectedPrediction).length > 0 ? ( 
@@ -90,12 +98,11 @@ export default function Result({ result }){
             </>
             ) : (
               <div className="loading-spinner">
-              <div className="spinner">
+                <div className="spinner"></div>
                 <div className='spinner-word-container'>
                   <div className='spinner_word'>找好茶ing...</div>
                 </div>
               </div>
-            </div>
             )}
         </Grid>
         </div>
