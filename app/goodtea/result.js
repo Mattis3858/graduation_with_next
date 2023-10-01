@@ -67,6 +67,7 @@ export default function Result({ result }){
         }
     return (
         <React.Fragment>
+        <div className="loading-spinner-container">
         <div className='sub_title' gutterBottom>
           以下是最適合您的茶款:
         </div>
@@ -88,11 +89,16 @@ export default function Result({ result }){
                 </Grid>
             </>
             ) : (
-              <>
-             
-              </>
+              <div className="loading-spinner">
+              <div className="spinner">
+                <div className='spinner-word-container'>
+                  <div className='spinner_word'>找好茶ing...</div>
+                </div>
+              </div>
+            </div>
             )}
         </Grid>
+        </div>
         </React.Fragment>
         );
     }

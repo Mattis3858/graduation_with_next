@@ -62,8 +62,7 @@ const FindGoodTea = () => {
   const [apiResult, setApiResult] = useState(null); // 取得 API return 的結果
   const [valuesObject, setValuesObject] = useState({});
 
-  const setStatusStepIndex = 1; //當在setStatus時點選下一步後，進入case1
-  const flavorStepIndex = 3; //當在flavor時點選下一步後，進入case3
+
   const flavorRef = useRef(); 
   // user click on button in setStatus.js to choose 0 or 1 
   const handleOptionSelect = (data) => {
@@ -74,39 +73,40 @@ const FindGoodTea = () => {
   };
 
   // call SensoryApi below is just an example url
-  const attributeLabels = {
-    b_baked: '焙烤香 - 烘焙味',
-    b_smoky: '焙烤香 - 煙燻味',
-    f_dried_fruit: '果香 - 乾果味',
-    f_light: '花香 - 清香',
-    f_heavy: '花香 - 濃香',
-    s_sweet: '甜香 - 糖香味',
-    s_honey: '甜香 - 蜜香味',
-    g_grass: '青草香 - 草香味',
-    n_nutty: '果仁香 - 堅果味',
-    w_woody: '木質香',
-    sour: '酸味',
-    sweet: '甜味',
-    sleek: '圓滑感',
-    thick: '厚重感',
-    glycol: '甘醇度',
-    after_rhyme: '喉後韻',
-    aftertaste: '回香感',
-  };
-  
-  const translateAttributesToChinese = (attributes) => {
-    const translatedAttributes = {};
-    for (const key in attributes) {
-      if (attributeLabels[key]) {
-        translatedAttributes[attributeLabels[key]] = attributes[key];
-      }
+  // 原始中文属性名称映射到英文
+const chineseToEnglishAttributeLabels = {
+  '焙烤香 - 烘焙味': 'b_baked',
+  '焙烤香 - 煙燻味': 'b_smoky',
+  '果香 - 乾果味': 'f_dried_fruit',
+  '花香 - 清香': 'f_light',
+  '花香 - 濃香': 'f_heavy',
+  '甜香 - 糖香味': 's_sweet',
+  '甜香 - 蜜香味': 's_honey',
+  '青草香 - 草香味': 'g_grass',
+  '果仁香 - 堅果味': 'n_nutty',
+  '木質香': 'w_woody',
+  '酸味': 'sour',
+  '甜味': 'sweet',
+  '圓滑感': 'sleek',
+  '厚重感': 'thick',
+  '甘醇度': 'glycol',
+  '喉後韻': 'after_rhyme',
+  '回香感': 'aftertaste',
+};
+
+const translateAttributesToEnglish = (attributes) => {
+  const translatedAttributes = {};
+  for (const key in attributes) {
+    if (chineseToEnglishAttributeLabels[key]) {
+      translatedAttributes[chineseToEnglishAttributeLabels[key]] = attributes[key];
     }
-    return translatedAttributes;
-  };
-  
-  const callSensoryApi = async (data) => {
-    try {
-      const translatedData = translateAttributesToChinese(data);
+  }
+  return translatedAttributes;
+};
+
+const callSensoryApi = async (data) => {
+  try {
+      const translatedData = translateAttributesToEnglish(data);
       console.log('Sending request with data:', JSON.stringify(translatedData));
       const response = await fetch('https://525c-140-119-19-30.ngrok-free.app/SensoryAI/prediction', {
         method: 'POST',

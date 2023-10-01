@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -11,8 +13,9 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import CircularProgress from '@mui/material/CircularProgress';
+import EmojiFoodBeverageRoundedIcon from '@mui/icons-material/EmojiFoodBeverageRounded';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import CircularProgress from '@mui/material/CircularProgress';
 import { PieChart } from 'react-minimal-pie-chart'; // Import PieChart component
 
 
@@ -46,12 +49,12 @@ const steps = [
 ];
 
 const teaProducts = [
-  '張協興 - 鐵觀音',
-  '張協興 - 包種茶',
-  '威叔 - 鐵觀音',
-  '威叔 - 鐵觀音紅茶',
-  '寒舍 - 包種茶',
-  '寒舍 - 鐵觀音紅茶',
+  '張協興鐵觀音',
+  '張協興包種',
+  '威叔鐵觀音',
+  '威叔鐵觀音紅茶',
+  '寒舍包種',
+  '寒舍鐵觀音紅茶',
 ];
 
 const TeaColorTest = () => {
@@ -60,6 +63,9 @@ const TeaColorTest = () => {
   const [isUploading, setIsUploading] = React.useState(false);
   const [uploadSuccess, setUploadSuccess] = React.useState(false);
   const [uploadedFile, setUploadedFile] = React.useState(null);
+  const [similarity, setSimilarity] = React.useState(null);
+  const [file, setFile] = React.useState(null);
+  
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -77,31 +83,48 @@ const TeaColorTest = () => {
     setSelectedTea(event.target.value);
   };
 
-  // Callback function to handle file upload
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    // You can perform additional checks or validation on the file if needed
-    setUploadedFile(file);
-  };
-  // Function to generate random color for the pie chart
-  const getRandomColor = () => {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+  const handleFileUpload = async (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) {
+      return;
+    }
+
+    setFile(selectedFile);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
+    if (!selectedTea || !file) {
+      return;
+    }
+
     setIsUploading(true);
-    // Simulating the upload process with a delay
-    setTimeout(() => {
-      setIsUploading(false);
-      setUploadSuccess(true);
-    }, 2000);
-  };
 
-  // Default similarity value (change this based on actual data)
-  const similarityValue = 68;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('teaType', selectedTea);
+
+    try {
+      const response = await axios.post('https://your-api-url/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log(response.data);
+
+      // Replace similarityValue with the actual similarity value from your API response
+
+      setUploadedFile(file);
+      setUploadSuccess(true);
+    } catch (error) {
+      console.error('上传失败:', error);
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   return (
-    <>
+    <div>
       <Typography className='sub_title' gutterBottom>
         品茶步驟
       </Typography>
@@ -131,7 +154,7 @@ const TeaColorTest = () => {
           {steps.map((step, index) => (
             <Step key={step.label}>
               <StepLabel
-                icon={<PhotoCameraIcon />}
+                icon={<EmojiFoodBeverageRoundedIcon />}
                 optional={index === 2 ? <Typography variant="caption">最後一步</Typography> : null}
               >
                 {step.label}
@@ -160,46 +183,21 @@ const TeaColorTest = () => {
             </Step>
           ))}
         </Stepper>
-
-        {/* Upload Box */}
-      {uploadSuccess && (
-        <Box sx={{ mt: 2, position: 'relative', textAlign: 'center' }}>
-          {/* Donut Chart */}
-          <PieChart
-            data={[
-              {
-                value: similarityValue,
-                key: 1,
-                color: getRandomColor(),
-                // Add label to display the similarity percentage in the center of the chart
-                label: `${similarityValue}%`,
-              },
-            ]}
-            animate
-            lineWidth={15}
-            paddingAngle={5}
-            label={({ dataEntry }) => dataEntry.label} // Display the label added in the data
-            labelStyle={{
-              fontSize: '1.5rem',
-              fontWeight: 'bold',
-              fill: '#000',
-            }}
-            startAngle={270}
-            lengthAngle={360}
-            totalValue={100}
-          />
-          <Typography variant="body2">相似度</Typography>
         </Box>
-      )}
-
-      {/* File Upload */}
-      {!uploadSuccess && (
-        <Box sx={{ mt: 2 }}>
+      <div>
+      {uploadSuccess ? (
+        <div>
+          {/* 显示相似度 */}
+          <Typography variant="body2">相似度: {similarity}</Typography>
+        </div>
+      ) : (
+        <div>
+          {/* 文件上传 */}
           <Typography className='sub_title'>茶湯濃淡檢驗小遊戲</Typography>
           <Typography variant="body2" gutterBottom>
             上傳照片，可以拍照或選擇照片
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <input
               accept="image/*"
               id="icon-button-file"
@@ -218,14 +216,17 @@ const TeaColorTest = () => {
               </Button>
             </label>
             <Typography variant="body2">
-              {uploadedFile ? '上傳成功 File uploaded successfully!' : '請上傳茶湯照片 No file uploaded'}
+              {uploadedFile
+                ? '上傳成功 File uploaded successfully!'
+                : '請上傳茶湯照片 No file uploaded'}
             </Typography>
-          </Box>
-        </Box>
+          </div>
+        </div>
       )}
-        
-      </Box>
-    </>
+
+    </div>
+    </div>
   );
 };
+
 export default TeaColorTest;
