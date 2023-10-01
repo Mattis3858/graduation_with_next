@@ -208,7 +208,7 @@ const TeaColorTest = () => {
           {file &&  (
             <img src={URL.createObjectURL(file)} alt="Selected" className="uploaded-image" />
           ) }
-          {isLoading ? <div className="message">{message.similarity}</div> : null}
+          {!isLoading ? <div className="message">{message.similarity}</div> : null}
         </div>
     </div>
     </div>

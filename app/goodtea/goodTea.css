@@ -322,10 +322,12 @@
     }
 }
 .progress-bar{
+    width: 100%;
     max-width: 100%; 
 }
 
 .uploaded-image {
+    width: 100%;
     max-width: 100%; 
     height: auto;
     border: solid 1px var(--primary_color_dark);
