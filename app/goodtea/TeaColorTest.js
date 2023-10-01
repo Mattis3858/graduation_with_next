@@ -17,6 +17,7 @@ import EmojiFoodBeverageRoundedIcon from '@mui/icons-material/EmojiFoodBeverageR
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import CircularProgress from '@mui/material/CircularProgress';
 import { PieChart } from 'react-minimal-pie-chart'; // Import PieChart component
+import { LinearProgress } from '@mui/material';
 
 
 const steps = [
@@ -57,15 +58,62 @@ const teaProducts = [
   '寒舍鐵觀音紅茶',
 ];
 
+
 const TeaColorTest = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [selectedTea, setSelectedTea] = React.useState('');
-  const [isUploading, setIsUploading] = React.useState(false);
-  const [uploadSuccess, setUploadSuccess] = React.useState(false);
-  const [uploadedFile, setUploadedFile] = React.useState(null);
-  const [similarity, setSimilarity] = React.useState(null);
-  const [file, setFile] = React.useState(null);
+  const [file, setFile] =  React.useState(null);
+  const [message, setMessage] =  React.useState('');
+  const [isLoading, setIsLoading] =  React.useState(false);
   
+  // 茶湯濃淡辨識API
+  async function handleChange(e) {
+    const selectedFile = e.target.files[0];
+    if (!selectedFile) {
+      setMessage('Please select an image.');
+      return;
+    }
+
+    setIsLoading(true);
+    setFile(selectedFile);
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('teaType', selectedTea);
+    try {
+      const response = await axios.post(
+        'https://c7f1-140-119-19-30.ngrok-free.app/upload',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
+          },
+        }
+      );
+      const data = response.data;
+      console.log(data);
+      setMessage(data);
+      return {
+        props: {
+          data,
+        },
+      };
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return {
+        props: {
+          data: null,
+        },
+      };
+    }finally {
+      setIsLoading(false); 
+    }
+    
+  };  
+    
+  function handleTeaChange(e) {
+    setSelectedTea(e.target.value); // Update the selected tea type
+  };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -79,63 +127,19 @@ const TeaColorTest = () => {
     setActiveStep(0);
   };
 
-  const handleTeaSelect = (event) => {
-    setSelectedTea(event.target.value);
-  };
-
-  const handleFileUpload = async (event) => {
-    const selectedFile = event.target.files[0];
-    if (!selectedFile) {
-      return;
-    }
-
-    setFile(selectedFile);
-  };
-
-  const handleUpload = async () => {
-    if (!selectedTea || !file) {
-      return;
-    }
-
-    setIsUploading(true);
-
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('teaType', selectedTea);
-
-    try {
-      const response = await axios.post('https://your-api-url/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      console.log(response.data);
-
-      // Replace similarityValue with the actual similarity value from your API response
-
-      setUploadedFile(file);
-      setUploadSuccess(true);
-    } catch (error) {
-      console.error('上传失败:', error);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
   return (
     <div>
-      <Typography className='sub_title' gutterBottom>
+      <div className='sub_title' >
         品茶步驟
-      </Typography>
-      <Typography className='para' gutterBottom>
+      </div>
+      <div className='para' >
         跟著以下步驟一同走進茶香，品味茶湯。
-      </Typography>
+      </div>
       <FormControl fullWidth sx={{ mb: 2 }}>
         <InputLabel>請選擇您現在所泡的茶款</InputLabel>
         <Select
-          value={selectedTea}
-          onChange={handleTeaSelect}
+          value={selectedTea} 
+          onChange={handleTeaChange}
           label="Select Tea Product"
         >
           {/* Map over the teaProducts array to generate the MenuItem components */}
@@ -148,19 +152,19 @@ const TeaColorTest = () => {
       </FormControl>
       <Box sx={{ maxWidth: '100%' }}>
         <Box sx={{ mb: 2, display: 'flex', alignItems: 'center' }}>
-          <Typography variant="subtitle1">泡茶步驟</Typography>
+        <div className='sub_title' >泡茶步驟</div>
         </Box>
         <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((step, index) => (
             <Step key={step.label}>
               <StepLabel
                 icon={<EmojiFoodBeverageRoundedIcon />}
-                optional={index === 2 ? <Typography variant="caption">最後一步</Typography> : null}
+                optional={index === 2 ? <div className='para'>最後一步</div> : null}
               >
                 {step.label}
               </StepLabel>
               <StepContent>
-                <Typography className='para'>{step.description}</Typography>
+                <div className='para'>{step.description}</div>
                 <Box sx={{ mb: 2 }}>
                   <div>
                     <Button
@@ -185,45 +189,27 @@ const TeaColorTest = () => {
         </Stepper>
         </Box>
       <div>
-      {uploadSuccess ? (
-        <div>
-          {/* 显示相似度 */}
-          <Typography variant="body2">相似度: {similarity}</Typography>
+      <div className='sub_title' >茶湯濃淡檢驗小遊戲</div>
+      <div className='para' >請上傳照片，可以拍照或選擇照片</div>
+        <input
+          id="imgTea"
+          type="file"
+          accept="image/gif, image/jpeg, image/png"
+          style={{ display: 'none' }}
+          onChange={handleChange}
+        />
+        <label htmlFor="imgTea">
+          <Button variant="contained" component="span">
+            Upload Image
+          </Button>
+        </label>
+        <div className="upload-container">
+          {isLoading ? <LinearProgress className="progress-bar" /> : null}
+          {file &&  (
+            <img src={URL.createObjectURL(file)} alt="Selected" className="uploaded-image" />
+          ) }
+          {isLoading ? <div className="message">{message.similarity}</div> : null}
         </div>
-      ) : (
-        <div>
-          {/* 文件上传 */}
-          <Typography className='sub_title'>茶湯濃淡檢驗小遊戲</Typography>
-          <Typography variant="body2" gutterBottom>
-            上傳照片，可以拍照或選擇照片
-          </Typography>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input
-              accept="image/*"
-              id="icon-button-file"
-              type="file"
-              style={{ display: 'none' }}
-              onChange={handleFileUpload}
-            />
-            <label htmlFor="icon-button-file">
-              <Button
-                variant="contained"
-                component="span"
-                sx={{ mt: 1, mr: 1 }}
-                startIcon={<PhotoCameraIcon />}
-              >
-                Upload
-              </Button>
-            </label>
-            <Typography variant="body2">
-              {uploadedFile
-                ? '上傳成功 File uploaded successfully!'
-                : '請上傳茶湯照片 No file uploaded'}
-            </Typography>
-          </div>
-        </div>
-      )}
-
     </div>
     </div>
   );
