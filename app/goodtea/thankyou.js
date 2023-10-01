@@ -15,7 +15,7 @@ export default function Thankyou(){
                         感謝您的風味填寫
                     </div>
                     <div className='sub_title'>
-                        已經幫您紀錄在個人化的茶葉檔案中。
+                        已紀錄在您的個人化的茶葉檔案中
                     </div>
                     <Typography variant="body1">
                         <Link href="/personalInformation" color="primary">

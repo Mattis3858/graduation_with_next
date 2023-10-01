@@ -204,11 +204,9 @@ const TeaColorTest = () => {
             Upload Image
           </Button>
         </label>
-        {!isLoading ? (
-            <div className="message">{message.similarity}</div>
-          ) : (
-            <div className="message-invisible">{message.similarity}</div>
-          )}
+        {!isLoading && message.similarity && (
+          <div className="message">{message.similarity}</div>
+        )}
       </div>
         <div className="upload-container">
           {isLoading ? <LinearProgress className="progress-bar" /> : null}
