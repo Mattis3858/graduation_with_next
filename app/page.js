@@ -1,11 +1,12 @@
 'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import Product from './product/Product';
+import React from 'react';
 // import { useState, useEffect } from 'react';
 
 export default function Home() {
-  // const [message, setMassage] = useState('Loading');
   // useEffect(() => {
   //   fetch('http://localhost:8080/api/home')
   //     .then((response) => response.json())

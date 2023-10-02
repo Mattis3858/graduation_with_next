@@ -2,18 +2,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
-
+// import API_URI from '../api/reference';
 async function getStaticProps(formData) {
   try {
-    const response = await axios.post(
-      'http://140.119.19.30:5566/upload',
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
-        },
-      }
-    );
+    const response = await axios.post(`${API_URI}/upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
+      },
+    });
     console.log(response.data);
     return {
       props: {
@@ -50,7 +46,7 @@ const BrewGoodTea = () => {
     formData.append('teaType', selectedTea);
     try {
       const response = await axios.post(
-        'https://a1d6-140-119-19-30.ngrok-free.app/upload',
+        `https://7a8f-140-119-19-30.ngrok-free.app/upload`,
         formData,
         {
           headers: {
@@ -60,6 +56,7 @@ const BrewGoodTea = () => {
       );
       const data = response.data;
       console.log(data);
+      setMessage(data.similarity);
       return {
         props: {
           data,

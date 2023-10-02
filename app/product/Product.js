@@ -1,13 +1,11 @@
-"use client"; // This is a client component 
+'use client'; // This is a client component
 
-import React from 'react';
+import React, { useState } from 'react';
 import TeaProduct from './TeaProduct';
 import Link from 'next/link';
 import './product.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
-
-
 
 const ProductData = [
   {
@@ -58,16 +56,50 @@ const ProductData = [
 ];
 
 const Product = () => {
-  
+  const [answer, setAnswer] = useState('');
+  async function handleSubmit(e) {
+    setFile(selectedFile);
+    const formData = new FormData();
+    formData.append('query', answer);
+    try {
+      const response = await axios.post(
+        'https://7a8f-140-119-19-30.ngrok-free.app/upload',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
+          },
+        }
+      );
+      const data = response.data;
+      console.log(data);
+      return {
+        props: {
+          data,
+        },
+      };
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return {
+        props: {
+          data: null,
+        },
+      };
+    }
+  }
+  const [message, setMassage] = useState('');
+
   return (
-    <div className='page-layout'>
+    <div className="page-layout">
       <div className="grid grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
-        <h4 className="text-4xl mt-6 text-center title">木柵<span className='tea'>茶</span>本舖</h4>
-        <img src='/images/5730.png' className='decoration'/>
-        <img src='/images/leaf.png' className='leaf' />
+        <h4 className="text-4xl mt-6 text-center title">
+          木柵<span className="tea">茶</span>本舖
+        </h4>
+        <img src="/images/5730.png" className="decoration" />
+        <img src="/images/leaf.png" className="leaf" />
       </div>
       <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
-        <div className='content'>
+        <div className="content">
           <div className="text-xl fw-700 banner-text">找好茶推薦系統</div>
           <Link href="/goodtea">
             <button className="banner-button">前往</button>
@@ -88,6 +120,11 @@ const Product = () => {
           </div>
         ))}
       </div>
+      <textarea
+        placeholder="請輸入問題或選擇問題捷徑"
+        value={message}
+        onChange={(e) => setMassage(e.target.value)}
+      />
     </div>
   );
 };
