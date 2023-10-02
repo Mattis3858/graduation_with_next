@@ -100,7 +100,7 @@ const TeaColorTest = () => {
     formData.append('teaType', selectedTea);
     try {
       const response = await axios.post(
-        'https://c7f1-140-119-19-30.ngrok-free.app/upload',
+        'https://7a8f-140-119-19-30.ngrok-free.app/upload',
         formData,
         {
           headers: {
