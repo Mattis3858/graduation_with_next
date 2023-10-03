@@ -5,8 +5,11 @@ import axios from 'axios';
 const ChaTea = () => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
+  const [loading, setLoading] = useState(false); // Add a loading state
+
   async function getAnswer() {
     console.log(question);
+    setLoading(true); // Set loading to true when making the request
     try {
       const response = await axios.post(
         'https://7a8f-140-119-19-30.ngrok-free.app/TeaChatBOT/answer',
@@ -25,23 +28,17 @@ const ChaTea = () => {
       console.log(data.refs['第3份參考來源']);
 
       setAnswer(data);
-      return {
-        props: {
-          data,
-        },
-      };
     } catch (error) {
       console.error('Error fetching data:', error);
-      return {
-        props: {
-          data: null,
-        },
-      };
+      setAnswer(null);
+    } finally {
+      setLoading(false); // Set loading to false when the request is completed
     }
   }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full bg-white p-8 rounded shadow-lg">
+      <div className="max-w-md w-full bg-white p-8 rounded shadow-lg mt-12">
         <h1 className="text-3xl text-center mb-6 font-semibold">
           CHATEA茶葉知識問答
         </h1>
@@ -57,11 +54,14 @@ const ChaTea = () => {
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
             onClick={getAnswer}
+            disabled={loading} // Disable the button when loading
           >
-            送出
+            {loading ? '載入中...' : '送出'}{' '}
+            {/* Display loading message or '送出' */}
           </button>
         </div>
-        {answer && (
+        {/* Display loading message */}
+        {answer && !loading && (
           <div className="mt-6">
             <h2 className="text-xl font-semibold">回答:</h2>
             <p className="mt-2 text-lg">{answer['answer']}</p>
