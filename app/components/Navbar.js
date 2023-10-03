@@ -159,6 +159,14 @@ export default function Navbar() {
           >
             泡茶流程
           </Link>
+          <Link
+            href="/chatea"
+            className={`text-lg font-semibold leading-6 nav-item ${
+              activePath === '/processIntro' ? 'active' : ''
+            }`}
+          >
+            CHATEA
+          </Link>
           {/* <a
             href="/about"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
