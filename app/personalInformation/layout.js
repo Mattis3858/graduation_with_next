@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import PersonalInfoSidebar from './PersonalInfoSidebar';
 
 const DynamicSidebar = dynamic(() => import('./PersonalInfoSidebar'), {
   ssr: false,

@@ -27,7 +27,7 @@ export default function Home() {
     setTea(event.target.value);
   };
   return (
-    <main className="">
+    <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
       <div className="w-full text-center items-center justify-center">
         <div className="flex items-center justify-center align-bottom">
           <h1 className="font-bold text-4xl mt-6 text-center">
