@@ -9,7 +9,12 @@ const supabase = createClient(
 
 export default function Home() {
   const [buyRecord, setBuyRecord] = useState([]);
-
+  const [product, setProduct] = useState([]);
+  async function getProduct() {
+    const { data } = await supabase.from('product').select();
+    // console.log(data);
+    setProduct(data);
+  }
   async function getBuyRecord() {
     const { data } = await supabase.from('buy_record').select();
     // console.log(data);
@@ -17,6 +22,7 @@ export default function Home() {
   }
   useEffect(() => {
     getBuyRecord();
+    getProduct();
   }, []);
   const sortedPurchaseData = buyRecord
     .slice()
@@ -66,6 +72,7 @@ export default function Home() {
             <th className="text-left py-2 px-3">金額</th>
           </tr>
         </thead>
+        {/* {console.log(sortedPurchaseData)} */}
         <tbody>
           {sortedPurchaseData.map((purchase, index) => (
             <tr
@@ -73,7 +80,11 @@ export default function Home() {
               className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
             >
               <td className="py-2 px-3">{purchase.created_time}</td>
-              <td className="py-2 px-3">{purchase.prod_id}</td>
+              <td className="py-2 px-3">
+                {product.length !== 0 &&
+                  product.find((item) => item.prod_id === purchase.prod_id)
+                    .prod_name}
+              </td>
               <td className="py-2 px-3">{purchase.buy_qty}</td>
               <td className="py-2 px-3">{purchase.buy_amount}</td>
             </tr>
