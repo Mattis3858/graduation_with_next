@@ -110,7 +110,7 @@ const BrewGoodTea = () => {
           <div className="content bg-white p-4 md:p-6 lg:p-8 rounded-lg shadow-md w-full md:w-auto">
             <div className="mb-4">
               <h2 className="mb-2 text-lg md:text-xl font-semibold">
-                Select Tea Type:
+                茶種選擇
               </h2>
               <select
                 value={selectedTea}
@@ -128,7 +128,7 @@ const BrewGoodTea = () => {
             </div>
             <div className="mb-4">
               <h2 className="mb-2 text-lg md:text-xl font-semibold">
-                Add Image:
+                圖片上傳
               </h2>
               <input
                 id="imgTea"
