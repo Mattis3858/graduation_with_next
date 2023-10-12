@@ -1,8 +1,8 @@
 const Profile = ({ name, birthDate, age, email, gender, phoneNumber }) => {
   return (
     <div className="bg-white p-6 pt-0 rounded-lg shadow-md">
-      <h1 className="font-bold text-4xl mt-6 text-center">個人檔案</h1>
-      <table className="w-full">
+      <h1 className="font-bold text-4xl mt-6 text-center mb-4">個人檔案</h1>
+      <table className="w-full pt-4">
         <tbody>
           <tr className="border-b">
             <td className="font-semibold pr-4 py-2">姓名：</td>
@@ -33,5 +33,4 @@ const Profile = ({ name, birthDate, age, email, gender, phoneNumber }) => {
     </div>
   );
 };
-
 export default Profile;

@@ -120,11 +120,6 @@ const Product = () => {
           </div>
         ))}
       </div>
-      <textarea
-        placeholder="請輸入問題或選擇問題捷徑"
-        value={message}
-        onChange={(e) => setMassage(e.target.value)}
-      />
     </div>
   );
 };
