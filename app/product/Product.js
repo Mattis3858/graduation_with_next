@@ -56,39 +56,6 @@ const ProductData = [
 ];
 
 const Product = () => {
-  const [answer, setAnswer] = useState('');
-  async function handleSubmit(e) {
-    setFile(selectedFile);
-    const formData = new FormData();
-    formData.append('query', answer);
-    try {
-      const response = await axios.post(
-        'https://7a8f-140-119-19-30.ngrok-free.app/upload',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
-          },
-        }
-      );
-      const data = response.data;
-      console.log(data);
-      return {
-        props: {
-          data,
-        },
-      };
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      return {
-        props: {
-          data: null,
-        },
-      };
-    }
-  }
-  const [message, setMassage] = useState('');
-
   return (
     <div className="page-layout">
       <div className="grid grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
