@@ -194,6 +194,29 @@ const ProcessIntro = (props) => {
       </div>
       <style jsx>
         {`
+          @media (max-width: 768px) {
+            /* Styles for screens smaller than 768px (e.g., mobile) */
+            .portfolio-simple-footer-projects {
+              gap: 16px;
+              top: 40px;
+              left: 16px;
+              width: 90%;
+            }
+
+            /* Add more responsive styles as needed */
+          }
+
+          @media (max-width: 480px) {
+            /* Styles for screens smaller than 480px (e.g., smaller mobile) */
+            .portfolio-simple-footer-projects {
+              gap: 8px;
+              top: 20px;
+              left: 8px;
+              width: 90%;
+            }
+
+            /* Add more responsive styles as needed */
+          }
           @font-face {
             font-family: 'ChenYuluoyan';
             src: url('/font/ChenYuluoyan-Thin.ttf') format('truetype');
