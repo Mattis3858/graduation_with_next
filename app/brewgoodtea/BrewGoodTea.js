@@ -106,7 +106,7 @@ const BrewGoodTea = () => {
             alt="Leaf"
           /> */}
         </div>
-        <div className="grid grid-rows-1 ml-4 md:ml-10 mr-4 md:mr-10 my-6 flex items-center justify-center banner">
+        <div className="grid grid-rows-1 ml-4 md:ml-10 mr-4 md:mr-10 my-6 flex items-center justify-center">
           <div className="content">
             <div className="mb-4">
               <h2 className="mb-2">Select Tea Type:</h2>
