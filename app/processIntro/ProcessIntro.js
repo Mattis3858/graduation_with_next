@@ -194,38 +194,7 @@ const ProcessIntro = (props) => {
       </div>
       <style jsx>
         {`
-          @media (max-width: 768px) {
-            /* Styles for screens smaller than 768px (e.g., mobile) */
-            .portfolio-simple-footer-projects {
-              gap: 16px;
-              top: 40px;
-              left: 16px;
-              width: 90%;
-            }
-
-            /* Add more responsive styles as needed */
-          }
-
-          @media (max-width: 480px) {
-            /* Styles for screens smaller than 480px (e.g., smaller mobile) */
-            .portfolio-simple-footer-projects {
-              gap: 8px;
-              top: 20px;
-              left: 8px;
-              width: 90%;
-            }
-
-            /* Add more responsive styles as needed */
-          }
-          @font-face {
-            font-family: 'ChenYuluoyan';
-            src: url('/font/ChenYuluoyan-Thin.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-          }
-          .custom-font {
-            font-family: 'ChenYuluoyan', sans-serif; /* 使用你定义的字体系列名称 */
-          }
+      
           .portfolio-simple-footer-container {
             width: 100%;
             display: flex;
@@ -676,67 +645,9 @@ const ProcessIntro = (props) => {
             height: 225px;
             position: absolute;
           }
-          :root {
-            --dl-color-bg-gray: rgba(249, 250, 255, 1);
-            --dl-color-bg-line: rgba(37, 40, 43, 1);
-            --dl-color-bg-white: rgba(255, 255, 255, 1);
-            --dl-color-gray-500: #595959;
-            --dl-color-gray-700: #999999;
-            --dl-color-gray-900: #d9d9d9;
-            --dl-size-size-large: 144px;
-            --dl-size-size-small: 48px;
-            --dl-color-danger-300: #a22020;
-            --dl-color-danger-500: #bf2626;
-            --dl-color-danger-700: #e14747;
-            --dl-color-gray-black: #000000;
-            --dl-color-gray-white: #ffffff;
-            --dl-size-size-medium: 96px;
-            --dl-size-size-xlarge: 192px;
-            --dl-size-size-xsmall: 16px;
-            --dl-space-space-unit: 16px;
-            --dl-color-primary-100: #003eb3;
-            --dl-color-primary-300: #0074f0;
-            --dl-color-primary-500: #14a9ff;
-            --dl-color-primary-700: #85dcff;
-            --dl-color-success-300: #199033;
-            --dl-color-success-500: #32a94c;
-            --dl-color-success-700: #4cc366;
-            --dl-size-size-xxlarge: 288px;
-            --dl-color-brand-yellow: rgba(253, 196, 53, 1);
-            --dl-size-size-maxwidth: 1400px;
-            --dl-radius-radius-round: 50%;
-            --dl-space-space-halfunit: 8px;
-            --dl-space-space-sixunits: 96px;
-            --dl-space-space-twounits: 32px;
-            --dl-radius-radius-radius2: 2px;
-            --dl-radius-radius-radius4: 4px;
-            --dl-radius-radius-radius8: 8px;
-            --dl-space-space-fiveunits: 80px;
-            --dl-space-space-fourunits: 64px;
-            --dl-color-font-lowemphasis: rgba(154, 159, 168, 1);
-            --dl-space-space-threeunits: 48px;
-            --dl-color-font-highemphasis: rgba(37, 40, 43, 1);
-            --dl-color-font-mediumemphasis: rgba(130, 130, 130, 1);
-            --dl-space-space-oneandhalfunits: 24px;
-          }
-          .button {
-            color: var(--dl-color-gray-black);
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-color: var(--dl-color-gray-black);
-            border-width: 1px;
-            border-radius: 4px;
-            background-color: var(--dl-color-gray-white);
-          }
-          .input {
-            color: var(--dl-color-gray-black);
-            cursor: auto;
-            padding: 0.5rem 1rem;
-            border-color: var(--dl-color-gray-black);
-            border-width: 1px;
-            border-radius: 4px;
-            background-color: var(--dl-color-gray-white);
-          }
+          
+          
+          
           .textarea {
             color: var(--dl-color-gray-black);
             cursor: auto;
@@ -746,21 +657,8 @@ const ProcessIntro = (props) => {
             border-radius: 4px;
             background-color: var(--dl-color-gray-white);
           }
-          .list {
-            width: 100%;
-            margin: 1em 0px 1em 0px;
-            display: block;
-            padding: 0px 0px 0px 1.5rem;
-            list-style-type: none;
-            list-style-position: outside;
-          }
-          .list-item {
-            display: list-item;
-          }
-          .teleport-show {
-            display: flex !important;
-            transform: none !important;
-          }
+          
+        
           .Content {
             font-size: 16px;
             font-family: Inter;
