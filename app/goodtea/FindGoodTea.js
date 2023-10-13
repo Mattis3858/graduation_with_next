@@ -108,7 +108,7 @@ const FindGoodTea = () => {
       const translatedData = translateAttributesToEnglish(data);
       console.log('Sending request with data:', JSON.stringify(translatedData));
       const response = await fetch(
-        'https://7a8f-140-119-19-30.ngrok-free.app/SensoryAI/prediction',
+        'https://b340-140-119-19-30.ngrok-free.app/SensoryAI/predict_Neural_network',
         {
           method: 'POST',
           headers: {

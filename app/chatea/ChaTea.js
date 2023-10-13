@@ -12,7 +12,7 @@ const ChaTea = () => {
     setLoading(true); // Set loading to true when making the request
     try {
       const response = await axios.post(
-        'https://7a8f-140-119-19-30.ngrok-free.app/TeaChatBOT/answer',
+        'https://b340-140-119-19-30.ngrok-free.app/TeaChatBOT/answer',
         {
           query: question,
         }
