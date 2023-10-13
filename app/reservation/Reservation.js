@@ -46,8 +46,8 @@ const Reservation = () => {
 
   return (
     <div className="page-layout p-10">
-      <div className="grid-rows-1 ml-10 mr-10 mt-6 flex items-center justify-center main-vision">
-        <h4 className="text-4xl mt-6 text-center big_title">
+      <div className="grid-rows-1 ml-10 mr-10 mt-12 flex items-center justify-center main-vision">
+        <h4 className="text-4xl text-center big_title">
           <span className="tea">茶</span>行預約系統
         </h4>
         {/* <img src='/images/5730.png' className='decoration'/> */}

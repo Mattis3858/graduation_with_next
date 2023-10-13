@@ -37,15 +37,15 @@ const ChaTea = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full bg-white p-8 rounded shadow-lg mt-12">
-        <h1 className="text-3xl text-center mb-6 font-semibold">
-          CHATEA茶葉知識問答
-        </h1>
+    <div className="page-layout flex items-center justify-center ">
+      <div className=" max-w-xl w-full bg-white p-8 rounded shadow-lg mt-12">
+        <div className="text-4xl mt-6 text-center big_title">
+          CHATEA<span className="tea">茶</span>葉知識問答
+        </div>
         <div className="mb-4">
-          <textarea
-            className="w-full h-24 p-2 border border-gray-300 rounded"
-            placeholder="請輸入問題或選擇問題捷徑"
+          <input
+            className="w-full h-24 p-2 border border-gray-300 rounded text-xl"
+            placeholder="請輸入茶葉問題"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
           />
