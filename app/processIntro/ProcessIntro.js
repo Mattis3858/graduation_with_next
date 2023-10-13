@@ -1,42 +1,73 @@
 'use client';
 import React from 'react';
-import Head from 'next/head';
 import './style.css';
 
 const ProcessIntro = (props) => {
   return (
     <>
       <div className="page-layout">
-        <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
+        <div className="ml-10 mr-10 mt-6 mb-0 flex items-center justify-center">
           <h4 className="text-4xl mt-6 text-center title">
-            泡茶準備<span className="tea">&</span>建議流程
+            泡<span className="tea">茶</span>準備&建議流程
           </h4>
-          {/* <img src='/images/5730.png' className='decoration'/> */}
-          <img
-            src="/images/leaf.png"
-            style={{ width: '3%', marginTop: '-1rem' }}
-          />
+        </div>
+        <img
+          src="/images/leaf.png"
+          className="mx-auto mb-4"
+          style={{ width: '35px', marginTop: '-1rem' }}
+        />
+      </div>
+      <div className="w-full mt-6 px-4 lg:px-32">
+        <div className="flex flex-col lg:flex-row justify-between">
+          <div className="w-full lg:w-1/2 pt-8">
+            <div>
+              <div className="text-5xl font-normal text-center">泡茶準備</div>
+            </div>
+            <div className="pt-8 text-2xl text-gray-500">
+              <div>
+                <div className="">1. 沖泡器具:</div>
+                <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div>
+              </div>
+              <div className="pt-4">
+                <div>2. 待測茶葉:</div>
+                <div>
+                  張協興鐵觀音、張協興包種茶、威叔鐝觀音、
+                  威叔鐝觀音紅茶、寒舍包種茶、寒舍鐝觀音紅茶
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full lg:w-auto">
+            <div className="grid grid-cols-2 gap-0">
+              <img
+                src="/images/image12041-i1oe-300h.png"
+                alt="image12041"
+                className="w-56 h-56 object-cover"
+              />
+              <img
+                src="/images/image22042-4xx-300h.png"
+                alt="image22042"
+                className="w-56 h-56 object-cover"
+              />
+              <img
+                src="/images/image32042-3h6q-300h.png"
+                alt="image32042"
+                className="w-56 h-56 object-cover"
+              />
+              <img
+                src="/images/image42042-v9d8-300h.png"
+                alt="image42042"
+                className="w-56 h-56 object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div
-        className="portfolio-simple-footer-container"
-        style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
-      >
-        <Head>
-          <title>exported project</title>
-        </Head>
+
+      {/* <div className="justify-items-start overflow-x-auto">
         <div className="portfolio-simple-footer-portfolio-simple-footer">
           <div className="portfolio-simple-footer-projects">
-            <div
-              className="portfolio-simple-footer-frame3351"
-              style={{
-                gap: '4px',
-                display: 'flex',
-                alignitems: 'center',
-                flexdirection: 'column',
-                justifycontent: 'center',
-              }}
-            >
+            <div className="gap-1 flex items-center flex-col justify-center">
               <span className="portfolio-simple-footer-text titleh2">
                 <span>建議泡茶流程</span>
               </span>
@@ -82,14 +113,14 @@ const ProcessIntro = (props) => {
                 </div>
               </div>
               <img
-                src="/images/pexelsellyfairytale38232071216-8suq-600h.png"
+                src="/images/pexelsellyfairytale38232071216-8suq-600h.png" //用水種類
                 alt="pexelsellyfairytale38232071216"
                 className="portfolio-simple-footer-pexelsellyfairytale38232071"
               />
             </div>
             <div className="portfolio-simple-footer-project2">
               <img
-                src="/images/rectangle72062-53xd-600h.png"
+                src="/images/rectangle72062-53xd-600h.png" //泡茶方式-溫潤泡
                 alt="Rectangle72062"
                 className="portfolio-simple-footer-rectangle7"
               />
@@ -144,14 +175,13 @@ const ProcessIntro = (props) => {
                 </div>
               </div>
               <img
-                src="/images/rectangle7161-7p2-600h.png"
+                src="/images/rectangle7161-7p2-600h.png" //示範影片
                 alt="Rectangle7161"
                 className="portfolio-simple-footer-rectangle71"
               />
             </div>
-          </div>
-          <div className="portfolio-simple-footer-intro"></div>
-          <div className="portfolio-simple-footer-content">
+          </div> */}
+      {/* <div className="portfolio-simple-footer-content">
             <span className="portfolio-simple-footer-text43 titleh2 YourFontName,serif">
               <span>泡茶準備</span>
             </span>
@@ -171,30 +201,29 @@ const ProcessIntro = (props) => {
             </div>
           </div>
           <img
-            src="/images/image12041-i1oe-300h.png"
+            src="/images/image12041-i1oe-300h.png" //泡茶準備1
             alt="image12041"
             className="portfolio-simple-footer-image1"
           />
           <img
-            src="/images/image22042-4xx-300h.png"
+            src="/images/image22042-4xx-300h.png" //泡茶準備2
             alt="image22042"
             className="portfolio-simple-footer-image2"
           />
           <img
-            src="/images/image32042-3h6q-300h.png"
+            src="/images/image32042-3h6q-300h.png" //泡茶準備3
             alt="image32042"
             className="portfolio-simple-footer-image3"
           />
           <img
-            src="/images/image42042-v9d8-300h.png"
+            src="/images/image42042-v9d8-300h.png" //泡茶準備4
             alt="image42042"
             className="portfolio-simple-footer-image4"
-          />
-        </div>
-      </div>
-      <style jsx>
+          /> */}
+      {/* </div>
+      </div> */}
+      {/* <style jsx>
         {`
-      
           .portfolio-simple-footer-container {
             width: 100%;
             display: flex;
@@ -645,9 +674,7 @@ const ProcessIntro = (props) => {
             height: 225px;
             position: absolute;
           }
-          
-          
-          
+
           .textarea {
             color: var(--dl-color-gray-black);
             cursor: auto;
@@ -657,8 +684,7 @@ const ProcessIntro = (props) => {
             border-radius: 4px;
             background-color: var(--dl-color-gray-white);
           }
-          
-        
+
           .Content {
             font-size: 16px;
             font-family: Inter;
@@ -689,7 +715,7 @@ const ProcessIntro = (props) => {
             font-weight: 700px;
             font-stretch: normal;
             text-align: center;
-            margin: 0 auto; /* This centers the text horizontally */
+            margin: 0 auto;
           }
           .body24px {
             font-size: 24px;
@@ -706,7 +732,7 @@ const ProcessIntro = (props) => {
             font-stretch: normal;
           }
         `}
-      </style>
+      </style> */}
     </>
   );
 };
