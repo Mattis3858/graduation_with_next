@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
-import './brewGoodTea.css';
 // import API_URI from '../api/reference';
 async function getStaticProps(formData) {
   try {
@@ -95,16 +94,15 @@ const BrewGoodTea = () => {
 
   return (
     <>
-      <div className="page-layout p-4 md:p-10">
-        <div className="grid-rows-1 ml-4 md:ml-10 mr-4 md:mr-10 my-6 flex items-center justify-center main-vision">
+      <div className="page-layout md:p-10">
+        <div className="grid-rows-1 ml-10 mr-10 mt-6 flex items-center justify-center main-vision">
           <h4 className="text-4xl mt-6 text-center big_title">
             <span className="tea">茶</span>湯濃淡評分
           </h4>
-          {/* <img
+          <img
             src="/images/leaf.png"
             style={{ width: '3%', marginTop: '-1rem' }}
-            alt="Leaf"
-          /> */}
+          />
         </div>
         <div className="grid grid-rows-1 mx-4 md:mx-10 my-6 flex items-center justify-center">
           <div className="content bg-white p-4 md:p-6 lg:p-8 rounded-lg shadow-md w-full md:w-auto">
@@ -157,24 +155,21 @@ const BrewGoodTea = () => {
         </div>
       </div>
       <div className="">
-        <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
-          <h4 className="text-4xl mt-6 text-center title">
-            泡茶準備<span className="tea">&</span>建議流程
+        <div className="ml-10 mr-10 mt-6 mb-0 flex items-center justify-center">
+          <h4 className="text-4xl mt-6 text-center big_title">
+            泡<span className="tea">茶</span>準備&建議流程
           </h4>
-          {/* <img src='/images/5730.png' className='decoration'/> */}
-          <img
-            src="/images/leaf.png"
-            style={{ width: '3%', marginTop: '-1rem' }}
-          />
         </div>
+        <img
+          src="/images/leaf.png"
+          className="mx-auto"
+          style={{ width: '35px' }}
+        />
       </div>
-      <div
+      {/* <div
         className="portfolio-simple-footer-container"
         style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
       >
-        <Head>
-          <title>exported project</title>
-        </Head>
         <div className="portfolio-simple-footer-portfolio-simple-footer">
           <div className="portfolio-simple-footer-projects">
             <div
@@ -341,8 +336,8 @@ const BrewGoodTea = () => {
             className="portfolio-simple-footer-image4"
           />
         </div>
-      </div>
-      <style jsx>
+      </div> */}
+      {/* <style jsx>
         {`
           @font-face {
             font-family: 'ChenYuluoyan';
@@ -351,7 +346,7 @@ const BrewGoodTea = () => {
             font-style: normal;
           }
           .custom-font {
-            font-family: 'ChenYuluoyan', sans-serif; /* 使用你定义的字体系列名称 */
+            font-family: 'ChenYuluoyan', sans-serif; 
           }
           .portfolio-simple-footer-container {
             width: 100%;
@@ -918,7 +913,7 @@ const BrewGoodTea = () => {
             font-weight: 700px;
             font-stretch: normal;
             text-align: center;
-            margin: 0 auto; /* This centers the text horizontally */
+            margin: 0 auto;
           }
           .body24px {
             font-size: 24px;
@@ -935,7 +930,7 @@ const BrewGoodTea = () => {
             font-stretch: normal;
           }
         `}
-      </style>
+      </style> */}
       {/* <div
         className="portfolio-simple-footer-container p-4 md:p-10"
         style={{ justifyContent: 'flex-start', overflowX: 'auto' }}

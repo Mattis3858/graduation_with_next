@@ -7,7 +7,7 @@ const ProcessIntro = (props) => {
     <>
       <div className="page-layout">
         <div className="ml-10 mr-10 mt-6 mb-0 flex items-center justify-center">
-          <h4 className="text-4xl mt-6 text-center title">
+          <h4 className="text-4xl mt-6 text-center big_title">
             泡<span className="tea">茶</span>準備&建議流程
           </h4>
         </div>
