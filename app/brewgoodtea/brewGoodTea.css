@@ -9,3 +9,20 @@
   border-radius: 10px;
   margin-top: 8px;
 }
+.tea {
+  background-color: #daa391;
+  color: white;
+  padding: 5px;
+  /* padding-left: 9px;
+  padding-right: 9px; */
+  margin-left: 4px;
+  margin-right: 4px;
+  border-radius: 50px;
+  font-family: 'YourFontName', serif;
+}
+.big_title {
+  color: #329d9c;
+  margin-bottom: 4rem;
+  font-size: 48px;
+  font-family: 'YourFontName', serif;
+}
