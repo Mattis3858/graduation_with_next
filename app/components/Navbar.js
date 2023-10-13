@@ -159,6 +159,14 @@ export default function Navbar() {
           >
             泡茶流程
           </Link>
+          <Link
+            href="/chatea"
+            className={`text-lg font-semibold leading-6 nav-item ${
+              activePath === '/processIntro' ? 'active' : ''
+            }`}
+          >
+            CHATEA
+          </Link>
           {/* <a
             href="/about"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
@@ -212,7 +220,7 @@ export default function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
+                {/* <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
@@ -239,7 +247,8 @@ export default function Navbar() {
                       </Disclosure.Panel>
                     </>
                   )}
-                </Disclosure>
+                </Disclosure> */}
+
                 <a
                   href="/product"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
@@ -247,22 +256,46 @@ export default function Navbar() {
                   木柵茶本舖
                 </a>
                 <a
-                  href="/"
+                  href="/goodtea"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  找好茶
+                </a>
+                <a
+                  href="/brewgoodtea"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  泡好茶
+                </a>
+                <a
+                  href="/reservation"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   品茶預約
                 </a>
                 <a
-                  href="/recommendationSystems"
+                  href="/processIntro"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  系統介紹
+                  品茶流程
                 </a>
                 <a
-                  href="/about"
+                  href="/chatea"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  關於我們
+                  CHATEA
+                </a>
+                <a
+                  href="/personalInformation"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  個人資料
+                </a>
+                <a
+                  href="/shoppingCart"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  購物車
                 </a>
               </div>
               <div className="py-6">

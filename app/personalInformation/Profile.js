@@ -1,46 +1,36 @@
 const Profile = ({ name, birthDate, age, email, gender, phoneNumber }) => {
   return (
-    <div className="w-full">
-      <div className="">
-        <h1 className="font-bold text-4xl mt-6 text-center">個人檔案</h1>
-        <div className="flex w-full">
-          <div className="mt-6 w-1/3">
-            {/* <div className="text-2xl font-semibold mb-6 text-center">
-              基本資料
-            </div> */}
-            <table className="mt-6">
-              <tbody className="">
-                <tr>
-                  <td className="font-medium text-xl">姓名：</td>
-                  <td className="font-medium text-xl">{name}</td>
-                </tr>
-                <tr>
-                  <td className="font-medium text-xl">生日：</td>
-                  <td className="font-medium text-xl">{birthDate}</td>
-                </tr>
-                <tr>
-                  <td className="font-medium text-xl">年齡：</td>
-                  <td className="font-medium text-xl">{age}</td>
-                </tr>
-                <tr>
-                  <td className="font-medium text-xl">性別：</td>
-                  <td className="font-medium text-xl">{gender}</td>
-                </tr>
-                <tr>
-                  <td className="font-medium text-xl">電子郵件：</td>
-                  <td className="font-medium text-xl">{email}</td>
-                </tr>
-                <tr>
-                  <td className="font-medium text-xl">電話：</td>
-                  <td className="font-medium text-xl">{phoneNumber}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+    <div className="bg-white p-6 pt-0 rounded-lg shadow-md">
+      <h1 className="font-bold text-4xl mt-6 text-center mb-4">個人檔案</h1>
+      <table className="w-full pt-4">
+        <tbody>
+          <tr className="border-b">
+            <td className="font-semibold pr-4 py-2">姓名：</td>
+            <td className="py-2">{name}</td>
+          </tr>
+          <tr className="border-b">
+            <td className="font-semibold pr-4 py-2">生日：</td>
+            <td className="py-2">{birthDate}</td>
+          </tr>
+          <tr className="border-b">
+            <td className="font-semibold pr-4 py-2">年齡：</td>
+            <td className="py-2">{age}</td>
+          </tr>
+          <tr className="border-b">
+            <td className="font-semibold pr-4 py-2">性別：</td>
+            <td className="py-2">{gender}</td>
+          </tr>
+          <tr className="border-b">
+            <td className="font-semibold pr-4 py-2">電子郵件：</td>
+            <td className="py-2">{email}</td>
+          </tr>
+          <tr>
+            <td className="font-semibold pr-4 py-2">電話：</td>
+            <td className="py-2">{phoneNumber}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
-
 export default Profile;

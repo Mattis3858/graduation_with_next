@@ -2,18 +2,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Head from 'next/head';
-
+// import API_URI from '../api/reference';
 async function getStaticProps(formData) {
   try {
-    const response = await axios.post(
-      'http://140.119.19.30:5566/upload',
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
-        },
-      }
-    );
+    const response = await axios.post(`${API_URI}/upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
+      },
+    });
     console.log(response.data);
     return {
       props: {
@@ -50,7 +46,7 @@ const BrewGoodTea = () => {
     formData.append('teaType', selectedTea);
     try {
       const response = await axios.post(
-        'https://a1d6-140-119-19-30.ngrok-free.app/upload',
+        `https://b340-140-119-19-30.ngrok-free.app/upload`,
         formData,
         {
           headers: {
@@ -60,6 +56,9 @@ const BrewGoodTea = () => {
       );
       const data = response.data;
       console.log(data);
+      setMessage(data['similarity']);
+      setIsLoading(false);
+      console.log(message);
       return {
         props: {
           data,
@@ -95,54 +94,82 @@ const BrewGoodTea = () => {
 
   return (
     <>
-      {/* <div className="ml-10 page-layout"> */}
-      <div className="page-layout">
-        <div className="grid grid-rows-1 ml-10 mr-10 my-6 flex items-center justify-center main-vision">
-          <h4 className="text-4xl mt-6 text-center title">
-            茶湯<span className="tea">濃淡</span>評分
+      <div className="page-layout md:p-10">
+        <div className="grid-rows-1 ml-10 mr-10 mt-6 flex items-center justify-center main-vision">
+          <h4 className="text-4xl mt-6 text-center big_title">
+            <span className="tea">茶</span>湯濃淡評分
           </h4>
-          {/* <img src='/images/5730.png' className='decoration'/> */}
           <img
             src="/images/leaf.png"
             style={{ width: '3%', marginTop: '-1rem' }}
           />
         </div>
-        {/* <div className="font-bold text-4xl mt-6 text-center">泡好茶</div> */}
-        <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
-          <div className="content">
-            {/* <div className="text-xl fw-700 banner-text">找好茶推薦系統</div> */}
-            <div>
-              <h2>Select Tea Type:</h2>
-              <select value={selectedTea} onChange={handleTeaChange}>
+        <div className="grid grid-rows-1 mx-4 md:mx-10 my-6 flex items-center justify-center">
+          <div className="content bg-white p-4 md:p-6 lg:p-8 rounded-lg shadow-md w-full md:w-auto">
+            <div className="mb-4">
+              <h2 className="mb-2 text-lg md:text-xl font-semibold">
+                茶種選擇
+              </h2>
+              <select
+                value={selectedTea}
+                onChange={handleTeaChange}
+                className="w-full p-2 border rounded"
+              >
                 <option value="">請選擇茶的種類</option>
                 <option value="張協興鐵觀音">張協興鐵觀音</option>
-                <option value="威叔鐵觀音紅茶">威叔鐵觀音紅茶</option>
-                <option value="威叔鐵觀音">威叔鐵觀音</option>
+                <option value="威叔鐧觀音紅茶">威叔鐵觀音紅茶</option>
+                <option value="威叔鐧觀音">威叔鐵觀音</option>
                 <option value="寒舍包種">寒舍包種</option>
-                <option value="寒舍鐵觀音紅茶">寒舍鐵觀音紅茶</option>
+                <option value="寒舍鐧觀音紅茶">寒舍鐵觀音紅茶</option>
                 <option value="張協興包種">張協興包種</option>
               </select>
             </div>
-            <h2>Add Image:</h2>
-            <input
-              id="imgTea"
-              type="file"
-              onChange={handleChange}
-              accept="image/gif, image/jpeg, image/png"
-            />
-            {isLoading ? <div>Loading...</div> : <div>{message}</div>}
-            {file && <img src={URL.createObjectURL(file)} alt="Selected" />}
+            <div className="mb-4">
+              <h2 className="mb-2 text-lg md:text-xl font-semibold">
+                圖片上傳
+              </h2>
+              <input
+                id="imgTea"
+                type="file"
+                onChange={handleChange}
+                accept="image/gif, image/jpeg, image/png"
+                className="w-full p-2 border rounded"
+              />
+
+              {isLoading ? (
+                <div className="text-blue-500">Loading...</div>
+              ) : message ? (
+                <div className="message">{message}</div>
+              ) : (
+                <></>
+              )}
+              {file && (
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="Selected"
+                  className="mt-2 rounded-lg"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-
-      <div
+      <div className="">
+        <div className="ml-10 mr-10 mt-6 mb-0 flex items-center justify-center">
+          <h4 className="text-4xl mt-6 text-center big_title">
+            泡<span className="tea">茶</span>準備&建議流程
+          </h4>
+        </div>
+        <img
+          src="/images/leaf.png"
+          className="mx-auto"
+          style={{ width: '35px' }}
+        />
+      </div>
+      {/* <div
         className="portfolio-simple-footer-container"
         style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
       >
-        <Head>
-          <title>exported project</title>
-        </Head>
         <div className="portfolio-simple-footer-portfolio-simple-footer">
           <div className="portfolio-simple-footer-projects">
             <div
@@ -270,7 +297,7 @@ const BrewGoodTea = () => {
           </div>
           <div className="portfolio-simple-footer-intro"></div>
           <div className="portfolio-simple-footer-content">
-            <span className="portfolio-simple-footer-text43 titleh2 YourFontName">
+            <span className="portfolio-simple-footer-text43 titleh2 YourFontName,serif">
               <span>泡茶準備</span>
             </span>
             <div className="portfolio-simple-footer-subheadline">
@@ -309,17 +336,17 @@ const BrewGoodTea = () => {
             className="portfolio-simple-footer-image4"
           />
         </div>
-      </div>
-      <style jsx>
+      </div> */}
+      {/* <style jsx>
         {`
           @font-face {
-            font-family: 'YourFontName', serif;
+            font-family: 'ChenYuluoyan';
             src: url('/font/ChenYuluoyan-Thin.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
           }
           .custom-font {
-            font-family: 'YourFontName', serif; /* 使用你定义的字体系列名称 */
+            font-family: 'ChenYuluoyan', sans-serif; 
           }
           .portfolio-simple-footer-container {
             width: 100%;
@@ -328,7 +355,6 @@ const BrewGoodTea = () => {
             min-height: 100vh;
             align-items: center;
             flex-direction: column;
-            font-family: 'YourFontName', serif;
           }
           .portfolio-simple-footer-portfolio-simple-footer {
             width: 100%;
@@ -338,7 +364,6 @@ const BrewGoodTea = () => {
             position: relative;
             align-items: flex-start;
             flex-shrink: 0;
-            font-family: 'YourFontName', serif;
             background-color: var(--dl-color-bg-gray);
           }
           .portfolio-simple-footer-projects {
@@ -351,7 +376,6 @@ const BrewGoodTea = () => {
             align-items: center;
             flex-direction: column;
             justify-content: center;
-            font-family: 'YourFontName', serif;
           }
           .portfolio-simple-footer-frame3351 {
             gap: 4px;
@@ -359,20 +383,17 @@ const BrewGoodTea = () => {
             align-items: center;
             flex-direction: column;
             justify-content: center;
-            font-family: 'YourFontName', serif;
           }
           .portfolio-simple-footer-text {
             color: var(--dl-color-font-highemphasis);
             height: auto;
             text-align: center;
             line-height: 72px;
-            font-family: 'YourFontName', serif;
           }
           .portfolio-simple-footer-rectangle19 {
             width: 100px;
             height: 4px;
             border-radius: 2px;
-            font-family: 'YourFontName', serif;
           }
           .portfolio-simple-footer-project1 {
             width: 992px;
@@ -384,7 +405,6 @@ const BrewGoodTea = () => {
             align-items: flex-start;
             flex-shrink: 0;
             border-radius: 24px;
-            font-family: 'YourFontName', serif;
           }
           .portfolio-simple-footer-projectnfo {
             width: 496px;
@@ -394,7 +414,6 @@ const BrewGoodTea = () => {
             align-items: flex-start;
             flex-shrink: 0;
             background-color: var(--dl-color-bg-white);
-            font-family: 'YourFontName', serif;
           }
           .portfolio-simple-footer-frame3350 {
             gap: 24px;
@@ -414,7 +433,7 @@ const BrewGoodTea = () => {
             align-self: stretch;
             font-style: Bold;
             text-align: left;
-            font-family: 'YourFontName', serif;
+            font-family: Playfair Display;
             font-weight: 700;
             line-height: 150%;
             font-stretch: normal;
@@ -427,7 +446,7 @@ const BrewGoodTea = () => {
             align-self: stretch;
             font-style: Regular;
             text-align: left;
-            font-family: 'YourFontName', serif;
+            font-family: Nunito;
             font-weight: 400;
             line-height: 150%;
             font-stretch: normal;
@@ -486,7 +505,7 @@ const BrewGoodTea = () => {
             align-self: stretch;
             font-style: Bold;
             text-align: left;
-            font-family: 'YourFontName', serif;
+            font-family: ChenYuluoyan;
             font-weight: 700;
             line-height: 150%;
             font-stretch: normal;
@@ -894,7 +913,7 @@ const BrewGoodTea = () => {
             font-weight: 700px;
             font-stretch: normal;
             text-align: center;
-            margin: 0 auto; /* This centers the text horizontally */
+            margin: 0 auto;
           }
           .body24px {
             font-size: 24px;
@@ -911,7 +930,200 @@ const BrewGoodTea = () => {
             font-stretch: normal;
           }
         `}
-      </style>
+      </style> */}
+      {/* <div
+        className="portfolio-simple-footer-container p-4 md:p-10"
+        style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
+      >
+        <Head>
+          <title>exported project</title>
+        </Head>
+        <div className="portfolio-simple-footer-portfolio-simple-footer">
+          <div className="portfolio-simple-footer-projects">
+            <div className="portfolio-simple-footer-frame3351 mb-8">
+              <span className="text-4xl font-bold mb-4">建議泡茶流程</span>
+              <img
+                src="/images/rectangle195351-pie-200h.png"
+                alt="Rectangle195351"
+                className="portfolio-simple-footer-rectangle19"
+              />
+            </div>
+            <div className="">
+              <div className="">
+                <div className="">
+                  <span className="">用水種類</span>
+                  <span className="text-lg">
+                    市售飲用水或飲水機煮至沸水(100度c)
+                  </span>
+                </div>
+                <div className=""></div>
+                <div className="">
+                  <span className="">茶水比例</span>
+                  <span className="">
+                    3g 茶葉(一包夾鏈袋) : 150 ml 沸水(100度c)
+                  </span>
+                </div>
+              </div>
+              <img
+                src="/images/pexelsellyfairytale38232071216-8suq-600h.png"
+                alt="pexelsellyfairytale38232071216"
+                className=""
+              />
+            </div>
+            <div className="">
+              <img
+                src="/images/rectangle72062-53xd-600h.png"
+                alt="Rectangle72062"
+                className=""
+              />
+              <div className="">
+                <div className="">
+                  <span className="">
+                    泡茶方式-溫潤泡
+                  </span>
+                  <span className="">
+                    置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶
+                  </span>
+                </div>
+                <div className=""></div>
+                <div className="">
+                  <span className="">沖泡時間</span>
+                  <span className="">
+                    沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)
+                    <br />
+                    靜置 3 分鐘，即可聞茶香
+                    <br />
+                    待茶湯靜置至六分鐘後，冷卻即可享用
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="">
+              <div className="">
+                <div className="">
+                  <span className="">泡茶方式-冷卻泡</span>
+                  <span className="">
+                    置入茶葉後，立即以冷卻熱水沖茶葉，香味溫和
+                  </span>
+                </div>
+                <div className=""></div>
+                <div className="">
+                  <span className="">沖泡時間</span>
+                  <span className="">
+                    沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)
+                    <br />
+                    靜置 3 分鐘，即可聞茶香
+                    <br />
+                    待茶湯靜置至六分鐘後，冷卻即可享用
+                  </span>
+                </div>
+              </div>
+              <img
+                src="/images/rectangle98161-bpkf-600h.png"
+                alt="Rectangle98161"
+                className=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      <div
+        className="portfolio-simple-footer-container p-4 md:p-10"
+        style={{ justifyContent: 'flex-start', overflowX: 'auto' }}
+      >
+        <Head>
+          <title>exported project</title>
+        </Head>
+        <div className="portfolio-simple-footer-portfolio-simple-footer">
+          <div className="portfolio-simple-footer-projects">
+            <div className="portfolio-simple-footer-frame3351 mb-8">
+              <span className="text-4xl font-bold mb-4">建議泡茶流程</span>
+              <img
+                src="/images/rectangle195351-pie-200h.png"
+                alt="Rectangle195351"
+                className="portfolio-simple-footer-rectangle19"
+              />
+            </div>
+            <div className="">
+              <div className="">
+                <div className="">
+                  <span className="">用水種類</span>
+                  <span className="text-lg">
+                    市售飲用水或飲水機煮至沸水(100度c)
+                  </span>
+                </div>
+                <div className="portfolio-simple-footer-frame3352"></div>
+                <div className="portfolio-simple-footer-frame33521 mb-4">
+                  <span className="">茶水比例</span>
+                  <span className="text-lg">
+                    3g 茶葉(一包夾鏈袋) : 150 ml 沸水(100度c)
+                  </span>
+                </div>
+              </div>
+              <img
+                src="/images/pexelsellyfairytale38232071216-8suq-600h.png"
+                alt="pexelsellyfairytale38232071216"
+                className="portfolio-simple-footer-pexelsellyfairytale38232071"
+              />
+            </div>
+            <div className="portfolio-simple-footer-project2">
+              <img
+                src="/images/rectangle72062-53xd-600h.png"
+                alt="Rectangle72062"
+                className="portfolio-simple-footer-rectangle7"
+              />
+              <div className="1">
+                <div className="portfolio-simple-footer-frame33501 mb-4">
+                  <span className="">泡茶方式-溫潤泡</span>
+                  <span className="text-lg">
+                    置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶
+                  </span>
+                </div>
+                <div className="portfolio-simple-footer-frame33522"></div>
+                <div className="portfolio-simple-footer-frame33523 mb-4">
+                  <span className="">沖泡時間</span>
+                  <span className="text-lg">
+                    沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)
+                    <br />
+                    靜置 3 分鐘，即可聞茶香
+                    <br />
+                    待茶湯靜置至六分鐘後，冷卻即可享用
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="portfolio-simple-footer-project3">
+              <div className="2">
+                <div className="portfolio-simple-footer-frame33502 mb-4">
+                  <span className="">泡茶方式-冷卻泡</span>
+                  <span className="text-lg">
+                    置入茶葉後，立即以冷卻熱水沖茶葉，香味溫和
+                  </span>
+                </div>
+                <div className="portfolio-simple-footer-frame33524"></div>
+                <div className="portfolio-simple-footer-frame33525 mb-4">
+                  <span className="">沖泡時間</span>
+                  <span className="text-lg">
+                    沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)
+                    <br />
+                    靜置 3 分鐘，即可聞茶香
+                    <br />
+                    待茶湯靜置至六分鐘後，冷卻即可享用
+                  </span>
+                </div>
+              </div>
+              <img
+                src="/images/rectangle98161-bpkf-600h.png"
+                alt="Rectangle98161"
+                className="portfolio-simple-footer-rectangle9"
+              />
+            </div>
+          </div>
+        </div>
+      </div> */}
     </>
   );
 };
