@@ -39,8 +39,8 @@ const ChaTea = () => {
 
   return (
     <div className="page-layout flex items-center justify-center ">
-      <div className=" max-w-xl w-full bg-white p-8 rounded shadow-lg mt-12">
-        <div className="text-4xl mt-6 text-center big_title">
+      <div className=" max-w-xl w-full bg-white p-8 rounded shadow-lg pt-0">
+        <div className="text-4xl text-center big_title">
           CHATEA<span className="tea">茶</span>葉知識問答
         </div>
         <div className="mb-4">

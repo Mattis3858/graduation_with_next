@@ -6,9 +6,9 @@ const ShoppingCart = () => {
   const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
     useCart();
   return (
-    <div className="">
-      <div className="container mx-auto">
-        <div className="font-bold text-4xl mt-6 text-center">購物車</div>
+    <div className="page-layout">
+      <div className="mx-auto">
+        <div className="text-4xl text-center big_title">購物車</div>
         <div className="rounded-lg shadow border-slate-300 border-solid border-2 mt-6">
           {/* <h1>Cart ({totalUniqueItems})</h1> */}
           {/* <ul>

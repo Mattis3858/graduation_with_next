@@ -1,7 +1,7 @@
 const Profile = ({ name, birthDate, age, email, gender, phoneNumber }) => {
   return (
-    <div className="bg-white p-6 pt-0 rounded-lg shadow-md">
-      <h1 className="font-bold text-4xl mt-6 text-center mb-4">個人檔案</h1>
+    <div className=" bg-white rounded-lg shadow-md px-6 pb-4">
+      <h1 className="font-bold text-4xl text-center mb-4">個人檔案</h1>
       <table className="w-full pt-4">
         <tbody>
           <tr className="border-b">

@@ -10,7 +10,9 @@
 }
 
 .page-layout {
-  margin-top: 4rem;
+  margin-top: 5rem;
+  padding: 40px;
+  padding-top: 52px;
 }
 
 @font-face {

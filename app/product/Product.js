@@ -57,15 +57,18 @@ const ProductData = [
 
 const Product = () => {
   return (
-    <div className="page-layout p-10">
-      <div className="grid-rows-1 mt-12 ml-10 mr-10 flex items-center justify-center main-vision">
-        <h4 className="text-4xl text-center title">
+    <div className="page-layout">
+      <div className="grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
+        <h4 className="text-4xl text-center big_title">
           木柵<span className="tea">茶</span>本舖
         </h4>
         <img src="/images/5730.png" className="decoration" />
-        <img src="/images/leaf.png" className="leaf" />
+        <img
+          src="/images/leaf.png"
+          style={{ width: '3%', marginTop: '-1rem' }}
+        />
       </div>
-      <div className="grid grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
+      <div className="grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
         <div className="content">
           <div className="text-xl fw-700 banner-text">找好茶推薦系統</div>
           <Link href="/goodtea">

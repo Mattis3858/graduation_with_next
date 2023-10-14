@@ -5,9 +5,9 @@ import './style.css';
 const ProcessIntro = (props) => {
   return (
     <>
-      <div className="page-layout pt-10">
-        <div className="ml-10 mr-10 mt-6 mb-0 flex items-center justify-center">
-          <h4 className="text-4xl mt-6 text-center big_title">
+      <div className="page-layout ">
+        <div className="flex items-center justify-center">
+          <h4 className="text-4xl text-center big_title">
             泡<span className="tea">茶</span>準備&建議流程
           </h4>
         </div>
@@ -17,9 +17,9 @@ const ProcessIntro = (props) => {
           style={{ width: '35px', marginTop: '-1rem' }}
         />
       </div>
-      <div className="w-full mt-6 px-4 lg:px-32">
+      <div className="w-full px-4 lg:px-32">
         <div className="flex flex-col lg:flex-row justify-between mb-20">
-          <div className="w-full lg:w-1/2 pt-8">
+          <div className="w-full lg:w-1/2">
             <div>
               <div className="text-5xl font-normal text-center">泡茶準備</div>
             </div>
