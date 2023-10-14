@@ -46,7 +46,7 @@ const BrewGoodTea = () => {
     formData.append('teaType', selectedTea);
     try {
       const response = await axios.post(
-        `https://b340-140-119-19-30.ngrok-free.app/upload`,
+        `${process.env.API_URI}/upload`,
         formData,
         {
           headers: {

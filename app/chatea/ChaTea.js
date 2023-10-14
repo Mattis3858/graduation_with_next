@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import axios from 'axios';
+require('dotenv').config();
 
 const ChaTea = () => {
   const [question, setQuestion] = useState('');
@@ -12,20 +13,20 @@ const ChaTea = () => {
     setLoading(true); // Set loading to true when making the request
     try {
       const response = await axios.post(
-        'https://b340-140-119-19-30.ngrok-free.app/TeaChatBOT/answer',
+        `${process.env.API_URI}/TeaChatBOT/answer`,
         {
           query: question,
         }
       );
       const data = response.data;
-      console.log(data['answer']);
-      console.log(
-        data.refs['第1份參考來源']['source'],
-        data.refs['第1份參考來源']['title'],
-        data.refs['第1份參考來源']['url']
-      );
-      console.log(data.refs['第2份參考來源']);
-      console.log(data.refs['第3份參考來源']);
+      // console.log(data['answer']);
+      // console.log(
+      //   data.refs['第1份參考來源']['source'],
+      //   data.refs['第1份參考來源']['title'],
+      //   data.refs['第1份參考來源']['url']
+      // );
+      // console.log(data.refs['第2份參考來源']);
+      // console.log(data.refs['第3份參考來源']);
 
       setAnswer(data);
     } catch (error) {
