@@ -108,7 +108,7 @@ const FindGoodTea = () => {
       const translatedData = translateAttributesToEnglish(data);
       console.log('Sending request with data:', JSON.stringify(translatedData));
       const response = await fetch(
-        `${process.env.API_URI}/SensoryAI/predict_Neural_network`,
+        `${process.env.API_URI}/SensoryAI/predict_Siamese_network`,
         {
           method: 'POST',
           headers: {
