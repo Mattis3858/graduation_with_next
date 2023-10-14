@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import Product from './product/Product';
 import React from 'react';
-import API_URI from './reference';
 // import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
   // }, []);
   return (
     <main className=" flex justify-evenly">
-      {console.log(API_URI)}
       <Product />
 
       {/* <SystemIntroduction
