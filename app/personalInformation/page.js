@@ -1,11 +1,14 @@
 'use client';
+
+import { useSession } from 'next-auth/react';
+
 import Profile from './Profile';
 import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 
 const supabase = createClient(
-  'https://zdxlzmekrckaffbzupmh.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkeGx6bWVrcmNrYWZmYnp1cG1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgzNzM1MTEsImV4cCI6MjAwMzk0OTUxMX0.YI14GVJfa6H0eXOUqCKXT8AHLxK4GcAb8UYPTH4QLKQ'
+  process.env.SUPABASE_URI,
+  process.env.SUPABASE_SECRET
 );
 export default function Home() {
   const [user, setUser] = useState([]);
