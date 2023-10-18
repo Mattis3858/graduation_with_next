@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
 import { supabase } from './supabase'; // Import your Supabase client
+
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
@@ -10,17 +11,17 @@ export const options: NextAuthOptions = {
     //   clientId: process.env.GITHUB_ID as string,
     //   clientSecret: process.env.GITHUB_SECRET as string,
     // }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID as string,
-      clientSecret: process.env.GOOGLE_SECRET as string,
-      authorization: {
-        params: {
-          prompt: 'consent',
-          access_type: 'offline',
-          response_type: 'code',
-        },
-      },
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_ID as string,
+    //   clientSecret: process.env.GOOGLE_SECRET as string,
+    //   authorization: {
+    //     params: {
+    //       prompt: 'consent',
+    //       access_type: 'offline',
+    //       response_type: 'code',
+    //     },
+    //   },
+    // }),
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -78,4 +79,7 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
+  // pages: {
+  //   signIn: '/userSignin',
+  // },
 };
