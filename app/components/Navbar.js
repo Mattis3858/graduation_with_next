@@ -1,45 +1,44 @@
-import { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './navbar.css';
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
+import { Dialog, Popover } from '@headlessui/react';
 import {
   Bars3Icon,
   XMarkIcon,
   ShoppingCartIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
-import { BiSearchAlt } from 'react-icons/bi';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
-const products = [
-  {
-    name: '找好茶茶葉推薦',
-    href: '/goodtea',
-    icon: RiSeedlingLine,
-  },
-  {
-    name: '泡好茶',
-    href: '/brewgoodtea',
-    icon: SiOverleaf,
-  },
-];
+// const products = [
+//   {
+//     name: '找好茶茶葉推薦',
+//     href: '/goodtea',
+//     icon: RiSeedlingLine,
+//   },
+//   {
+//     name: '泡好茶',
+//     href: '/brewgoodtea',
+//     icon: SiOverleaf,
+//   },
+// ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ');
+// }
 
 export default function Navbar() {
+  const currentRoute = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [pathname, setPathname] = useState('/');
+  // const [activePath, setActivePath] = useState('/');
 
-  const [activePath, setActivePath] = useState('/');
-
-  useEffect(() => {
-    setActivePath(window.location.pathname);
-  }, []);
+  // useEffect(() => {
+  //   setActivePath(window.location.pathname);
+  // }, [pathname]);
 
   return (
     // <header className="bg-gradient-to-t from-gray-100 to-gray-300">
@@ -69,7 +68,7 @@ export default function Navbar() {
           <Link
             href="/"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/' ? 'active' : ''
+              currentRoute === '/' ? 'active' : ''
             }`}
           >
             木柵茶本舖
@@ -123,32 +122,36 @@ export default function Navbar() {
           <Link
             href="/goodtea"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/goodtea' ? 'active' : ''
+              currentRoute === '/goodtea' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/goodtea')}
           >
             找好茶
           </Link>
           <Link
             href="/brewgoodtea"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/brewgoodtea' ? 'active' : ''
+              currentRoute === '/brewgoodtea' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/brewgoodtea')}
           >
             泡好茶
           </Link>
           <Link
             href="/chatea"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/processIntro' ? 'active' : ''
+              currentRoute === '/chatea' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/chatea')}
           >
             CHATEA
           </Link>
           <Link
             href="/reservation"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/reservation' ? 'active' : ''
+              currentRoute === '/reservation' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/reservation')}
           >
             品茶預約
           </Link>
@@ -162,8 +165,9 @@ export default function Navbar() {
           <Link
             href="/processIntro"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/processIntro' ? 'active' : ''
+              currentRoute === '/processIntro' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/processIntro')}
           >
             泡茶流程
           </Link>
