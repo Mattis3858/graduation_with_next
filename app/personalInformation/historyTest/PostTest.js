@@ -122,6 +122,7 @@ const PostTest = () => {
                     setPostPageState(true);
                     setSelectedRecord(record);
                   }}
+                  className=" hover:bg-lime-200"
                 >
                   <td className="py-2 px-4 border">{record.created_time}</td>
                   <td className="py-2 px-4 border">
