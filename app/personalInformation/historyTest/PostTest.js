@@ -99,14 +99,14 @@ const PostTest = () => {
   return (
     <div className="w-full">
       <div>
-        <div className="w-4/5 flex justify-between">
+        <div className="w-4/5 flex justify-between mx-auto">
           <div>後測</div>
           {postPageState && (
             <button onClick={() => setPostPageState(false)}>回上頁</button>
           )}
         </div>
         {!postPageState && (
-          <table className="w-4/5 border-collapse border">
+          <table className="w-4/5 border-collapse border mx-auto">
             <thead>
               <tr>
                 <th className="py-2 px-4 border">時間</th>

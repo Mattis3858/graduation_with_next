@@ -96,14 +96,14 @@ const PreviousTest = () => {
   // ];
   return (
     <div className="w-full">
-      <div className="w-4/5 flex justify-between">
+      <div className="w-4/5 flex justify-between mx-auto">
         <div>前測</div>
         {pageState && (
           <button onClick={() => setPageState(false)}>回上頁</button>
         )}
       </div>
       {!pageState && (
-        <table className="w-4/5 border-collapse border">
+        <table className="w-4/5 border-collapse border mx-auto">
           <thead>
             <tr>
               <th className="py-2 px-4 border">時間</th>

@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
       <div className="w-full text-center items-center justify-center">
-        <div className="flex items-center justify-center align-bottom">
+        <div className="flex items-center justify-center align-bottom mx-auto">
           <h1 className="text-4xl mt-6 text-center big_title">
             過去前後測表格
           </h1>
