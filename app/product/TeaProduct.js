@@ -43,7 +43,7 @@ function TeaProduct({
         </div>
         <div className="mt-2 mb-3" style={{ fontSize: '14px' }}>
           <button onClick={toggleDescription} className="description">
-            詳細說明
+            雷達圖
             <FontAwesomeIcon
               icon={faCaretDown}
               className={`ml-1 ${

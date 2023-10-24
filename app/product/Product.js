@@ -6,15 +6,45 @@ import Link from 'next/link';
 import './product.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Radar } from 'react-chartjs-2';
 
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
+
+export const data = {
+  labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
+  datasets: [
+    {
+      label: '# of Votes',
+      data: [2, 9, 3, 5, 2, 3],
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1,
+    },
+  ],
+};
 const ProductData = [
   {
     id: 1,
     src: 'images/tea-1.jpg',
     shop: '張協興',
     name: '炭焙鐵觀音',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus quam sem, vel euismod metus elementum quis. Proin libero purus, feugiat non ligula et, mattis congue ante. Proin posuere lacinia vulputate. Sed efficitur pretium tincidunt. Morbi aliquam nisi ex, ac consectetur ipsum auctor eget. ',
+    description: <Radar data={data} />,
     price: 555,
   },
   {
@@ -22,8 +52,7 @@ const ProductData = [
     src: 'images/tea-1.jpg',
     shop: '威叔',
     name: '鐵觀音紅茶',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus quam sem, vel euismod metus elementum quis. Proin libero purus, feugiat non ligula et, mattis congue ante. Proin posuere lacinia vulputate. Sed efficitur pretium tincidunt. Morbi aliquam nisi ex, ac consectetur ipsum auctor eget. ',
+    description: <Radar data={data} />,
     price: 279,
   },
   {
@@ -31,8 +60,7 @@ const ProductData = [
     src: 'images/tea-1.jpg',
     shop: '寒舍',
     name: '文山包種茶',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus quam sem, vel euismod metus elementum quis. Proin libero purus, feugiat non ligula et, mattis congue ante. Proin posuere lacinia vulputate. Sed efficitur pretium tincidunt. Morbi aliquam nisi ex, ac consectetur ipsum auctor eget. ',
+    description: <Radar data={data} />,
     price: 333,
   },
   {
@@ -40,8 +68,7 @@ const ProductData = [
     src: 'images/tea-1.jpg',
     shop: '威叔',
     name: '文山包種茶',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus quam sem, vel euismod metus elementum quis. Proin libero purus, feugiat non ligula et, mattis congue ante. Proin posuere lacinia vulputate. Sed efficitur pretium tincidunt. Morbi aliquam nisi ex, ac consectetur ipsum auctor eget. ',
+    description: <Radar data={data} />,
     price: 590,
   },
   {
@@ -49,8 +76,7 @@ const ProductData = [
     src: 'images/tea-1.jpg',
     shop: '張協興',
     name: '文山包種茶',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus quam sem, vel euismod metus elementum quis. Proin libero purus, feugiat non ligula et, mattis congue ante. Proin posuere lacinia vulputate. Sed efficitur pretium tincidunt. Morbi aliquam nisi ex, ac consectetur ipsum auctor eget. ',
+    description: <Radar data={data} />,
     price: 555,
   },
 ];
