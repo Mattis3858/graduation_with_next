@@ -9,14 +9,14 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { CartProvider, useCart } from 'react-use-cart';
 import Link from 'next/link';
 
-function TeaProduct({
+const TeaProduct = ({
   product,
   src = '',
   shop = '',
   name = '',
   description = '',
   price = 0,
-}) {
+}) => {
   const { addItem, items } = useCart();
 
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
@@ -74,6 +74,6 @@ function TeaProduct({
       </div>
     </div>
   );
-}
+};
 
 export default TeaProduct;

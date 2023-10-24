@@ -14,6 +14,10 @@
   padding: 40px;
   padding-top: 52px;
 }
+.page-layout_personal {
+  margin-top: 4rem;
+  padding: 40px 40px 40px 40px;
+}
 
 @font-face {
   font-family: 'YourFontName'; /* 可自定义字体名称 */

@@ -44,7 +44,7 @@ export default function Home() {
 
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
-      <h1 className="text-4xl font-bold text-center mt-6 mb-4">預約紀錄</h1>
+      <h1 className="text-4xl text-center mt-6 mb-4 big_title">預約紀錄</h1>
       <table className="min-w-full bg-white border rounded-lg overflow-hidden mt-6">
         <thead className="bg-gray-200">
           <tr>

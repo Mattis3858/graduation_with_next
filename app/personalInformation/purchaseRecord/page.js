@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
-      <h1 className="font-bold text-4xl mt-6 text-center">購買紀錄</h1>
+      <h1 className=" text-4xl mt-6 text-center big_title">購買紀錄</h1>
       <table className="min-w-full border rounded-lg overflow-hidden mt-6">
         <thead className="bg-gray-200">
           <tr>
