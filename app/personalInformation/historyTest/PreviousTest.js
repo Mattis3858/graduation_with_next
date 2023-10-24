@@ -7,10 +7,29 @@ const supabase = createClient(
   process.env.SUPABASE_URI,
   process.env.SUPABASE_SECRET
 );
-
+const flavorTable = {
+  b_baked: '焙烤香 - 烘焙味',
+  b_smoky: '焙烤香 - 煙燻味',
+  f_dried_fruit: '果香 - 乾果味',
+  f_heavy: '花香 - 清香',
+  f_light: '花香 - 濃香',
+  s_sweet: '甜香 - 糖香味',
+  s_honey: '甜香 - 蜜香味',
+  g_grass: '青草香 - 草香味',
+  n_nutty: '果仁香 - 堅果味',
+  w_woody: '木質香',
+  sour: '酸味',
+  sweet: '甜味',
+  sleek: '圓滑感',
+  thick: '厚重感',
+  glycol: '甘醇度',
+  after_rhyme: '喉後韻',
+  aftertaste: '回香感',
+};
 const PreviousTest = () => {
   const [pageState, setPageState] = useState(false);
   const [previousTestRecord, setPreviousTestRecord] = useState([]);
+  const [selectedRecord, setSelectedRecord] = useState(null);
   const [product, setProduct] = useState([]);
   async function getProduct() {
     const { data } = await supabase.from('product').select();
@@ -93,7 +112,13 @@ const PreviousTest = () => {
           </thead>
           <tbody>
             {previousTestRecord.map((record, index) => (
-              <tr key={index} onClick={() => setPageState(true)}>
+              <tr
+                key={index}
+                onClick={() => {
+                  setPageState(true);
+                  setSelectedRecord(record);
+                }}
+              >
                 <td className="py-2 px-4 border">{record.created_time}</td>
                 <td className="py-2 px-4 border">
                   {product.length !== 0 &&
@@ -105,8 +130,9 @@ const PreviousTest = () => {
           </tbody>
         </table>
       )}
-      {/* {pageState && (
+      {pageState && selectedRecord && (
         <table className="w-4/5 border-collapse border">
+          {console.log(selectedRecord)}
           <thead>
             <tr>
               <th className="py-2 px-4 border">風味描述</th>
@@ -114,19 +140,15 @@ const PreviousTest = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(flavorData[0].sheet).map((key) => {
-              const value = flavorData[0].sheet[key];
-              // console.log(`Key: ${key}, Value: ${value}`);
-              return (
-                <tr key={key}>
-                  <td className="py-2 px-4 border">{key}</td>
-                  <td className="py-2 px-4 border">{value}</td>
-                </tr>
-              );
-            })}
+            {Object.keys(flavorTable).map((key) => (
+              <tr key={key}>
+                <td className="py-2 px-4 border">{flavorTable[key]}</td>
+                <td className="py-2 px-4 border">{selectedRecord[key]}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
-      )} */}
+      )}
     </div>
   );
 };
