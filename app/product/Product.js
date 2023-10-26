@@ -61,7 +61,7 @@ const 威叔鐵觀音紅茶 = {
   datasets: [
     {
       label: '風味評分',
-      data: [5, 4, 3, 2, 1, 3, 0, 3],
+      data: [3, 2, 1, 2, 1, 4, 0, 2],
       backgroundColor: 'rgba(50, 157, 156, 0.2)',
       borderColor: 'rgba(50, 157, 156, 1)',
       borderWidth: 1,
@@ -89,7 +89,7 @@ const 寒舍文山包種茶 = {
     },
   ],
 };
-const 威叔文山包種茶 = {
+const 威叔鐵觀音 = {
   labels: [
     '焙烤香',
     '果香',
@@ -103,7 +103,7 @@ const 威叔文山包種茶 = {
   datasets: [
     {
       label: '風味評分',
-      data: [5, 3, 3, 4, 3, 2, 2, 3],
+      data: [4, 2, 1, 2, 3, 2, 0, 1],
       backgroundColor: 'rgba(50, 157, 156, 0.2)',
       borderColor: 'rgba(50, 157, 156, 1)',
       borderWidth: 1,
@@ -124,7 +124,28 @@ const 張協興文山包種茶 = {
   datasets: [
     {
       label: '風味評分',
-      data: [5, 3, 3, 4, 3, 2, 2, 3],
+      data: [3, 4, 2, 1, 5, 2, 0, 1],
+      backgroundColor: 'rgba(50, 157, 156, 0.2)',
+      borderColor: 'rgba(50, 157, 156, 1)',
+      borderWidth: 1,
+    },
+  ],
+};
+const 寒舍鐵觀音紅茶 = {
+  labels: [
+    '焙烤香',
+    '果香',
+    '花香',
+    '甜香',
+    '草香',
+    '甜香',
+    '果仁香',
+    '木質香',
+  ],
+  datasets: [
+    {
+      label: '風味評分',
+      data: [2, 3, 4, 4, 0, 1, 1, 3],
       backgroundColor: 'rgba(50, 157, 156, 0.2)',
       borderColor: 'rgba(50, 157, 156, 1)',
       borderWidth: 1,
@@ -135,7 +156,7 @@ const ProductData = [
   {
     id: 1,
     src: 'images/張協興碳焙鐵觀音.png',
-    shop: '張協興',
+    shop: '張協興茶行',
     name: '碳焙鐵觀音',
     description: <Radar data={張協興鐵觀音} />,
     price: 555,
@@ -143,7 +164,7 @@ const ProductData = [
   {
     id: 2,
     src: 'images/威叔鐵觀音紅茶.png',
-    shop: '威叔',
+    shop: '威叔茶莊',
     name: '鐵觀音紅茶',
     description: <Radar data={威叔鐵觀音紅茶} />,
     price: 279,
@@ -151,7 +172,7 @@ const ProductData = [
   {
     id: 3,
     src: 'images/寒舍包種茶.png',
-    shop: '寒舍',
+    shop: '寒舍茶坊',
     name: '包種茶',
     description: <Radar data={寒舍文山包種茶} />,
     price: 333,
@@ -159,15 +180,15 @@ const ProductData = [
   {
     id: 4,
     src: 'images/威叔鐵觀音.png',
-    shop: '威叔',
+    shop: '威叔茶莊',
     name: '鐵觀音',
-    description: <Radar data={威叔文山包種茶} />,
+    description: <Radar data={威叔鐵觀音} />,
     price: 590,
   },
   {
     id: 5,
     src: 'images/張協興包種茶.png',
-    shop: '張協興',
+    shop: '張協興茶行',
     name: '文山包種茶',
     description: <Radar data={張協興文山包種茶} />,
     price: 555,
@@ -175,9 +196,9 @@ const ProductData = [
   {
     id: 6,
     src: 'images/寒舍鐵觀音紅茶.png',
-    shop: '寒舍',
+    shop: '寒舍茶坊',
     name: '鐵觀音紅茶',
-    description: <Radar data={張協興文山包種茶} />,
+    description: <Radar data={寒舍鐵觀音紅茶} />,
     price: 555,
   },
 ];
