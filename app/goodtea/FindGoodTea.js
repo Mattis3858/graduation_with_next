@@ -235,8 +235,8 @@ const FindGoodTea = () => {
   };
 
   return (
-    <div className="page-layout">
-      <div className="grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
+    <div className="page-layout_goodtea">
+      <div className="grid-rows-1 flex items-center justify-center main-vision">
         <h4 className="text-4xl text-center big_title">
           找好<span className="tea">茶</span>系統
         </h4>
