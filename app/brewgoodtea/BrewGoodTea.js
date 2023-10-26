@@ -97,7 +97,7 @@ const BrewGoodTea = () => {
       <div className="page-layout">
         <div className="grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
           <h4 className="text-4xl text-center big_title">
-            <span className="tea">茶</span>湯濃淡評分
+            <span className="tea">茶</span>湯濃淡辨識
           </h4>
           <img
             src="/images/leaf.png"
