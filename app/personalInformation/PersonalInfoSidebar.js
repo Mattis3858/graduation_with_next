@@ -16,12 +16,14 @@ const PersonalInfoSidebar = () => {
     process.env.SUPABASE_SECRET
   );
   async function findUserRole() {
-    const { data: user, error } = await supabase
-      .from('user')
-      .select('*')
-      .eq('user_name', session.user.name);
-    console.log(user[0].role_id);
-    setRoleID(user[0].role_id);
+    if (session?.user?.name) {
+      const { data: user, error } = await supabase
+        .from('user')
+        .select('*')
+        .eq('user_name', session.user.name);
+      console.log(user[0].role_id);
+      setRoleID(user[0].role_id);
+    }
   }
   useEffect(() => {
     findUserRole();
