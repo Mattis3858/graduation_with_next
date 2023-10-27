@@ -65,12 +65,14 @@ export const options: NextAuthOptions = {
           if (user.user_password === credentials.password) {
             const userObject = {
               id: user.id,
+              role: user.role_id,
               name: user.user_name, // 根據您的 Supabase 模式調整字段名稱
             };
 
             // 將已認證用戶的信息保存在 session 中
             const sessionObject = { ...userObject, credentials: credentials };
             return sessionObject;
+            // return user;
           }
         }
 

@@ -13,6 +13,7 @@ import { SiOverleaf } from 'react-icons/si';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+// import { SessionProvider } from 'next-auth/react';
 // const products = [
 //   {
 //     name: '找好茶茶葉推薦',
@@ -39,10 +40,13 @@ export default function Navbar() {
   // useEffect(() => {
   //   setActivePath(window.location.pathname);
   // }, [pathname]);
+  // const { data: session } = useSession();
+  // const user = useUser();
 
   return (
     // <header className="bg-gradient-to-t from-gray-100 to-gray-300">
     <header className="">
+      {/* {console.log(session.user.name)} */}
       <nav
         className="mx-auto flex items-center justify-between pt-3 pb-3 pl-6 pr-6 lg:px-8 navbar"
         aria-label="Global"
