@@ -27,7 +27,7 @@ const PersonalInfoSidebar = () => {
   }
   useEffect(() => {
     findUserRole();
-  }, []);
+  }, [session]);
   return (
     <div className=" w-60 rounded-l-lg rounded-r-lg overflow-hidden">
       <Sidebar>
@@ -40,6 +40,7 @@ const PersonalInfoSidebar = () => {
               個人檔案
             </MenuItem>
           </Link>
+          {console.log(roleID)}
           {roleID === 1 && (
             <Link href="/personalInformation/dataAnalysis">
               <MenuItem
@@ -50,14 +51,16 @@ const PersonalInfoSidebar = () => {
               </MenuItem>
             </Link>
           )}
-          <Link href="/personalInformation/historyTest">
-            <MenuItem
-              className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-              activeclassname="bg-gray-400"
-            >
-              前後測表格
-            </MenuItem>
-          </Link>
+          {roleID === 2 && (
+            <Link href="/personalInformation/historyTest">
+              <MenuItem
+                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
+                activeclassname="bg-gray-400"
+              >
+                前後測表格
+              </MenuItem>
+            </Link>
+          )}
           <Link href="/personalInformation/reservationRecord">
             <MenuItem
               className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
