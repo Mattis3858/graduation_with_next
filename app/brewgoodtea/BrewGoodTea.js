@@ -248,7 +248,7 @@ const BrewGoodTea = () => {
                 <div className="text-5xl font-bold mb-4">泡茶方式</div>
                 <div className="text-xl text-gray-500 mb-4">
                   {/* 溫潤泡:置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶 */}
-                  將茶包放入茶杯後沖入熱水， 3分鐘後可即取出茶包，靜置 3分鐘即可聞茶香，
+                  將茶包放入茶杯後沖入熱水， 3分鐘後即可取出茶包，靜置 3分鐘即可聞茶香，
                   待茶湯靜置至6分鐘後，冷卻即可享用
                 </div>
                 {/* <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
