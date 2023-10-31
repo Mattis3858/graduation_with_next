@@ -116,12 +116,12 @@ const BrewGoodTea = () => {
                 className="w-full p-2 border rounded"
               >
                 <option value="">請選擇茶的種類</option>
-                <option value="張協興鐵觀音">張協興鐵觀音</option>
-                <option value="威叔鐵觀音紅茶">威叔鐵觀音紅茶</option>
-                <option value="威叔鐵觀音">威叔鐵觀音</option>
-                <option value="寒舍包種">寒舍包種</option>
-                <option value="寒舍鐵觀音紅茶">寒舍鐵觀音紅茶</option>
-                <option value="張協興包種">張協興包種</option>
+                <option value="張協興鐵觀音">張協興茶行鐵觀音</option>
+                <option value="威叔鐵觀音紅茶">威叔茶莊鐵觀音紅茶</option>
+                <option value="威叔鐵觀音">威叔茶莊鐵觀音</option>
+                <option value="寒舍包種">寒舍茶坊包種</option>
+                <option value="寒舍鐵觀音紅茶">寒舍茶坊鐵觀音紅茶</option>
+                <option value="張協興包種">張協興茶行包種</option>
               </select>
             </div>
             <div className="mb-4">

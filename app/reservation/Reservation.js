@@ -64,12 +64,12 @@ const Reservation = () => {
           description="1954年由木柵茶區最著名的老茶人張丁頂創立的張協興茶行，傳承著六十幾年的炭焙方式。"
         />
         <Teashop
-          teaShopName="威叔茶行"
+          teaShopName="威叔茶莊"
           src="images/威叔茶莊.jpg"
           description="有機茶園座落於貓空纜車貓空站正前方山坡上，距離貓空站僅150公尺，步行3~5分鐘即可到達。"
         />
         <Teashop
-          teaShopName="寒舍茶莊"
+          teaShopName="寒舍茶坊"
           src="images/寒舍茶莊.jpg"
           description="寒舍茶坊「寒舍」成立於民國80年，因當時的建築為茅草屋故而取名「寒舍」。"
         />
