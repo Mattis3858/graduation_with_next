@@ -181,8 +181,8 @@ const BrewGoodTea = () => {
                 <div className="pt-4">
                   <div>2. 待測茶葉:</div>
                   <div>
-                    張協興鐵觀音、張協興包種茶、威叔鐵觀音、
-                    威叔鐵觀音紅茶、寒舍包種茶、寒舍鐵觀音紅茶
+                    張協興茶行鐵觀音、張協興茶行包種茶、威叔茶莊鐵觀音、
+                    威叔茶莊鐵觀音紅茶、寒舍茶坊包種茶、寒舍茶坊鐵觀音紅茶
                   </div>
                 </div>
               </div>
@@ -258,9 +258,9 @@ const BrewGoodTea = () => {
             </div>
             <div className="bg-white rounded-3xl shadow-md p-4 mb-4 flex flex-col md:flex-row items-center">
               <div className="w-full md:w-1/2 p-6">
-                <div className="text-5xl font-bold mb-4">示範影片</div>
+                <div className="text-5xl font-bold mb-4">拍攝注意事項</div>
                 <div className="text-xl text-gray-500 mb-4">
-                  此影片為參考用，您仍然可以選擇最適合您的沖泡方式
+                  請盡量在充足光源下從正上方拍攝茶包，並將茶湯置於鏡頭中間。
                 </div>
               </div>
               <div className="w-full md:w-1/2">
