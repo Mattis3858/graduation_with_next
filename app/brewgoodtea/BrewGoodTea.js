@@ -245,22 +245,24 @@ const BrewGoodTea = () => {
                 />
               </div>
               <div className="w-full md:w-1/2">
-                <div className="text-5xl font-bold mb-4">泡茶方式-溫潤泡</div>
+                <div className="text-5xl font-bold mb-4">泡茶方式</div>
                 <div className="text-xl text-gray-500 mb-4">
-                  置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶
+                  {/* 溫潤泡:置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶 */}
+                  將茶包放入茶杯後沖入熱水， 3分鐘後可即取出茶包，靜置 3分鐘即可聞茶香，
+                  待茶湯靜置至6分鐘後，冷卻即可享用
                 </div>
-                <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
+                {/* <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
                 <div className="text-xl text-gray-500">
                   沖泡 3 分鐘後可即取出茶葉(瀝出茶湯) 靜置 3 分鐘，即可聞茶香
                   待茶湯靜置至六分鐘後，冷卻即可享用
-                </div>
-              </div>
+                </div>*/}
+              </div> 
             </div>
             <div className="bg-white rounded-3xl shadow-md p-4 mb-4 flex flex-col md:flex-row items-center">
               <div className="w-full md:w-1/2 p-6">
-                <div className="text-5xl font-bold mb-4">示範影片</div>
+                <div className="text-5xl font-bold mb-4">拍攝注意事項</div>
                 <div className="text-xl text-gray-500 mb-4">
-                  此影片為參考用，您仍然可以選擇最適合您的沖泡方式
+                請盡量在充足光源下從正上方拍攝茶包，並將茶湯置於鏡頭中間。
                 </div>
               </div>
               <div className="w-full md:w-1/2">
