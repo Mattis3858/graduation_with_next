@@ -93,67 +93,8 @@ const BrewGoodTea = () => {
   }
 
   return (
-    <>
-      <div className="page-layout">
-        <div className="grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
-          <h4 className="text-4xl text-center big_title">
-            <span className="tea">茶</span>湯濃淡辨識
-          </h4>
-          <img
-            src="/images/leaf.png"
-            style={{ width: '3%', marginTop: '-1rem' }}
-          />
-        </div>
-        <div className="grid grid-rows-1 mx-4 md:mx-10 my-6 flex items-center justify-center">
-          <div className="content bg-white p-4 md:p-6 lg:p-8 rounded-lg shadow-md w-full md:w-auto">
-            <div className="mb-4">
-              <h2 className="mb-2 text-lg md:text-xl font-semibold">
-                茶種選擇
-              </h2>
-              <select
-                value={selectedTea}
-                onChange={handleTeaChange}
-                className="w-full p-2 border rounded"
-              >
-                <option value="">請選擇茶的種類</option>
-                <option value="張協興鐵觀音">張協興茶行鐵觀音</option>
-                <option value="威叔鐵觀音紅茶">威叔茶莊鐵觀音紅茶</option>
-                <option value="威叔鐵觀音">威叔茶莊鐵觀音</option>
-                <option value="寒舍包種">寒舍茶坊包種</option>
-                <option value="寒舍鐵觀音紅茶">寒舍茶坊鐵觀音紅茶</option>
-                <option value="張協興包種">張協興茶行包種</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <h2 className="mb-2 text-lg md:text-xl font-semibold">
-                圖片上傳
-              </h2>
-              <input
-                id="imgTea"
-                type="file"
-                onChange={handleChange}
-                accept="image/gif, image/jpeg, image/png"
-                className="w-full p-2 border rounded"
-              />
-
-              {isLoading ? (
-                <div className="text-blue-500">Loading...</div>
-              ) : message ? (
-                <div className="message">{message}</div>
-              ) : (
-                <></>
-              )}
-              {file && (
-                <img
-                  src={URL.createObjectURL(file)}
-                  alt="Selected"
-                  className="mt-2 rounded-lg"
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+    
+      
       <>
         <div className="page-layout ">
           <div className="flex items-center justify-center">
@@ -275,6 +216,67 @@ const BrewGoodTea = () => {
             </div>
           </div>
         </div>
+        <>
+        <div className="page-layout">
+        <div className="grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
+          <h4 className="text-4xl text-center big_title">
+            <span className="tea">茶</span>湯濃淡辨識
+          </h4>
+          <img
+            src="/images/leaf.png"
+            style={{ width: '3%', marginTop: '-1rem' }}
+          />
+        </div>
+        <div className="grid grid-rows-1 mx-4 md:mx-10 my-6 flex items-center justify-center">
+          <div className="content bg-white p-4 md:p-6 lg:p-8 rounded-lg shadow-md w-full md:w-auto">
+            <div className="mb-4">
+              <h2 className="mb-2 text-lg md:text-xl font-semibold">
+                茶種選擇
+              </h2>
+              <select
+                value={selectedTea}
+                onChange={handleTeaChange}
+                className="w-full p-2 border rounded"
+              >
+                <option value="">請選擇茶的種類</option>
+                <option value="張協興鐵觀音">張協興茶行鐵觀音</option>
+                <option value="威叔鐵觀音紅茶">威叔茶莊鐵觀音紅茶</option>
+                <option value="威叔鐵觀音">威叔茶莊鐵觀音</option>
+                <option value="寒舍包種">寒舍茶坊包種</option>
+                <option value="寒舍鐵觀音紅茶">寒舍茶坊鐵觀音紅茶</option>
+                <option value="張協興包種">張協興茶行包種</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <h2 className="mb-2 text-lg md:text-xl font-semibold">
+                圖片上傳
+              </h2>
+              <input
+                id="imgTea"
+                type="file"
+                onChange={handleChange}
+                accept="image/gif, image/jpeg, image/png"
+                className="w-full p-2 border rounded"
+              />
+
+              {isLoading ? (
+                <div className="text-blue-500">Loading...</div>
+              ) : message ? (
+                <div className="message">{message}</div>
+              ) : (
+                <></>
+              )}
+              {file && (
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="Selected"
+                  className="mt-2 rounded-lg"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>  
       </>
     </>
   );
