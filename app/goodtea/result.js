@@ -12,7 +12,7 @@ export default function Result({ result }){
         console.log('Setting selectedPrediction...');
         const { prediction_id: resultPredictionId, prediction_name } = result;
         prediction_id = resultPredictionId;
-        if (prediction_id === 0) { //張協興鐵觀音
+        if (prediction_id === 1) { //張協興鐵觀音
             predictionData[prediction_id] = {
               prediction_name,
               pic_url: '/images/張協興鐵觀音.jpg', 
@@ -20,7 +20,7 @@ export default function Result({ result }){
               shop_name: '張協興茶行', 
               shop_desc:'1954年由木柵茶區最著名的老茶人張丁頂創立的張協興茶行，傳承著六十幾年的炭焙方式，烘焙技術「忠於原味」而樹立了良好的口碑。茶行隨世代轉型，致力展現台灣精緻茶業的文化深度，是木柵鐵觀音的輝煌歷史代表。',
             };
-          } else if (prediction_id === 1) { //張協興包種茶
+          } else if (prediction_id === 2) { //張協興包種茶
             predictionData[prediction_id] = {
               prediction_name,
               pic_url: '/images/張協興文山包種茶.jpg', 
@@ -28,7 +28,7 @@ export default function Result({ result }){
               shop_name: '張協興茶行', 
               shop_desc:'1954年由木柵茶區最著名的老茶人張丁頂創立的張協興茶行，傳承著六十幾年的炭焙方式，烘焙技術「忠於原味」而樹立了良好的口碑。茶行隨世代轉型，致力展現台灣精緻茶業的文化深度，是木柵鐵觀音的輝煌歷史代表。',
             };
-          }else if (prediction_id === 2) { //威叔鐵觀音
+          }else if (prediction_id === 3) { //威叔鐵觀音
             predictionData[prediction_id] = {
               prediction_name,
               pic_url: '/images/威叔鐵觀音.jpg', 
@@ -36,7 +36,7 @@ export default function Result({ result }){
               shop_name: '威叔茶莊', 
               shop_desc: '我們的有機茶園座落於貓空纜車貓空站正前方山上，距離貓空站僅150公尺，步行3~5分鐘即可到達。因為位於道路上方，不但無車煙危害，更可俯瞰大台北盆地美景。更重要的，這是一座隨大自然運作的有機茶園！',
             };
-          }else if (prediction_id === 3) { //威叔鐵觀音紅茶
+          }else if (prediction_id === 4) { //威叔鐵觀音紅茶
             predictionData[prediction_id] = {
               prediction_name,
               pic_url: '/images/威叔鐵觀音紅茶.jpg', 
@@ -44,7 +44,7 @@ export default function Result({ result }){
               shop_name: '威叔茶莊', 
               shop_desc: '我們的有機茶園座落於貓空纜車貓空站正前方山上，距離貓空站僅150公尺，步行3~5分鐘即可到達。因為位於道路上方，不但無車煙危害，更可俯瞰大台北盆地美景。更重要的，這是一座隨大自然運作的有機茶園！',
             };
-          }else if (prediction_id === 4) { //寒舍包種茶
+          }else if (prediction_id === 5) { //寒舍包種茶
             predictionData[prediction_id] = {
               prediction_name,
               pic_url: '/images/寒舍文山包種茶.jpg', 
@@ -52,7 +52,7 @@ export default function Result({ result }){
               shop_name: '寒舍茶坊', 
               shop_desc: '貓空第一家有機茶店，重視生態，堅持無毒耕作，留給後人一方淨土',
             };
-          }else if (prediction_id === 5) { //寒舍鐵觀音紅茶
+          }else if (prediction_id === 6) { //寒舍鐵觀音紅茶
             predictionData[prediction_id] = {
               prediction_name,
               pic_url: '/images/寒舍鐵觀音紅茶.jpg', 
