@@ -20,7 +20,7 @@ const style = {
   p: 4,
 };
 
-const Teashop = ({ teaShopName, description }) => {
+const Teashop = ({ teaShopName, src, description }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -44,7 +44,7 @@ const Teashop = ({ teaShopName, description }) => {
     <div>
       <div className="border-2 border-lime-600 rounded-2xl bg-gray-200 font-sans card p-4">
         <div className="card-pic">
-          <img src="images/tea-1.jpg" alt="Tea" className="pic" />
+          <img src={src} alt="Tea" className="pic" />
         </div>
         <div className="card-content">
           <div>

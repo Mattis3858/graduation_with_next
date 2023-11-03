@@ -2,30 +2,50 @@
 import React from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 
 const supabase = createClient(
-  'https://zdxlzmekrckaffbzupmh.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkeGx6bWVrcmNrYWZmYnp1cG1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgzNzM1MTEsImV4cCI6MjAwMzk0OTUxMX0.YI14GVJfa6H0eXOUqCKXT8AHLxK4GcAb8UYPTH4QLKQ'
+  process.env.SUPABASE_URI,
+  process.env.SUPABASE_SECRET
 );
 
 export default function Home() {
-  const [shop, setShop] = useState([]);
-  const [reservationRecord, setReservationRecord] = useState([]);
+  const { data: session, status } = useSession();
 
-  async function getShop(id) {
-    const { data } = await supabase.from('shop').select();
+  const [shop, setShop] = useState([]);
+  const [userID, setUserID] = useState(0);
+  const [reservationRecord, setReservationRecord] = useState([]);
+  async function getUserID() {
+    if (session?.user?.name) {
+      const { data: user, error } = await supabase
+        .from('user')
+        .select('*')
+        .eq('user_name', session.user.name);
+      // console.log(user[0].user_id);
+      setUserID(user[0].user_id);
+    }
+  }
+  useEffect(() => {
+    getUserID();
+  }, [session]);
+  async function getShop() {
+    const { data } = await supabase.from('shop').select('*');
     setShop(data);
   }
 
   async function getReservationRecord() {
-    const { data } = await supabase.from('reservation_record').select();
+    const { data } = await supabase
+      .from('reservation_record')
+      .select('*')
+      .eq('user_id', userID);
+
     setReservationRecord(data);
   }
 
   useEffect(() => {
     getShop();
     getReservationRecord();
-  }, []);
+  }, [userID]);
 
   const sortedReservationData = reservationRecord
     .slice()
@@ -44,7 +64,7 @@ export default function Home() {
 
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
-      <h1 className="text-4xl font-bold text-center mt-6 mb-4">預約紀錄</h1>
+      <h1 className="text-4xl text-center mt-6 mb-4 big_title">預約紀錄</h1>
       <table className="min-w-full bg-white border rounded-lg overflow-hidden mt-6">
         <thead className="bg-gray-200">
           <tr>

@@ -1,13 +1,18 @@
 'use client';
 import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+
+// import supabase from '../../api/index';
 
 const supabase = createClient(
-  'https://zdxlzmekrckaffbzupmh.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkeGx6bWVrcmNrYWZmYnp1cG1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgzNzM1MTEsImV4cCI6MjAwMzk0OTUxMX0.YI14GVJfa6H0eXOUqCKXT8AHLxK4GcAb8UYPTH4QLKQ'
+  process.env.SUPABASE_URI,
+  process.env.SUPABASE_SECRET
 );
-
 export default function Home() {
+  const { data: session, status } = useSession();
+  const [userID, setUserID] = useState(0);
+
   const [buyRecord, setBuyRecord] = useState([]);
   const [product, setProduct] = useState([]);
   async function getProduct() {
@@ -16,10 +21,28 @@ export default function Home() {
     setProduct(data);
   }
   async function getBuyRecord() {
-    const { data } = await supabase.from('buy_record').select();
+    // console.log(userID);
+    const { data } = await supabase
+      .from('buy_record')
+      .select('*')
+      .eq('user_id', userID);
     // console.log(data);
     setBuyRecord(data);
   }
+  async function getUserID() {
+    if (session?.user?.name) {
+      const { data: user, error } = await supabase
+        .from('user')
+        .select('*')
+        .eq('user_name', session.user.name);
+      // console.log(user[0].user_id);
+      setUserID(user[0].user_id);
+    }
+  }
+  useEffect(() => {
+    getUserID();
+  }, [session]);
+
   useEffect(() => {
     getBuyRecord();
     getProduct();
@@ -62,7 +85,7 @@ export default function Home() {
 
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
-      <h1 className="font-bold text-4xl mt-6 text-center">購買紀錄</h1>
+      <h1 className=" text-4xl mt-6 text-center big_title">購買紀錄</h1>
       <table className="min-w-full border rounded-lg overflow-hidden mt-6">
         <thead className="bg-gray-200">
           <tr>

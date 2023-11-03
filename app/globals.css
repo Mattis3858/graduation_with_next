@@ -11,8 +11,17 @@
 
 .page-layout {
   margin-top: 5rem;
-  padding: 40px;
+  padding: 52px 0px 40px 0px;
   padding-top: 52px;
+}
+.page-layout_goodtea {
+  margin-top: 5rem;
+  /* padding: 40px; */
+  padding-top: 52px;
+}
+.page-layout_personal {
+  margin-top: 4rem;
+  padding: 40px 40px 40px 40px;
 }
 
 @font-face {

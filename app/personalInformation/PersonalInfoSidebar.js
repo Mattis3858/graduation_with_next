@@ -1,9 +1,33 @@
 'use client';
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-
+import { useSession } from 'next-auth/react';
+// import { supabase } from './supabase'; // Import your Supabase client
+import { createClient } from '@supabase/supabase-js';
 const PersonalInfoSidebar = () => {
+  const { data: session, status } = useSession();
+  const [roleID, setRoleID] = useState();
+  // console.log(session);
+
+  const supabase = createClient(
+    process.env.SUPABASE_URI,
+    process.env.SUPABASE_SECRET
+  );
+  async function findUserRole() {
+    if (session?.user?.name) {
+      const { data: user, error } = await supabase
+        .from('user')
+        .select('*')
+        .eq('user_name', session.user.name);
+      // console.log(user[0].role_id);
+      setRoleID(user[0].role_id);
+    }
+  }
+  useEffect(() => {
+    findUserRole();
+  }, [session]);
   return (
     <div className=" w-60 rounded-l-lg rounded-r-lg overflow-hidden">
       <Sidebar>
@@ -16,22 +40,26 @@ const PersonalInfoSidebar = () => {
               個人檔案
             </MenuItem>
           </Link>
-          <Link href="/personalInformation/dataAnalysis">
-            <MenuItem
-              className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-              activeclassname="bg-gray-400"
-            >
-              後臺管理
-            </MenuItem>
-          </Link>
-          <Link href="/personalInformation/historyTest">
-            <MenuItem
-              className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-              activeclassname="bg-gray-400"
-            >
-              前後測表格
-            </MenuItem>
-          </Link>
+          {roleID === 1 && (
+            <Link href="/personalInformation/dataAnalysis">
+              <MenuItem
+                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
+                activeclassname="bg-gray-400"
+              >
+                後臺管理
+              </MenuItem>
+            </Link>
+          )}
+          {roleID === 2 && (
+            <Link href="/personalInformation/historyTest">
+              <MenuItem
+                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
+                activeclassname="bg-gray-400"
+              >
+                前後測表格
+              </MenuItem>
+            </Link>
+          )}
           <Link href="/personalInformation/reservationRecord">
             <MenuItem
               className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"

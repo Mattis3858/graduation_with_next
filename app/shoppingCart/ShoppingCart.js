@@ -29,6 +29,7 @@ const ShoppingCart = () => {
               </li>
             ))}
           </ul> */}
+
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="text-md">
               <tr>
@@ -52,45 +53,55 @@ const ShoppingCart = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 text-xl">
-              {items.map((item) => (
-                <tr key={item.id}>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.shop}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">${item.price}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {item.quantity}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    ${item.price * item.quantity}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <button
-                      className="text-2xl ml-2"
-                      onClick={() =>
-                        updateItemQuantity(item.id, item.quantity - 1)
-                      }
-                    >
-                      減少
-                    </button>
-                    <button
-                      className="text-2xl ml-2"
-                      onClick={() =>
-                        updateItemQuantity(item.id, item.quantity + 1)
-                      }
-                    >
-                      增加
-                    </button>
-                    <button
-                      className="text-red-500 text-2xl ml-2"
-                      onClick={() => removeItem(item.id)}
-                    >
-                      刪除
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            {items.length > 0 && (
+              <tbody className="divide-y divide-gray-200 text-xl">
+                {items.map((item) => (
+                  <tr key={item.id}>
+                    <td className="px-6 py-4 whitespace-nowrap">{item.shop}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      ${item.price}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.quantity}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      ${item.price * item.quantity}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <button
+                        className="text-2xl ml-2"
+                        onClick={() =>
+                          updateItemQuantity(
+                            item.id,
+                            parseInt(item.quantity) - 1
+                          )
+                        }
+                      >
+                        減少
+                      </button>
+                      <button
+                        className="text-2xl ml-2"
+                        onClick={() =>
+                          updateItemQuantity(
+                            item.id,
+                            parseInt(item.quantity) + 1
+                          )
+                        }
+                      >
+                        增加
+                      </button>
+                      <button
+                        className="text-red-500 text-2xl ml-2"
+                        onClick={() => removeItem(item.id)}
+                      >
+                        刪除
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
           </table>
         </div>
       </div>

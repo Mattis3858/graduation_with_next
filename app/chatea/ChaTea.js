@@ -7,7 +7,15 @@ const ChaTea = () => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false); // Add a loading state
+  const [isDataEntered, setIsDataEntered] = useState(false);
 
+  const handleEnterPress = (event) => {
+    if (event.key === 'Enter' && isDataEntered) {
+      // 用户按下Enter键，执行API调用
+      event.preventDefault(); // 防止表单提交
+      getAnswer();
+    }
+  };
   async function getAnswer() {
     console.log(question);
     setLoading(true); // Set loading to true when making the request
@@ -48,14 +56,18 @@ const ChaTea = () => {
             className="w-full h-24 p-2 border border-gray-300 rounded text-xl"
             placeholder="請輸入茶葉問題"
             value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            onChange={(e) => {
+              setQuestion(e.target.value);
+              setIsDataEntered(e.target.value.trim() !== ''); // Check if input is not empty
+            }}
+            onKeyDown={handleEnterPress}
           />
         </div>
         <div className="text-center">
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
             onClick={getAnswer}
-            disabled={loading} // Disable the button when loading
+            disabled={!isDataEntered || loading} // Disable the button when loading
           >
             {loading ? '載入中...' : '送出'}{' '}
             {/* Display loading message or '送出' */}

@@ -9,20 +9,27 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { CartProvider, useCart } from 'react-use-cart';
 import Link from 'next/link';
 
-function TeaProduct({
+const TeaProduct = ({
   product,
   src = '',
   shop = '',
   name = '',
   description = '',
   price = 0,
-}) {
+}) => {
   const { addItem, items } = useCart();
-
+  const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false); // 控制购买窗口显示的状态
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
 
   const toggleDescription = () => {
     setIsDescriptionOpen(!isDescriptionOpen);
+  };
+  const openPurchaseModal = () => {
+    setIsPurchaseModalOpen(true);
+  };
+
+  const closePurchaseModal = () => {
+    setIsPurchaseModalOpen(false);
   };
 
   return (
@@ -43,7 +50,7 @@ function TeaProduct({
         </div>
         <div className="mt-2 mb-3" style={{ fontSize: '14px' }}>
           <button onClick={toggleDescription} className="description">
-            詳細說明
+            風味雷達圖
             <FontAwesomeIcon
               icon={faCaretDown}
               className={`ml-1 ${
@@ -58,22 +65,76 @@ function TeaProduct({
           <Link href="/reservation" className="card-button">
             <button>預約品茶</button>
           </Link>
-          {items.forEach((item) => {
+          {/* {items.forEach((item) => {
             console.log(item);
-          })}
+          })} */}
           <button
             className="card-button"
-            onClick={() => {
-              addItem(product);
-              console.log('add item to shopping cart');
-            }}
+            onClick={openPurchaseModal}
+            // onClick={() => {
+            //   addItem(product);
+            //   console.log('add item to shopping cart');
+            // }}
           >
             購買
           </button>
+          {/* 根据购买窗口的状态来显示 PurchaseModal */}
+          {isPurchaseModalOpen && (
+            <PurchaseModal
+              product={product}
+              onPurchase={(product, quantity) => {
+                // for (let i = 0; i < quantity; i++) {
+                addItem(product, quantity);
+                // }
+                console.log(`購買了 ${quantity} 件產品：`, product);
+                closePurchaseModal();
+              }}
+              onClose={closePurchaseModal}
+            />
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default TeaProduct;
+
+const PurchaseModal = ({ product, onPurchase, onClose }) => {
+  // const { addItem, items } = useCart();
+  const [quantity, setQuantity] = useState(1);
+
+  const handleConfirm = () => {
+    onPurchase(product, quantity);
+    console.log('add item to shopping cart');
+
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-black">
+      <div className="modal-content bg-white p-4 rounded-lg shadow-lg relative">
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer"
+        >
+          X
+        </button>
+        <h2 className="text-2xl font-bold mb-4">購買</h2>
+        <p className="mb-2">請輸入購買數量：</p>
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg mb-2"
+        />
+        <button
+          onClick={handleConfirm}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+        >
+          確認
+        </button>
+      </div>
+    </div>
+  );
+};

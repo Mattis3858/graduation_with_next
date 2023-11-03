@@ -1,56 +1,58 @@
-import { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './navbar.css';
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
+import { Dialog, Popover } from '@headlessui/react';
 import {
   Bars3Icon,
   XMarkIcon,
   ShoppingCartIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import { RiSeedlingLine } from 'react-icons/ri';
 import { SiOverleaf } from 'react-icons/si';
-import { BiSearchAlt } from 'react-icons/bi';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
-const products = [
-  {
-    name: '找好茶茶葉推薦',
-    href: '/goodtea',
-    icon: RiSeedlingLine,
-  },
-  {
-    name: '泡好茶',
-    href: '/brewgoodtea',
-    icon: SiOverleaf,
-  },
-];
+// import { SessionProvider } from 'next-auth/react';
+// const products = [
+//   {
+//     name: '找好茶茶葉推薦',
+//     href: '/goodtea',
+//     icon: RiSeedlingLine,
+//   },
+//   {
+//     name: '泡好茶',
+//     href: '/brewgoodtea',
+//     icon: SiOverleaf,
+//   },
+// ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ');
+// }
 
 export default function Navbar() {
+  const currentRoute = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [pathname, setPathname] = useState('/');
+  // const [activePath, setActivePath] = useState('/');
 
-  const [activePath, setActivePath] = useState('/');
-
-  useEffect(() => {
-    setActivePath(window.location.pathname);
-  }, []);
+  // useEffect(() => {
+  //   setActivePath(window.location.pathname);
+  // }, [pathname]);
+  // const { data: session } = useSession();
+  // const user = useUser();
 
   return (
     // <header className="bg-gradient-to-t from-gray-100 to-gray-300">
     <header className="">
+      {/* {console.log(session.user.name)} */}
       <nav
-        className="mx-auto flex items-center justify-between pt-3 pb-3 pl-6 pr-6 lg:px-8 navbar"
+        className="mx-auto flex items-center justify-between pt-3 pb-3 lg:px-8 navbar"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link href="/" className="">
             <img className="h-10 logo" src="images/logo.png" alt="" />
           </Link>
         </div>
@@ -69,7 +71,7 @@ export default function Navbar() {
           <Link
             href="/"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/' ? 'active' : ''
+              currentRoute === '/' ? 'active' : ''
             }`}
           >
             木柵茶本舖
@@ -123,24 +125,36 @@ export default function Navbar() {
           <Link
             href="/goodtea"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/goodtea' ? 'active' : ''
+              currentRoute === '/goodtea' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/goodtea')}
           >
             找好茶
           </Link>
           <Link
             href="/brewgoodtea"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/brewgoodtea' ? 'active' : ''
+              currentRoute === '/brewgoodtea' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/brewgoodtea')}
           >
             泡好茶
           </Link>
           <Link
+            href="/chatea"
+            className={`text-lg font-semibold leading-6 nav-item ${
+              currentRoute === '/chatea' ? 'active' : ''
+            }`}
+            onClick={() => setPathname('/chatea')}
+          >
+            CHATEA
+          </Link>
+          <Link
             href="/reservation"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/reservation' ? 'active' : ''
+              currentRoute === '/reservation' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/reservation')}
           >
             品茶預約
           </Link>
@@ -154,19 +168,13 @@ export default function Navbar() {
           <Link
             href="/processIntro"
             className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/processIntro' ? 'active' : ''
+              currentRoute === '/processIntro' ? 'active' : ''
             }`}
+            onClick={() => setPathname('/processIntro')}
           >
             泡茶流程
           </Link>
-          <Link
-            href="/chatea"
-            className={`text-lg font-semibold leading-6 nav-item ${
-              activePath === '/processIntro' ? 'active' : ''
-            }`}
-          >
-            CHATEA
-          </Link>
+
           {/* <a
             href="/about"
             className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
