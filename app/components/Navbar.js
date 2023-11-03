@@ -48,12 +48,11 @@ export default function Navbar() {
     <header className="">
       {/* {console.log(session.user.name)} */}
       <nav
-        className="mx-auto flex items-center justify-between pt-3 pb-3 pl-6 pr-6 lg:px-8 navbar"
+        className="mx-auto flex items-center justify-between pt-3 pb-3 lg:px-8 navbar"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link href="/" className="">
             <img className="h-10 logo" src="images/logo.png" alt="" />
           </Link>
         </div>
