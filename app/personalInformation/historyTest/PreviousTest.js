@@ -51,8 +51,8 @@ const PreviousTest = ({ userID }) => {
         const day = originalDate.getDate().toString().padStart(2, '0');
         item.created_time = `${year}/${month}/${day}`;
       });
-      console.log(data);
-      setPreviousTestRecord(data.filter((item) => item.input_type === 0));
+      // console.log(data);
+      setPreviousTestRecord(data);
     } else {
       setPreviousTestRecord([]);
     }
@@ -142,7 +142,7 @@ const PreviousTest = ({ userID }) => {
       )}
       {pageState && selectedRecord && (
         <table className="w-4/5 border-collapse border mx-auto">
-          {console.log(selectedRecord)}
+          {/* {console.log(selectedRecord)} */}
           <thead>
             <tr>
               <th className="py-2 px-4 border">風味描述</th>

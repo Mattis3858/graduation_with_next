@@ -32,7 +32,7 @@ const PostTest = ({ userID }) => {
   // 假設你有一個用來顯示詳細內容的變數，假設叫做`selectedRecord`，你可以在點擊時設定它的值
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [product, setProduct] = useState([]);
-  console.log(userID);
+  // console.log(userID);
   async function getProduct() {
     const { data, error } = await supabase.from('product').select('*');
     setProduct(data);
@@ -43,7 +43,7 @@ const PostTest = ({ userID }) => {
       .select('*')
       .eq('input_type', 1)
       .eq('user_id', userID);
-    console.log(data);
+    // console.log(data);
     if (data) {
       data.forEach((item) => {
         const originalDate = new Date(item.created_time);
@@ -52,10 +52,9 @@ const PostTest = ({ userID }) => {
         const day = originalDate.getDate().toString().padStart(2, '0');
         item.created_time = `${year}/${month}/${day}`;
       });
-      console.log(data);
+      // console.log(data);
       setPostTestRecord(data);
     } else {
-      console.log(1);
       setPostTestRecord([]);
     }
   }
@@ -124,7 +123,7 @@ const PostTest = ({ userID }) => {
               </tr>
             </thead>
             <tbody>
-              {console.log(postTestRecord)}
+              {/* {console.log(postTestRecord)} */}
               {postTestRecord.map((record, index) => (
                 <tr
                   key={index}
@@ -148,7 +147,7 @@ const PostTest = ({ userID }) => {
         )}
         {postPageState && selectedRecord && (
           <table className="w-4/5 border-collapse border mx-auto">
-            {console.log(selectedRecord)}
+            {/* {console.log(selectedRecord)} */}
             <thead>
               <tr>
                 <th className="py-2 px-4 border">風味描述</th>

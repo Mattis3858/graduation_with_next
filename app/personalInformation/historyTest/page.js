@@ -17,16 +17,7 @@ export default function Home() {
   const { data: session, status } = useSession();
 
   const [tea, setTea] = React.useState('');
-  const [testRecord, setTestRecord] = useState([]);
   const [userID, setUserID] = useState();
-  async function getTestRecord() {
-    const { data } = await supabase.from('find_good_tea_record').select('*');
-    console.log(data);
-    setTestRecord(data);
-  }
-  useEffect(() => {
-    getTestRecord();
-  }, []);
   const handleTeaChange = (event) => {
     setTea(event.target.value);
   };
@@ -36,7 +27,7 @@ export default function Home() {
         .from('user')
         .select('*')
         .eq('user_name', session.user.name);
-      console.log(user[0].user_id);
+      // console.log(user[0].user_id);
       setUserID(user[0].user_id);
     }
   }
@@ -67,8 +58,6 @@ export default function Home() {
           </FormControl> */}
         </div>
         <div className="mt-6 flex">
-          {' '}
-          {/* PreviousTest */}
           <PreviousTest userID={userID} />
           <PostTest userID={userID} />
         </div>

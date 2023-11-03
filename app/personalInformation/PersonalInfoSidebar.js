@@ -9,7 +9,7 @@ import { createClient } from '@supabase/supabase-js';
 const PersonalInfoSidebar = () => {
   const { data: session, status } = useSession();
   const [roleID, setRoleID] = useState();
-  console.log(session);
+  // console.log(session);
 
   const supabase = createClient(
     process.env.SUPABASE_URI,
@@ -21,7 +21,7 @@ const PersonalInfoSidebar = () => {
         .from('user')
         .select('*')
         .eq('user_name', session.user.name);
-      console.log(user[0].role_id);
+      // console.log(user[0].role_id);
       setRoleID(user[0].role_id);
     }
   }
@@ -40,7 +40,6 @@ const PersonalInfoSidebar = () => {
               個人檔案
             </MenuItem>
           </Link>
-          {console.log(roleID)}
           {roleID === 1 && (
             <Link href="/personalInformation/dataAnalysis">
               <MenuItem
