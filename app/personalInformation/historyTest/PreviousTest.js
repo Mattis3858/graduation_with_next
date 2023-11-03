@@ -26,7 +26,7 @@ const flavorTable = {
   after_rhyme: '喉後韻',
   aftertaste: '回香感',
 };
-const PreviousTest = () => {
+const PreviousTest = ({ userID }) => {
   const [pageState, setPageState] = useState(false);
   const [previousTestRecord, setPreviousTestRecord] = useState([]);
   const [selectedRecord, setSelectedRecord] = useState(null);
@@ -37,21 +37,30 @@ const PreviousTest = () => {
     setProduct(data);
   }
   async function getPreviousTestRecord() {
-    const { data } = await supabase.from('find_good_tea_record').select();
-    data.forEach((item) => {
-      const originalDate = new Date(item.created_time);
-      const year = originalDate.getFullYear();
-      const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
-      const day = originalDate.getDate().toString().padStart(2, '0');
-      item.created_time = `${year}/${month}/${day}`;
-    });
-    console.log(data);
-    setPreviousTestRecord(data.filter((item) => item.input_type === 0));
+    const { data } = await supabase
+      .from('find_good_tea_record')
+      .select('*')
+      .eq('user_id', userID)
+      .eq('input_type', 0);
+
+    if (data) {
+      data.forEach((item) => {
+        const originalDate = new Date(item.created_time);
+        const year = originalDate.getFullYear();
+        const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = originalDate.getDate().toString().padStart(2, '0');
+        item.created_time = `${year}/${month}/${day}`;
+      });
+      console.log(data);
+      setPreviousTestRecord(data.filter((item) => item.input_type === 0));
+    } else {
+      setPreviousTestRecord([]);
+    }
   }
   useEffect(() => {
     getPreviousTestRecord();
     getProduct();
-  }, []);
+  }, [userID]);
   // const flavorData = [
   //   {
   //     date: '2023/06/01',
@@ -132,7 +141,7 @@ const PreviousTest = () => {
         </table>
       )}
       {pageState && selectedRecord && (
-        <table className="w-4/5 border-collapse border">
+        <table className="w-4/5 border-collapse border mx-auto">
           {console.log(selectedRecord)}
           <thead>
             <tr>

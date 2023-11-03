@@ -26,33 +26,43 @@ const supabase = createClient(
   process.env.SUPABASE_URI,
   process.env.SUPABASE_SECRET
 );
-const PostTest = () => {
+const PostTest = ({ userID }) => {
   const [postPageState, setPostPageState] = useState(false);
   const [postTestRecord, setPostTestRecord] = useState([]);
   // 假設你有一個用來顯示詳細內容的變數，假設叫做`selectedRecord`，你可以在點擊時設定它的值
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [product, setProduct] = useState([]);
+  console.log(userID);
   async function getProduct() {
-    const { data } = await supabase.from('product').select();
-    // console.log(data);
+    const { data, error } = await supabase.from('product').select('*');
     setProduct(data);
   }
   async function getPostTestRecord() {
-    const { data } = await supabase.from('find_good_tea_record').select();
-    data.forEach((item) => {
-      const originalDate = new Date(item.created_time);
-      const year = originalDate.getFullYear();
-      const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
-      const day = originalDate.getDate().toString().padStart(2, '0');
-      item.created_time = `${year}/${month}/${day}`;
-    });
+    const { data } = await supabase
+      .from('find_good_tea_record')
+      .select('*')
+      .eq('input_type', 1)
+      .eq('user_id', userID);
     console.log(data);
-    setPostTestRecord(data.filter((item) => item.input_type === 1));
+    if (data) {
+      data.forEach((item) => {
+        const originalDate = new Date(item.created_time);
+        const year = originalDate.getFullYear();
+        const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = originalDate.getDate().toString().padStart(2, '0');
+        item.created_time = `${year}/${month}/${day}`;
+      });
+      console.log(data);
+      setPostTestRecord(data);
+    } else {
+      console.log(1);
+      setPostTestRecord([]);
+    }
   }
   useEffect(() => {
     getProduct();
     getPostTestRecord();
-  }, []);
+  }, [userID]);
   // const flavorData = [
   //   {
   //     date: '2023/06/01',
@@ -114,7 +124,7 @@ const PostTest = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {console.log()} */}
+              {console.log(postTestRecord)}
               {postTestRecord.map((record, index) => (
                 <tr
                   key={index}
@@ -137,7 +147,7 @@ const PostTest = () => {
           </table>
         )}
         {postPageState && selectedRecord && (
-          <table className="w-4/5 border-collapse border">
+          <table className="w-4/5 border-collapse border mx-auto">
             {console.log(selectedRecord)}
             <thead>
               <tr>
