@@ -14,7 +14,7 @@ export default function Home() {
   const { data: session, status } = useSession();
   const [user, setUser] = useState();
   const [roleID, setRoleID] = useState();
-  console.log(session);
+  // console.log(session);
 
   const supabase = createClient(
     process.env.SUPABASE_URI,
@@ -26,7 +26,6 @@ export default function Home() {
         .from('user')
         .select('*')
         .eq('user_name', session.user.name);
-      console.log(user[0]);
       setUser(user[0]);
     }
   }

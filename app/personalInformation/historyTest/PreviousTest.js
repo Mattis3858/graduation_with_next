@@ -44,7 +44,10 @@ const PreviousTest = ({ userID }) => {
       .eq('input_type', 0);
 
     if (data) {
-      data.forEach((item) => {
+      const sortedData = data
+        .slice()
+        .sort((a, b) => new Date(b.created_time) - new Date(a.created_time));
+      sortedData.forEach((item) => {
         const originalDate = new Date(item.created_time);
         const year = originalDate.getFullYear();
         const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
@@ -52,7 +55,7 @@ const PreviousTest = ({ userID }) => {
         item.created_time = `${year}/${month}/${day}`;
       });
       // console.log(data);
-      setPreviousTestRecord(data);
+      setPreviousTestRecord(sortedData);
     } else {
       setPreviousTestRecord([]);
     }
