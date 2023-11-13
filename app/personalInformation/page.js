@@ -6,10 +6,6 @@ import Profile from './Profile';
 import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 
-const supabase = createClient(
-  process.env.SUPABASE_URI,
-  process.env.SUPABASE_SECRET
-);
 export default function Home() {
   const { data: session, status } = useSession();
   const [user, setUser] = useState();
