@@ -2,13 +2,11 @@
 import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { createClient } from '@supabase/supabase-js';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import '../product/product.css';
 
 import { useState } from 'react';
+import { getUser } from '../components/module';
 
 const Teashop = ({ teaShopName, src, description, shopID }) => {
   const supabase = createClient(
@@ -19,20 +17,10 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
-  const [reservationData, setReservationData] = useState({});
   const [user, setUser] = useState('');
-  async function getUser() {
-    if (session?.user?.name) {
-      const { data: user, error } = await supabase
-        .from('user')
-        .select('*')
-        .eq('user_name', session.user.name);
-      setUser(user[0]);
-    }
-  }
+
   const handleSubmit = async (event) => {
     const currentTime = new Date().toISOString();
     event.preventDefault();
@@ -54,7 +42,7 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
   };
 
   useEffect(() => {
-    getUser();
+    getUser(setUser, session);
   }, [session]);
 
   return (
