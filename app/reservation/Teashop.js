@@ -27,7 +27,6 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
     email && window.alert('預約已提交');
     // 清除表單資料
     setEmail('');
-
     setOpen(false);
     const reservationData = {
       user_id: user.user_id,

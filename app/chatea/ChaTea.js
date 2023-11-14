@@ -65,7 +65,7 @@ const ChaTea = () => {
         </div>
         <div className="text-center">
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+            className="card-button bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded"
             onClick={getAnswer}
             disabled={!isDataEntered || loading} // Disable the button when loading
           >
