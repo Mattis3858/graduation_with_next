@@ -1,68 +1,20 @@
 'use client';
-import { createClient } from '@supabase/supabase-js';
-
 import React, { useState, useEffect } from 'react';
+import {
+  getPreviousTestRecord,
+  getProduct,
+  flavorTable,
+} from '../../components/module';
 
-const supabase = createClient(
-  process.env.SUPABASE_URI,
-  process.env.SUPABASE_SECRET
-);
-const flavorTable = {
-  b_baked: '焙烤香 - 烘焙味',
-  b_smoky: '焙烤香 - 煙燻味',
-  f_dried_fruit: '果香 - 乾果味',
-  f_heavy: '花香 - 清香',
-  f_light: '花香 - 濃香',
-  s_sweet: '甜香 - 糖香味',
-  s_honey: '甜香 - 蜜香味',
-  g_grass: '青草香 - 草香味',
-  n_nutty: '果仁香 - 堅果味',
-  w_woody: '木質香',
-  sour: '酸味',
-  sweet: '甜味',
-  sleek: '圓滑感',
-  thick: '厚重感',
-  glycol: '甘醇度',
-  after_rhyme: '喉後韻',
-  aftertaste: '回香感',
-};
 const PreviousTest = ({ userID }) => {
   const [pageState, setPageState] = useState(false);
   const [previousTestRecord, setPreviousTestRecord] = useState([]);
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [product, setProduct] = useState([]);
-  async function getProduct() {
-    const { data } = await supabase.from('product').select();
-    // console.log(data);
-    setProduct(data);
-  }
-  async function getPreviousTestRecord() {
-    const { data } = await supabase
-      .from('find_good_tea_record')
-      .select('*')
-      .eq('user_id', userID)
-      .eq('input_type', 0);
 
-    if (data) {
-      const sortedData = data
-        .slice()
-        .sort((a, b) => new Date(b.created_time) - new Date(a.created_time));
-      sortedData.forEach((item) => {
-        const originalDate = new Date(item.created_time);
-        const year = originalDate.getFullYear();
-        const month = (originalDate.getMonth() + 1).toString().padStart(2, '0');
-        const day = originalDate.getDate().toString().padStart(2, '0');
-        item.created_time = `${year}/${month}/${day}`;
-      });
-      // console.log(data);
-      setPreviousTestRecord(sortedData);
-    } else {
-      setPreviousTestRecord([]);
-    }
-  }
   useEffect(() => {
-    getPreviousTestRecord();
-    getProduct();
+    userID && getPreviousTestRecord(setPreviousTestRecord, userID);
+    getProduct(setProduct);
   }, [userID]);
   // const flavorData = [
   //   {

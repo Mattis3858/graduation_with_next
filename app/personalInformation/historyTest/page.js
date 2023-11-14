@@ -1,39 +1,18 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import PreviousTest from './PreviousTest';
 import PostTest from './PostTest';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { useSession } from 'next-auth/react';
+import { getUserID } from '../../components/module';
 
-const supabase = createClient(
-  'https://zdxlzmekrckaffbzupmh.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkeGx6bWVrcmNrYWZmYnp1cG1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgzNzM1MTEsImV4cCI6MjAwMzk0OTUxMX0.YI14GVJfa6H0eXOUqCKXT8AHLxK4GcAb8UYPTH4QLKQ'
-);
 export default function Home() {
   const { data: session, status } = useSession();
-
-  const [tea, setTea] = React.useState('');
   const [userID, setUserID] = useState();
-  const handleTeaChange = (event) => {
-    setTea(event.target.value);
-  };
-  async function getUserID() {
-    if (session?.user?.name) {
-      const { data: user, error } = await supabase
-        .from('user')
-        .select('*')
-        .eq('user_name', session.user.name);
-      // console.log(user[0].user_id);
-      setUserID(user[0].user_id);
-    }
-  }
+
   useEffect(() => {
-    getUserID();
+    getUserID(setUserID, session);
   }, [session]);
+
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
       <div className="w-full text-center items-center justify-center">

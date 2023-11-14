@@ -3,49 +3,27 @@ import React from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-
-const supabase = createClient(
-  process.env.SUPABASE_URI,
-  process.env.SUPABASE_SECRET
-);
+import {
+  getReservationRecord,
+  getShop,
+  getUserID,
+} from '../../components/module';
 
 export default function Home() {
   const { data: session, status } = useSession();
-
+  console.log(session);
   const [shop, setShop] = useState([]);
   const [userID, setUserID] = useState(0);
   const [reservationRecord, setReservationRecord] = useState([]);
-  async function getUserID() {
-    if (session?.user?.name) {
-      const { data: user, error } = await supabase
-        .from('user')
-        .select('*')
-        .eq('user_name', session.user.name);
-      // console.log(user[0].user_id);
-      setUserID(user[0].user_id);
-    }
-  }
+
   useEffect(() => {
-    getUserID();
+    getUserID(setUserID, session);
   }, [session]);
-  async function getShop() {
-    const { data } = await supabase.from('shop').select('*');
-    setShop(data);
-  }
-
-  async function getReservationRecord() {
-    const { data } = await supabase
-      .from('reservation_record')
-      .select('*')
-      .eq('user_id', userID);
-
-    setReservationRecord(data);
-  }
 
   useEffect(() => {
-    getShop();
-    getReservationRecord();
-  }, [userID]);
+    getShop(setShop);
+    getReservationRecord(setReservationRecord, userID);
+  }, [userID, session]);
 
   const sortedReservationData = reservationRecord
     .slice()

@@ -1,52 +1,22 @@
 'use client';
-import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+import { getBuyRecord, getProduct, getUserID } from '../../components/module';
 
-// import supabase from '../../api/index';
-
-const supabase = createClient(
-  process.env.SUPABASE_URI,
-  process.env.SUPABASE_SECRET
-);
 export default function Home() {
   const { data: session, status } = useSession();
   const [userID, setUserID] = useState(0);
-
   const [buyRecord, setBuyRecord] = useState([]);
   const [product, setProduct] = useState([]);
-  async function getProduct() {
-    const { data } = await supabase.from('product').select();
-    // console.log(data);
-    setProduct(data);
-  }
-  async function getBuyRecord() {
-    // console.log(userID);
-    const { data } = await supabase
-      .from('buy_record')
-      .select('*')
-      .eq('user_id', userID);
-    // console.log(data);
-    setBuyRecord(data);
-  }
-  async function getUserID() {
-    if (session?.user?.name) {
-      const { data: user, error } = await supabase
-        .from('user')
-        .select('*')
-        .eq('user_name', session.user.name);
-      // console.log(user[0].user_id);
-      setUserID(user[0].user_id);
-    }
-  }
+
   useEffect(() => {
-    getUserID();
+    getUserID(setUserID, session);
   }, [session]);
 
   useEffect(() => {
-    getBuyRecord();
-    getProduct();
-  }, []);
+    getBuyRecord(setBuyRecord, userID);
+    getProduct(setProduct);
+  }, [userID]);
   const sortedPurchaseData = buyRecord
     .slice()
     .sort((a, b) => new Date(b.created_time) - new Date(a.created_time));
