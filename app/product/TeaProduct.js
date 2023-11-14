@@ -106,20 +106,20 @@ const PurchaseModal = ({ product, onPurchase, onClose }) => {
 
   const handleConfirm = () => {
     onPurchase(product, quantity);
-    console.log('add item to shopping cart');
-
     onClose();
+  };
+  const handleModalClose = (e) => {
+    if (e.target.classList.contains('modal-background')) {
+      onClose();
+    }
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-black">
+    <div
+      className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-black  modal-background"
+      onClick={handleModalClose}
+    >
       <div className="modal-content bg-white p-4 rounded-lg shadow-lg relative">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer"
-        >
-          X
-        </button>
         <h2 className="text-2xl font-bold mb-4">購買</h2>
         <p className="mb-2">請輸入購買數量：</p>
         <input
@@ -130,7 +130,7 @@ const PurchaseModal = ({ product, onPurchase, onClose }) => {
         />
         <button
           onClick={handleConfirm}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          className="card-button bg-lime-600 text-white p-2 rounded-md mx-auto"
         >
           確認
         </button>
