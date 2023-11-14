@@ -1,38 +1,25 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Teashop from './Teashop';
 import '../product/product.css';
+import { createClient } from '@supabase/supabase-js';
+import { getShop } from '../components/module';
 
 const Reservation = () => {
+  const supabase = createClient(
+    process.env.SUPABASE_URI,
+    process.env.SUPABASE_SECRET
+  );
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [selectedTeaShop, setSelectedTeaShop] = useState(null);
-  const teaShops = [
-    {
-      id: 1,
-      name: '茶行1',
-      image: 'tea_shop_1.jpg',
-      description: '這是茶行1的簡介。',
-    },
-    {
-      id: 2,
-      name: '茶行2',
-      image: 'tea_shop_2.jpg',
-      description: '這是茶行2的簡介。',
-    },
-    {
-      id: 3,
-      name: '茶行3',
-      image: 'tea_shop_3.jpg',
-      description: '這是茶行3的簡介。',
-    },
-  ];
+  const [shop, setShop] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // 在這裡處理預約的邏輯，例如發送預約請求給伺服器等等
-    console.log('預約提交:', name, date, time, selectedTeaShop);
+    // console.log('預約提交:', name, date, time, selectedTeaShop);
     // 清空表單
     setName('');
     setDate('');
@@ -43,7 +30,9 @@ const Reservation = () => {
   const handleTeaShopClick = (teaShop) => {
     setSelectedTeaShop(teaShop);
   };
-
+  useEffect(() => {
+    getShop(setShop);
+  }, []);
   return (
     <div className="page-layout">
       <div className="grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
@@ -58,7 +47,20 @@ const Reservation = () => {
       </div>
       {/* <div className="font-bold text-4xl mt-6 text-center">茶行預約系統</div> */}
       <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
-        <Teashop
+        {shop &&
+          shop.map((item, index) => {
+            return (
+              <Teashop
+                teaShopName={item.shop_name}
+                src={item.image_src}
+                description={item.description}
+                shopID={item.shop_id}
+                key={index}
+              />
+            );
+            // console.log(item.shop_name);
+          })}
+        {/* <Teashop
           teaShopName="張協興茶行"
           src="images/張協興茶行.jpg"
           description="1954年由木柵茶區最著名的老茶人張丁頂創立的張協興茶行，傳承著六十幾年的炭焙方式。"
@@ -72,7 +74,7 @@ const Reservation = () => {
           teaShopName="寒舍茶坊"
           src="images/寒舍茶莊.jpg"
           description="寒舍茶坊「寒舍」成立於民國80年，因當時的建築為茅草屋故而取名「寒舍」。"
-        />
+        /> */}
       </div>
       {/* {selectedTeaShop && (
         <div className="modal">
