@@ -86,7 +86,7 @@ const TeaProduct = ({
                 // for (let i = 0; i < quantity; i++) {
                 addItem(product, quantity);
                 // }
-                console.log(`購買了 ${quantity} 件產品：`, product);
+                window.alert(`購買了 ${quantity} 件產品：${product.prod_name}`);
                 closePurchaseModal();
               }}
               onClose={closePurchaseModal}

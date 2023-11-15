@@ -14,7 +14,31 @@ const ShoppingCart = () => {
   const handleSubmit = async (event) => {
     const currentTime = new Date().toISOString();
     event.preventDefault();
-    window.alert('訂單已提交');
+    // window.alert('訂單已提交');
+    items.forEach(async (item) => {
+      console.log({
+        user_id: user.user_id,
+        prod_id: item.id,
+        buy_qty: item.quantity,
+        buy_amount: item.itemTotal,
+        created_time: currentTime,
+        updated_time: currentTime,
+        spec_id: 1,
+      });
+      // const { data: reservation, error } = await supabase
+      //   .from('reservation_record')
+      //   .upsert([
+      // {
+      //   user_id: user.user_id,
+      //   prod_id: items.id,
+      //   buy_qty: items.quantity,
+      //   buy_amount: items.itemTotal,
+      //   created_time: currentTime,
+      //   updated_time: currentTime,
+      //   spec_id: 1,
+      // },
+      //   ]);
+    });
     // const purchaseData = {
     //   user_id: user.user_id,
     //   prod_id: ,
@@ -81,8 +105,12 @@ const ShoppingCart = () => {
               {items.length !== 0 ? (
                 items.map((item) => (
                   <tr key={item.id}>
-                    <td className="px-6 py-4 whitespace-nowrap">{item.shop}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.shop_id}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {item.prod_name}
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       ${item.price}
                     </td>

@@ -218,7 +218,7 @@ const Product = () => {
   }
   return (
     <div className="page-layout">
-      {console.log(productData, shops)}
+      {/* {console.log(productData, shops)} */}
       <div className="grid-rows-1 ml-10 mr-10 flex items-center justify-center main-vision">
         <h4 className="text-4xl text-center big_title">
           木柵<span className="tea">茶</span>本舖
@@ -240,8 +240,8 @@ const Product = () => {
       <div className="grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
         {productData &&
           productData.map((product) => (
-            <div key={product.prod_id}>
-              {console.log(product)}
+            <div key={product.id}>
+              {/* {console.log(product)} */}
               <TeaProduct
                 product={product}
                 src={product.prod_pic}
