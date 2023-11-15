@@ -112,10 +112,12 @@
 .tea_name_v {
   font-weight: 600;
   background-color: var(--primary_color_light);
+  width: 40%;
 }
 .tea_desc_v {
   font-weight: 500;
   background-color: var(--primary_color_light);
+  width : 60%;
 }
 .cell_bt_cell {
   background-color: var(--primary_color_light);
