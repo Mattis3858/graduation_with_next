@@ -43,14 +43,14 @@ const Flavor = forwardRef(({ postData: externalPostData, onFlavorDataSubmit }, r
     { flavId:1, name: '甜香 - 蜜香味', description: '蜂蜜' },
     { flavId:1, name: '青草香 - 草香味', description: '乾草、青草、仙草' },
     { flavId:1, name: '果仁香 - 堅果味', description: '開心果、榛果、芝麻' },
-    { flavId:1, name: '木質香', description: '木頭味' },
-    { flavId:2, name: '酸味', description: '酸酸' },
-    { flavId:2, name: '甜味', description: '甜甜' },
-    { flavId:2, name: '圓滑感', description: '好ㄏ' },
-    { flavId:2, name: '厚重感', description: '喝拎' },
-    { flavId:3, name: '甘醇度', description: '飲後回甘口感' },
-    { flavId:3, name: '喉後韻', description: '茶湯入口生津後感' },
-    { flavId:3, name: '回香感', description: '茶湯入喉後仍然感受到的餘香' },
+    { flavId:1, name: '木質香', description: '乾燥木材、樹皮，或者燻木的味道' },
+    { flavId:2, name: '酸味', description: '清新而活潑的口感，類似水果的自然酸度' },
+    { flavId:2, name: '甜味', description: '帶有蜜糖、果香或焦糖的甜美' },
+    { flavId:2, name: '圓滑感', description: '口中滑順，沒有刺激感或粗糙感' },
+    { flavId:2, name: '厚重感', description: '濃郁、飽滿，給人一種滿足感' },
+    { flavId:3, name: '甘醇度', description: '飲後回甘口感，在口中感覺平衡，沒有過分的苦澀或澀味' },
+    { flavId:3, name: '喉後韻', description: '茶水下喉後留在喉嚨和口腔內的感覺，擁有一種滑順、清爽、甚至稍有涼感的喉韻' },
+    { flavId:3, name: '回香感', description: '茶水入口後，香氣透過咽喉回到鼻腔的餘韻感' },
   ];
   
   // 對應 postData 結果的 falvorScores 變數
@@ -65,7 +65,7 @@ const Flavor = forwardRef(({ postData: externalPostData, onFlavorDataSubmit }, r
     }
   };
   
-  // 您可以將這個方法暴露給 ref，讓父組件能夠呼叫它
+  // ref，讓父組件能夠呼叫它
   useImperativeHandle(ref, () => ({
     handleFormSubmit,
   }));
