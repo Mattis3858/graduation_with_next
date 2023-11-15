@@ -128,3 +128,12 @@ export async function findUserRole(setRoleID, session) {
     setRoleID(user[0].role_id);
   }
 }
+
+export async function findShopName(shopId) {
+  const { data: data, error } = await supabase
+    .from('shop')
+    .select('*')
+    .eq('shop_id', shopId);
+  console.log(data[0].shop_name);
+  return data[0].shop_name;
+}

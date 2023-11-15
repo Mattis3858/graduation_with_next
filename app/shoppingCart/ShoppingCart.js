@@ -1,12 +1,36 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { findShopName, getUser } from '../components/module';
+
 import { CartProvider, useCart } from 'react-use-cart';
 
 const ShoppingCart = () => {
+  const { data: session, status } = useSession();
+  const [user, setUser] = useState('');
+
   const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
     useCart();
+  const handleSubmit = async (event) => {
+    const currentTime = new Date().toISOString();
+    event.preventDefault();
+    window.alert('訂單已提交');
+    // const purchaseData = {
+    //   user_id: user.user_id,
+    //   prod_id: ,
+    //   buy_qty: items.quantity,
+    //   buy_amount: items.itemTotal,
+    //   created_time: currentTime,
+    //   updated_time: currentTime,
+    //   spec_id:1,
+    // };
+  };
+  useEffect(() => {
+    getUser(setUser, session);
+  }, [session]);
   return (
     <div className="page-layout">
+      {console.log(items)}
       <div className="mx-auto">
         <div className="text-4xl text-center big_title">購物車</div>
         <div className="rounded-lg shadow border-slate-300 border-solid border-2 mt-6">
@@ -53,9 +77,9 @@ const ShoppingCart = () => {
                 </th>
               </tr>
             </thead>
-            {items.length > 0 && (
-              <tbody className="divide-y divide-gray-200 text-xl">
-                {items.map((item) => (
+            <tbody className="divide-y divide-gray-200 text-xl">
+              {items.length !== 0 ? (
+                items.map((item) => (
                   <tr key={item.id}>
                     <td className="px-6 py-4 whitespace-nowrap">{item.shop}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
@@ -99,11 +123,21 @@ const ShoppingCart = () => {
                       </button>
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            )}
+                ))
+              ) : (
+                <tr className="text-center py-4">您的購物車是空的</tr>
+              )}
+            </tbody>
           </table>
         </div>
+      </div>
+      <div className="text-center mt-6">
+        <button
+          onClick={handleSubmit}
+          className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
+        >
+          送出訂單
+        </button>
       </div>
     </div>
   );
