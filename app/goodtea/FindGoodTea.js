@@ -255,7 +255,7 @@ const FindGoodTea = () => {
             variant="outlined"
             sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
           >
-            <div className="title">茶香味指南：發掘您最喜愛的茶風味</div>
+            <div className="title">找好茶：發掘您最喜愛的茶風味</div>
             <div className="title_eng">
               Tea Aroma Guide: Discover Your Favorite Tea Flavors
             </div>
