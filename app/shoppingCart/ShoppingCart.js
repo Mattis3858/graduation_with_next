@@ -1,14 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { findShopName, getUser } from '../components/module';
+import { findShopName, getShop, getUser } from '../components/module';
 
 import { CartProvider, useCart } from 'react-use-cart';
 
 const ShoppingCart = () => {
   const { data: session, status } = useSession();
   const [user, setUser] = useState('');
-
+  const [shops, setShops] = useState([]);
   const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
     useCart();
   const handleSubmit = async (event) => {
@@ -50,8 +50,13 @@ const ShoppingCart = () => {
     // };
   };
   useEffect(() => {
+    getShop(setShops);
     getUser(setUser, session);
   }, [session]);
+  function findShopName(shopId) {
+    const foundShop = shops.find((item) => item.shop_id === shopId);
+    return foundShop ? foundShop.shop_name : '未知商店';
+  }
   return (
     <div className="page-layout">
       {console.log(items)}
@@ -106,7 +111,7 @@ const ShoppingCart = () => {
                 items.map((item) => (
                   <tr key={item.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      {item.shop_id}
+                      {findShopName(item.shop_id)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {item.prod_name}
