@@ -2,9 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { findShopName, getShop, getUser } from '../components/module';
-
+import { createClient } from '@supabase/supabase-js';
 import { CartProvider, useCart } from 'react-use-cart';
 
+const supabase = createClient(
+  process.env.SUPABASE_URI,
+  process.env.SUPABASE_SECRET
+);
 const ShoppingCart = () => {
   const { data: session, status } = useSession();
   const [user, setUser] = useState('');
@@ -14,7 +18,7 @@ const ShoppingCart = () => {
   const handleSubmit = async (event) => {
     const currentTime = new Date().toISOString();
     event.preventDefault();
-    // window.alert('訂單已提交');
+    window.alert('訂單已提交');
     items.forEach(async (item) => {
       console.log({
         user_id: user.user_id,
@@ -25,19 +29,19 @@ const ShoppingCart = () => {
         updated_time: currentTime,
         spec_id: 1,
       });
-      // const { data: reservation, error } = await supabase
-      //   .from('reservation_record')
-      //   .upsert([
-      // {
-      //   user_id: user.user_id,
-      //   prod_id: items.id,
-      //   buy_qty: items.quantity,
-      //   buy_amount: items.itemTotal,
-      //   created_time: currentTime,
-      //   updated_time: currentTime,
-      //   spec_id: 1,
-      // },
-      //   ]);
+      const { data: reservation, error } = await supabase
+        .from('buy_record')
+        .upsert([
+          {
+            user_id: user.user_id,
+            prod_id: item.id,
+            buy_qty: item.quantity,
+            buy_amount: item.itemTotal,
+            created_time: currentTime,
+            updated_time: currentTime,
+            spec_id: 1,
+          },
+        ]);
     });
     // const purchaseData = {
     //   user_id: user.user_id,
@@ -59,7 +63,7 @@ const ShoppingCart = () => {
   }
   return (
     <div className="page-layout">
-      {console.log(items)}
+      {console.log(user.user_id)}
       <div className="mx-auto">
         <div className="text-4xl text-center big_title">購物車</div>
         <div className="rounded-lg shadow border-slate-300 border-solid border-2 mt-6">
