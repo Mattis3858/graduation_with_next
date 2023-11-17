@@ -64,7 +64,8 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
               預約品茶
             </button>
             <Modal open={open} onClose={handleClose}>
-              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/5 bg-white p-4 rounded-md">
+              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 bg-white p-4 rounded-md">
+                {/* Updated classes for responsiveness */}
                 <div className="card-content flex flex-col justify-center items-center">
                   <h2 className="text-2xl font-bold text-center mb-4">
                     請填入預約日期
