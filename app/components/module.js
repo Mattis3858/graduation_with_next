@@ -33,6 +33,15 @@ export async function getUserID(setUserID, session) {
     setUserID(user[0].user_id);
   }
 }
+export async function getShopID(setShopID, session) {
+  if (session?.user?.name) {
+    const { data: user, error } = await supabase
+      .from('shop')
+      .select('*')
+      .eq('shop_name', session.user.name);
+    setShopID(user[0].shop_id);
+  }
+}
 export async function getUser(setUser, session) {
   if (session?.user?.name) {
     const { data: user, error } = await supabase
