@@ -34,6 +34,16 @@ const PersonalInfoSidebar = () => {
               </MenuItem>
             </Link>
           )}
+          {roleID === 1 && (
+            <Link href="/personalInformation/teaRelease">
+              <MenuItem
+                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
+                activeclassname="bg-gray-400"
+              >
+                茶款上架
+              </MenuItem>
+            </Link>
+          )}
           {roleID === 2 && (
             <Link href="/personalInformation/historyTest">
               <MenuItem
