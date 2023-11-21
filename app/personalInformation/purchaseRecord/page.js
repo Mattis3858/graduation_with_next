@@ -1,7 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { getBuyRecord, getProduct, getUserID } from '../../components/module';
+import {
+  findProductName,
+  getBuyRecord,
+  getProduct,
+  getUserID,
+} from '../../components/module';
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -65,7 +70,8 @@ export default function Home() {
             <th className="text-left py-2 px-3">金額</th>
           </tr>
         </thead>
-        {/* {console.log(sortedPurchaseData)} */}
+        {console.log(product)}
+        {console.log(sortedPurchaseData)}
         <tbody>
           {sortedPurchaseData.map((purchase, index) => (
             <tr
@@ -74,9 +80,10 @@ export default function Home() {
             >
               <td className="py-2 px-3">{purchase.created_time}</td>
               <td className="py-2 px-3">
-                {product.length !== 0 &&
-                  product.find((item) => item.prod_id === purchase.prod_id)
-                    .prod_name}
+                {product.find((prod) => prod.id === purchase.prod_id)
+                  ? product.find((prod) => prod.id === purchase.prod_id)
+                      .prod_name
+                  : null}
               </td>
               <td className="py-2 px-3">{purchase.buy_qty}</td>
               <td className="py-2 px-3">{purchase.buy_amount}</td>
