@@ -25,15 +25,8 @@ const ProcessIntro = (props) => {
             </div>
             <div className="pt-8 text-2xl text-gray-500">
               <div>
-                <div className="">1. 沖泡器具:</div>
-                <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div>
-              </div>
-              <div className="pt-4">
-                <div>2. 待測茶葉:</div>
-                <div>
-                  張協興茶行鐵觀音、張協興茶行包種茶、威叔茶莊鐵觀音、
-                  威叔茶莊鐵觀音紅茶、寒舍茶坊包種茶、寒舍茶坊鐵觀音紅茶
-                </div>
+                <div className="">沖泡器具:</div>
+                <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 ...等</div>
               </div>
             </div>
           </div>
@@ -95,19 +88,19 @@ const ProcessIntro = (props) => {
               />
             </div>
             <div className="w-full md:w-1/2">
-                <div className="text-5xl font-bold mb-4">泡茶方式</div>
-                <div className="text-xl text-gray-500 mb-4">
-                  {/* 溫潤泡:置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶 */}
-                  將茶包放入茶杯後沖入熱水， 3分鐘後即可取出茶包，靜置 3分鐘即可聞茶香，
-                  待茶湯靜置至6分鐘後，冷卻即可享用
-                </div>
-                {/* <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
+              <div className="text-5xl font-bold mb-4">泡茶方式</div>
+              <div className="text-xl text-gray-500 mb-4">
+                {/* 溫潤泡:置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶 */}
+                將茶包放入茶杯後沖入熱水， 3分鐘後即可取出茶包，靜置
+                3分鐘即可聞茶香， 待茶湯靜置至6分鐘後，冷卻即可享用
+              </div>
+              {/* <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
                 <div className="text-xl text-gray-500">
                   沖泡 3 分鐘後可即取出茶葉(瀝出茶湯) 靜置 3 分鐘，即可聞茶香
                   待茶湯靜置至六分鐘後，冷卻即可享用
                 </div>*/}
-              </div> 
             </div>
+          </div>
           <div className="bg-white rounded-3xl shadow-md p-4 mb-4 flex flex-col md:flex-row items-center">
             <div className="w-full md:w-1/2 p-6">
               <div className="text-5xl font-bold mb-4">拍攝注意事項</div>
