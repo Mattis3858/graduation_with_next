@@ -1,9 +1,17 @@
 'use client';
-import React from 'react';
+import React ,{ useState } from 'react';
 import './style.css';
 
 const ProcessIntro = (props) => {
+  const [selectedTool, setSelectedTool] = useState(null);
+
+  const selectTool = (tool) => {
+    setSelectedTool(selectedTool === tool ? null : tool);
+  };
+
   return (
+    
+      
     <>
       <div className="page-layout ">
         <div className="flex items-center justify-center">
@@ -25,8 +33,44 @@ const ProcessIntro = (props) => {
             </div>
             <div className="pt-8 text-2xl text-gray-500">
               <div>
-                <div className="">沖泡器具:</div>
-                <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 ...等</div>
+                <div className="">1. 沖泡器具:</div>
+                <div className="flex">
+                  {['茶具', '快沖壺', '馬克杯', '沖茶袋'].map((tool) => (
+                    <button
+                    key={tool}
+                    className={`text-blue-500 underline mr-4 ${
+                      selectedTool === tool ? 'font-bold' : ''
+                    }`}
+                    onClick={() => selectTool(tool)}
+                  >
+                  {tool}
+                    </button>
+                  ))}
+                </div> 
+                {/* <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div> */}
+                {selectedTool && (
+                  <div className="mt-4">
+                    {selectedTool === '茶具' && (
+                      <div>茶具的相關文字內容</div>
+                      )}
+                    {selectedTool === '快沖壺' && (
+                      <div>快沖壺的相關文字內容</div>
+                      )}
+                    {selectedTool === '馬克杯' && (
+                      <div>馬克杯的相關文字內容</div>
+                      )}
+                    {selectedTool === '沖茶袋' && (
+                      <div>沖茶袋的相關文字內容</div>
+                      )}
+                  </div>
+                )}
+              </div>
+              <div className="pt-4">
+                <div>2. 待測茶葉:</div>
+                <div>
+                  張協興茶行鐵觀音、張協興茶行包種茶、威叔茶莊鐵觀音、
+                  威叔茶莊鐵觀音紅茶、寒舍茶坊包種茶、寒舍茶坊鐵觀音紅茶
+                </div>
               </div>
             </div>
           </div>
@@ -95,10 +139,10 @@ const ProcessIntro = (props) => {
                 3分鐘即可聞茶香， 待茶湯靜置至6分鐘後，冷卻即可享用
               </div>
               {/* <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
-                <div className="text-xl text-gray-500">
-                  沖泡 3 分鐘後可即取出茶葉(瀝出茶湯) 靜置 3 分鐘，即可聞茶香
-                  待茶湯靜置至六分鐘後，冷卻即可享用
-                </div>*/}
+              <div className="text-xl text-gray-500">
+                沖泡 3 分鐘後可即取出茶葉(瀝出茶湯) 靜置 3 分鐘，即可聞茶香
+                待茶湯靜置至六分鐘後，冷卻即可享用
+              </div>*/}
             </div>
           </div>
           <div className="bg-white rounded-3xl shadow-md p-4 mb-4 flex flex-col md:flex-row items-center">
@@ -118,6 +162,7 @@ const ProcessIntro = (props) => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
