@@ -1,14 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { findShopName, getShop, getUser } from '../components/module';
-import { createClient } from '@supabase/supabase-js';
+import { findShopName, getShop, getUser, supabase } from '../components/module';
 import { CartProvider, useCart } from 'react-use-cart';
 
-const supabase = createClient(
-  process.env.SUPABASE_URI,
-  process.env.SUPABASE_SECRET
-);
 const ShoppingCart = () => {
   const { data: session, status } = useSession();
   const [user, setUser] = useState('');
@@ -20,15 +15,6 @@ const ShoppingCart = () => {
     event.preventDefault();
     window.alert('訂單已提交');
     items.forEach(async (item) => {
-      console.log({
-        user_id: user.user_id,
-        prod_id: item.id,
-        buy_qty: item.quantity,
-        buy_amount: item.itemTotal,
-        created_time: currentTime,
-        updated_time: currentTime,
-        spec_id: 1,
-      });
       const { data: reservation, error } = await supabase
         .from('buy_record')
         .upsert([

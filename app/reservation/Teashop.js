@@ -1,18 +1,12 @@
 'use client';
 import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { createClient } from '@supabase/supabase-js';
 import Modal from '@mui/material/Modal';
 import '../product/product.css';
-
 import { useState } from 'react';
-import { getUser } from '../components/module';
+import { getUser, supabase } from '../components/module';
 
 const Teashop = ({ teaShopName, src, description, shopID }) => {
-  const supabase = createClient(
-    process.env.SUPABASE_URI,
-    process.env.SUPABASE_SECRET
-  );
   const { data: session, status } = useSession();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

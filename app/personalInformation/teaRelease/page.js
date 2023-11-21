@@ -1,13 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { getShopID } from '../../components/module';
-import { createClient } from '@supabase/supabase-js';
+import { getShopID, supabase } from '../../components/module';
 
-const supabase = createClient(
-  process.env.SUPABASE_URI,
-  process.env.SUPABASE_SECRET
-);
 const Home = () => {
   const { data: session, status } = useSession();
   const [shopID, setShopID] = useState('');
