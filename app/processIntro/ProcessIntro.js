@@ -4,11 +4,29 @@ import './style.css';
 
 const ProcessIntro = (props) => {
   const [selectedTool, setSelectedTool] = useState(null);
+  const [showImage, setShowImage] = useState(true);
+  const [showImage1, setShowImage1] = useState(true);
+  const [showImage2, setShowImage2] = useState(true);
+  const [showImage3, setShowImage3] = useState(true);
+
 
   const selectTool = (tool) => {
     setSelectedTool(selectedTool === tool ? null : tool);
   };
+  const toggleImage = () => {
+    setShowImage(!showImage);
+  };
+  const toggleImage1 = () => {
+    setShowImage1(!showImage1);
+  };
 
+  const toggleImage2 = () => {
+    setShowImage2(!showImage2);
+  };
+
+  const toggleImage3 = () => {
+    setShowImage3(!showImage3);
+  };
   return (
     
       
@@ -76,26 +94,58 @@ const ProcessIntro = (props) => {
           </div>
           <div className="w-full lg:w-auto">
             <div className="grid grid-cols-2 gap-0">
+              {showImage ? (
               <img
                 src="/images/image12041-i1oe-300h.png"
                 alt="image12041"
                 className="w-56 h-56 object-cover"
+                onClick={toggleImage}
               />
-              <img
-                src="/images/image22042-4xx-300h.png"
-                alt="image22042"
-                className="w-56 h-56 object-cover"
-              />
-              <img
-                src="/images/image32042-3h6q-300h.png"
-                alt="image32042"
-                className="w-56 h-56 object-cover"
-              />
-              <img
-                src="/images/image42042-v9d8-300h.png"
-                alt="image42042"
-                className="w-56 h-56 object-cover"
-              />
+            ) : (
+              <div className="w-56 h-56 object-cover" onClick={toggleImage}>
+                Text to be displayed instead of the image.
+              </div>
+            )}
+              {showImage1 ? (
+            <img
+              src="/images/image22042-4xx-300h.png"
+              alt="image22042"
+              className="w-56 h-56 object-cover"
+              onClick={toggleImage1}
+            />
+          ) : (
+            <div className="w-56 h-56 object-cover" onClick={toggleImage1}>
+              Text to be displayed instead of the image.
+            </div>
+          )}
+
+              {showImage2 ? (
+                <img
+                  src="/images/image32042-3h6q-300h.png"
+                  alt="image32042"
+                  className="w-56 h-56 object-cover"
+                  onClick={toggleImage2}
+                />
+              ) : (
+                <div className="w-56 h-56 object-cover" onClick={toggleImage2}>
+                  Text to be displayed instead of the image.
+                </div>
+              )}
+
+              {showImage3 ? (
+                <img
+                  src="/images/image42042-v9d8-300h.png"
+                  alt="image42042"
+                  className="w-56 h-56 object-cover"
+                  onClick={toggleImage3}
+                />
+              ) : (
+                <div className="w-56 h-56 object-cover" onClick={toggleImage3}>
+                  Text to be displayed instead of the image.
+                </div>
+              )}
+              
+              
             </div>
           </div>
         </div>
