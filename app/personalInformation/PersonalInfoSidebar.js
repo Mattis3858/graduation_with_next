@@ -18,69 +18,34 @@ const PersonalInfoSidebar = () => {
         <Menu className="bg-gray-300 text-cyan-900">
           {roleID === 1 && (
             <Link href="/personalInformation">
-              <MenuItem
-                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-                activeclassname="bg-gray-400"
-              >
-                茶行檔案
-              </MenuItem>
+              <MenuItem>茶行檔案</MenuItem>
             </Link>
           )}
           {roleID === 2 && (
             <Link href="/personalInformation">
-              <MenuItem
-                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-                activeclassname="bg-gray-400"
-              >
-                個人檔案
-              </MenuItem>
+              <MenuItem className="">個人檔案</MenuItem>
             </Link>
           )}
           {roleID === 1 && (
             <Link href="/personalInformation/dataAnalysis">
-              <MenuItem
-                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-                activeclassname="bg-gray-400"
-              >
-                後臺管理
-              </MenuItem>
+              <MenuItem>後臺管理</MenuItem>
             </Link>
           )}
           {roleID === 1 && (
             <Link href="/personalInformation/teaRelease">
-              <MenuItem
-                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-                activeclassname="bg-gray-400"
-              >
-                茶款上架
-              </MenuItem>
+              <MenuItem>茶款上架</MenuItem>
             </Link>
           )}
           {roleID === 2 && (
             <Link href="/personalInformation/historyTest">
-              <MenuItem
-                className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-                activeclassname="bg-gray-400"
-              >
-                前後測表格
-              </MenuItem>
+              <MenuItem>前後測表格</MenuItem>
             </Link>
           )}
           <Link href="/personalInformation/reservationRecord">
-            <MenuItem
-              className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-              activeclassname="bg-gray-400"
-            >
-              預約紀錄
-            </MenuItem>
+            <MenuItem>預約紀錄</MenuItem>
           </Link>
           <Link href="/personalInformation/purchaseRecord">
-            <MenuItem
-              className="py-3 pl-4 pr-6 hover:bg-gray-400 hover:text-cyan-800"
-              activeclassname="bg-gray-400"
-            >
-              購買紀錄
-            </MenuItem>
+            <MenuItem>購買紀錄</MenuItem>
           </Link>
         </Menu>
       </Sidebar>
