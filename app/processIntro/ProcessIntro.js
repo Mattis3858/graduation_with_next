@@ -1,5 +1,5 @@
 'use client';
-import React ,{ useState } from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
 const ProcessIntro = (props) => {
@@ -8,7 +8,6 @@ const ProcessIntro = (props) => {
   const [showImage1, setShowImage1] = useState(true);
   const [showImage2, setShowImage2] = useState(true);
   const [showImage3, setShowImage3] = useState(true);
-
 
   const selectTool = (tool) => {
     setSelectedTool(selectedTool === tool ? null : tool);
@@ -28,8 +27,6 @@ const ProcessIntro = (props) => {
     setShowImage3(!showImage3);
   };
   return (
-    
-      
     <>
       <div className="page-layout ">
         <div className="flex items-center justify-center">
@@ -47,83 +44,81 @@ const ProcessIntro = (props) => {
         <div className="flex flex-col lg:flex-row justify-between mb-20">
           <div className="w-full lg:w-1/2">
             <div>
-              <div className="text-5xl font-normal text-center">泡茶準備</div>
+              <div className="text-5xl font-bold text-center">泡茶準備</div>
             </div>
             <div className="pt-8 text-2xl text-gray-500">
               <div>
-                <div className="">1. 沖泡器具:</div>
+                <div className="">沖泡器具:</div>
                 <div className="flex">
                   {['茶具', '快沖壺', '馬克杯', '沖茶袋'].map((tool) => (
                     <button
-                    key={tool}
-                    className={`text-blue-500 underline mr-4 ${
-                      selectedTool === tool ? 'font-bold' : ''
-                    }`}
-                    onClick={() => selectTool(tool)}
-                  >
-                  {tool}
+                      key={tool}
+                      className={`text-blue-500 underline mr-4 ${
+                        selectedTool === tool ? 'font-bold' : ''
+                      }`}
+                      onClick={() => selectTool(tool)}
+                    >
+                      {tool}
                     </button>
                   ))}
-                </div> 
+                </div>
                 {/* <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div> */}
                 {selectedTool && (
                   <div className="mt-4">
-                    {selectedTool === '茶具' && (
-                      <div>茶具的相關文字內容</div>
-                      )}
+                    {selectedTool === '茶具' && <div>茶具的相關文字內容</div>}
                     {selectedTool === '快沖壺' && (
                       <div>快沖壺的相關文字內容</div>
-                      )}
+                    )}
                     {selectedTool === '馬克杯' && (
                       <div>馬克杯的相關文字內容</div>
-                      )}
+                    )}
                     {selectedTool === '沖茶袋' && (
                       <div>沖茶袋的相關文字內容</div>
-                      )}
+                    )}
                   </div>
                 )}
               </div>
-              <div className="pt-4">
+              {/* <div className="pt-4">
                 <div>2. 待測茶葉:</div>
                 <div>
                   張協興茶行鐵觀音、張協興茶行包種茶、威叔茶莊鐵觀音、
                   威叔茶莊鐵觀音紅茶、寒舍茶坊包種茶、寒舍茶坊鐵觀音紅茶
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="w-full lg:w-auto">
             <div className="grid grid-cols-2 gap-0">
               {showImage ? (
-              <img
-                src="/images/image12041-i1oe-300h.png"
-                alt="image12041"
-                className="w-56 h-56 object-cover"
-                onClick={toggleImage}
-              />
-            ) : (
-              <div className="w-56 h-56 object-cover" onClick={toggleImage}>
-                Text to be displayed instead of the image.
-              </div>
-            )}
+                <img
+                  src="/images/image12041-i1oe-300h.png"
+                  alt="image12041"
+                  className="w-56 h-56 object-cover cursor-pointer"
+                  onClick={toggleImage}
+                />
+              ) : (
+                <div className="w-56 h-56 object-cover" onClick={toggleImage}>
+                  Text to be displayed instead of the image.
+                </div>
+              )}
               {showImage1 ? (
-            <img
-              src="/images/image22042-4xx-300h.png"
-              alt="image22042"
-              className="w-56 h-56 object-cover"
-              onClick={toggleImage1}
-            />
-          ) : (
-            <div className="w-56 h-56 object-cover" onClick={toggleImage1}>
-              Text to be displayed instead of the image.
-            </div>
-          )}
+                <img
+                  src="/images/image22042-4xx-300h.png"
+                  alt="image22042"
+                  className="w-56 h-56 object-cover cursor-pointer"
+                  onClick={toggleImage1}
+                />
+              ) : (
+                <div className="w-56 h-56 object-cover" onClick={toggleImage1}>
+                  Text to be displayed instead of the image.
+                </div>
+              )}
 
               {showImage2 ? (
                 <img
                   src="/images/image32042-3h6q-300h.png"
                   alt="image32042"
-                  className="w-56 h-56 object-cover"
+                  className="w-56 h-56 object-cover cursor-pointer"
                   onClick={toggleImage2}
                 />
               ) : (
@@ -136,7 +131,7 @@ const ProcessIntro = (props) => {
                 <img
                   src="/images/image42042-v9d8-300h.png"
                   alt="image42042"
-                  className="w-56 h-56 object-cover"
+                  className="w-56 h-56 object-cover cursor-pointer"
                   onClick={toggleImage3}
                 />
               ) : (
@@ -144,14 +139,12 @@ const ProcessIntro = (props) => {
                   Text to be displayed instead of the image.
                 </div>
               )}
-              
-              
             </div>
           </div>
         </div>
         <div>
-          <div className="text-center mb-8">
-            <div className=" text-5xl">建議泡茶流程</div>
+          <div className="mb-8 text-center">
+            <div className="text-5xl font-bold">建議泡茶流程</div>
             <div className="bg-yellow-500 h-1 w-20 mt-1 mx-auto"></div>
           </div>
           <div className="bg-white rounded-3xl shadow-md p-4 mb-4 flex flex-col md:flex-row items-center">
@@ -212,7 +205,6 @@ const ProcessIntro = (props) => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };
