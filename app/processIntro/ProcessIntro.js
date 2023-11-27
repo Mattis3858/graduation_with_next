@@ -177,9 +177,40 @@ const ProcessIntro = (props) => {
             <div className="w-full md:w-1/2">
               <div className="text-5xl font-bold mb-4">泡茶方式</div>
               <div className="text-xl text-gray-500 mb-4">
-                {/* 溫潤泡:置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶 */}
+                {/* 溫潤泡:置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶
                 將茶包放入茶杯後沖入熱水， 3分鐘後即可取出茶包，靜置
-                3分鐘即可聞茶香， 待茶湯靜置至6分鐘後，冷卻即可享用
+                3分鐘即可聞茶香， 待茶湯靜置至6分鐘後，冷卻即可享用 */}
+                <div>
+                <div className="">沖泡器具:</div>
+                <div className="flex">
+                  {['茶具', '快沖壺', '馬克杯', '沖茶袋'].map((tool) => (
+                    <button
+                      key={tool}
+                      className={`text-blue-500 underline mr-4 ${
+                        selectedTool === tool ? 'font-bold' : ''
+                      }`}
+                      onClick={() => selectTool(tool)}
+                    >
+                      {tool}
+                    </button>
+                  ))}
+                </div>
+                {/* <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div> */}
+                {selectedTool && (
+                  <div className="mt-4">
+                    {selectedTool === '茶具' && <div>茶具的相關文字內容</div>}
+                    {selectedTool === '快沖壺' && (
+                      <div>快沖壺的相關文字內容</div>
+                    )}
+                    {selectedTool === '馬克杯' && (
+                      <div>馬克杯的相關文字內容</div>
+                    )}
+                    {selectedTool === '沖茶袋' && (
+                      <div>沖茶袋的相關文字內容</div>
+                    )}
+                  </div>
+                )}
+              </div>
               </div>
               {/* <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
               <div className="text-xl text-gray-500">
