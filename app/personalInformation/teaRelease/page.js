@@ -9,6 +9,7 @@ const Home = () => {
   const [prodName, setProdName] = useState('');
   const [prodDescription, setProdDescription] = useState('');
   const [prodPrice, setProdPrice] = useState();
+  const [images, setImages] = useState([]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const currentTime = new Date().toISOString();
@@ -34,7 +35,9 @@ const Home = () => {
   useEffect(() => {
     getShopID(setShopID, session);
   }, [session]);
-  const handleImageUpload = (id) => {};
+  const handleImageUpload = (e) => {
+    setImages([...images, e.target.files[0]]);
+  };
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
       <h1 className="text-4xl text-center mt-6 mb-4 big_title">茶行茶款上架</h1>
@@ -71,13 +74,14 @@ const Home = () => {
               name="image1"
               accept="image/*"
               className="hidden"
-              onChange={(e) => handleImageUpload(e, 1)} // 处理上传图片的函数
+              onChange={(e) => handleImageUpload(e)} // 处理上传图片的函数
             />
+
             <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
               上傳圖片1
             </span>
           </label>
-
+          {console.log(images)}
           <label htmlFor="image2" className="m-2">
             <input
               type="file"
@@ -85,7 +89,7 @@ const Home = () => {
               name="image2"
               accept="image/*"
               className="hidden"
-              onChange={(e) => handleImageUpload(e, 2)} // 处理上传图片的函数
+              onChange={(e) => handleImageUpload(e)} // 处理上传图片的函数
             />
             <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
               上傳圖片2
@@ -99,7 +103,7 @@ const Home = () => {
               name="image3"
               accept="image/*"
               className="hidden"
-              onChange={(e) => handleImageUpload(e, 3)} // 处理上传图片的函数
+              onChange={(e) => handleImageUpload(e)} // 处理上传图片的函数
             />
             <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
               上傳圖片3
