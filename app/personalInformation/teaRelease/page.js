@@ -34,6 +34,7 @@ const Home = () => {
   useEffect(() => {
     getShopID(setShopID, session);
   }, [session]);
+  const handleImageUpload = (id) => {};
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
       <h1 className="text-4xl text-center mt-6 mb-4 big_title">茶行茶款上架</h1>
