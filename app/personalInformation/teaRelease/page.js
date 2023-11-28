@@ -61,6 +61,50 @@ const Home = () => {
           placeholder="價格"
           className="m-2 p-2 border border-gray-300 rounded-md"
         />
+        {/* 三个文件上传输入框 */}
+        <div className="m-2 flex items-center justify-center">
+          <label htmlFor="image1" className="m-2">
+            <input
+              type="file"
+              id="image1"
+              name="image1"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => handleImageUpload(e, 1)} // 处理上传图片的函数
+            />
+            <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
+              上傳圖片1
+            </span>
+          </label>
+
+          <label htmlFor="image2" className="m-2">
+            <input
+              type="file"
+              id="image2"
+              name="image2"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => handleImageUpload(e, 2)} // 处理上传图片的函数
+            />
+            <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
+              上傳圖片2
+            </span>
+          </label>
+
+          <label htmlFor="image3" className="m-2">
+            <input
+              type="file"
+              id="image3"
+              name="image3"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => handleImageUpload(e, 3)} // 处理上传图片的函数
+            />
+            <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
+              上傳圖片3
+            </span>
+          </label>
+        </div>
         <button
           type="submit"
           className="card-button bg-lime-600 text-white p-2 rounded-md mx-auto"
