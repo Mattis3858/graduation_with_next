@@ -65,26 +65,26 @@ const ProcessIntro = (props) => {
                 {/* <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div> */}
                 {selectedTool && (
                   <div className="mt-4">
-                    {selectedTool === '茶具' && <div>茶具的相關文字內容</div>}
+                    {selectedTool === '茶具' && <div>較專業的傳統茶具組，如茶壺、聞香杯、各式茶器等，適合已具備一定泡茶知識者使用</div>}
                     {selectedTool === '快沖壺' && (
-                      <div>快沖壺的相關文字內容</div>
+                      <div>方便快速的選擇，適合剛接觸泡茶的使用者使用</div>
                     )}
                     {selectedTool === '馬克杯' && (
-                      <div>馬克杯的相關文字內容</div>
+                      <div>如果家裡沒有專門喝茶的茶杯可以直接用馬克杯替代即可</div>
                     )}
                     {selectedTool === '沖茶袋' && (
-                      <div>沖茶袋的相關文字內容</div>
+                      <div>使用馬克杯泡茶與濾茶球的使用者，如果怕茶葉在杯中散掉的話可以事先使用沖茶袋將茶葉放入其中</div>
                     )}
                   </div>
                 )}
               </div>
-              {/* <div className="pt-4">
-                <div>2. 待測茶葉:</div>
+              <div className="pt-4">
+                <div>目前茶款:</div>
                 <div>
                   張協興茶行鐵觀音、張協興茶行包種茶、威叔茶莊鐵觀音、
                   威叔茶莊鐵觀音紅茶、寒舍茶坊包種茶、寒舍茶坊鐵觀音紅茶
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
           <div className="w-full lg:w-auto">
@@ -177,13 +177,24 @@ const ProcessIntro = (props) => {
             <div className="w-full md:w-1/2">
               <div className="text-5xl font-bold mb-4">泡茶方式</div>
               <div className="text-xl text-gray-500 mb-4">
+                {/* 溫杯燙壺:<br></br>
+                1. 杯中加入一半25度常溫水後，再加入一半90-100度熱水<br></br>
+                2. 靜置30秒後，倒掉杯中一半的溫熱水，再加滿step1.同樣溫度熱水<br></br>
+                3. 同樣靜置30秒後，再重複一次step2.倒掉一半水再加滿熱水<br></br>
+                4. 此時杯身已緩緩溫杯完成，即可開始泡茶<br></br><br></br>
+                溫潤泡:<br></br>
+                1. 使用100度C水沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)<br></br>
+                2. 靜置 3 分鐘，即可聞茶香<br></br>
+                3. 待茶湯靜置至 6 分鐘後，冷卻即可享用<br></br><br></br>
+                續沖方式:<br></br>
+                每泡茶可泡約 5-7 次，每泡時間增加 10 秒 */}
                 {/* 溫潤泡:置入茶葉後，先以熱水沖茶葉，立即將茶水倒出後再泡茶
                 將茶包放入茶杯後沖入熱水， 3分鐘後即可取出茶包，靜置
                 3分鐘即可聞茶香， 待茶湯靜置至6分鐘後，冷卻即可享用 */}
                 <div>
-                <div className="">沖泡器具:</div>
+                
                 <div className="flex">
-                  {['茶具', '快沖壺', '馬克杯', '沖茶袋'].map((tool) => (
+                  {['1.溫杯燙壺', '2.溫潤泡', '3.續沖方式'].map((tool) => (
                     <button
                       key={tool}
                       className={`text-blue-500 underline mr-4 ${
@@ -195,23 +206,29 @@ const ProcessIntro = (props) => {
                     </button>
                   ))}
                 </div>
-                {/* <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div> */}
+              
                 {selectedTool && (
                   <div className="mt-4">
-                    {selectedTool === '茶具' && <div>茶具的相關文字內容</div>}
-                    {selectedTool === '快沖壺' && (
-                      <div>快沖壺的相關文字內容</div>
+                    {selectedTool === '1.溫杯燙壺' && <div>1. 杯中加入一半25度常溫水後，再加入一半90-100度熱水<br></br>
+                2. 靜置30秒後，倒掉杯中一半的溫熱水，再加滿step1.同樣溫度熱水<br></br>
+                3. 同樣靜置30秒後，再重複一次step2.倒掉一半水再加滿熱水<br></br>
+                4. 此時杯身已緩緩溫杯完成，即可開始泡茶</div>}
+                    {selectedTool === '2.溫潤泡' && (
+                      <div>1. 使用100度C水沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)<br></br>
+                      2. 靜置 3 分鐘，即可聞茶香<br></br>
+                      3. 待茶湯靜置至 6 分鐘後，冷卻即可享用</div>
                     )}
-                    {selectedTool === '馬克杯' && (
-                      <div>馬克杯的相關文字內容</div>
+                    {selectedTool === '3.續沖方式' && (
+                      <div>每泡茶可泡約 5-7 次，每泡時間增加 10 秒</div>
                     )}
-                    {selectedTool === '沖茶袋' && (
+                    {/* {selectedTool === '沖茶袋' && (
                       <div>沖茶袋的相關文字內容</div>
-                    )}
+                    )} */}
                   </div>
                 )}
               </div>
-              </div>
+              </div> 
+            
               {/* <div className="text-5xl font-bold pt-6 pb-4">沖泡時間</div>
               <div className="text-xl text-gray-500">
                 沖泡 3 分鐘後可即取出茶葉(瀝出茶湯) 靜置 3 分鐘，即可聞茶香
