@@ -9,7 +9,7 @@ const Home = () => {
   const [prodName, setProdName] = useState('');
   const [prodDescription, setProdDescription] = useState('');
   const [prodPrice, setProdPrice] = useState();
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState([]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const currentTime = new Date().toISOString();
@@ -28,15 +28,44 @@ const Home = () => {
         created_time: currentTime,
         updated_time: currentTime,
         price: prodPrice,
+        test: image,
       },
     ]);
+    try {
+      const { data, error } = await supabase.storage
+        .from('product')
+        .upload(`${image.name}`, image);
+
+      if (error) {
+        console.error('Error uploading file:', error);
+      } else {
+        console.log('File uploaded successfully:', data);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      // Handle other errors
+    }
     window.alert('上架成功');
   };
   useEffect(() => {
     getShopID(setShopID, session);
   }, [session]);
-  const handleImageUpload = (e) => {
-    setImages([...images, e.target.files[0]]);
+  const handleImageUpload = async (e) => {
+    setImage(e.target.files[0]);
+    try {
+      const { data, error } = await supabase.storage
+        .from('product')
+        .upload(`${e.target.files[0].name}`, e.target.files[0]);
+
+      if (error) {
+        console.error('Error uploading file:', error);
+      } else {
+        console.log('File uploaded successfully:', data);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      // Handle other errors
+    }
   };
   return (
     <main className="bg-white p-6 pt-0 rounded-lg shadow-md">
@@ -78,10 +107,10 @@ const Home = () => {
             />
 
             <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
-              上傳圖片1
+              上傳圖片
             </span>
           </label>
-          {console.log(images)}
+          {/* {console.log(images)}
           <label htmlFor="image2" className="m-2">
             <input
               type="file"
@@ -108,7 +137,7 @@ const Home = () => {
             <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
               上傳圖片3
             </span>
-          </label>
+          </label> */}
         </div>
         <button
           type="submit"
