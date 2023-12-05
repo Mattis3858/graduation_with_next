@@ -8,9 +8,19 @@ const ShoppingCart = () => {
   const { data: session, status } = useSession();
   const [user, setUser] = useState('');
   const [shops, setShops] = useState([]);
-  const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
-    useCart();
+  const {
+    isEmpty,
+    totalUniqueItems,
+    items,
+    updateItemQuantity,
+    removeItem,
+    emptyCart,
+  } = useCart();
   const handleSubmit = async (event) => {
+    if (items.length === 0) {
+      window.alert('購物車是空的!!');
+      return;
+    }
     const currentTime = new Date().toISOString();
     event.preventDefault();
     window.alert('訂單已提交');
@@ -38,6 +48,7 @@ const ShoppingCart = () => {
     //   updated_time: currentTime,
     //   spec_id:1,
     // };
+    emptyCart();
   };
   useEffect(() => {
     getShop(setShops);
