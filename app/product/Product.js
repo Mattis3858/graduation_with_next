@@ -233,7 +233,7 @@ const Product = () => {
         <div className="content">
           <div className="text-xl fw-700 banner-text">找好茶推薦系統</div>
           <Link href="/goodtea">
-            <button className="banner-button px-auto">前往</button>
+            <button className="banner-button">前往</button>
           </Link>
         </div>
       </div>
