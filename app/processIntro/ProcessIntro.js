@@ -3,29 +3,69 @@ import React, { useState } from 'react';
 import './style.css';
 
 const ProcessIntro = (props) => {
-  const [selectedTool, setSelectedTool] = useState(null);
-  const [showImage, setShowImage] = useState(true);
-  const [showImage1, setShowImage1] = useState(true);
-  const [showImage2, setShowImage2] = useState(true);
-  const [showImage3, setShowImage3] = useState(true);
+  const [selectedTool, setSelectedTool] = useState('茶具');
+  
 
   const selectTool = (tool) => {
     setSelectedTool(selectedTool === tool ? null : tool);
   };
-  const toggleImage = () => {
-    setShowImage(!showImage);
-  };
-  const toggleImage1 = () => {
-    setShowImage1(!showImage1);
+  const toolInfo = {
+    '茶具': {
+      text: '較專業的傳統茶具組，如茶壺、聞香杯、各式茶器等，適合已具備一定泡茶知識者使用',
+      image: '/images/image12041-i1oe-300h.png', // Replace with the actual image path
+    },
+    '快沖壺': {
+      text: '方便快速的選擇，適合剛接觸泡茶的使用者使用',
+      image: '/images/image22042-4xx-300h.png', // Replace with the actual image path
+    },
+    '馬克杯': {
+      text: '如果家裡沒有專門喝茶的茶杯可以直接用馬克杯替代即可',
+      image: '/images/image32042-3h6q-300h.png', // Replace with the actual image path
+    },
+    '沖茶袋': {
+      text: '使用馬克杯泡茶與濾茶球的使用者，如果怕茶葉在杯中散掉的話可以事先使用沖茶袋將茶葉放入其中',
+      image: '/images/image42042-v9d8-300h.png', // Replace with the actual image path
+    },
+    '1.溫杯燙壺': {
+      text1: (
+        <>
+          1. 杯中加入一半 25 度常溫水後，再加入一半 90-100 度熱水<br />
+          2. 靜置 30 秒後，倒掉杯中一半的溫熱水，再加滿 step 1. 同樣溫度熱水<br />
+          3. 同樣靜置 30 秒後，再重複一次 step 2. 倒掉一半水再加滿熱水<br />
+          4. 此時杯身已緩緩溫杯完成，即可開始泡茶
+        </>
+      ),
+      image: '/images/茶茶.jpg',
+    },
+    '2.溫潤泡': {
+      text1: (
+        <>
+          1. 使用100度C水沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)<br />
+          2. 靜置 3 分鐘，即可聞茶香<br />
+          3. 待茶湯靜置至 6 分鐘後，冷卻即可享用
+        </>
+      ),
+      image: '/images/茶茶3.jpg',
+    },
+    '3.續沖方式': {
+      text1: (
+        <>
+          每泡茶可泡約 5-7 次，每泡時間增加 10 秒
+        </>
+      ),
+      image: '/images/茶茶2.jpg',
+    },
   };
 
-  const toggleImage2 = () => {
-    setShowImage2(!showImage2);
+  const imageStyle = {
+    width: '250px', // Fixed width
+    height: '250px', // Fixed height
+    objectFit: 'cover', // or 'contain' depending on your preference
+    position: 'absolute', // Set image position
+    top: '400px', // Set top margin
+    left: '750px', // Set left margin
   };
-
-  const toggleImage3 = () => {
-    setShowImage3(!showImage3);
-  };
+ 
   return (
     <>
       <div className="page-layout ">
@@ -50,33 +90,28 @@ const ProcessIntro = (props) => {
               <div>
                 <div className="">沖泡器具:</div>
                 <div className="flex">
-                  {['茶具', '快沖壺', '馬克杯', '沖茶袋'].map((tool) => (
-                    <button
-                      key={tool}
-                      className={`text-blue-500 underline mr-4 ${
-                        selectedTool === tool ? 'font-bold' : ''
-                      }`}
-                      onClick={() => selectTool(tool)}
-                    >
-                      {tool}
-                    </button>
-                  ))}
-                </div>
-                {/* <div>茶具 / 快沖壺 / 馬克杯 / 沖茶袋 / 濾茶球...等</div> */}
-                {selectedTool && (
-                  <div className="mt-4">
-                    {selectedTool === '茶具' && <div>較專業的傳統茶具組，如茶壺、聞香杯、各式茶器等，適合已具備一定泡茶知識者使用</div>}
-                    {selectedTool === '快沖壺' && (
-                      <div>方便快速的選擇，適合剛接觸泡茶的使用者使用</div>
-                    )}
-                    {selectedTool === '馬克杯' && (
-                      <div>如果家裡沒有專門喝茶的茶杯可以直接用馬克杯替代即可</div>
-                    )}
-                    {selectedTool === '沖茶袋' && (
-                      <div>使用馬克杯泡茶與濾茶球的使用者，如果怕茶葉在杯中散掉的話可以事先使用沖茶袋將茶葉放入其中</div>
-                    )}
-                  </div>
-                )}
+        {['茶具', '快沖壺', '馬克杯', '沖茶袋'].map((tool) => (
+          <button
+            key={tool}
+            className={`text-blue-500 underline mr-4 ${
+              selectedTool === tool ? 'font-bold' : ''
+            }`}
+            onClick={() => selectTool(tool)}
+          >
+            {tool}
+          </button>
+        ))}
+      </div>
+      {selectedTool && (
+        <div className="flex mt-4">
+          <div>
+            <div>{toolInfo[selectedTool].text}</div>
+          </div>
+          <div style={imageStyle}>
+            <img src={toolInfo[selectedTool].image} alt={selectedTool}  />
+          </div>
+        </div>
+      )}
               </div>
               <div className="pt-4">
                 <div>目前茶款:</div>
@@ -87,60 +122,7 @@ const ProcessIntro = (props) => {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-auto">
-            <div className="grid grid-cols-2 gap-0">
-              {showImage ? (
-                <img
-                  src="/images/image12041-i1oe-300h.png"
-                  alt="image12041"
-                  className="w-56 h-56 object-cover cursor-pointer"
-                  onClick={toggleImage}
-                />
-              ) : (
-                <div className="w-56 h-56 object-cover" onClick={toggleImage}>
-                  Text to be displayed instead of the image.
-                </div>
-              )}
-              {showImage1 ? (
-                <img
-                  src="/images/image22042-4xx-300h.png"
-                  alt="image22042"
-                  className="w-56 h-56 object-cover cursor-pointer"
-                  onClick={toggleImage1}
-                />
-              ) : (
-                <div className="w-56 h-56 object-cover" onClick={toggleImage1}>
-                  Text to be displayed instead of the image.
-                </div>
-              )}
-
-              {showImage2 ? (
-                <img
-                  src="/images/image32042-3h6q-300h.png"
-                  alt="image32042"
-                  className="w-56 h-56 object-cover cursor-pointer"
-                  onClick={toggleImage2}
-                />
-              ) : (
-                <div className="w-56 h-56 object-cover" onClick={toggleImage2}>
-                  Text to be displayed instead of the image.
-                </div>
-              )}
-
-              {showImage3 ? (
-                <img
-                  src="/images/image42042-v9d8-300h.png"
-                  alt="image42042"
-                  className="w-56 h-56 object-cover cursor-pointer"
-                  onClick={toggleImage3}
-                />
-              ) : (
-                <div className="w-56 h-56 object-cover" onClick={toggleImage3}>
-                  Text to be displayed instead of the image.
-                </div>
-              )}
-            </div>
-          </div>
+         
         </div>
         <div>
           <div className="mb-8 text-center">
@@ -208,24 +190,15 @@ const ProcessIntro = (props) => {
                 </div>
               
                 {selectedTool && (
-                  <div className="mt-4">
-                    {selectedTool === '1.溫杯燙壺' && <div>1. 杯中加入一半25度常溫水後，再加入一半90-100度熱水<br></br>
-                2. 靜置30秒後，倒掉杯中一半的溫熱水，再加滿step1.同樣溫度熱水<br></br>
-                3. 同樣靜置30秒後，再重複一次step2.倒掉一半水再加滿熱水<br></br>
-                4. 此時杯身已緩緩溫杯完成，即可開始泡茶</div>}
-                    {selectedTool === '2.溫潤泡' && (
-                      <div>1. 使用100度C水沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)<br></br>
-                      2. 靜置 3 分鐘，即可聞茶香<br></br>
-                      3. 待茶湯靜置至 6 分鐘後，冷卻即可享用</div>
-                    )}
-                    {selectedTool === '3.續沖方式' && (
-                      <div>每泡茶可泡約 5-7 次，每泡時間增加 10 秒</div>
-                    )}
-                    {/* {selectedTool === '沖茶袋' && (
-                      <div>沖茶袋的相關文字內容</div>
-                    )} */}
-                  </div>
-                )}
+        <div className="flex mt-4">
+          <div>
+            <div>{toolInfo[selectedTool].text1}</div>
+          </div>
+          <div style={imageStyle}>
+            <img src={toolInfo[selectedTool].image} alt={selectedTool}  />
+          </div>
+        </div>
+      )}
               </div>
               </div> 
             
