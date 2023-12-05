@@ -24,13 +24,28 @@ export const flavorTable = {
   after_rhyme: '喉後韻',
   aftertaste: '回香感',
 };
+/**
+ * Retrieves the user ID from a database based on the user's name stored in the `session` object
+ * and updates the `setUserID` state variable with the retrieved user ID.
+ *
+ * @param {Function} setUserID - A function that updates the user ID state variable.
+ * @param {Object} session - An object that contains user information, including the user's name.
+ */
 export async function getUserID(setUserID, session) {
   if (session?.user?.name) {
-    const { data: user, error } = await supabase
-      .from('user')
-      .select('*')
-      .eq('user_name', session.user.name);
-    setUserID(user[0].user_id);
+    try {
+      const { data: user } = await supabase
+        .from('user')
+        .select('user_id')
+        .eq('user_name', session.user.name)
+        .single();
+
+      if (user) {
+        setUserID(user.user_id);
+      }
+    } catch (error) {
+      console.error('Error retrieving user ID:', error);
+    }
   }
 }
 export async function getShopID(setShopID, session) {
