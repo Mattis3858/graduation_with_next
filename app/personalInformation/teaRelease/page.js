@@ -18,7 +18,7 @@ const Home = () => {
       window.alert('Please enter all the information');
       return;
     }
-    console.log(image.name);
+    // console.log(image.name);
     const { data } = supabase.storage
       .from('product')
       .getPublicUrl(`images/${image.name}`);
@@ -60,7 +60,7 @@ const Home = () => {
       const { data, error } = await supabase.storage
         .from('product')
         .upload(`images/${e.target.files[0].name}`, e.target.files[0]);
-      console.log(data);
+      // console.log(data);
       if (error) {
         console.error('Error uploading file:', error);
       } else {
