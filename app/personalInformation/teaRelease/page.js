@@ -18,12 +18,16 @@ const Home = () => {
       window.alert('Please enter all the information');
       return;
     }
+    console.log(image.name);
+    const { data } = supabase.storage
+      .from('product')
+      .getPublicUrl(`images/${image.name}`);
     const { data: teaRelease, error } = await supabase.from('product').upsert([
       {
         shop_id: shopID,
         prod_name: prodName,
         prod_desc: prodDescription,
-        prod_pic: null,
+        prod_pic: data.publicUrl,
         prod_status: false,
         created_time: currentTime,
         updated_time: currentTime,
@@ -31,20 +35,20 @@ const Home = () => {
         test: image,
       },
     ]);
-    try {
-      const { data, error } = await supabase.storage
-        .from('product')
-        .upload(`${image.name}`, image);
+    // try {
+    //   const { data, error } = await supabase.storage
+    //     .from('product')
+    //     .upload(`images/${image.name}`, image);
 
-      if (error) {
-        console.error('Error uploading file:', error);
-      } else {
-        console.log('File uploaded successfully:', data);
-      }
-    } catch (error) {
-      console.error('Error:', error.message);
-      // Handle other errors
-    }
+    //   if (error) {
+    //     console.error('Error uploading file:', error);
+    //   } else {
+    //     console.log('File uploaded successfully:', data);
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error.message);
+    //   // Handle other errors
+    // }
     window.alert('上架成功');
   };
   useEffect(() => {
@@ -55,8 +59,8 @@ const Home = () => {
     try {
       const { data, error } = await supabase.storage
         .from('product')
-        .upload(`${e.target.files[0].name}`, e.target.files[0]);
-
+        .upload(`images/${e.target.files[0].name}`, e.target.files[0]);
+      console.log(data);
       if (error) {
         console.error('Error uploading file:', error);
       } else {
