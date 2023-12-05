@@ -16,14 +16,14 @@ const ShoppingCart = () => {
     removeItem,
     emptyCart,
   } = useCart();
+
   const handleSubmit = async (event) => {
+    event.preventDefault();
     if (items.length === 0) {
       window.alert('購物車是空的!!');
       return;
     }
     const currentTime = new Date().toISOString();
-    event.preventDefault();
-    window.alert('訂單已提交');
     items.forEach(async (item) => {
       const { data: reservation, error } = await supabase
         .from('buy_record')
@@ -39,15 +39,7 @@ const ShoppingCart = () => {
           },
         ]);
     });
-    // const purchaseData = {
-    //   user_id: user.user_id,
-    //   prod_id: ,
-    //   buy_qty: items.quantity,
-    //   buy_amount: items.itemTotal,
-    //   created_time: currentTime,
-    //   updated_time: currentTime,
-    //   spec_id:1,
-    // };
+    window.alert('訂單已提交');
     emptyCart();
   };
   useEffect(() => {
@@ -60,7 +52,6 @@ const ShoppingCart = () => {
   }
   return (
     <div className="page-layout">
-      {console.log(user.user_id)}
       <div className="mx-auto">
         <div className="text-4xl text-center big_title">購物車</div>
         <div className="rounded-lg shadow border-slate-300 border-solid border-2 mt-6">
