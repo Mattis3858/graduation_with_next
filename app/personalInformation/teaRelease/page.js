@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { getShopID, supabase } from '../../components/module';
+import { getShopID, supabase, flavorTable } from '../../components/module';
 
 const Home = () => {
   const { data: session, status } = useSession();
@@ -9,13 +9,35 @@ const Home = () => {
   const [prodName, setProdName] = useState('');
   const [prodDescription, setProdDescription] = useState('');
   const [prodPrice, setProdPrice] = useState();
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState();
+  const [flavorValues, setFlavorValues] = useState([]);
+
+  const handleFlavorScoreChange = (index, value) => {
+    const parsedValue = parseFloat(value);
+    if (!isNaN(parsedValue) && parsedValue >= 0 && parsedValue <= 5) {
+      const updatedValues = [...flavorValues];
+      updatedValues[index] = parsedValue;
+      setFlavorValues(updatedValues);
+    } else {
+      // 输入值不在有效范围内，可以进行错误处理
+      // 在这里可以显示错误信息给用户
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const currentTime = new Date().toISOString();
     if (!shopID || !prodName || !prodDescription || !prodPrice) {
       // 做一些錯誤處理，確保所有必填字段都已填寫
       window.alert('Please enter all the information');
+      return;
+    }
+    if (flavorValues.length !== 17) {
+      window.alert('請輸入完整風味數據');
+      return;
+    }
+    if (!image) {
+      window.alert('請上傳照片');
       return;
     }
     // console.log(image.name);
@@ -32,7 +54,7 @@ const Home = () => {
         created_time: currentTime,
         updated_time: currentTime,
         price: prodPrice,
-        test: image,
+        radar_data: flavorValues,
       },
     ]);
     // try {
@@ -98,7 +120,18 @@ const Home = () => {
           placeholder="價格"
           className="m-2 p-2 border border-gray-300 rounded-md"
         />
-        {/* 三个文件上传输入框 */}
+        {Object.values(flavorTable).map((value, index) => (
+          <input
+            key={index}
+            type="number"
+            value={flavorValues[index] || ''}
+            onChange={(e) => handleFlavorScoreChange(index, e.target.value)}
+            placeholder={`${value}`}
+            className="m-2 p-2 border border-gray-300 rounded-md"
+          />
+        ))}
+        {console.log(flavorValues)}
+
         <div className="m-2 flex items-center justify-center">
           <label htmlFor="image1" className="m-2">
             <input
@@ -107,41 +140,13 @@ const Home = () => {
               name="image1"
               accept="image/*"
               className="hidden"
-              onChange={(e) => handleImageUpload(e)} // 处理上传图片的函数
+              onChange={(e) => handleImageUpload(e)}
             />
 
             <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
               上傳圖片
             </span>
           </label>
-          {/* {console.log(images)}
-          <label htmlFor="image2" className="m-2">
-            <input
-              type="file"
-              id="image2"
-              name="image2"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => handleImageUpload(e)} // 处理上传图片的函数
-            />
-            <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
-              上傳圖片2
-            </span>
-          </label>
-
-          <label htmlFor="image3" className="m-2">
-            <input
-              type="file"
-              id="image3"
-              name="image3"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => handleImageUpload(e)} // 处理上传图片的函数
-            />
-            <span className="border border-gray-300 p-2 rounded-md cursor-pointer">
-              上傳圖片3
-            </span>
-          </label> */}
         </div>
         <button
           type="submit"

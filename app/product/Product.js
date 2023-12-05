@@ -26,134 +26,134 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const radarData = {
-  張協興鐵觀音: {
-    labels: [
-      '焙烤香',
-      '果香',
-      '花香',
-      '甜香',
-      '草香',
-      '甜香',
-      '果仁香',
-      '木質香',
-    ],
-    datasets: [
-      {
-        label: '風味評分',
-        data: [5, 3, 3, 4, 3, 2, 2, 3],
-        backgroundColor: 'rgba(50, 157, 156, 0.2)',
-        borderColor: 'rgba(50, 157, 156, 1)',
-        borderWidth: 1,
-      },
-    ],
-  },
-  威叔鐵觀音紅茶: {
-    labels: [
-      '焙烤香',
-      '果香',
-      '花香',
-      '甜香',
-      '草香',
-      '甜香',
-      '果仁香',
-      '木質香',
-    ],
-    datasets: [
-      {
-        label: '風味評分',
-        data: [3, 2, 1, 2, 1, 4, 0, 2],
-        backgroundColor: 'rgba(50, 157, 156, 0.2)',
-        borderColor: 'rgba(50, 157, 156, 1)',
-        borderWidth: 1,
-      },
-    ],
-  },
-  寒舍文山包種茶: {
-    labels: [
-      '焙烤香',
-      '果香',
-      '花香',
-      '甜香',
-      '草香',
-      '甜香',
-      '果仁香',
-      '木質香',
-    ],
-    datasets: [
-      {
-        label: '風味評分',
-        data: [2, 2, 2, 0, 1, 3, 3, 4],
-        backgroundColor: 'rgba(50, 157, 156, 0.2)',
-        borderColor: 'rgba(50, 157, 156, 1)',
-        borderWidth: 1,
-      },
-    ],
-  },
-  威叔鐵觀音: {
-    labels: [
-      '焙烤香',
-      '果香',
-      '花香',
-      '甜香',
-      '草香',
-      '甜香',
-      '果仁香',
-      '木質香',
-    ],
-    datasets: [
-      {
-        label: '風味評分',
-        data: [4, 2, 1, 2, 3, 2, 0, 1],
-        backgroundColor: 'rgba(50, 157, 156, 0.2)',
-        borderColor: 'rgba(50, 157, 156, 1)',
-        borderWidth: 1,
-      },
-    ],
-  },
-  張協興文山包種茶: {
-    labels: [
-      '焙烤香',
-      '果香',
-      '花香',
-      '甜香',
-      '草香',
-      '甜香',
-      '果仁香',
-      '木質香',
-    ],
-    datasets: [
-      {
-        label: '風味評分',
-        data: [3, 4, 2, 1, 5, 2, 0, 1],
-        backgroundColor: 'rgba(50, 157, 156, 0.2)',
-        borderColor: 'rgba(50, 157, 156, 1)',
-        borderWidth: 1,
-      },
-    ],
-  },
-  寒舍鐵觀音紅茶: {
-    labels: [
-      '焙烤香',
-      '果香',
-      '花香',
-      '甜香',
-      '草香',
-      '甜香',
-      '果仁香',
-      '木質香',
-    ],
-    datasets: [
-      {
-        label: '風味評分',
-        data: [2, 3, 4, 4, 0, 1, 1, 3],
-        backgroundColor: 'rgba(50, 157, 156, 0.2)',
-        borderColor: 'rgba(50, 157, 156, 1)',
-        borderWidth: 1,
-      },
-    ],
-  },
-};
+// const radarData = {
+//   張協興鐵觀音: {
+//     labels: [
+//       '焙烤香',
+//       '果香',
+//       '花香',
+//       '甜香',
+//       '草香',
+//       '甜香',
+//       '果仁香',
+//       '木質香',
+//     ],
+//     datasets: [
+//       {
+//         label: '風味評分',
+//         data: [5, 3, 3, 4, 3, 2, 2, 3],
+//         backgroundColor: 'rgba(50, 157, 156, 0.2)',
+//         borderColor: 'rgba(50, 157, 156, 1)',
+//         borderWidth: 1,
+//       },
+//     ],
+//   },
+//   威叔鐵觀音紅茶: {
+//     labels: [
+//       '焙烤香',
+//       '果香',
+//       '花香',
+//       '甜香',
+//       '草香',
+//       '甜香',
+//       '果仁香',
+//       '木質香',
+//     ],
+//     datasets: [
+//       {
+//         label: '風味評分',
+//         data: [3, 2, 1, 2, 1, 4, 0, 2],
+//         backgroundColor: 'rgba(50, 157, 156, 0.2)',
+//         borderColor: 'rgba(50, 157, 156, 1)',
+//         borderWidth: 1,
+//       },
+//     ],
+//   },
+//   寒舍文山包種茶: {
+//     labels: [
+//       '焙烤香',
+//       '果香',
+//       '花香',
+//       '甜香',
+//       '草香',
+//       '甜香',
+//       '果仁香',
+//       '木質香',
+//     ],
+//     datasets: [
+//       {
+//         label: '風味評分',
+//         data: [2, 2, 2, 0, 1, 3, 3, 4],
+//         backgroundColor: 'rgba(50, 157, 156, 0.2)',
+//         borderColor: 'rgba(50, 157, 156, 1)',
+//         borderWidth: 1,
+//       },
+//     ],
+//   },
+//   威叔鐵觀音: {
+//     labels: [
+//       '焙烤香',
+//       '果香',
+//       '花香',
+//       '甜香',
+//       '草香',
+//       '甜香',
+//       '果仁香',
+//       '木質香',
+//     ],
+//     datasets: [
+//       {
+//         label: '風味評分',
+//         data: [4, 2, 1, 2, 3, 2, 0, 1],
+//         backgroundColor: 'rgba(50, 157, 156, 0.2)',
+//         borderColor: 'rgba(50, 157, 156, 1)',
+//         borderWidth: 1,
+//       },
+//     ],
+//   },
+//   張協興文山包種茶: {
+//     labels: [
+//       '焙烤香',
+//       '果香',
+//       '花香',
+//       '甜香',
+//       '草香',
+//       '甜香',
+//       '果仁香',
+//       '木質香',
+//     ],
+//     datasets: [
+//       {
+//         label: '風味評分',
+//         data: [3, 4, 2, 1, 5, 2, 0, 1],
+//         backgroundColor: 'rgba(50, 157, 156, 0.2)',
+//         borderColor: 'rgba(50, 157, 156, 1)',
+//         borderWidth: 1,
+//       },
+//     ],
+//   },
+//   寒舍鐵觀音紅茶: {
+//     labels: [
+//       '焙烤香',
+//       '果香',
+//       '花香',
+//       '甜香',
+//       '草香',
+//       '甜香',
+//       '果仁香',
+//       '木質香',
+//     ],
+//     datasets: [
+//       {
+//         label: '風味評分',
+//         data: [2, 3, 4, 4, 0, 1, 1, 3],
+//         backgroundColor: 'rgba(50, 157, 156, 0.2)',
+//         borderColor: 'rgba(50, 157, 156, 1)',
+//         borderWidth: 1,
+//       },
+//     ],
+//   },
+// };
 // const ProductData = [
 //   {
 //     id: 1,
@@ -241,13 +241,45 @@ const Product = () => {
         {productData &&
           productData.map((product) => (
             <div key={product.id}>
-              {/* {console.log(product)} */}
               <TeaProduct
                 product={product}
                 src={product.prod_pic}
                 shop={findShopName(product.shop_id)}
                 name={product.prod_name}
-                description={<Radar data={radarData[product.prod_desc]} />}
+                description={
+                  <Radar
+                    data={{
+                      labels: [
+                        '焙烤香 - 烘焙味',
+                        '焙烤香 - 煙燻味',
+                        '果香 - 乾果味',
+                        '花香 - 清香',
+                        '花香 - 濃香',
+                        '甜香 - 糖香味',
+                        '甜香 - 蜜香味',
+                        '青草香 - 草香味',
+                        '果仁香 - 堅果味',
+                        '木質香',
+                        '酸味',
+                        '甜味',
+                        '圓滑感',
+                        '厚重感',
+                        '甘醇度',
+                        '喉後韻',
+                        '回香感',
+                      ],
+                      datasets: [
+                        {
+                          label: '風味評分',
+                          data: product.radar_data,
+                          backgroundColor: 'rgba(50, 157, 156, 0.2)',
+                          borderColor: 'rgba(50, 157, 156, 1)',
+                          borderWidth: 1,
+                        },
+                      ],
+                    }}
+                  />
+                }
                 price={product.price}
               />
             </div>
