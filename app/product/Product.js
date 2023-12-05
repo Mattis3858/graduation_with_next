@@ -232,7 +232,7 @@ const Product = () => {
       <div className="grid-rows-1 h-20 ml-10 mr-10 my-6 flex items-center justify-center banner">
         <div className="content">
           <div className="text-xl fw-700 banner-text">找好茶推薦系統</div>
-          <Link href="/goodtea">
+          <Link href="/goodtea" className="mx-auto">
             <button className="banner-button">前往</button>
           </Link>
         </div>
