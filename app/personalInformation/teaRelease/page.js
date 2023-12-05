@@ -10,7 +10,9 @@ const Home = () => {
   const [prodDescription, setProdDescription] = useState('');
   const [prodPrice, setProdPrice] = useState();
   const [image, setImage] = useState();
-  const [flavorValues, setFlavorValues] = useState([]);
+  const [flavorValues, setFlavorValues] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
 
   const handleFlavorScoreChange = (index, value) => {
     const parsedValue = parseFloat(value);
