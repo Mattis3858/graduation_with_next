@@ -195,7 +195,7 @@ const ProcessIntro = (props) => {
             <div>{toolInfo[selectedTool].text1}</div>
           </div>
           <div style={imageStyle}>
-            <img src={toolInfo[selectedTool].image} alt={selectedTool}  />
+            <img src={toolInfo[selectedTool].image} alt={selectedTool} style={imageStyle} />
           </div>
         </div>
       )}
