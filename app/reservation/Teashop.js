@@ -54,8 +54,8 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
   return (
     <div>
       <div className="border-2 border-lime-600 rounded-2xl bg-gray-200 font-sans card p-4">
-        <div className="card-pic">
-          <img src={src} alt="Tea" className="pic" />
+        <div className="card-pic sm:h-32 lg:h-64 relative">
+          <img src={src} alt="Tea" className="pic object-cover w-full" />
         </div>
         <div className="card-content">
           <div>
