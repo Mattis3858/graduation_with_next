@@ -47,23 +47,34 @@ export default function Home() {
         <thead className="bg-gray-200">
           <tr>
             <th className="py-2 px-3 text-left">預約日期</th>
+            <th className="py-2 px-3 text-left">時間</th>
+            <th className="py-2 px-3 text-left">預約者</th>
+            <th className="py-2 px-3 text-left">預約人數</th>
             <th className="py-2 px-3 text-left">預約店家</th>
           </tr>
         </thead>
         <tbody>
-          {sortedReservationData.map((appointment, index) => (
-            <tr
-              key={index}
-              className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
-            >
-              <td className="py-2 px-3">{appointment.reserv_date}</td>
-              <td className="py-2 px-3">
-                {shop.length !== 0 &&
-                  shop.find((item) => item.shop_id === appointment.shop_id)
-                    .shop_name}
-              </td>
-            </tr>
-          ))}
+          {sortedReservationData &&
+            sortedReservationData.map((appointment, index) => (
+              <tr
+                key={index}
+                className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+              >
+                <td className="py-2 px-3">{appointment.reserv_date}</td>
+                <td className="py-2 px-3">
+                  {appointment.reserv_time
+                    ? appointment.reserv_time.substring(0, 5)
+                    : appointment.reserv_time}
+                </td>
+                <td className="py-2 px-3">{appointment.reserv_name}</td>
+                <td className="py-2 px-3">{appointment.number_of_people}</td>
+                <td className="py-2 px-3">
+                  {shop.length !== 0 &&
+                    shop.find((item) => item.shop_id === appointment.shop_id)
+                      .shop_name}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </main>

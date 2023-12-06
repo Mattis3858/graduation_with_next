@@ -11,27 +11,40 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [email, setEmail] = useState('');
-  const [date, setDate] = useState('');
   const [user, setUser] = useState('');
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [numberOfPeople, setNumberOfPeople] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [remark, setRemark] = useState('');
 
   const handleSubmit = async (event) => {
-    const currentTime = new Date().toISOString();
     event.preventDefault();
-    email && window.alert('預約已提交');
-    // 清除表單資料
-    setEmail('');
+    const currentTime = new Date().toISOString();
     setOpen(false);
     const reservationData = {
       user_id: user.user_id,
       shop_id: shopID,
+      reserv_name: name,
+      phone_number: phoneNumber,
+      email: email,
+      number_of_people: numberOfPeople,
       reserv_date: date,
+      reserv_time: time,
+      remark: remark,
       created_time: currentTime,
       updated_time: currentTime,
     };
-    const { data: reservation, error } = await supabase
-      .from('reservation_record')
-      .upsert([reservationData]);
+    try {
+      const { data: reservation, error } = await supabase
+        .from('reservation_record')
+        .upsert([reservationData]);
+      window.alert('預約已提交');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -62,19 +75,94 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
                 {/* Updated classes for responsiveness */}
                 <div className="card-content flex flex-col justify-center items-center">
                   <h2 className="text-2xl font-bold text-center mb-4">
-                    請填入預約日期
+                    請填寫以下資訊
                   </h2>
                   <form onSubmit={handleSubmit} className="text-center">
                     <div className="mt-4">
                       <label>
+                        姓名:
+                        <input
+                          className="input w-52"
+                          type="text"
+                          value={name}
+                          onChange={(event) => setName(event.target.value)}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
+                        手機:
+                        <input
+                          className="input w-52"
+                          type="text"
+                          value={phoneNumber}
+                          onChange={(event) =>
+                            setPhoneNumber(event.target.value)
+                          }
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
+                        信箱:
+                        <input
+                          className="input w-52"
+                          type="email"
+                          value={email}
+                          onChange={(event) => setEmail(event.target.value)}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
+                        人數:
+                        <input
+                          className="input w-52"
+                          type="number"
+                          value={numberOfPeople}
+                          onChange={(event) =>
+                            setNumberOfPeople(event.target.value)
+                          }
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
                         日期:
                         <input
-                          className="input"
+                          className="input w-52"
                           type="date"
                           value={date}
                           onChange={(event) => setDate(event.target.value)}
                           required
                         />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
+                        時間:
+                        <input
+                          className="input w-52"
+                          type="time"
+                          value={time}
+                          onChange={(event) => setTime(event.target.value)}
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div className="mt-4">
+                      <label>
+                        備註:
+                        <input
+                          className="input w-52"
+                          type="text"
+                          value={remark}
+                          onChange={(event) => setRemark(event.target.value)}
+                        ></input>
                       </label>
                     </div>
                     <div className="mt-4">
