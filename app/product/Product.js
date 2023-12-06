@@ -237,7 +237,7 @@ const Product = () => {
           </Link>
         </div>
       </div>
-      <div className="grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
+      <div className="grid justify-around gap-x-12 gap-y-12 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-10 mr-10">
         {productData &&
           productData.map((product) => (
             <div key={product.id}>
