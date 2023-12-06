@@ -41,12 +41,16 @@ const PersonalInfoSidebar = () => {
               <MenuItem>前後測表格</MenuItem>
             </Link>
           )}
-          <Link href="/personalInformation/reservationRecord">
-            <MenuItem>預約紀錄</MenuItem>
-          </Link>
-          <Link href="/personalInformation/purchaseRecord">
-            <MenuItem>購買紀錄</MenuItem>
-          </Link>
+          {roleID === 2 && (
+            <Link href="/personalInformation/reservationRecord">
+              <MenuItem>預約紀錄</MenuItem>
+            </Link>
+          )}
+          {roleID === 2 && (
+            <Link href="/personalInformation/purchaseRecord">
+              <MenuItem>購買紀錄</MenuItem>
+            </Link>
+          )}
         </Menu>
       </Sidebar>
     </div>
