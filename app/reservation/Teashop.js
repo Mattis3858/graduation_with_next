@@ -20,6 +20,13 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
   const [time, setTime] = useState('');
   const [remark, setRemark] = useState('');
 
+  const fillUserData = () => {
+    if (user) {
+      setName(user.user_account || ''); // 设置姓名，如果user.user_account不存在，则设置为空字符串
+      setPhoneNumber(user.user_tel || ''); // 设置电话，如果user.user_tel不存在，则设置为空字符串
+      setEmail(user.user_email || ''); // 设置电子邮件，如果user.user_email不存在，则设置为空字符串
+    }
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     const currentTime = new Date().toISOString();
@@ -54,15 +61,20 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
   return (
     <div>
       <div className="border-2 border-lime-600 rounded-2xl bg-gray-200 font-sans card p-4">
-        <div className="card-pic sm:h-32 lg:h-64 relative">
-          <img src={src} alt="Tea" className="pic object-cover w-full" />
+        <div className="card-pic h-full sm:h-60 md:h-60 lg:h-60 relative">
+          <img
+            src={src}
+            alt="Tea"
+            className="pic object-cover w-full h-60 sm:h-60 md:h-60 lg:h-60"
+          />
         </div>
         <div className="card-content">
           <div>
             <div className="mt-2 text-2xl font-bold">{teaShopName}</div>
-            <div className="mt-2 text-xl font-bold">{description}</div>
+            <div className="mt-2 text-xl font-bold sm:h-28 md:h-24 lg:h-28">
+              {description}
+            </div>
           </div>
-
           <div className="flex justify-start mt-3">
             <button
               onClick={handleOpen}
@@ -78,6 +90,12 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
                     請填寫以下資訊
                   </h2>
                   <form onSubmit={handleSubmit} className="text-center">
+                    <button
+                      onClick={fillUserData}
+                      className=" bg-lime-600 text-white rounded-md mx-auto"
+                    >
+                      使用我的資料
+                    </button>
                     <div className="mt-4">
                       <label>
                         姓名:

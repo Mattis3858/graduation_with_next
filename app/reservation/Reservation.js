@@ -23,7 +23,7 @@ const Reservation = () => {
         />
       </div>
       {/* <div className="font-bold text-4xl mt-6 text-center">茶行預約系統</div> */}
-      <div className="mt-6 grid justify-around gap-x-12 gap-y-12 grid-cols-3 ml-10 mr-10">
+      <div className="mt-6 grid justify-around gap-x-12 gap-y-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-10 mr-10">
         {shop &&
           shop.map((item, index) => {
             return (
