@@ -63,9 +63,9 @@ const ChaTea = () => {
             onKeyDown={handleEnterPress}
           />
         </div>
-        <div className="text-center">
+        <div className="text-center ">
           <button
-            className="card-button bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded"
+            className="card-button bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded mx-auto"
             onClick={getAnswer}
             disabled={!isDataEntered || loading} // Disable the button when loading
           >
