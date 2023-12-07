@@ -14,18 +14,18 @@ const ProcessIntro = (props) => {
       image: '/images/image12041-i1oe-300h.png', // Replace with the actual image path
     },
     快沖壺: {
-      text: '方便快速的選擇，適合剛接觸泡茶的使用者使用',
+      text: '方便快速的選擇，適合剛接觸泡茶的使用者使用，沖泡完畢直接倒入馬克杯中飲用',
       image: '/images/image22042-4xx-300h.png', // Replace with the actual image path
     },
-    馬克杯: {
-      text: '如果家裡沒有專門喝茶的茶杯可以直接用馬克杯替代即可',
+    沖茶袋: {
+      text: '如果怕茶葉在杯中散掉的話可以事先使用沖茶袋將茶葉放入其中',
       image: '/images/image32042-3h6q-300h.png', // Replace with the actual image path
     },
-    沖茶袋: {
-      text: '使用馬克杯泡茶與濾茶球的使用者，如果怕茶葉在杯中散掉的話可以事先使用沖茶袋將茶葉放入其中',
-      image: '/images/image42042-v9d8-300h.png', // Replace with the actual image path
-    },
-    '1.溫杯燙壺': {
+    // 沖茶袋: {
+    //   text: '使用馬克杯泡茶與濾茶球的使用者，如果怕茶葉在杯中散掉的話可以事先使用沖茶袋將茶葉放入其中',
+    //   image: '/images/image42042-v9d8-300h.png', // Replace with the actual image path
+    // },
+    'Step1.溫杯燙壺': {
       text1: (
         <>
           1. 杯中加入一半 25 度常溫水後，再加入一半 90-100 度熱水
@@ -37,9 +37,9 @@ const ProcessIntro = (props) => {
           4. 此時杯身已緩緩溫杯完成，即可開始泡茶
         </>
       ),
-      image: '/images/茶茶.jpg',
+       image: '/images/茶茶.jpg',
     },
-    '2.溫潤泡': {
+    'Step2.溫潤泡': {
       text1: (
         <>
           1. 使用100度C水沖泡 3 分鐘後可即取出茶葉(瀝出茶湯)
@@ -49,11 +49,11 @@ const ProcessIntro = (props) => {
           3. 待茶湯靜置至 6 分鐘後，冷卻即可享用
         </>
       ),
-      image: '/images/茶茶3.jpg',
+       image: '/images/茶茶3.jpg',
     },
-    '3.續沖方式': {
+    'Step3.續沖方式': {
       text1: <>每泡茶可泡約 5-7 次，每泡時間增加 10 秒</>,
-      image: '/images/茶茶2.jpg',
+       image: '/images/茶茶2.jpg',
     },
   };
 
@@ -90,7 +90,7 @@ const ProcessIntro = (props) => {
               <div>
                 <div className="">沖泡器具:</div>
                 <div className="flex">
-                  {['茶具', '快沖壺', '馬克杯', '沖茶袋'].map((tool) => (
+                  {['茶具', '快沖壺', '沖茶袋'].map((tool) => (
                     <button
                       key={tool}
                       className={`text-blue-500 underline mr-4 ${
@@ -119,8 +119,9 @@ const ProcessIntro = (props) => {
               <div className="pt-4">
                 <div>目前茶款:</div>
                 <div>
-                  張協興茶行鐵觀音、張協興茶行包種茶、威叔茶莊鐵觀音、
-                  威叔茶莊鐵觀音紅茶、寒舍茶坊包種茶、寒舍茶坊鐵觀音紅茶
+                  張協興茶行:鐵觀音、包種茶<br></br>
+                  威叔茶莊:鐵觀音、鐵觀音紅茶<br></br>
+                  寒舍茶坊:包種茶、鐵觀音紅茶<br></br>
                 </div>
               </div>
             </div>
@@ -177,7 +178,7 @@ const ProcessIntro = (props) => {
                 3分鐘即可聞茶香， 待茶湯靜置至6分鐘後，冷卻即可享用 */}
                 <div>
                   <div className="flex">
-                    {['1.溫杯燙壺', '2.溫潤泡', '3.續沖方式'].map((tool) => (
+                    {['Step1.溫杯燙壺', 'Step2.溫潤泡', 'Step3.續沖方式'].map((tool) => (
                       <button
                         key={tool}
                         className={`text-blue-500 underline mr-4 ${
@@ -191,18 +192,20 @@ const ProcessIntro = (props) => {
                   </div>
 
                   {selectedTool && (
-                    <div className="flex mt-4">
-                      <div>
-                        <div>{toolInfo[selectedTool].text1}</div>
-                      </div>
-                      <div style={imageStyle}>
-                        <img
-                          src={toolInfo[selectedTool].image}
-                          alt={selectedTool}
-                        />
-                      </div>
+                <div className="flex mt-4">
+                  <div>
+                    <div>{toolInfo[selectedTool].text1}</div>
+                  </div>
+                  {toolInfo[selectedTool].image && ( // Conditionally render image section
+                    <div style={imageStyle}>
+                      <img
+                        src={toolInfo[selectedTool].image}
+                        alt={selectedTool}
+                      />
                     </div>
                   )}
+                </div>
+              )}
                 </div>
               </div>
 
