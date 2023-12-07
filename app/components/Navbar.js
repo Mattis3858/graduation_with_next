@@ -48,12 +48,16 @@ export default function Navbar() {
     <header className="">
       {/* {console.log(session.user.name)} */}
       <nav
-        className="mx-auto flex items-center justify-between pt-3 pb-3 lg:px-8 navbar"
+        className="flex items-center justify-between pt-3 pb-3 lg:px-8 navbar px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
           <Link href="/" className="">
-            <img className="h-10 logo" src="images/logo.png" alt="" />
+            <img
+              className="h-6 w-auto md:h-5 md:w-5 lg:w-5 lg:h-5 xl:h-6 xl:w-6 logo "
+              src="images/logo.png"
+              alt=""
+            />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -70,7 +74,7 @@ export default function Navbar() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Link
             href="/"
-            className={`text-lg font-semibold leading-6 nav-item ${
+            className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/' ? 'active' : ''
             }`}
           >
@@ -124,7 +128,7 @@ export default function Navbar() {
           </Popover> */}
           <Link
             href="/goodtea"
-            className={`text-lg font-semibold leading-6 nav-item ${
+            className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/goodtea' ? 'active' : ''
             }`}
             onClick={() => setPathname('/goodtea')}
@@ -133,7 +137,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/brewgoodtea"
-            className={`text-lg font-semibold leading-6 nav-item ${
+            className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/brewgoodtea' ? 'active' : ''
             }`}
             onClick={() => setPathname('/brewgoodtea')}
@@ -142,7 +146,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/chatea"
-            className={`text-lg font-semibold leading-6 nav-item ${
+            className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/chatea' ? 'active' : ''
             }`}
             onClick={() => setPathname('/chatea')}
@@ -151,7 +155,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/reservation"
-            className={`text-lg font-semibold leading-6 nav-item ${
+            className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/reservation' ? 'active' : ''
             }`}
             onClick={() => setPathname('/reservation')}
@@ -167,7 +171,7 @@ export default function Navbar() {
           </Link> */}
           <Link
             href="/processIntro"
-            className={`text-lg font-semibold leading-6 nav-item ${
+            className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/processIntro' ? 'active' : ''
             }`}
             onClick={() => setPathname('/processIntro')}
@@ -185,19 +189,19 @@ export default function Navbar() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="/personalInformation"
-            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6"
+            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-4 lg:mr-6"
           >
-            <UserCircleIcon className="h-6 w-6 text-gray-500 hover:text-gray-900" />
+            <UserCircleIcon className="h-6 w-6 md:h-5 md:w-5 lg:h-5 lg:w-5 xl:h-6 xl:w-6 text-gray-500 hover:text-gray-900" />
           </a>
           <a
             href="/shoppingCart"
-            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6"
+            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6 md:mr-4"
           >
-            <ShoppingCartIcon className="h-6 w-6 text-gray-500 hover:text-gray-900" />
+            <ShoppingCartIcon className="h-6 w-6 md:h-5 md:w-5 lg:h-5 lg:w-5 xl:h-6 xl:w-6 text-gray-500 hover:text-gray-900" />
           </a>
           <a
             href="/api/auth/signout"
-            className="text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
+            className="text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 text-gray-500 hover:text-gray-900"
           >
             Sign Out <span aria-hidden="true">&rarr;</span>
           </a>

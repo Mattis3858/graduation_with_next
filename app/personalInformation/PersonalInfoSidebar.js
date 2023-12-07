@@ -13,7 +13,7 @@ const PersonalInfoSidebar = () => {
     findUserRole(setRoleID, session);
   }, [session]);
   return (
-    <div className=" w-60 rounded-l-lg rounded-r-lg overflow-hidden">
+    <div className="rounded-l-lg rounded-r-lg overflow-hidden lg:w-60 ">
       <Sidebar>
         <Menu className="bg-gray-300 text-cyan-900">
           {roleID === 1 && (
