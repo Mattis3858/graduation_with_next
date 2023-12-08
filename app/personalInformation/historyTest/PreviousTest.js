@@ -87,7 +87,7 @@ const PreviousTest = ({ userID }) => {
                 <td className="py-2 px-4 border">{record.created_time}</td>
                 <td className="py-2 px-4 border">
                   {product.length !== 0 &&
-                    product.find((item) => item.prod_id === record.test_result)
+                    product.find((item) => item.id === record.test_result)
                       .prod_name}
                 </td>
               </tr>
