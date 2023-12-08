@@ -36,7 +36,7 @@ export default function Home() {
             </Select>
           </FormControl> */}
         </div>
-        <div className="mt-6 flex">
+        <div className="mt-6 flex flex-row justify-evenly sm:w-auto">
           <PreviousTest userID={userID} />
           <PostTest userID={userID} />
         </div>

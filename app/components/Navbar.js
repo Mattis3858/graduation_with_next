@@ -55,7 +55,7 @@ export default function Navbar() {
           <Link href="/" className="">
             <img
               className="h-8 w-auto md:h-8 md:w-8 lg:w-8 lg:h-8 xl:h-10 xl:w-10 logo "
-              src="images/logo.png"
+              src="https://zdxlzmekrckaffbzupmh.supabase.co/storage/v1/object/public/product/images/logo.png"
               alt=""
             />
           </Link>

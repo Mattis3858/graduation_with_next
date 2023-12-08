@@ -59,19 +59,19 @@ const PreviousTest = ({ userID }) => {
   //   // Add more tea data here
   // ];
   return (
-    <div className="w-full">
-      <div className="w-4/5 flex justify-between mx-auto">
+    <div className="w-auto md:w-2/5 text-xs sm:text-base">
+      <div className="flex justify-between mx-auto">
         <div>前測</div>
         {pageState && (
           <button onClick={() => setPageState(false)}>回上頁</button>
         )}
       </div>
       {!pageState && (
-        <table className="w-4/5 border-collapse border mx-auto">
+        <table className="w-full border-collapse border mx-auto table-auto overflow-x-auto">
           <thead>
             <tr>
-              <th className="py-2 px-4 border">時間</th>
-              <th className="py-2 px-4 border">茶款</th>
+              <th className="py-2 px-1 sm:px-4 border">時間</th>
+              <th className="py-2 px-1 sm:px-4 border">茶款</th>
             </tr>
           </thead>
           <tbody>
@@ -84,8 +84,10 @@ const PreviousTest = ({ userID }) => {
                 }}
                 className="hover:bg-lime-200 cursor-pointer"
               >
-                <td className="py-2 px-4 border">{record.created_time}</td>
-                <td className="py-2 px-4 border">
+                <td className="py-2 px-1 sm:px-4 border">
+                  {record.created_time}
+                </td>
+                <td className="py-2 px-1 sm:px-4 border">
                   {product.length !== 0 &&
                     product.find((item) => item.id === record.test_result)
                       .prod_name}
@@ -96,7 +98,7 @@ const PreviousTest = ({ userID }) => {
         </table>
       )}
       {pageState && selectedRecord && (
-        <table className="w-4/5 border-collapse border mx-auto">
+        <table className="w-full border-collapse border mx-auto table-auto overflow-x-auto">
           {/* {console.log(selectedRecord)} */}
           <thead>
             <tr>
