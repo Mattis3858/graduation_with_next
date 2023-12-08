@@ -37,7 +37,7 @@ const ProcessIntro = (props) => {
           4. 此時杯身已緩緩溫杯完成，即可開始泡茶
         </>
       ),
-       image: '/images/茶茶.jpg',
+      image: '/images/茶茶.jpg',
     },
     'Step2.溫潤泡': {
       text1: (
@@ -49,21 +49,12 @@ const ProcessIntro = (props) => {
           3. 待茶湯靜置至 6 分鐘後，冷卻即可享用
         </>
       ),
-       image: '/images/茶茶3.jpg',
+      image: '/images/茶茶3.jpg',
     },
     'Step3.續沖方式': {
       text1: <>每泡茶可泡約 5-7 次，每泡時間增加 10 秒</>,
-       image: '/images/茶茶2.jpg',
+      image: '/images/茶茶2.jpg',
     },
-  };
-
-  const imageStyle = {
-    width: '250px', // Fixed width
-    height: '250px', // Fixed height
-    objectFit: 'cover', // or 'contain' depending on your preference
-    position: 'absolute', // Set image position
-    top: '400px', // Set top margin
-    left: '750px', // Set left margin
   };
 
   return (
@@ -81,8 +72,8 @@ const ProcessIntro = (props) => {
         />
       </div>
       <div className="w-full px-4 lg:px-32">
-        <div className="flex flex-col lg:flex-row justify-between mb-20">
-          <div className="w-full lg:w-1/2">
+        <div className="flex flex-col sm:flex-row justify-evenly mb-20 mx-auto">
+          <div className="w-full sm:w-1/2">
             <div>
               <div className="text-5xl font-bold text-center">泡茶準備</div>
             </div>
@@ -103,16 +94,8 @@ const ProcessIntro = (props) => {
                   ))}
                 </div>
                 {selectedTool && (
-                  <div className="flex mt-4">
-                    <div>
-                      <div>{toolInfo[selectedTool].text}</div>
-                    </div>
-                    <div style={imageStyle}>
-                      <img
-                        src={toolInfo[selectedTool].image}
-                        alt={selectedTool}
-                      />
-                    </div>
+                  <div>
+                    <div>{toolInfo[selectedTool].text}</div>
                   </div>
                 )}
               </div>
@@ -126,6 +109,17 @@ const ProcessIntro = (props) => {
               </div>
             </div>
           </div>
+          {selectedTool && (
+            <div className="flex mt-4">
+              <div className=" ">
+                <img
+                  src={toolInfo[selectedTool].image}
+                  alt={selectedTool}
+                  className="mt-auto w-60 h-auto sm:w-60 sm:h-auto md:w-72 md:h-auto lg:w-80 lg:h-auto"
+                />
+              </div>
+            </div>
+          )}
         </div>
         <div>
           <div className="mb-8 text-center">
@@ -178,34 +172,37 @@ const ProcessIntro = (props) => {
                 3分鐘即可聞茶香， 待茶湯靜置至6分鐘後，冷卻即可享用 */}
                 <div>
                   <div className="flex">
-                    {['Step1.溫杯燙壺', 'Step2.溫潤泡', 'Step3.續沖方式'].map((tool) => (
-                      <button
-                        key={tool}
-                        className={`text-blue-500 underline mr-4 ${
-                          selectedTool === tool ? 'font-bold' : ''
-                        }`}
-                        onClick={() => selectTool(tool)}
-                      >
-                        {tool}
-                      </button>
-                    ))}
+                    {['Step1.溫杯燙壺', 'Step2.溫潤泡', 'Step3.續沖方式'].map(
+                      (tool) => (
+                        <button
+                          key={tool}
+                          className={`text-blue-500 underline mr-4 ${
+                            selectedTool === tool ? 'font-bold' : ''
+                          }`}
+                          onClick={() => selectTool(tool)}
+                        >
+                          {tool}
+                        </button>
+                      )
+                    )}
                   </div>
 
-                  {selectedTool && (
-                <div className="flex mt-4">
-                  <div>
-                    <div>{toolInfo[selectedTool].text1}</div>
-                  </div>
-                  {toolInfo[selectedTool].image && ( // Conditionally render image section
-                    <div style={imageStyle}>
-                      <img
-                        src={toolInfo[selectedTool].image}
-                        alt={selectedTool}
-                      />
+                  {/* {selectedTool && (
+                    <div className="flex mt-4">
+                      <div>
+                        <div>{toolInfo[selectedTool].text1}</div>
+                      </div>
+                      {toolInfo[selectedTool].image && ( // Conditionally render image section
+                        <div>
+                          <img
+                            src={toolInfo[selectedTool].image}
+                            alt={selectedTool}
+                              className="w-80 h-80"
+                          />
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              )}
+                  )} */}
                 </div>
               </div>
 
