@@ -34,8 +34,12 @@ const BrewGoodTea = () => {
 
   async function handleChange(e) {
     const selectedFile = e.target.files[0];
+    if (!selectedTea) {
+      setMessage('請選擇茶種');
+      return;
+    }
     if (!selectedFile) {
-      setMessage('Please select an image.');
+      setMessage('請拍攝一張照片');
       return;
     }
 
@@ -256,7 +260,7 @@ const BrewGoodTea = () => {
                 {isLoading ? (
                   <div className="text-blue-500">Loading...</div>
                 ) : message ? (
-                  <div className="message">{message}</div>
+                  <div className="message mx-auto">{message}</div>
                 ) : (
                   <></>
                 )}
@@ -264,7 +268,7 @@ const BrewGoodTea = () => {
                   <img
                     src={URL.createObjectURL(file)}
                     alt="Selected"
-                    className="mt-2 rounded-lg"
+                    className="mt-2 rounded-lg h-80 w-80 mx-auto"
                   />
                 )}
               </div>
