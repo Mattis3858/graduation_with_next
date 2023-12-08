@@ -92,7 +92,7 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
                   <form onSubmit={handleSubmit} className="text-center">
                     <button
                       onClick={fillUserData}
-                      className=" bg-lime-600 text-white rounded-md mx-auto"
+                      className="card-button text-white rounded-md mx-auto"
                     >
                       使用我的資料
                     </button>
@@ -185,7 +185,7 @@ const Teashop = ({ teaShopName, src, description, shopID }) => {
                     </div>
                     <div className="mt-4">
                       <button
-                        className="card-button bg-lime-600 text-white p-2 rounded-md mx-auto"
+                        className="card-button text-white p-2 rounded-md mx-auto"
                         type="submit"
                       >
                         提交預約

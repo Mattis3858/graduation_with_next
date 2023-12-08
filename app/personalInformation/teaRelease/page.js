@@ -88,7 +88,7 @@ const Home = () => {
       if (error) {
         console.error('Error uploading file:', error);
       } else {
-        console.log('File uploaded successfully:', data);
+        // console.log('File uploaded successfully:', data);
       }
     } catch (error) {
       console.error('Error:', error.message);

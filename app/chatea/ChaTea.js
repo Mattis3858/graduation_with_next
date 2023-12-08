@@ -17,7 +17,7 @@ const ChaTea = () => {
     }
   };
   async function getAnswer() {
-    console.log(question);
+    // console.log(question);
     setLoading(true); // Set loading to true when making the request
     try {
       const response = await axios.post(

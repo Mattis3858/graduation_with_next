@@ -11,7 +11,7 @@ async function getStaticProps(formData) {
         'Content-Type': 'multipart/form-data', // Important: Set the content type to FormData
       },
     });
-    console.log(response.data);
+    // console.log(response.data);
     return {
       props: {
         data,
@@ -56,10 +56,10 @@ const BrewGoodTea = () => {
         }
       );
       const data = response.data;
-      console.log(data);
+      // console.log(data);
       setMessage(data['similarity']);
       setIsLoading(false);
-      console.log(message);
+      // console.log(message);
       return {
         props: {
           data,

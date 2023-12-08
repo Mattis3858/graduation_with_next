@@ -11,7 +11,7 @@ import {
 
 export default function Home() {
   const { data: session, status } = useSession();
-  console.log(session);
+  // console.log(session);
   const [shop, setShop] = useState([]);
   const [userID, setUserID] = useState(0);
   const [reservationRecord, setReservationRecord] = useState([]);

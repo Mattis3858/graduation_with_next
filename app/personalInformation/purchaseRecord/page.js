@@ -70,8 +70,8 @@ export default function Home() {
             <th className="text-left py-2 px-3">金額</th>
           </tr>
         </thead>
-        {console.log(product)}
-        {console.log(sortedPurchaseData)}
+        {/* {console.log(product)}
+        {console.log(sortedPurchaseData)} */}
         <tbody>
           {sortedPurchaseData.map((purchase, index) => (
             <tr

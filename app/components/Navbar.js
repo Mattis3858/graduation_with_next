@@ -54,7 +54,7 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="">
             <img
-              className="h-6 w-auto md:h-5 md:w-5 lg:w-5 lg:h-5 xl:h-6 xl:w-6 logo "
+              className="h-8 w-auto md:h-8 md:w-8 lg:w-8 lg:h-8 xl:h-10 xl:w-10 logo "
               src="images/logo.png"
               alt=""
             />
@@ -195,7 +195,7 @@ export default function Navbar() {
           </a>
           <a
             href="/shoppingCart"
-            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-6 md:mr-4"
+            className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-4 lg:mr-6"
           >
             <ShoppingCartIcon className="h-6 w-6 md:h-5 md:w-5 lg:h-5 lg:w-5 xl:h-6 xl:w-6 text-gray-500 hover:text-gray-900" />
           </a>

@@ -87,12 +87,12 @@ export async function getBuyRecord(setBuyRecord, userID) {
 }
 
 export async function getReservationRecord(setReservationRecord, userID) {
-  console.log(userID);
+  // console.log(userID);
   const { data } = await supabase
     .from('reservation_record')
     .select('*')
     .eq('user_id', userID);
-  console.log(data);
+  // console.log(data);
   setReservationRecord(data);
 }
 export async function getPostTestRecord(setPostTestRecord, userID) {
@@ -158,6 +158,6 @@ export async function findShopName(shopId) {
     .from('shop')
     .select('*')
     .eq('shop_id', shopId);
-  console.log(data[0].shop_name);
+  // console.log(data[0].shop_name);
   return data[0].shop_name;
 }
