@@ -185,7 +185,13 @@ const ProcessIntro = (props) => {
                         </button>
                       )
                     )}
+                    
                   </div>
+                  {selectedTool && (
+                  <div>
+                    <div>{toolInfo[selectedTool].text1}</div>
+                  </div>
+                )}
 
                   {/* {selectedTool && (
                     <div className="flex mt-4">
