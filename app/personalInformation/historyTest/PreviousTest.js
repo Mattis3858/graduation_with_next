@@ -110,7 +110,9 @@ const PreviousTest = ({ userID }) => {
             {Object.keys(flavorTable).map((key) => (
               <tr key={key}>
                 <td className="py-2 px-4 border">{flavorTable[key]}</td>
-                <td className="py-2 px-4 border">{selectedRecord[key]}</td>
+                <td className="py-2 px-4 border">
+                  {selectedRecord[key] ? selectedRecord[key] : 0}
+                </td>
               </tr>
             ))}
           </tbody>
