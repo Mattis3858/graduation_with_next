@@ -4,7 +4,25 @@ export const supabase = createClient(
   process.env.SUPABASE_URI,
   process.env.SUPABASE_SECRET
 );
-
+export const chineseToEnglishAttributeLabels = {
+  '焙烤香 - 烘焙味': 'b_baked',
+  '焙烤香 - 煙燻味': 'b_smoky',
+  '果香 - 乾果味': 'f_dried_fruit',
+  '花香 - 清香': 'f_light',
+  '花香 - 濃香': 'f_heavy',
+  '甜香 - 糖香味': 's_sweet',
+  '甜香 - 蜜香味': 's_honey',
+  '青草香 - 草香味': 'g_grass',
+  '果仁香 - 堅果味': 'n_nutty',
+  木質香: 'w_woody',
+  酸味: 'sour',
+  甜味: 'sweet',
+  圓滑感: 'sleek',
+  厚重感: 'thick',
+  甘醇度: 'glycol',
+  喉後韻: 'after_rhyme',
+  回香感: 'aftertaste',
+};
 export const flavorTable = {
   b_baked: '焙烤香 - 烘焙味',
   b_smoky: '焙烤香 - 煙燻味',
@@ -161,3 +179,27 @@ export async function findShopName(shopId) {
   // console.log(data[0].shop_name);
   return data[0].shop_name;
 }
+
+export async function saveFindGoodTeaRecord(
+  userID,
+  input_type,
+  data,
+  test_result
+) {
+  const translatedData = translateAttributesToEnglish(data);
+  // console.log(userID, input_type, translatedData, test_result);
+  const { data: findGoodTeaRecord, error } = await supabase
+    .from('find_good_tea_record')
+    .upsert([{ user_id: userID, input_type, ...translatedData, test_result }]);
+}
+
+export const translateAttributesToEnglish = (attributes) => {
+  const translatedAttributes = {};
+  for (const key in attributes) {
+    if (chineseToEnglishAttributeLabels[key]) {
+      translatedAttributes[chineseToEnglishAttributeLabels[key]] =
+        attributes[key];
+    }
+  }
+  return translatedAttributes;
+};

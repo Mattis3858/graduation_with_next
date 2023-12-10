@@ -74,7 +74,7 @@ const PostTest = ({ userID }) => {
                     {flavorTable[key]}
                   </td>
                   <td className="py-2 px-1 sm:px-4 border">
-                    {selectedRecord[key]}
+                    {selectedRecord[key] ? selectedRecord[key] : 0}
                   </td>
                 </tr>
               ))}

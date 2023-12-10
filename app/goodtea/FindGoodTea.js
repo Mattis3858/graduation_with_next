@@ -1,6 +1,6 @@
 'use client'; // This is a client component
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,6 +17,8 @@ import Posttest from './posttest'; // Second Step 0: Posttest data
 import './goodTea.css';
 import Thankyou from './thankyou'; // Third Step 1: Thank you page
 import Result from './result'; // Third Step 0: Result page
+import { getUserID, saveFindGoodTeaRecord } from '../components/module';
+import { useSession } from 'next-auth/react';
 
 // step label on the step bar
 const steps = ['選擇品評方式', '', '填寫風味資訊'];
@@ -53,6 +55,8 @@ const theme = createTheme({
 
 // FindGoodTea component
 const FindGoodTea = () => {
+  const { data: session, status } = useSession();
+  const [userID, setUserID] = useState();
   const [activeStep, setActiveStep] = useState(0); // 取得前往的step
   const [selectedOption, setSelectedOption] = useState(''); // 取得selected option
   const [currentStep, setCurrentStep] = React.useState(1); // 設定當前的 selected option 預設為0
@@ -61,6 +65,9 @@ const FindGoodTea = () => {
   const [apiResult, setApiResult] = useState(null); // 取得 API return 的結果
   const [valuesObject, setValuesObject] = useState({});
 
+  useEffect(() => {
+    getUserID(setUserID, session);
+  }, [session]);
   const flavorRef = useRef();
   // user click on button in setStatus.js to choose 0 or 1
   const handleOptionSelect = (data) => {
@@ -169,7 +176,14 @@ const FindGoodTea = () => {
 
           console.log('data to sensory_api:', filteredValuesObject);
           const result = await callSensoryApi(filteredValuesObject);
+          // console.log(result.prediction_id);
           setApiResult(result);
+          saveFindGoodTeaRecord(
+            userID,
+            input_type,
+            filteredValuesObject,
+            result.prediction_id
+          );
         } catch (error) {
           console.error('API call failed', error);
         }
