@@ -113,6 +113,15 @@ export async function getReservationRecord(setReservationRecord, userID) {
   // console.log(data);
   setReservationRecord(data);
 }
+
+export async function setReservation(setReservationCustomer, userID) {
+  const { data } = await supabase
+    .from('reservation_record')
+    .select('*')
+    .eq('shop_id', userID);
+  setReservationCustomer(data);
+}
+
 export async function getPostTestRecord(setPostTestRecord, userID) {
   const { data } = await supabase
     .from('find_good_tea_record')

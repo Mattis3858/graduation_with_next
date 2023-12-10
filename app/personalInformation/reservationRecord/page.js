@@ -4,20 +4,34 @@ import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import {
+  findUserRole,
   getReservationRecord,
   getShop,
+  getShopID,
   getUserID,
+  setReservation,
 } from '../../components/module';
 
 export default function Home() {
   const { data: session, status } = useSession();
   // console.log(session);
   const [shop, setShop] = useState([]);
+  const [shopID, setShopID] = useState(0);
   const [userID, setUserID] = useState(0);
+  const [reservationCustomer, setReservationCustomer] = useState([]);
   const [reservationRecord, setReservationRecord] = useState([]);
+  const [roleID, setRoleID] = useState(0);
+
+  useEffect(() => {
+    roleID === 1 && getShopID(setShopID, session);
+  }, [roleID]);
+  useEffect(() => {
+    roleID === 1 && setReservation(setReservationCustomer, shopID);
+  }, [shopID]);
 
   useEffect(() => {
     getUserID(setUserID, session);
+    findUserRole(setRoleID, session);
   }, [session]);
 
   useEffect(() => {
@@ -50,16 +64,21 @@ export default function Home() {
             <th className="py-2 px-3 text-left">時間</th>
             <th className="py-2 px-3 text-left">預約者</th>
             <th className="py-2 px-3 text-left">預約人數</th>
-            <th className="py-2 px-3 text-left">預約店家</th>
+            {roleID === 1 && (
+              <th className="py-2 px-3 text-left">預約者電話</th>
+            )}
+            {roleID === 2 && <th className="py-2 px-3 text-left">預約店家</th>}
           </tr>
         </thead>
         <tbody>
-          {sortedReservationData &&
+          {roleID === 2 &&
+            sortedReservationData &&
             sortedReservationData.map((appointment, index) => (
               <tr
                 key={index}
                 className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
               >
+                {console.log(appointment)}
                 <td className="py-2 px-3">{appointment.reserv_date}</td>
                 <td className="py-2 px-3">
                   {appointment.reserv_time
@@ -75,6 +94,26 @@ export default function Home() {
                 </td>
               </tr>
             ))}
+          {console.log(reservationCustomer)}
+          {roleID === 1 &&
+            reservationCustomer &&
+            reservationCustomer.map((appointment, index) => (
+              <tr
+                key={index}
+                className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+              >
+                <td className="py-2 px-3">{appointment.reserv_date}</td>
+                <td className="py-2 px-3">
+                  {appointment.reserv_time
+                    ? appointment.reserv_time.substring(0, 5)
+                    : appointment.reserv_time}
+                </td>
+                <td className="py-2 px-3">{appointment.reserv_name}</td>
+                <td className="py-2 px-3">{appointment.number_of_people}</td>
+                <td className="py-2 px-3">{appointment.phone_number}</td>
+              </tr>
+            ))}
+          {console.log(roleID, reservationCustomer)}
         </tbody>
       </table>
     </main>
