@@ -235,6 +235,7 @@ const FindGoodTea = () => {
             ref={flavorRef}
             postData={posttestData}
             onFlavorDataSubmit={handleFlavorDataSubmit}
+            inputType={valuesObject.input_type}
           />
         );
       case 3:
