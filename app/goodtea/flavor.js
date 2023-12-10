@@ -16,7 +16,7 @@ import {
 import { useMediaQuery } from '@mui/material';
 
 const Flavor = forwardRef(
-  ({ postData: externalPostData, onFlavorDataSubmit, ref, inputType }) => {
+  ({ postData: externalPostData, onFlavorDataSubmit, inputType }, ref) => {
     const marks = [
       {
         value: 0,
@@ -253,7 +253,6 @@ const Flavor = forwardRef(
                   </TableHead>
                   <TableBody>
                     <TableRow>
-                      {console.log(inputType)}
                       {inputType === 1 ? (
                         <TableCell className="cell_bt_cell" colSpan={3}>
                           香氣:泡好茶湯，取出茶葉，或瀝出茶湯後，靜置三分鐘等待茶湯冷卻，即可開始聞香，並填寫下方表格。

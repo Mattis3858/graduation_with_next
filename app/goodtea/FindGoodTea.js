@@ -71,7 +71,7 @@ const FindGoodTea = () => {
   const flavorRef = useRef();
   // user click on button in setStatus.js to choose 0 or 1
   const handleOptionSelect = (data) => {
-    console.log(valuesArray);
+    // console.log(valuesArray);
     setSelectedOption(data.input_type); // get selected option
     setCurrentStep(data.input_type === 0 ? 2 : 1); // if data=0, go to case2, otherwise case1
     setValuesObject({ ...valuesObject, input_type: data.input_type }); // save ['input_type':0 or 1 to the array]
@@ -176,7 +176,7 @@ const FindGoodTea = () => {
 
           console.log('data to sensory_api:', filteredValuesObject);
           const result = await callSensoryApi(filteredValuesObject);
-          // console.log(result.prediction_id);
+
           setApiResult(result);
           saveFindGoodTeaRecord(
             userID,
@@ -184,6 +184,7 @@ const FindGoodTea = () => {
             filteredValuesObject,
             result.prediction_id
           );
+          saveFindGoodTeaRecord(userID, input_type, filteredValuesObject, 2);
         } catch (error) {
           console.error('API call failed', error);
         }
@@ -251,6 +252,7 @@ const FindGoodTea = () => {
 
   return (
     <div className="page-layout_goodtea">
+      {/* {console.log(valuesObject)} */}
       <div className="grid-rows-1 flex items-center justify-center main-vision">
         <h4 className="text-4xl text-center big_title">
           找好<span className="tea">茶</span>系統
