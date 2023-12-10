@@ -54,7 +54,7 @@ const ShoppingCart = () => {
     <div className="page-layout">
       <div className="mx-auto">
         <div className="text-4xl text-center big_title">購物車</div>
-        <div className="rounded-lg shadow border-slate-300 border-solid border-2 mt-6">
+        <div className=" text-base rounded-lg shadow border-slate-300 border-solid border-2 mt-6 sm:text-sm md:text-base">
           {/* <h1>Cart ({totalUniqueItems})</h1> */}
           {/* <ul>
             {items.map((item) => (
@@ -75,51 +75,45 @@ const ShoppingCart = () => {
             ))}
           </ul> */}
 
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="text-md">
+          <table className="text-base sm:text-sm md:text-lg min-w-full divide-y divide-gray-200">
+            <thead className="text-md ">
               <tr>
-                <th className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-0 md:px-6 py-3 text-center font-medium text-gray-500">
                   店家
                 </th>
-                <th className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-0 md:px-6 py-3 text-center font-medium text-gray-500">
                   商品
                 </th>
-                <th className="px-6 py-3 text-left  font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-0 md:px-6 py-3 text-center  font-medium text-gray-500">
                   價格
                 </th>
-                <th className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-0 md:px-6 py-3 text-center font-medium text-gray-500">
                   數量
                 </th>
-                <th className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-0 md:px-6 py-3 text-center font-medium text-gray-500">
                   總計
                 </th>
-                <th className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-0 md:px-6 py-3 text-center font-medium text-gray-500">
                   操作
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 text-xl">
+            <tbody className="text-xs sm:text-md md:text-lg divide-y divide-gray-200 text-center">
               {items.length !== 0 ? (
                 items.map((item) => (
                   <tr key={item.id}>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-0 md:px-6 py-4">
                       {findShopName(item.shop_id)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {item.prod_name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      ${item.price}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {item.quantity}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-0 md:px-6 py-4">{item.prod_name}</td>
+                    <td className="px-0 md:px-6 py-4">${item.price}</td>
+                    <td className="px-0 md:px-6 py-4">{item.quantity}</td>
+                    <td className="px-0 md:px-6 py-4">
                       ${item.price * item.quantity}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-0 md:px-6 py-4">
                       <button
-                        className="text-2xl ml-2"
+                        className="ml-2"
                         onClick={() =>
                           updateItemQuantity(
                             item.id,
@@ -130,7 +124,7 @@ const ShoppingCart = () => {
                         減少
                       </button>
                       <button
-                        className="text-2xl ml-2"
+                        className="ml-2"
                         onClick={() =>
                           updateItemQuantity(
                             item.id,
@@ -141,7 +135,7 @@ const ShoppingCart = () => {
                         增加
                       </button>
                       <button
-                        className="text-red-500 text-2xl ml-2"
+                        className="text-red-500 ml-2"
                         onClick={() => removeItem(item.id)}
                       >
                         刪除
