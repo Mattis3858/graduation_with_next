@@ -184,7 +184,6 @@ const FindGoodTea = () => {
             filteredValuesObject,
             result.prediction_id
           );
-          saveFindGoodTeaRecord(userID, input_type, filteredValuesObject, 2);
         } catch (error) {
           console.error('API call failed', error);
         }
