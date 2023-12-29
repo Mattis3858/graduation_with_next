@@ -51,7 +51,8 @@ export default function Navbar() {
         className="flex items-center justify-between pt-3 pb-3 lg:px-8 navbar px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
+        {/* <div className="flex lg:flex-1"> */}
+        <div className="flex">
           <Link href="/" className="">
             <img
               className="h-8 w-auto md:h-8 md:w-8 lg:w-8 lg:h-8 xl:h-10 xl:w-10 logo "
@@ -71,7 +72,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        <Popover.Group className="hidden lg:flex lg:gap-x-12">
+        <Popover.Group className="hidden lg:flex lg:gap-x-12 m-auto">
           <Link
             href="/"
             className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
@@ -135,7 +136,7 @@ export default function Navbar() {
           >
             找好茶
           </Link>
-          <Link
+          {/* <Link
             href="/brewgoodtea"
             className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/brewgoodtea' ? 'active' : ''
@@ -161,7 +162,7 @@ export default function Navbar() {
             onClick={() => setPathname('/reservation')}
           >
             品茶預約
-          </Link>
+          </Link> */}
 
           {/* <Link
             href="#"
@@ -169,7 +170,7 @@ export default function Navbar() {
           >
             系統介紹
           </Link> */}
-          <Link
+          {/* <Link
             href="/processIntro"
             className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/processIntro' ? 'active' : ''
@@ -177,7 +178,7 @@ export default function Navbar() {
             onClick={() => setPathname('/processIntro')}
           >
             泡茶流程
-          </Link>
+          </Link> */}
 
           {/* <a
             href="/about"
@@ -186,7 +187,7 @@ export default function Navbar() {
             關於我們
           </a> */}
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="/personalInformation"
             className="text-lg font-semibold leading-6 gray-500 hover:text-gray-900 mr-4 lg:mr-6"
@@ -205,7 +206,7 @@ export default function Navbar() {
           >
             Sign Out <span aria-hidden="true">&rarr;</span>
           </a>
-        </div>
+        </div> */}
       </nav>
       <Dialog
         as="div"
@@ -273,7 +274,7 @@ export default function Navbar() {
                 >
                   找好茶
                 </a>
-                <a
+                {/* <a
                   href="/brewgoodtea"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
@@ -308,7 +309,7 @@ export default function Navbar() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   購物車
-                </a>
+                </a> */}
               </div>
               <div className="py-6">
                 <a

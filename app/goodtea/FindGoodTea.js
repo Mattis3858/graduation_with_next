@@ -283,6 +283,7 @@ const FindGoodTea = () => {
               ))}
             </Stepper>
             <React.Fragment>
+              {console.log(activeStep)}
               {renderStepContent(activeStep)}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (
