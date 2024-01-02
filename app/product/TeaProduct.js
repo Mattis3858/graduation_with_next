@@ -37,7 +37,6 @@ const TeaProduct = ({
       <div className="card-pic">
         <img src={src} alt="Tea" className="pic" />
       </div>
-      {/* <hr className="h-0.5 bg-lime-600 border-0" /> */}
       <div className="card-content">
         <div className="price-group">
           <div>
@@ -45,7 +44,7 @@ const TeaProduct = ({
             <h4 className="mt-2 text-xl font-bold">{name}</h4>
           </div>
           <div className="price-tag">
-            <h4 className="text-xl font-semibold ">$ {price}</h4>
+            <h4 className="text-xl font-semibold "> {price}</h4>
           </div>
         </div>
         <div className="mt-2 mb-3" style={{ fontSize: '14px' }}>
@@ -61,38 +60,28 @@ const TeaProduct = ({
           {isDescriptionOpen && <p>{description}</p>}
         </div>
 
-        <div className="flex justify-between button-group">
+        {/* <div className="flex justify-between button-group">
           <Link href="/reservation" className="card-button">
             <button>預約品茶</button>
           </Link>
-          {/* {items.forEach((item) => {
-            console.log(item);
-          })} */}
           <button
             className="card-button"
             onClick={openPurchaseModal}
-            // onClick={() => {
-            //   addItem(product);
-            //   console.log('add item to shopping cart');
-            // }}
           >
             購買
           </button>
-          {/* 根据购买窗口的状态来显示 PurchaseModal */}
           {isPurchaseModalOpen && (
             <PurchaseModal
               product={product}
               onPurchase={(product, quantity) => {
-                // for (let i = 0; i < quantity; i++) {
                 addItem(product, quantity);
-                // }
                 window.alert(`購買了 ${quantity} 件產品：${product.prod_name}`);
                 closePurchaseModal();
               }}
               onClose={closePurchaseModal}
             />
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

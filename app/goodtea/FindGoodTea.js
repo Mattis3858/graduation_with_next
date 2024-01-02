@@ -58,7 +58,7 @@ const FindGoodTea = () => {
   const { data: session, status } = useSession();
   const [userID, setUserID] = useState();
   const [activeStep, setActiveStep] = useState(0); // 取得前往的step
-  const [selectedOption, setSelectedOption] = useState(''); // 取得selected option
+  const [selectedOption, setSelectedOption] = useState(0); // 取得selected option
   const [currentStep, setCurrentStep] = React.useState(1); // 設定當前的 selected option 預設為0
   const [posttestData, setPosttestData] = useState(null); // 取得來自posttest.js 的 posttestData
   const [valuesArray, setValuesArray] = useState([]); // 用來存values 的 dictionary，格式{'input_type':0,'flavor_name_1':'flavor_score_1','flavor_name_2':'flavor_score_2',...}
@@ -220,16 +220,31 @@ const FindGoodTea = () => {
   // step settings
   const renderStepContent = (step) => {
     switch (step) {
+      // case 0:
+      //   return <SetStatus onOptionSelect={handleOptionSelect} />; // need to return selected option
+      // case 1:
+      //   return selectedOption === 0 ? (
+      //     // need to return posttestdata
+      //     <Posttest onDataSubmit={handlePosttestData} />
+      //   ) : (
+      //     <TeaColorTest />
+      //   );
+      // case 2: // send posttest data to flavor.js and return the current flavor data in flavor.js
+      //   return (
+      //     <Flavor
+      //       ref={flavorRef}
+      //       postData={posttestData}
+      //       onFlavorDataSubmit={handleFlavorDataSubmit}
+      //       inputType={valuesObject.input_type}
+      //     />
+      //   );
+      // case 3:
+      //   return selectedOption === 0 ? (
+      //     <Result result={apiResult} />
+      //   ) : (
+      //     <Thankyou />
+      //   );
       case 0:
-        return <SetStatus onOptionSelect={handleOptionSelect} />; // need to return selected option
-      case 1:
-        return selectedOption === 0 ? (
-          // need to return posttestdata
-          <Posttest onDataSubmit={handlePosttestData} />
-        ) : (
-          <TeaColorTest />
-        );
-      case 2: // send posttest data to flavor.js and return the current flavor data in flavor.js
         return (
           <Flavor
             ref={flavorRef}
@@ -237,13 +252,14 @@ const FindGoodTea = () => {
             onFlavorDataSubmit={handleFlavorDataSubmit}
             inputType={valuesObject.input_type}
           />
-        );
-      case 3:
+        ); // need to return selected option
+      case 1:
         return selectedOption === 0 ? (
           <Result result={apiResult} />
         ) : (
           <Thankyou />
         );
+
       default:
         return null;
     }
@@ -275,13 +291,13 @@ const FindGoodTea = () => {
             <div className="title_eng">
               Tea Aroma Guide: Discover Your Favorite Tea Flavors
             </div>
-            <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+            {/* <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
               {steps.map((label, index) => (
                 <Step key={label}>
                   <StepLabel>{getStepLabel(index)}</StepLabel>
                 </Step>
               ))}
-            </Stepper>
+            </Stepper> */}
             <React.Fragment>
               {console.log(activeStep)}
               {renderStepContent(activeStep)}

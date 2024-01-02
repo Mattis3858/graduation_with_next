@@ -27,7 +27,7 @@ export default function SetStatus({ onOptionSelect }) {
         想將品茶提升至更高境界？選擇「一邊品味茶葉，一邊感受風味」，將為您帶來美味的茶葉盛宴！
       </div>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <Box
             sx={{
               display: 'flex',
