@@ -156,7 +156,7 @@ const FindGoodTea = () => {
 
   // user click step_button, go to next step
   const handleNext = () => {
-    if (activeStep === 2) {
+    if (activeStep === 1) {
       //一定要是2! 請務必注意Step 順序
       flavorRef.current && flavorRef.current.handleFormSubmit(); // 在这里，您通过ref调用Flavor组件中的handleFormSubmit方法。
     }
@@ -169,7 +169,7 @@ const FindGoodTea = () => {
 
   // when click on 'see result' call api
   React.useEffect(() => {
-    if (activeStep === 3) {
+    if (activeStep === 1) {
       const callApi = async () => {
         try {
           const { input_type, ...filteredValuesObject } = valuesObject;
