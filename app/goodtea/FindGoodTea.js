@@ -176,7 +176,13 @@ const FindGoodTea = () => {
 
           console.log('data to sensory_api:', filteredValuesObject);
           const result = await callSensoryApi(filteredValuesObject);
-
+          console.log(
+            userID,
+            // input_type,
+            0,
+            filteredValuesObject,
+            result.prediction_id
+          );
           setApiResult(result);
           saveFindGoodTeaRecord(
             userID,
