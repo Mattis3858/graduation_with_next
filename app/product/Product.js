@@ -246,7 +246,8 @@ const Product = () => {
                 src={product.prod_pic}
                 shop={findShopName(product.shop_id)}
                 name={product.prod_name}
-                description={
+                description={product.prod_desc}
+                radarData={
                   <Radar
                     data={{
                       labels: [

@@ -14,6 +14,7 @@ const TeaProduct = ({
   src = '',
   shop = '',
   name = '',
+  radarData = '',
   description = '',
   price = 0,
 }) => {
@@ -47,6 +48,9 @@ const TeaProduct = ({
             <h4 className="text-xl font-semibold "> {price}</h4>
           </div>
         </div>
+        <div>
+          <h4 className="mt-2">{description}</h4>
+        </div>
         <div className="mt-2 mb-3" style={{ fontSize: '14px' }}>
           <button onClick={toggleDescription} className="description">
             風味雷達圖
@@ -57,7 +61,7 @@ const TeaProduct = ({
               }`}
             />
           </button>
-          {isDescriptionOpen && <p>{description}</p>}
+          {isDescriptionOpen && <p>{radarData}</p>}
         </div>
 
         {/* <div className="flex justify-between button-group">
