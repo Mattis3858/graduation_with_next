@@ -16,7 +16,16 @@ import {
 import { useMediaQuery } from '@mui/material';
 
 const Flavor = forwardRef(
-  ({ postData: externalPostData, onFlavorDataSubmit, inputType = 0 }, ref) => {
+  (
+    {
+      postData: externalPostData,
+      onFlavorDataSubmit,
+      inputType = 0,
+      setApiSentData,
+    },
+
+    ref
+  ) => {
     const marks = [
       {
         value: 0,
@@ -193,7 +202,9 @@ const Flavor = forwardRef(
         onFlavorDataSubmit(flavorDataArray);
       }
     };
-
+    useEffect(() => {
+      setApiSentData(flavorScores);
+    }, [flavorScores]);
     // ref，讓父組件能夠呼叫它
     useImperativeHandle(ref, () => ({
       handleFormSubmit,

@@ -64,6 +64,7 @@ const FindGoodTea = () => {
   const [valuesArray, setValuesArray] = useState([]); // 用來存values 的 dictionary，格式{'input_type':0,'flavor_name_1':'flavor_score_1','flavor_name_2':'flavor_score_2',...}
   const [apiResult, setApiResult] = useState(null); // 取得 API return 的結果
   const [valuesObject, setValuesObject] = useState({});
+  const [apiSentData, setApiSentData] = useState({});
 
   useEffect(() => {
     getUserID(setUserID, session);
@@ -113,6 +114,7 @@ const FindGoodTea = () => {
   const callSensoryApi = async (data) => {
     try {
       const translatedData = translateAttributesToEnglish(data);
+      // console.log(translatedData);
       console.log('Sending request with data:', JSON.stringify(translatedData));
       const response = await fetch(
         `${process.env.API_URI}/SensoryAI/predict_Siamese_network`,
@@ -169,31 +171,43 @@ const FindGoodTea = () => {
 
   // when click on 'see result' call api
   React.useEffect(() => {
+    // if (activeStep === 1) {
+    //   const callApi = async () => {
+    //     try {
+    //       const { input_type, ...filteredValuesObject } = valuesObject;
+
+    //       console.log('data to sensory_api:', filteredValuesObject);
+    //       const result = await callSensoryApi(filteredValuesObject);
+    //       console.log(
+    //         userID,
+    //         // input_type,
+    //         0,
+    //         filteredValuesObject,
+    //         result.prediction_id
+    //       );
+    //       setApiResult(result);
+    //       saveFindGoodTeaRecord(
+    //         userID,
+    //         input_type,
+    //         filteredValuesObject,
+    //         result.prediction_id
+    //       );
+    //     } catch (error) {
+    //       console.error('API call failed', error);
+    //     }
+    //   };
+    //   callApi();
+    // }
     if (activeStep === 1) {
       const callApi = async () => {
-        try {
-          const { input_type, ...filteredValuesObject } = valuesObject;
+        const translatedData = translateAttributesToEnglish(apiSentData);
+        const result = await callSensoryApi(apiSentData);
+        console.log(apiSentData);
+        setApiResult(result);
 
-          console.log('data to sensory_api:', filteredValuesObject);
-          const result = await callSensoryApi(filteredValuesObject);
-          console.log(
-            userID,
-            // input_type,
-            0,
-            filteredValuesObject,
-            result.prediction_id
-          );
-          setApiResult(result);
-          saveFindGoodTeaRecord(
-            userID,
-            input_type,
-            filteredValuesObject,
-            result.prediction_id
-          );
-        } catch (error) {
-          console.error('API call failed', error);
-        }
+        saveFindGoodTeaRecord(userID, 0, apiSentData, result.prediction_id);
       };
+
       callApi();
     }
   }, [activeStep, valuesObject]);
@@ -257,6 +271,7 @@ const FindGoodTea = () => {
             postData={posttestData}
             onFlavorDataSubmit={handleFlavorDataSubmit}
             inputType={valuesObject.input_type}
+            setApiSentData={setApiSentData}
           />
         ); // need to return selected option
       case 1:
@@ -273,6 +288,8 @@ const FindGoodTea = () => {
 
   return (
     <div className="page-layout_goodtea">
+      {/* {console.log(apiSentData)} */}
+      {/* {console.log(translateAttributesToEnglish(apiSentData))} */}
       {/* {console.log(valuesObject)} */}
       <div className="grid-rows-1 flex items-center justify-center main-vision">
         <h4 className="text-4xl text-center big_title">
