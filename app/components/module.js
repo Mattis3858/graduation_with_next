@@ -90,7 +90,10 @@ export async function getShop(setShop) {
 }
 
 export async function getProduct(setProduct) {
-  const { data, error } = await supabase.from('product').select('*');
+  const { data, error } = await supabase
+    .from('product')
+    .select('*')
+    .order('shop_id', { ascending: true });
   setProduct(data);
 }
 
