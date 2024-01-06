@@ -212,7 +212,7 @@ const Flavor = forwardRef(
 
     // 處理 postData 資料更新狀態
     React.useEffect(() => {
-      console.log('externalPostData', externalPostData);
+      // console.log('externalPostData', externalPostData);
       if (Array.isArray(externalPostData)) {
         const updatedFlavorScores = {};
         externalPostData.forEach((entry) => {
@@ -242,7 +242,7 @@ const Flavor = forwardRef(
 
     return (
       <React.Fragment>
-        {console.log(flavorScores)}
+        {/* {console.log(flavorScores)} */}
         <div className="sub_title" gutterBottom>
           請填寫風味資訊(Please fill in flavor information)
         </div>

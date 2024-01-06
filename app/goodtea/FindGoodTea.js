@@ -200,12 +200,17 @@ const FindGoodTea = () => {
     // }
     if (activeStep === 1) {
       const callApi = async () => {
-        const translatedData = translateAttributesToEnglish(apiSentData);
-        const result = await callSensoryApi(apiSentData);
-        console.log(apiSentData);
-        setApiResult(result);
-
-        saveFindGoodTeaRecord(userID, 0, apiSentData, result.prediction_id);
+        try {
+          const translatedData = translateAttributesToEnglish(apiSentData);
+          const result = await callSensoryApi(apiSentData);
+          // console.log(apiSentData);
+          setApiResult(result);
+          console.log(result);
+          // saveFindGoodTeaRecord(userID, 0, apiSentData, 11);
+          saveFindGoodTeaRecord(userID, 0, apiSentData, result.prediction_id);
+        } catch (error) {
+          console.error('api error:', error);
+        }
       };
 
       callApi();
@@ -322,7 +327,7 @@ const FindGoodTea = () => {
               ))}
             </Stepper> */}
             <React.Fragment>
-              {console.log(activeStep)}
+              {/* {console.log(activeStep)} */}
               {renderStepContent(activeStep)}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (

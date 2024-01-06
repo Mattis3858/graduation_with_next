@@ -199,10 +199,10 @@ export async function saveFindGoodTeaRecord(
   test_result
 ) {
   const translatedData = translateAttributesToEnglish(data);
-  console.log(translatedData);
-  // const { data: findGoodTeaRecord, error } = await supabase
-  //   .from('find_good_tea_record')
-  //   .upsert([{ user_id: userID, input_type, ...data, test_result }]);
+  // console.log({ ...translatedData });
+  const { data: findGoodTeaRecord, error } = await supabase
+    .from('find_good_tea_record')
+    .upsert({ user_id: userID, input_type, ...translatedData, test_result });
 }
 
 export const translateAttributesToEnglish = (attributes) => {
