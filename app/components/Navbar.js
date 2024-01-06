@@ -144,7 +144,7 @@ export default function Navbar() {
             onClick={() => setPathname('/brewgoodtea')}
           >
             泡好茶
-          </Link>
+          </Link> */}
           <Link
             href="/chatea"
             className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
@@ -154,7 +154,7 @@ export default function Navbar() {
           >
             CHATEA
           </Link>
-          <Link
+          {/* <Link
             href="/reservation"
             className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/reservation' ? 'active' : ''
@@ -162,7 +162,7 @@ export default function Navbar() {
             onClick={() => setPathname('/reservation')}
           >
             品茶預約
-          </Link> */}
+          </Link>  */}
 
           {/* <Link
             href="#"
