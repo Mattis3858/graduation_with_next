@@ -136,7 +136,7 @@ export default function Navbar() {
           >
             找好茶
           </Link>
-          {/* <Link
+          <Link
             href="/brewgoodtea"
             className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
               currentRoute === '/brewgoodtea' ? 'active' : ''
@@ -144,7 +144,7 @@ export default function Navbar() {
             onClick={() => setPathname('/brewgoodtea')}
           >
             泡好茶
-          </Link> */}
+          </Link>
           <Link
             href="/chatea"
             className={`text-lg md:text-base lg:text-base xl:text-lg font-semibold leading-6 nav-item ${
@@ -274,13 +274,13 @@ export default function Navbar() {
                 >
                   找好茶
                 </a>
-                {/* <a
+                <a
                   href="/brewgoodtea"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   泡好茶
                 </a>
-                <a
+                {/* <a
                   href="/reservation"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
@@ -291,14 +291,14 @@ export default function Navbar() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   品茶流程
-                </a>
+                </a> */}
                 <a
                   href="/chatea"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   CHATEA
                 </a>
-                <a
+                {/* <a
                   href="/personalInformation"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
