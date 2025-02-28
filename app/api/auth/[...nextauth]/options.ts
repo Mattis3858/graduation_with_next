@@ -51,30 +51,44 @@ export const options: NextAuthOptions = {
       // },
       async authorize(credentials) {
         // Use Supabase to check if the user exists and the credentials are correct
-        const { data: users, error } = await supabase
-          .from('user')
-          .select('*')
-          .eq('user_account', credentials.username);
+        // const { data: users, error } = await supabase
+        //   .from('user')
+        //   .select('*')
+        //   .eq('user_account', credentials.username);
 
-        if (error) {
-          throw new Error(error.message);
+        // if (error) {
+        //   throw new Error(error.message);
+        // }
+
+        //no supabase anymore
+        if ('00000000' === credentials.password) {
+          const userObject = {
+            id: '1',
+            role: '1',
+            name: 'Mattis', // 根據您的 Supabase 模式調整字段名稱
+          };
+
+          // 將已認證用戶的信息保存在 session 中
+          const sessionObject = { ...userObject, credentials: credentials };
+          return sessionObject;
         }
-        if (users && users.length > 0) {
-          const user = users[0];
 
-          if (user.user_password === credentials.password) {
-            const userObject = {
-              id: user.id,
-              role: user.role_id,
-              name: user.user_name, // 根據您的 Supabase 模式調整字段名稱
-            };
+        // if (users && users.length > 0) {
+        //   const user = users[0];
 
-            // 將已認證用戶的信息保存在 session 中
-            const sessionObject = { ...userObject, credentials: credentials };
-            return sessionObject;
-            // return user;
-          }
-        }
+        //   if (user.user_password === credentials.password) {
+        //     const userObject = {
+        //       id: user.id,
+        //       role: user.role_id,
+        //       name: user.user_name, // 根據您的 Supabase 模式調整字段名稱
+        //     };
+
+        //     // 將已認證用戶的信息保存在 session 中
+        //     const sessionObject = { ...userObject, credentials: credentials };
+        //     return sessionObject;
+        //     // return user;
+        //   }
+        // }
 
         return null; // Return null if the user is not found or the password doesn't match
       },
